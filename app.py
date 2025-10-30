@@ -4,6 +4,7 @@ Trang chính
 """
 import streamlit as st
 from core.utils import get_greeting
+from core.ui_config import get_custom_css
 
 
 # Cấu hình trang
@@ -14,41 +15,32 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS tùy chỉnh
-st.markdown("""
-<style>
-    .main-header {
-        font-size: 3rem;
-        font-weight: bold;
-        text-align: center;
-        color: #1f77b4;
-        margin-bottom: 1rem;
-    }
-    .subtitle {
-        font-size: 1.2rem;
-        text-align: center;
-        color: #666;
-        margin-bottom: 2rem;
-    }
-    .disease-card {
-        padding: 1.5rem;
-        border-radius: 10px;
-        border: 2px solid #e0e0e0;
-        margin: 1rem 0;
-        transition: all 0.3s;
-    }
-    .disease-card:hover {
-        border-color: #1f77b4;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .warning-box {
-        background-color: #fff3cd;
-        border-left: 5px solid #ffc107;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-</style>
-""", unsafe_allow_html=True)
+# Dark Mode Toggle trong Sidebar
+with st.sidebar:
+    st.markdown("### ⚙️ Cài đặt Giao diện")
+    
+    # Initialize dark mode state
+    if 'dark_mode' not in st.session_state:
+        st.session_state.dark_mode = False
+    
+    # Toggle
+    dark_mode = st.toggle(
+        "🌙 Chế độ Tối (Dark Mode)",
+        value=st.session_state.dark_mode,
+        help="Bật/tắt chế độ tối - dễ nhìn hơn ban đêm và tiết kiệm pin"
+    )
+    
+    st.session_state.dark_mode = dark_mode
+    
+    if dark_mode:
+        st.caption("✅ Đang dùng chế độ tối")
+    else:
+        st.caption("☀️ Đang dùng chế độ sáng")
+    
+    st.divider()
+
+# Áp dụng CSS tùy chỉnh
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 # Header
 st.markdown('<div class="main-header">🏥 HealthAdvisor</div>', unsafe_allow_html=True)

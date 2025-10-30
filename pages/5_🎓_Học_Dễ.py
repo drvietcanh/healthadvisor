@@ -6,8 +6,14 @@ import sys
 sys.path.append('..')
 
 from core.simple_explanations import EVERYDAY_EXAMPLES, MEMORY_TRICKS, COMPARISONS
+from core.ui_config import get_custom_css
 
 st.set_page_config(page_title="Học Dễ", page_icon="🎓", layout="wide")
+
+# Áp dụng Dark Mode
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 st.title("🎓 Học Y Khoa Siêu Dễ!")
 st.markdown("### Giải thích bằng hình ảnh - Ai cũng hiểu! 😊")

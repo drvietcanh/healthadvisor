@@ -7,8 +7,14 @@ sys.path.append('..')
 
 from diseases.metabolic import diabetes
 from core.utils import convert_blood_sugar, calculate_bmi
+from core.ui_config import get_custom_css
 
 st.set_page_config(page_title="Tiểu Đường", page_icon="🩸", layout="wide")
+
+# Áp dụng Dark Mode
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 st.title("🩸 Tư vấn Tiểu Đường")
 

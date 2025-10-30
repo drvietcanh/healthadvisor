@@ -2,8 +2,17 @@
 Trang Hướng dẫn sử dụng HealthAdvisor
 """
 import streamlit as st
+import sys
+sys.path.append('..')
+
+from core.ui_config import get_custom_css
 
 st.set_page_config(page_title="Hướng dẫn", page_icon="📖", layout="wide")
+
+# Áp dụng Dark Mode
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 st.title("📖 Hướng dẫn sử dụng HealthAdvisor")
 

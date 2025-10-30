@@ -6,9 +6,15 @@ import sys
 sys.path.append('..')
 
 from core.chatbot_enhanced import MedicalChatbot
+from core.ui_config import get_custom_css
 import os
 
 st.set_page_config(page_title="AI Bác Sĩ", page_icon="🤖", layout="wide")
+
+# Áp dụng Dark Mode
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 st.title("🤖 AI Bác Sĩ - Trợ lý sức khỏe thông minh")
 
