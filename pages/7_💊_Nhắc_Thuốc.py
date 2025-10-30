@@ -6,8 +6,11 @@ import streamlit as st
 import sys
 import os
 
-# Thêm thư mục gốc vào path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Thêm thư mục gốc và pages vào path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
+sys.path.insert(0, current_dir)
 
 from medication_reminder import (
     render_medication_form,
