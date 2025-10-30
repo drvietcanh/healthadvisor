@@ -108,26 +108,50 @@ Không tự ý ngưng thuốc khi huyết áp đã ổn định.
     "drug_classes": {
         "ace_inhibitors": {
             "name_vn": "Thuốc ức chế men chuyển (ACE-I)",
+            "street_name": "Nhóm '-pril'",
             "examples_vn": ["Enalapril", "Lisinopril", "Ramipril", "Perindopril"],
+            "vietnam_brands": "🇻🇳 Tại VN: Coversyl (Perindopril 2/4/8mg), Tritace (Ramipril 2.5/5/10mg), Enalapril 5/10mg (generic), Lisinopril 10/20mg",
             "mechanism_vn": "Giãn mạch máu, giảm gánh nặng tim",
-            "side_effects_vn": ["Ho khan (10-15%)", "Chóng mặt", "Tăng kali máu"],
+            "benefits_vn": [
+                "✓ Giảm huyết áp hiệu quả",
+                "✓ Bảo vệ tim, thận (đặc biệt tốt cho tiểu đường)",
+                "✓ Giảm nguy cơ đột quỵ, nhồi máu",
+                "✓ Rẻ tiền (trừ Coversyl)"
+            ],
+            "side_effects_vn": ["Ho khan (10-15%) - Phổ biến nhất", "Chóng mặt", "Tăng kali máu"],
             "contraindications_vn": ["Thai kỳ", "Hẹp động mạch thận 2 bên"],
             "note_vn": "Thuốc lựa chọn hàng đầu cho tăng huyết áp + tiểu đường"
         },
         "arbs": {
             "name_vn": "Thuốc chẹn thụ thể Angiotensin II (ARBs)",
-            "examples_vn": ["Losartan", "Valsartan", "Telmisartan", "Irbesartan"],
+            "street_name": "Nhóm '-sartan'",
+            "examples_vn": ["Losartan", "Valsartan", "Telmisartan", "Irbesartan", "Olmesartan"],
+            "vietnam_brands": "🇻🇳 Tại VN: Cozaar (Losartan 50/100mg), Diovan (Valsartan 80/160mg), Aprovel (Irbesartan 150/300mg), Micardis (Telmisartan 40/80mg), Olmetec (Olmesartan 20/40mg)",
             "mechanism_vn": "Giãn mạch máu, bảo vệ thận và tim",
+            "benefits_vn": [
+                "✓ Giảm huyết áp hiệu quả",
+                "✓ KHÔNG gây ho khan (ưu điểm lớn so với ACE-I)",
+                "✓ Bảo vệ tim, thận tốt",
+                "✓ Ít tác dụng phụ"
+            ],
             "side_effects_vn": ["Chóng mặt", "Tăng kali máu", "Ít tác dụng phụ hơn ACE-I"],
             "contraindications_vn": ["Thai kỳ"],
-            "note_vn": "Thay thế ACE-I khi bị ho khan"
+            "note_vn": "Thay thế ACE-I khi bị ho khan. Đắt hơn ACE-I nhưng dễ dung nạp hơn."
         },
         "calcium_blockers": {
             "name_vn": "Thuốc chẹn kênh canxi",
-            "examples_vn": ["Amlodipine", "Nifedipine", "Diltiazem", "Verapamil"],
+            "street_name": "Nhóm '-dipine' (và Diltiazem, Verapamil)",
+            "examples_vn": ["Amlodipine", "Nifedipine", "Diltiazem", "Verapamil", "Lercanidipine"],
+            "vietnam_brands": "🇻🇳 Tại VN: Norvasc (Amlodipine 5/10mg), Amlodipine 5/10mg (generic RẺ), Adalat (Nifedipine 30/60mg), Herbesser (Diltiazem 60/90mg), Isoptin (Verapamil 80/120mg), Zanidip (Lercanidipine 10/20mg)",
             "mechanism_vn": "Giãn mạch máu, giảm co thắt",
-            "side_effects_vn": ["Phù mắt cá chân", "Đỏ mặt", "Táo bón (Verapamil)"],
-            "note_vn": "Phù hợp với người cao tuổi, người da đen"
+            "benefits_vn": [
+                "✓ Giảm huyết áp mạnh",
+                "✓ Phù hợp người cao tuổi, người da đen",
+                "✓ Không ảnh hưởng đường huyết (tốt cho tiểu đường)",
+                "✓ Amlodipine: RẺ NHẤT trong các thuốc huyết áp hiện đại"
+            ],
+            "side_effects_vn": ["Phù mắt cá chân (hay gặp)", "Đỏ mặt, nóng mặt", "Táo bón (Verapamil)", "Chóng mặt"],
+            "note_vn": "Amlodipine là thuốc huyết áp phổ biến NHẤT tại VN do rẻ và hiệu quả. Phù mắt cá có thể giảm khi phối hợp ACE-I/ARB."
         },
         "diuretics": {
             "name_vn": "Thuốc lợi tiểu",

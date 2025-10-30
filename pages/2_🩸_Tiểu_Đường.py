@@ -83,10 +83,10 @@ with tab2:
     st.divider()
     st.subheader("💉 Insulin")
     with st.expander("Khi nào cần tiêm insulin?"):
-        st.markdown(diabetes.MEDICATIONS_SIMPLE["insulin_simple"]["when_vn"])
+        st.markdown(diabetes.INSULIN_INFO["when_vn"])
     
     with st.expander("⚠️ Hạ đường huyết - QUAN TRỌNG!"):
-        st.error(diabetes.MEDICATIONS_SIMPLE["insulin_simple"]["hypoglycemia_vn"])
+        st.error(diabetes.INSULIN_INFO["hypoglycemia_vn"])
 
 # ============= TAB ĂN UỐNG =============
 with tab3:
