@@ -1,220 +1,7 @@
 """
-Module tư vấn về Suy Tim - Ngôn ngữ dễ hiểu cho bệnh nhân
+Heart Failure Daily Management
+Nutrition, exercise, home monitoring, and living tips in simple language
 """
-
-# ============= SUY TIM LÀ GÌ? =============
-
-DISEASE_INFO = {
-    "name_vn": "Suy Tim",
-    "name_en": "Heart Failure",
-    "simple_explanation_vn": """
-🫀 SUY TIM LÀ GÌ?
-
-Suy tim có nghĩa là tim bạn không bơm máu tốt như trước. 
-Không phải tim ngừng đập, mà tim yếu đi, không đủ sức đẩy máu nuôi cơ thể.
-
-Giống như chiếc bơm nước cũ - vẫn chạy nhưng không đủ mạnh.
-""",
-    "causes_simple_vn": [
-        "💔 Nhồi máu cơ tim (đã bị đau tim trước đây)",
-        "📈 Huyết áp cao lâu năm (tim phải làm việc vất vả)",
-        "🩺 Bệnh van tim (van tim hỏng, không đóng mở tốt)",
-        "🫀 Bệnh cơ tim (cơ tim yếu từ nhiều nguyên nhân)",
-        "💓 Rối loạn nhịp tim (tim đập không đều)"
-    ]
-}
-
-# ============= DẤU HIỆU NHẬN BIẾT =============
-
-SYMPTOMS_SIMPLE = {
-    "main_signs_vn": {
-        "title": "🚨 5 DẤU HIỆU CHÍNH - Ghi nhớ 5 chữ H:",
-        "signs": [
-            {
-                "letter": "H1 - HỔN HẾN (khó thở)",
-                "description": "Thở nhanh, thở gấp, đặc biệt khi:",
-                "details": [
-                    "- Đi bộ nhanh, leo cầu thang",
-                    "- Nằm xuống (phảiê nhiều gối mới thở được)",
-                    "- Ban đêm thức giấc vì khó thở",
-                    "- Cảm giác như sắp ngạt"
-                ]
-            },
-            {
-                "letter": "H2 - HÚNG (phù nước)",
-                "description": "Sưng phù ở:",
-                "details": [
-                    "- Bàn chân, cổ chân (ấn vào lõm xuống)",
-                    "- Ống chân, bắp chân",
-                    "- Bụng chướng (tích nước trong bụng)",
-                    "- Tăng cân đột ngột (2-3kg trong vài ngày)"
-                ]
-            },
-            {
-                "letter": "H3 - HƠI (mệt mỏi, uể oải)",
-                "description": "Mệt lả không rõ lý do:",
-                "details": [
-                    "- Làm việc nhà cũng thấy mệt",
-                    "- Không muốn hoạt động",
-                    "- Ngủ nhiều vẫn mệt",
-                    "- Không còn sức như trước"
-                ]
-            },
-            {
-                "letter": "H4 - HO (ho dai dẳng)",
-                "description": "Ho kéo dài, đặc biệt:",
-                "details": [
-                    "- Ho ban đêm",
-                    "- Ho khi nằm",
-                    "- Khạc đờm có bọt màu hồng",
-                    "- Ho không khỏi dù uống thuốc ho"
-                ]
-            },
-            {
-                "letter": "H5 - HỐI (chóng mặt, choáng váng)",
-                "description": "Cảm giác:",
-                "details": [
-                    "- Đầu quay quay, muốn té",
-                    "- Đứng lên bị choáng",
-                    "- Tim đập nhanh, hồi hộp",
-                    "- Ngất xỉu (nghiêm trọng)"
-                ]
-            }
-        ]
-    },
-    "emergency_vn": {
-        "title": "🚨 KHI NÀO GỌI CẤP CỨU 115?",
-        "signs": [
-            "⛔ Thở rất khó, phải há hốc mồm thở",
-            "⛔ Ngực đau dữ dội",
-            "⛔ Tím môi, tím móng tay",
-            "⛔ Khạc đờm có máu, bọt hồng",
-            "⛔ Choáng váng, sắp ngất",
-            "⛔ Tim đập rất nhanh hoặc rất chậm"
-        ]
-    }
-}
-
-# ============= THUỐC ĐIỀU TRỊ - GIẢI THÍCH ĐƠN GIẢN =============
-
-MEDICATIONS_SIMPLE = {
-    "warning_vn": """
-⚠️ LƯU Ý QUAN TRỌNG:
-- Chỉ uống thuốc bác sĩ kê
-- KHÔNG tự ý ngưng thuốc (rất nguy hiểm!)
-- Uống đúng giờ, đủ liều
-- Hỏi bác sĩ nếu có tác dụng không tốt
-""",
-    
-    "common_drugs_simple": [
-        {
-            "type": "Thuốc lợi tiểu (thuốc tiểu)",
-            "street_name": "Thường gọi: 'Thuốc đi tiểu'",
-            "examples": "Lasix, Furosemide, Aldactone",
-            "what_it_does": "Giúp cơ thể đào thải nước và muối ra ngoài",
-            "benefits": [
-                "✓ Giảm phù nề chân, bụng",
-                "✓ Giảm khó thở (vì giảm nước trong phổi)",
-                "✓ Tim không phải làm việc quá sức"
-            ],
-            "how_to_take": [
-                "🕐 Uống vào buổi sáng (tránh tiểu đêm)",
-                "💧 Có thể tiểu nhiều trong 2-3 giờ đầu",
-                "🚽 Chuẩn bị nhà vệ sinh gần (sẽ đi tiểu nhiều)"
-            ],
-            "side_effects_simple": [
-                "Có thể tiểu nhiều, mất nước → uống nước đủ",
-                "Có thể hết kali → ăn chuối, cam (giàu kali)",
-                "Chóng mặt khi đứng lên → đứng lên từ từ"
-            ],
-            "when_to_call_doctor": [
-                "⚠️ Tiểu quá ít hoặc quá nhiều",
-                "⚠️ Mệt rã rời, yếu cơ",
-                "⚠️ Tim đập loạn"
-            ]
-        },
-        {
-            "type": "Thuốc ức chế men chuyển",
-            "street_name": "Thuốc tên có đuôi '-pril'",
-            "examples": "Enalapril, Lisinopril, Ramipril",
-            "what_it_does": "Giúp mạch máu giãn rộng, tim bơm nhẹ nhàng hơn",
-            "benefits": [
-                "✓ Giảm gánh nặng cho tim",
-                "✓ Giảm huyết áp",
-                "✓ Bảo vệ tim và thận",
-                "✓ Sống lâu hơn (đã được chứng minh)"
-            ],
-            "how_to_take": [
-                "💊 Uống 1-2 lần/ngày",
-                "🍽️ Có thể uống lúc đói hoặc no",
-                "📅 Uống đều đặn mỗi ngày"
-            ],
-            "side_effects_simple": [
-                "Ho khan (khoảng 10% người bị) - nếu ho nhiều báo bác sĩ",
-                "Chóng mặt nhẹ ngày đầu",
-                "Mệt (sẽ quen dần)"
-            ],
-            "important_notes": [
-                "🚫 KHÔNG uống nếu đang mang thai",
-                "⚠️ Báo bác sĩ nếu ho quá nhiều (sẽ đổi sang thuốc khác)"
-            ]
-        },
-        {
-            "type": "Thuốc chẹn beta",
-            "street_name": "Thuốc tên có đuôi '-lol'",
-            "examples": "Bisoprolol, Metoprolol, Carvedilol",
-            "what_it_does": "Làm tim đập chậm lại, nghỉ ngơi nhiều hơn",
-            "benefits": [
-                "✓ Tim đập chậm, ít vất vả",
-                "✓ Giảm nguy cơ đau tim",
-                "✓ Điều hòa nhịp tim",
-                "✓ Kéo dài tuổi thọ"
-            ],
-            "how_to_take": [
-                "💊 Uống 1-2 lần/ngày",
-                "🍽️ Tốt nhất uống cùng bữa ăn",
-                "⏰ Uống đúng giờ"
-            ],
-            "side_effects_simple": [
-                "Mệt, uể oải (thường giảm sau vài tuần)",
-                "Tay chân lạnh",
-                "Chóng mặt nhẹ",
-                "Ngủ không ngon (ít gặp)"
-            ],
-            "important_notes": [
-                "⚠️ KHÔNG ngưng đột ngột (rất nguy hiểm!)",
-                "📊 Nếu muốn ngưng, phải giảm từ từ theo bác sĩ"
-            ]
-        },
-        {
-            "type": "Digoxin (Lá ké)",
-            "street_name": "Thuốc lá ké, Lanoxin",
-            "examples": "Digoxin 0.25mg",
-            "what_it_does": "Giúp tim co bóp mạnh hơn, đập chậm và đều hơn",
-            "benefits": [
-                "✓ Tim co bóp khỏe hơn",
-                "✓ Điều trị rối loạn nhịp tim",
-                "✓ Giảm triệu chứng suy tim"
-            ],
-            "how_to_take": [
-                "💊 Thường uống 1 lần/ngày",
-                "⏰ Uống cùng giờ mỗi ngày",
-                "📏 Liều rất quan trọng - ĐÚNG LIỀU"
-            ],
-            "side_effects_simple": [
-                "Buồn nôn, chán ăn",
-                "Nhìn có vầng vàng quanh đèn (dấu hiệu nguy hiểm!)",
-                "Tim đập chậm quá"
-            ],
-            "when_to_call_doctor": [
-                "⚠️ Buồn nôn nhiều, không ăn được",
-                "⚠️ Nhìn thấy màu vàng lạ",
-                "⚠️ Tim đập < 50 nhịp/phút",
-                "⚠️ Loạn nhịp tim"
-            ]
-        }
-    ]
-}
 
 # ============= CHẾ ĐỘ ĂN - NGÔN NGỮ DÂN DÃ =============
 
@@ -361,7 +148,7 @@ Tất cả chất lỏng đều tính:
         "🚫 Đồ NGỌT (bánh kem, nước ngọt...)",
         "🚫 RƯỢU, BIA (quan trọng!)",
         "🚫 CÀ PHÊ NHIỀU (> 2 ly/ngày)",
-        "🚫 Đồ HỘP, ĐÓ NG GÓI"
+        "🚫 Đồ HỘP, ĐÓNG GÓI"
     ]
 }
 
@@ -371,7 +158,7 @@ EXERCISE_SIMPLE = {
     "can_i_exercise_vn": """
 ❓ SUY TIM CÓ ĐƯỢC VẬN ĐỘNG KHÔNG?
 
-✅ CÓ! Vận động vừa phải RẤT TốT:
+✅ CÓ! Vận động vừa phải RẤT TỐT:
 - Giúp tim khỏe hơn
 - Tăng sức bền
 - Giảm mệt mỏi
@@ -396,7 +183,7 @@ EXERCISE_SIMPLE = {
             "target": "Mục tiêu: 30 phút/ngày, 5 ngày/tuần"
         },
         {
-            "name": "🧘 TẬP GIÃ CƠ NHẸ NHÀNG",
+            "name": "🧘 TẬP GIÃN CƠ NHẸ NHÀNG",
             "description": "Giãn cơ, yoga nhẹ, tai chi",
             "how_to": [
                 "Giãn cơ từng phần: cánh tay, chân, lưng",
@@ -427,7 +214,7 @@ EXERCISE_SIMPLE = {
 4. Đi giày êm chân
 
 ✅ TRONG KHI TẬP:
-1. Tập NHẸ NHÀNG, TỪTỪ
+1. Tập NHẸ NHÀNG, TỪ TỪ
 2. Có thể nói chuyện được = vừa sức
 3. Không nín thở
 4. Uống nước từng ngụm nhỏ (nếu được phép)
