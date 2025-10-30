@@ -365,12 +365,19 @@ with tab4:
                 height=100
             )
             
+            blood_types = ["Chưa biết", "O", "A", "B", "AB", "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"]
+            current_blood_type = med_info.get('blood_type', 'Chưa biết')
+            
+            # Tìm index an toàn
+            try:
+                blood_type_index = blood_types.index(current_blood_type)
+            except ValueError:
+                blood_type_index = 0  # Mặc định "Chưa biết" nếu không tìm thấy
+            
             blood_type = st.selectbox(
                 "🩸 Nhóm máu",
-                ["Chưa biết", "O", "A", "B", "AB", "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"],
-                index=["Chưa biết", "O", "A", "B", "AB", "O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"].index(
-                    med_info.get('blood_type', 'Chưa biết')
-                )
+                blood_types,
+                index=blood_type_index
             )
         
         with col2:
