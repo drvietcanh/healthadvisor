@@ -181,13 +181,14 @@ diseases/cardiovascular/heart_failure/
 
 **Cấu trúc:**
 ```
+medication_reminder/              # Ở thư mục gốc (cùng cấp với core/)
+├── __init__.py (40 dòng)
+├── medication_manager.py (235 dòng) - Quản lý danh sách thuốc
+├── scheduler.py (195 dòng) - Lịch nhắc & đánh dấu đã uống
+└── history.py (220 dòng) - Thống kê & lịch sử
+
 pages/
-├── 7_💊_Nhắc_Thuốc.py (180 dòng) - Main page
-└── medication_reminder/
-    ├── __init__.py (40 dòng)
-    ├── medication_manager.py (235 dòng) - Quản lý danh sách thuốc
-    ├── scheduler.py (195 dòng) - Lịch nhắc & đánh dấu đã uống
-    └── history.py (220 dòng) - Thống kê & lịch sử
+└── 7_💊_Nhắc_Thuốc.py (180 dòng) - Main page
 ```
 
 **Tính năng:**
@@ -207,7 +208,13 @@ pages/
 - 🎨 Màu sắc trực quan (xanh=OK, đỏ=trễ, cam=sắp tới)
 - 📱 Responsive - dùng được trên điện thoại
 
-**Commit:** `PENDING`
+**Commit:** `ee7339a`
+
+**Refactoring note:**
+- Di chuyển `diary_components/` và `medication_reminder/` ra thư mục gốc
+- Đặt cùng cấp với `core/` và `diseases/` 
+- Import đơn giản hơn, tương thích tốt với Streamlit Cloud
+- Giải quyết ModuleNotFoundError trên production
 
 ---
 
@@ -281,24 +288,35 @@ healthadvisor/
 │   ├── ui_config.py - Dark mode CSS
 │   ├── chatbot_enhanced.py - AI chatbot
 │   └── ...
-├── pages/ - Streamlit pages
-│   ├── 0_📖_Hướng_Dẫn.py - User guide
-│   ├── 1_❤️_Tim_Mạch.py - Cardiovascular
-│   ├── 2_🩸_Tiểu_Đường.py - Diabetes
-│   ├── 3_🧠_Thần_Kinh.py - Neurological
-│   ├── 4_🤖_AI_Bác_Sĩ.py - AI Chatbot
-│   ├── 5_🎓_Học_Dễ.py - Easy learning
-│   ├── 6_📊_Nhật_Ký.py - Health diary (REFACTORED!)
-│   └── diary_components/ - Modular components
-└── diseases/ - Disease modules
-    ├── cardiovascular/
-    ├── metabolic/diabetes/
-    │   ├── info.py
-    │   ├── medications.py
-    │   ├── insulin.py
-    │   ├── nutrition/ (WIP - being refactored)
-    │   └── exercise.py
-    └── neurological/
+├── diary_components/ - Health diary modules (REFACTORED!)
+│   ├── instructions.py
+│   ├── data_manager.py
+│   ├── input_form.py
+│   └── charts.py
+├── medication_reminder/ - Medication tracking (NEW!)
+│   ├── medication_manager.py
+│   ├── scheduler.py
+│   └── history.py
+├── diseases/ - Disease modules
+│   ├── cardiovascular/
+│   │   ├── hypertension/ - (REFACTORED!)
+│   │   └── heart_failure/ - (REFACTORED!)
+│   ├── metabolic/diabetes/
+│   │   ├── info.py
+│   │   ├── medications.py
+│   │   ├── insulin.py
+│   │   ├── nutrition/ - (REFACTORED!)
+│   │   └── exercise.py
+│   └── neurological/
+└── pages/ - Streamlit pages
+    ├── 0_📖_Hướng_Dẫn.py - User guide
+    ├── 1_❤️_Tim_Mạch.py - Cardiovascular
+    ├── 2_🩸_Tiểu_Đường.py - Diabetes
+    ├── 3_🧠_Thần_Kinh.py - Neurological
+    ├── 4_🤖_AI_Bác_Sĩ.py - AI Chatbot
+    ├── 5_🎓_Học_Dễ.py - Easy learning
+    ├── 6_📊_Nhật_Ký.py - Health diary
+    └── 7_💊_Nhắc_Thuốc.py - Medication reminder (NEW!)
 ```
 
 ---
@@ -329,12 +347,15 @@ healthadvisor/
 
 ---
 
-**Last updated:** 30/10/2025 23:45  
-**Session completed:** New Feature - Medication Reminder 💊  
-**Commits trong session này:** 2 commits (pending)
+**Last updated:** 31/10/2025 00:15  
+**Session completed:** New Feature - Medication Reminder 💊 + Bug Fixes  
+**Commits trong session này:** 5 commits
 - `a16f523` - Fix: Sửa lỗi SYMPTOMS_SIMPLE → SYMPTOMS
-- `PENDING` - Feature: Medication Reminder (Nhắc uống thuốc)
-**Latest commit:** `a16f523`
+- `1f822c1` - Feature: Medication Reminder (Nhắc uống thuốc)
+- `cfac5f8` - Fix: Import paths cho Streamlit multipage
+- `09d2af9` - Fix: Thêm current_dir vào sys.path
+- `ee7339a` - Refactor: Di chuyển modules ra thư mục gốc
+**Latest commit:** `ee7339a`
 
 ---
 
