@@ -12,7 +12,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from core.ui_config import get_custom_css
-from pages.diary_components import (
+from diary_components import (
     render_instructions, render_bp_guide, render_file_guide,
     load_csv_data, save_csv_data, initialize_health_data,
     render_input_form, render_charts, render_data_table, render_statistics

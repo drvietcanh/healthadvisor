@@ -9,12 +9,12 @@ import os
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from pages.medication_reminder import (
+from medication_reminder import (
     render_medication_form,
     render_schedule_view,
     render_history_view
 )
-from pages.medication_reminder.medication_manager import render_medication_list
+from medication_reminder.medication_manager import render_medication_list
 from core.ui_config import get_custom_css
 
 st.set_page_config(
