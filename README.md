@@ -1,273 +1,313 @@
-# StrokeAdvisor — Streamlit app for early stroke risk triage & patient counseling (Vietnam-first)
+# 🏥 HealthAdvisor - Trợ lý Sức khỏe Thông minh
 
-> **Purpose**: Provide a patient-facing, VN-first Streamlit app that uses **rule‑based medical logic plus an LLM assistant** to help **recognize warning signs**, **triage urgency**, and **educate** on **prevention and next steps** for **common stroke phenotypes** (ischemic LVO/non‑LVO, hemorrhagic, posterior circulation, TIA), aligned to **AHA/ASA 2024–2025** and **Bộ Y tế Việt Nam 2024** guidance.  
-> **Audience**: patients & caregivers (default), clinicians (optional “pro mode”).  
-> **Safety**: **Not a diagnostic tool** and **not a substitute for clinical care**. When high‑risk symptoms are flagged, the app **immediately instructs to call 115/EMS** and provides **nearest stroke‑ready hospitals** (optional add‑on).
+> **Ứng dụng tư vấn y tế đa bệnh, thân thiện với người Việt Nam**  
+> Hỗ trợ: Tim mạch, Tiểu đường, Thần kinh + AI Chatbot miễn phí
+
+**Live Demo:** [healthadvisor.streamlit.app](https://healthadvisor.streamlit.app) *(Coming soon)*  
+**GitHub:** [github.com/drvietcanh/healthadvisor](https://github.com/drvietcanh/healthadvisor)
 
 ---
 
-## 0) Quick start
+## 🎯 Giới thiệu
+
+**HealthAdvisor** là ứng dụng web giúp người dân:
+- ✅ **Kiểm tra** huyết áp, đường huyết, BMI
+- ✅ **Tìm hiểu** về các bệnh phổ biến (tăng huyết áp, tiểu đường, đột quỵ...)
+- ✅ **Nhận tư vấn** về thuốc, dinh dưỡng, vận động
+- ✅ **Chat với AI Bác sĩ** miễn phí (Google Gemini)
+- ✅ **Theo dõi** nhật ký sức khỏe hàng ngày
+
+### 🌟 Đặc điểm nổi bật:
+
+- 🇻🇳 **Tiếng Việt 100%** - Ngôn ngữ đơn giản, dễ hiểu
+- 💰 **Hoàn toàn MIỄN PHÍ** - Không quảng cáo, không ẩn phí
+- 🌙 **Dark Mode** - Dễ nhìn ban đêm, tiết kiệm pin
+- 📱 **Responsive** - Dùng được trên điện thoại, máy tính bảng
+- 🤖 **AI Chatbot** - Hỏi đáp thông minh với Gemini Pro (miễn phí!)
+- 📊 **Nhật ký sức khỏe** - Theo dõi huyết áp, đường huyết theo thời gian
+
+---
+
+## 🚀 Quick Start
+
+### 1. Chạy local
 
 ```bash
-# Python 3.10–3.12 recommended
-pip install streamlit pydantic python-dateutil httpx tiktoken openai==1.*  # or your LLM SDK
-# Optional (map/hospital lookup):
-pip install pandas geopy folium
+# Clone repository
+git clone https://github.com/drvietcanh/healthadvisor.git
+cd healthadvisor
 
-# Run
+# Cài đặt dependencies
+pip install -r requirements.txt
+
+# Chạy app
 streamlit run app.py
 ```
 
-Folder layout
+Mở trình duyệt: `http://localhost:8501`
+
+### 2. Deploy lên Streamlit Cloud
+
+1. Fork repo này về GitHub của bạn
+2. Vào [streamlit.io/cloud](https://streamlit.io/cloud)
+3. Connect GitHub → Chọn repo `healthadvisor`
+4. Deploy! (1 click)
+
+**Chi tiết:** Xem [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
+
+---
+
+## 📚 Tính năng chính
+
+### ❤️ **1. Tim Mạch**
+- Đánh giá huyết áp (Bình thường → Nguy hiểm)
+- Thông tin về tăng huyết áp, suy tim
+- 5 nhóm thuốc huyết áp phổ biến tại Việt Nam
+- Chế độ ăn DASH, giảm muối
+- Vận động phù hợp
+
+### 🩸 **2. Tiểu Đường**
+- Chuyển đổi đơn vị: mmol/L ↔ mg/dL
+- Thuốc uống + Insulin đầy đủ (5 loại)
+- **GI & GL** - 60+ thực phẩm Việt Nam
+- Đếm carb, phương pháp đĩa ăn
+- Phòng ngừa hạ đường huyết
+
+### 🧠 **3. Thần Kinh**
+- **BE-FAST** - Nhận biết đột quỵ
+- ⚠️ **GỌI 115 NGAY** khi có dấu hiệu
+- Động kinh - Xử trí cơn co giật
+- Phòng ngừa tái phát
+
+### 🤖 **4. AI Bác Sĩ**
+- Chat thông minh với Google Gemini Pro
+- Hỗ trợ cả OpenAI (ChatGPT) nếu có API key
+- Tư vấn theo chuyên khoa: Tim mạch, Tiểu đường, Thần kinh
+- Quick replies & Suggested questions
+- **MIỄN PHÍ 100%** (nếu dùng Gemini)
+
+### 🎓 **5. Học Dễ**
+- Giải thích y khoa bằng hình ảnh, ví dụ đời thường
+- Mẹo nhớ dễ dàng
+- So sánh trực quan
+- Không dùng từ chuyên môn quá sâu
+
+### 📊 **6. Nhật Ký Sức Khỏe** ⭐ MỚI!
+**Tính năng:**
+- ✅ Nhập đầy đủ: Huyết áp, Mạch, Đường huyết, HbA1c, Mỡ máu, Acid Uric, Chức năng thận, Cân nặng
+- ✅ Biểu đồ đẹp theo thời gian (Plotly)
+- ✅ Thống kê tổng quan
+- ✅ Export/Import CSV (tương thích Excel)
+- ✅ Hướng dẫn đo huyết áp đúng chuẩn (WHO/AHA)
+- ✅ Hướng dẫn lưu/tải file chi tiết
+
+**Cách dùng:**
+1. Nhập dữ liệu hàng ngày
+2. Xem biểu đồ xu hướng
+3. Tải xuống CSV để backup
+4. Lần sau tải lên để xem lại
+
+---
+
+## 🏗️ Cấu trúc dự án
+
 ```
-strokeadvisor/
-  app.py
-  pages/
-    1_🧭_Triage.py
-    2_🧮_Risk_Calculators.py
-    3_📚_Education.py
-    4_🩺_Clinician_Mode.py
-  core/
-    rules.py
-    scoring.py
-    prompts.py
-    models.py
-    utils.py
-  data/
-    hospitals_vn.csv           # optional add-on: stroke-ready facilities
-  README.md
-```
-
----
-
-## 1) Scope & design principles
-
-- **Patient-first, Vietnamese language by default**, English toggle.
-- **Deterministic first, generative second**: critical decisions (e.g., *go to ER now*) are **rules‑based**. LLM is used for **plain‑language explanations**, **education**, and **follow‑up Q&A**.
-- **Explainable**: every recommendation shows **which rule/scale** fired (BE‑FAST, posterior signs, RACE, ABCD², NIHSS summary in pro mode, etc.).
-- **Time‑critical**: collect **Last Known Well (LKW)** early; surface **thrombolysis/thrombectomy windows** in plain VN.
-- **Privacy‑lite**: no PHI storage by default; all inputs ephemeral in session state.
-- **Offline‑friendly**: core logic has **no network dependency**; LLM is optional.
-
----
-
-## 2) Clinical logic included (rule‑based)
-
-### 2.1 Community recognition / urgent triage
-- **BE‑FAST** (*Balance, Eyes, Face, Arm, Speech, Time*) with posterior signs emphasis (vertigo, ataxia, diplopia, dysarthria, dysphagia).  
-- **Red flags that force “Call 115”:**
-  - Any positive **BE‑FAST** or **posterior red flags** with **acute onset** (minutes–hours) and **LKW ≤ 24h**.
-  - **Severe headache “thunderclap”** + **nausea/vomiting** → suspect **hemorrhage**.
-  - **New focal deficits** (weakness, aphasia, unilateral neglect, visual loss), especially **maximal at onset**.
-  - **Anticoagulant use** or **head trauma** with neuro deficits.
-  - **Decreased consciousness**.
-- **Transport logic** (optional): If prehospital **LVO suspicion**, prefer **thrombectomy‑capable center** when delays reasonable.
-
-### 2.2 Prehospital LVO suspicion (EMS/Pro mode)
-- **RACE** scale (0–9) — *suspect LVO if ≥5* → prioritize EVT‑capable center; show caveats & local validation status.
-- (Optional utilities) **LAMS, FAST‑ED, G‑FAST** as alternatives for comparison.
-
-### 2.3 TIA short‑term risk
-- **ABCD²** (Age, BP, Clinical features, Duration, Diabetes) → **high risk if ≥4** → urgent ED evaluation within **24h** (often same‑day).
-
-### 2.4 Stroke severity snapshot (Clinician Mode)
-- **NIHSS** checklist (education/simulation only). Display total and itemization; warn **training is required** and this is **not for certification**.
-
-### 2.5 Prevention messaging
-- **Primary prevention** (BP, lipids, DM, smoking, sleep, weight, activity, diet) with structured checklists and lifestyle goals.
-- (Optional) Link to validated **risk tools** (e.g., Stroke Riskometer) for long‑term prevention education (not for acute triage).
-
-> **Important**: All scales are **decision aids**, not definitive diagnoses. Always defer to **local protocols** and **Bộ Y tế 2024** guidance.
-
----
-
-## 3) Evidence & guideline anchors (for copywriters & reviewers)
-
-- **Bộ Y tế Việt Nam (11/2024) – Hướng dẫn chẩn đoán và điều trị đột quỵ não**: windows, NIHSS interpretation notes, pathways.  
-- **AHA/ASA 2024**: primary prevention guideline; lifestyle & risk‑factor control.  
-- **BE‑FAST vs FAST**: posterior circulation sensitivity considerations.  
-- **RACE**: validated prehospital LVO screen; 2024–2025 studies (incl. VN population) suggest good accuracy for LVO identification; use with local protocols.  
-- **ABCD² for TIA**: identifies higher early stroke risk; thresholds for urgent workup.  
-- **NIHSS**: standardized severity scale; training resources.
-
-> See “References” for links you can open in Cursor.
-
----
-
-## 4) App flows & UX
-
-### 4.1 Home (“Tư vấn nhanh”)
-1. **Language** switch (VN/EN).  
-2. **Two big buttons**: *Tự đánh giá nhanh* (patient) vs *Chế độ chuyên môn* (clinician).  
-3. **If acute symptoms** detected → full‑width **red banner**: *Gọi 115 ngay – Nghi ngờ đột quỵ*. Show **LKW recorder** and **do‑not‑do list** (không tự lái xe, không ăn uống, mang theo danh sách thuốc…).
-4. One‑click **map to nearest stroke‑ready hospital** (optional local CSV geocoded).
-
-### 4.2 Patient path — “Tự đánh giá nhanh”
-- Short wizard: **onset time**, **BE‑FAST items**, **posterior signs**, **headache profile**, **anticoagulants/trauma**, **pregnancy/puerperium**.
-- Clear **triage card**:
-  - **RED**: *GỌI 115 NGAY* + why (e.g., BE‑FAST Face+, LKW 2h).
-  - **AMBER**: *Khám cấp cứu trong 24 giờ* (e.g., suspected TIA).
-  - **GREEN**: *Không gợi ý đột quỵ cấp* → education & return precautions.  
-- Each card shows **rules fired** + **what happens next** at hospital (CT/CTA, tPA/tenecteplase windows, EVT window, BP targets).
-
-### 4.3 Risk calculators page
-- **ABCD²** form with auto‑sum & interpretation → *ED within 24h if ≥4*.
-- (Optional) **Primary prevention** mini‑checklist + links to longer prevention content.
-
-### 4.4 Education page (LLM‑assisted)
-- Structured articles with **“Ask AI”** box beneath each section.  
-- Topics: *Dấu hiệu nhận biết*, *Vì sao phải đến viện sớm*, *Tái phát & phòng ngừa*, *Thuốc thường gặp*, *Phục hồi chức năng sớm*, *Đột quỵ và rung nhĩ*, *Đột quỵ sau sinh*…  
-- Guardrails: **no medication changes**; **no dosing advice**; always include **seek‑care fallback**.
-
-### 4.5 Clinician Mode (locked behind disclaimer)
-- **RACE** calculator, **NIHSS** teaching checklist, **copy‑to‑clipboard** handover note (LKW, deficits, vitals, glucose, anticoagulants).  
-- Optionally compare **RACE vs G‑FAST/LAMS**.
-
----
-
-## 5) Implementation details
-
-### 5.1 Data models (Pydantic)
-```python
-class AcuteInput(BaseModel):
-    lkw_minutes: int | None
-    befast_face: bool
-    befast_arm: bool
-    befast_speech: bool
-    befast_balance: bool
-    befast_eyes: bool
-    posterior_signs: list[str]  # vertigo, ataxia, diplopia, dysphagia
-    thunderclap_headache: bool
-    anticoagulant_use: bool
-    head_trauma: bool
-    pregnant_or_postpartum: bool
+healthadvisor/
+├── app.py                          # Main entry point
+├── requirements.txt                # Dependencies
+├── README.md                       # File này
+├── PROGRESS.md                     # Tiến độ dự án
+├── ROADMAP_PHAT_TRIEN.md          # Lộ trình phát triển
+│
+├── core/                           # Core utilities
+│   ├── ui_config.py               # Dark mode CSS
+│   ├── chatbot_enhanced.py        # AI chatbot (Gemini + OpenAI)
+│   ├── utils.py                   # Helper functions
+│   ├── models.py                  # Pydantic models
+│   ├── prompts.py                 # AI prompts
+│   └── simple_explanations.py     # Easy learning content
+│
+├── pages/                          # Streamlit pages
+│   ├── 0_📖_Hướng_Dẫn.py          # User guide
+│   ├── 1_❤️_Tim_Mạch.py           # Cardiovascular
+│   ├── 2_🩸_Tiểu_Đường.py         # Diabetes
+│   ├── 3_🧠_Thần_Kinh.py          # Neurological
+│   ├── 4_🤖_AI_Bác_Sĩ.py          # AI Chatbot
+│   ├── 5_🎓_Học_Dễ.py             # Easy learning
+│   ├── 6_📊_Nhật_Ký.py            # Health diary (REFACTORED!)
+│   └── diary_components/          # Modular components
+│       ├── input_form.py
+│       ├── charts.py
+│       ├── instructions.py
+│       └── data_manager.py
+│
+└── diseases/                       # Disease modules
+    ├── cardiovascular/
+    │   ├── hypertension.py        # Tăng huyết áp
+    │   └── heart_failure.py       # Suy tim
+    │
+    ├── metabolic/
+    │   └── diabetes/              # Modular diabetes
+    │       ├── info.py
+    │       ├── medications.py
+    │       ├── insulin.py
+    │       ├── nutrition/         # (Đang refactor)
+    │       └── exercise.py
+    │
+    └── neurological/
+        ├── stroke.py              # Đột quỵ
+        └── epilepsy.py            # Động kinh
 ```
 
-### 5.2 Core rules (pseudo‑logic)
-```python
-def triage(input: AcuteInput) -> TriageResult:
-    if any([input.befast_face, input.befast_arm, input.befast_speech,
-            input.befast_balance, input.befast_eyes]) and (input.lkw_minutes is not None and input.lkw_minutes <= 24*60):
-        return RED_115("BE‑FAST positive with recent onset")
-    if input.thunderclap_headache or input.head_trauma or input.anticoagulant_use:
-        return RED_115("Hemorrhage risk / head trauma / anticoagulant")
-    if "TIA_like" in input.posterior_signs:  # e.g., transient neuro deficits now resolved
-        # compute ABCD2 separately
-        ...
-    return GREEN_EDU("No acute high‑risk pattern detected; give return precautions")
-```
+---
 
-### 5.3 Scores
-- **RACE** (Clinician Mode): compute 0–9 from face/arm/leg/ gaze/aphasia/agnosia; flag **≥5** as LVO‑suspect (show limitations & local validation notes).
-- **ABCD²**: auto‑sum 0–7; **≥4 high risk** → ED in ≤24h.
+## 🛠️ Tech Stack
 
-### 5.4 LLM prompts (safety‑first)
-- **System prompt** pins: *You are a cautious medical educator; you never diagnose; you direct emergency care when rules indicate; you cite guidelines; you avoid doses.*
-- **Few‑shot** examples turning rules into **plain‑VN patient advice**.
-- **Tools disabled** for anything that could be misconstrued as medical orders.
-
-### 5.5 UI tips
-- Use **`st.form`** for inputs; **`st.session_state`** for persistence.
-- Big **color‑coded `st.alert`** cards for triage outcomes.
-- For hospitals map: `folium` + `geopy` to compute nearest facilities (optional).
-
-### 5.6 Testing
-- Unit tests for **rules** (pytest).
-- Golden tests for **LLM prompts** (snapshot prompts & responses).
-- Manual UAT scripts with **simulated cases** (anterior vs posterior; TIA; mimics).
+- **Framework:** [Streamlit](https://streamlit.io/) 1.38+
+- **Language:** Python 3.10+
+- **AI:** Google Gemini Pro / OpenAI GPT-3.5+
+- **Charts:** Plotly
+- **Data:** Pandas
+- **Validation:** Pydantic
 
 ---
 
-## 6) Minimal runnable `app.py` (skeleton)
+## 📖 Tài liệu
 
-```python
-import streamlit as st
-from core.rules import triage
-from core.scoring import abcd2_score, race_score
+### Cho người dùng:
+- **[Hướng dẫn sử dụng](pages/0_📖_Hướng_Dẫn.py)** - Trong app
+- **[Hướng dẫn lấy Gemini API](HUONG_DAN_GEMINI.md)** - Chi tiết từng bước
 
-st.set_page_config(page_title="StrokeAdvisor", page_icon="🧠", layout="centered")
-
-st.title("🧠 StrokeAdvisor — Tư vấn nhận biết & xử trí sớm nghi ngờ đột quỵ")
-st.caption("Không thay thế bác sĩ. Nếu có dấu hiệu cấp, hãy gọi 115.")
-
-with st.form("quick"):
-    lkw_hours = st.number_input("Thời điểm bình thường cuối cùng (giờ trước)", min_value=0, max_value=72, value=2)
-    be = st.checkbox("Mất thăng bằng (Balance)")
-    eyes = st.checkbox("Rối loạn nhìn (Eyes)")
-    face = st.checkbox("Xệ mép / méo miệng (Face)")
-    arm = st.checkbox("Yếu tay/chân (Arm/Leg)")
-    speech = st.checkbox("Nói khó/loạn ngôn (Speech)")
-    thunder = st.checkbox("Nhức đầu dữ dội đột ngột")
-    ac = st.checkbox("Đang dùng thuốc chống đông")
-    trauma = st.checkbox("Vừa chấn thương đầu")
-    submitted = st.form_submit_button("Đánh giá nhanh")
-
-if submitted:
-    # Call your core triage
-    result = triage(...)
-    st.success(result.message)  # or st.error / st.warning per outcome
-```
-
-> See `core/rules.py` for full implementation. Add `pages/` for calculators, education, and clinician mode.
+### Cho developer:
+- **[PROGRESS.md](PROGRESS.md)** - Tiến độ & roadmap
+- **[REFACTOR_PLAN.md](REFACTOR_PLAN.md)** - Kế hoạch refactor
+- **[ROADMAP_PHAT_TRIEN.md](ROADMAP_PHAT_TRIEN.md)** - Tính năng tương lai
+- **[DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)** - Hướng dẫn deploy
 
 ---
 
-## 7) Safety, ethics, and regulatory notes
+## 🎨 Screenshots
 
-- The app **does not** display medication **doses** or **treatment orders**.
-- Always show a **prominent emergency banner** when rules indicate *RED*.
-- Display **sources** and **last updated** dates; schedule **regular content reviews**.
-- If adding imaging‑AI integrations (e.g., from PACS), ensure **appropriate licensing** & **regulatory clearance**; this README intentionally **avoids** imaging automation.
+### 🏠 Trang chủ với Dark Mode
+![Home](docs/screenshots/home.png) *(Coming soon)*
 
----
+### 📊 Nhật ký Sức khỏe
+![Diary](docs/screenshots/diary.png) *(Coming soon)*
 
-## 8) References (openable links)
-
-- **Bộ Y tế Việt Nam (11/2024). Hướng dẫn chẩn đoán và điều trị đột quỵ não**  
-  - https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Quyet-dinh-3312-QD-BYT-2024-tai-lieu-chuyen-mon-Huong-dan-chan-doan-dieu-tri-dot-quy-nao-651734.aspx  
-  - PDF mirror: https://trungtamthuoc.com/pdf/huong-dan-chan-doan-va-dieu-tri-dot-quy-nao-bo-y-te-05-11-2024-trungtamthuoc.pdf
-
-- **AHA/ASA 2024. Guideline for the Primary Prevention of Stroke**  
-  - https://www.ahajournals.org/doi/10.1161/STR.0000000000000475 (overview https://professional.heart.org/en/science-news/2024-guideline-for-the-primary-prevention-of-stroke)
-
-- **BE‑FAST evidence & posterior signs**  
-  - https://pmc.ncbi.nlm.nih.gov/articles/PMC11477353/  
-  - FAST vs BE‑FAST retention: https://www.ahajournals.org/doi/10.1161/JAHA.123.035696
-
-- **RACE (prehospital LVO)**  
-  - Original/overview: https://www.ahajournals.org/doi/10.1161/strokeaha.113.003071  
-  - Revalidation: https://pubmed.ncbi.nlm.nih.gov/30580284/  
-  - 2024–2025 data incl. Việt Nam: https://karger.com/cee/article/doi/10.1159/000543260/918582/Predictive-value-of-the-prehospital-RACE-scale-for
-
-- **ABCD² (TIA)**  
-  - https://www.mdcalc.com/calc/357/abcd2-score-tia  
-  - AHA scientific statement 2023: https://www.ahajournals.org/doi/10.1161/STR.0000000000000418
-
-- **NIHSS (education/training PDFs)**  
-  - NINDS Feb 2024: https://www.ninds.nih.gov/sites/default/files/documents/NIH-Stroke-Scale_updatedFeb2024_508.pdf
-
-- **Industry imaging AI (context, **not** embedded)**  
-  - Viz.ai platform & clearances: https://www.viz.ai/news ; LVO: https://www.viz.ai/large-vessel-occlusion  
-  - RapidAI overview: https://www.rapidai.com/neurovascular/ischemic-stroke ; NCBI brief: https://www.ncbi.nlm.nih.gov/books/NBK611329/
-
-- **Stroke Riskometer (prevention education)**  
-  - https://nisan.aut.ac.nz/stroke-riskometer/clinical-trials  
-  - Validation background: https://pmc.ncbi.nlm.nih.gov/articles/PMC4335600/
+### 🤖 AI Chatbot
+![Chatbot](docs/screenshots/chatbot.png) *(Coming soon)*
 
 ---
 
-## 9) Roadmap (next waves)
+## 🚧 Tình trạng phát triển
 
-- **Wave 1**: core triage rules, ABCD², education library, VN/EN toggle.  
-- **Wave 2**: RACE (pro mode), hospital locator, printable handover.  
-- **Wave 3**: personalization (risk factors, AF screening prompts), offline bundles.  
-- **Wave 4**: audit logs (anonymous), analytics, content CMS.  
-- **Wave 5**: device integrations (BP cuff) & telehealth handoff (if permitted).
+### ✅ Hoàn thành:
+- [x] Dark Mode & UI responsive
+- [x] Trang Hướng dẫn đầy đủ
+- [x] Gemini API integration
+- [x] Nhật ký Sức khỏe (modular, 170 dòng)
+- [x] 60+ thực phẩm VN với GI/GL
+- [x] Thuốc VN brands (Huyết áp + Tiểu đường)
+- [x] Hướng dẫn đo huyết áp chuẩn WHO/AHA
+
+### 🔄 Đang làm:
+- [ ] Refactor nutrition.py (672 → 3 files)
+- [ ] Refactor hypertension.py (609 → 3 files)
+- [ ] Refactor heart_failure.py (597 → 3 files)
+
+### 📝 Kế hoạch:
+- [ ] Tìm bác sĩ/bệnh viện gần nhất
+- [ ] Kiểm tra tương tác thuốc
+- [ ] Gamification (điểm, streaks)
+- [ ] Nhắc nhở uống thuốc
+
+**Chi tiết:** Xem [ROADMAP_PHAT_TRIEN.md](ROADMAP_PHAT_TRIEN.md)
 
 ---
 
-## 10) Attribution & disclaimer
+## 🤝 Đóng góp
 
-This tool is for **education and early recognition** only. It **does not diagnose** or replace emergency medical care. In **any** doubt, **call 115 / go to the nearest emergency department.**
+Chúng tôi rất hoan nghênh mọi đóng góp! 
 
-(c) 2025 StrokeAdvisor contributors. Licensed under MIT (app code) and CC BY‑NC 4.0 (text content), unless guideline excerpts impose stricter terms.
+### Cách đóng góp:
+1. Fork repo
+2. Tạo branch mới: `git checkout -b feature/TenTinhNang`
+3. Commit: `git commit -m "Thêm tính năng X"`
+4. Push: `git push origin feature/TenTinhNang`
+5. Tạo Pull Request
+
+### Có thể giúp:
+- 🐛 Báo lỗi (Issues)
+- 💡 Đề xuất tính năng
+- 📝 Cải thiện tài liệu
+- 🌐 Dịch nội dung
+- 🩺 Thêm thông tin y khoa
+- 💊 Cập nhật database thuốc VN
+
+---
+
+## ⚠️ Lưu ý quan trọng
+
+### Disclaimer:
+
+> **App này CHỈ dùng để TƯ VẤN và GIÁO DỤC.**  
+> **KHÔNG THAY THẾ** bác sĩ hoặc khám bệnh chuyên nghiệp.
+>
+> - ❌ KHÔNG tự ý thay đổi thuốc
+> - ❌ KHÔNG tự chẩn đoán bệnh
+> - ✅ LUÔN tham khảo ý kiến bác sĩ khi có bệnh
+> - ✅ Gọi 115 khi có dấu hiệu nguy hiểm
+
+### Nguồn thông tin:
+- American Heart Association (AHA)
+- American Diabetes Association (ADA)
+- World Health Organization (WHO)
+- Bộ Y tế Việt Nam
+- Các bệnh viện uy tín (Mayo Clinic, Cleveland Clinic...)
+
+---
+
+## 📞 Liên hệ
+
+- **GitHub Issues:** [github.com/drvietcanh/healthadvisor/issues](https://github.com/drvietcanh/healthadvisor/issues)
+- **Email:** *(Thêm email nếu muốn)*
+- **Facebook:** *(Thêm fanpage nếu có)*
+
+---
+
+## 📜 License
+
+- **Code:** MIT License
+- **Content:** CC BY-NC 4.0 (Attribution-NonCommercial)
+
+---
+
+## 🙏 Credits
+
+**Được phát triển với ❤️ cho cộng đồng Việt Nam**
+
+### Công nghệ sử dụng:
+- [Streamlit](https://streamlit.io/) - Web framework
+- [Google Gemini](https://ai.google.dev/) - AI chatbot
+- [Plotly](https://plotly.com/) - Interactive charts
+- [Pandas](https://pandas.pydata.org/) - Data processing
+
+### Nguồn y khoa:
+- AHA/ASA Guidelines
+- ADA Standards of Care
+- WHO Health Topics
+- Dược điển Việt Nam
+
+---
+
+## 📊 Stats
+
+![GitHub stars](https://img.shields.io/github/stars/drvietcanh/healthadvisor?style=social)
+![GitHub forks](https://img.shields.io/github/forks/drvietcanh/healthadvisor?style=social)
+![GitHub issues](https://img.shields.io/github/issues/drvietcanh/healthadvisor)
+![GitHub license](https://img.shields.io/github/license/drvietcanh/healthadvisor)
+
+---
+
+**Made with ❤️ for Vietnamese Healthcare**  
+© 2025 HealthAdvisor Contributors
