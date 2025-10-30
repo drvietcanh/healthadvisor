@@ -82,6 +82,9 @@ def initialize_health_data():
         'Creatinine (mg/dL)',
         'eGFR (mL/min)',
         'Cân nặng (kg)',
+        'Vòng eo (cm)',
+        'Calories ăn vào',
+        'Calories đốt cháy',
         'Ghi chú'
     ])
 

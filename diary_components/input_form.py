@@ -75,13 +75,37 @@ def render_input_form():
         
         st.divider()
         
-        # Cân nặng
-        st.markdown("#### ⚖️ Cân nặng (tùy chọn)")
-        col1, col2 = st.columns(2)
+        # Cân nặng & Vòng eo
+        st.markdown("#### ⚖️ Cân nặng & Đo lường cơ thể (tùy chọn)")
+        col1, col2, col3 = st.columns(3)
         with col1:
             weight = st.number_input("Cân nặng (kg)", 30.0, 200.0, value=None, step=0.1)
         with col2:
-            st.caption("💡 Cân nặng giúp theo dõi hiệu quả điều trị")
+            waist = st.number_input("Vòng eo (cm)", 50.0, 200.0, value=None, step=0.1, help="Đo ngang rốn")
+        with col3:
+            if weight and waist:
+                st.caption("💡 Giúp theo dõi giảm cân & béo phì")
+            else:
+                st.caption("")
+        
+        st.divider()
+        
+        # Calories (cho quản lý cân nặng)
+        st.markdown("#### 🍽️ Calories (tùy chọn - để quản lý cân nặng)")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            calories_in = st.number_input("Calories ăn vào", 0, 5000, value=None, step=50, help="Tổng calories ăn trong ngày")
+        with col2:
+            calories_out = st.number_input("Calories đốt cháy", 0, 3000, value=None, step=50, help="Từ vận động, tập luyện")
+        with col3:
+            if calories_in and calories_out:
+                balance = calories_in - calories_out
+                if balance > 0:
+                    st.warning(f"⚠️ Thừa: +{balance} cal")
+                elif balance < 0:
+                    st.success(f"✅ Thiếu hụt: {balance} cal\n\n(Giảm cân)")
+                else:
+                    st.info(f"⚖️ Cân bằng: 0 cal")
         
         st.divider()
         
@@ -185,6 +209,9 @@ def render_input_form():
                 'Creatinine (mg/dL)': creatinine,
                 'eGFR (mL/min)': egfr,
                 'Cân nặng (kg)': weight,
+                'Vòng eo (cm)': waist,
+                'Calories ăn vào': calories_in,
+                'Calories đốt cháy': calories_out,
                 'Ghi chú': notes
             }
             

@@ -19,7 +19,10 @@ from .alerts import (
 from .visualizer import (
     create_trend_chart,
     create_comparison_chart,
-    create_correlation_chart
+    create_correlation_chart,
+    create_weight_trend_chart,
+    create_calories_balance_chart,
+    create_waist_circumference_chart
 )
 
 __all__ = [
@@ -34,5 +37,8 @@ __all__ = [
     'create_trend_chart',
     'create_comparison_chart',
     'create_correlation_chart',
+    'create_weight_trend_chart',
+    'create_calories_balance_chart',
+    'create_waist_circumference_chart',
 ]
 
