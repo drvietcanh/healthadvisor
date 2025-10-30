@@ -42,9 +42,9 @@ with tab1:
             st.divider()
     
     with st.expander("🔍 Dấu hiệu nhận biết - 3 chữ NHIỀU"):
-        st.markdown(diabetes.SYMPTOMS_SIMPLE["classic_3P_vn"]["title"])
+        st.markdown(diabetes.SYMPTOMS["classic_3P_vn"]["title"])
         
-        for symptom in diabetes.SYMPTOMS_SIMPLE["classic_3P_vn"]["symptoms"]:
+        for symptom in diabetes.SYMPTOMS["classic_3P_vn"]["symptoms"]:
             st.markdown(f"### {symptom['name']}")
             st.markdown(f"**{symptom['description']}**")
             for detail in symptom['details']:
@@ -52,11 +52,11 @@ with tab1:
             st.divider()
         
         st.subheader("Triệu chứng khác:")
-        for symptom in diabetes.SYMPTOMS_SIMPLE["other_symptoms_vn"][:5]:
+        for symptom in diabetes.SYMPTOMS["other_symptoms_vn"][:5]:
             st.markdown(f"- {symptom}")
     
     with st.expander("🚨 Khi nào GỌI CẤP CỨU 115?"):
-        emergency = diabetes.SYMPTOMS_SIMPLE["emergency_vn"]
+        emergency = diabetes.SYMPTOMS["emergency_vn"]
         st.error(f"### {emergency['title']}")
         for sign in emergency['signs']:
             st.markdown(f"**{sign}**")
