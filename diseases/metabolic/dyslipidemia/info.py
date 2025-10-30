@@ -8,6 +8,57 @@ Cholesterol, LDL, HDL, Triglyceride
 DYSLIPIDEMIA_INFO = {
     "name": "Rối loạn Lipid Máu",
     "name_en": "Dyslipidemia",
+    
+    "what_is_it": """
+💡 **Rối loạn Lipid Máu là gì?**
+
+Là tình trạng **MỠ TRONG MÁU** (cholesterol, triglyceride) cao hoặc thấp bất thường.
+
+Bao gồm:
+- **LDL (mỡ xấu)** quá CAO → Bám vào mạch máu → Tắc nghẽn
+- **HDL (mỡ tốt)** quá THẤP → Không dọn sạch mỡ
+- **Triglyceride** quá CAO → Tích mỡ trong máu
+
+→ Nguy cơ: Nhồi máu tim, đột quỵ, viêm tụy
+    """,
+    
+    "why_dangerous": """
+⚠️ **Tại sao nguy hiểm?**
+
+Rối loạn lipid máu là **"SÁT THỦ IM LẶNG"**:
+- KHÔNG có triệu chứng ban đầu
+- Âm thầm GÂY TẮC mạch máu
+- Khi có triệu chứng = ĐÃ MUỘN (nhồi máu, đột quỵ)
+
+📊 **Tại Việt Nam:**
+- 30-40% người trưởng thành có rối loạn lipid máu
+- 70% bệnh nhân tim mạch có lipid máu cao
+- Chỉ 20% biết mình bị bệnh!
+    """,
+    
+    "lipid_types": {
+        "total_cholesterol": {
+            "name": "Cholesterol Toàn Phần (TC)",
+            "abbreviation": "TC",
+            "simple_explanation": "Tổng tất cả cholesterol trong máu (tốt + xấu)"
+        },
+        "ldl": {
+            "name": "LDL - Mỡ XẤU",
+            "abbreviation": "LDL-C",
+            "simple_explanation": "Xe tải chở mỡ ĐẾN mạch máu → Gây tắc nghẽn"
+        },
+        "hdl": {
+            "name": "HDL - Mỡ TỐT",
+            "abbreviation": "HDL-C",
+            "simple_explanation": "Xe quét dọn mỡ KHỎI mạch máu → Bảo vệ tim"
+        },
+        "triglyceride": {
+            "name": "Triglyceride (TG)",
+            "abbreviation": "TG",
+            "simple_explanation": "Mỡ dự trữ từ đường, rượu ăn vào"
+        }
+    },
+    
     "definition": """
 Rối loạn lipid máu là tình trạng một hoặc nhiều thành phần mỡ trong máu 
 (cholesterol toàn phần, LDL-C, HDL-C, triglyceride) cao hoặc thấp bất thường.
