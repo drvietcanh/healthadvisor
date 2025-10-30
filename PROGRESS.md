@@ -1,8 +1,8 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
 **Cập nhật:** 30/10/2025 - 23:45  
-**Session:** New Feature - Medication Reminder 💊  
-**Status:** ✅ TÍNH NĂNG NHẮC UỐNG THUỐC ĐÃ HOÀN THÀNH! 🎉
+**Session gần nhất:** Code Audit & Quality Check 🔍  
+**Status:** ⚠️ PHÁT HIỆN 30 FILES CẦN REFACTOR!
 
 ---
 
@@ -243,7 +243,104 @@ pages/
 - 💡 **Hướng dẫn chi tiết:** F.A.S.T cho đột quỵ, quy tắc 15-15 cho hạ đường huyết
 - ⚡ **Aspirin liều VN:** 81mg (3-4 viên) - chuẩn hóa theo VN
 
-**Commit:** `PENDING`
+**Commit:** `ee7339a`
+
+---
+
+#### 11. **FEATURE: Health Trends (Phân Tích Xu Hướng)** ✅ NEW!
+
+**Cấu trúc:**
+```
+health_trends/              # Ở thư mục gốc
+├── __init__.py (44 dòng)
+├── analyzer.py (348 dòng) - Phân tích dữ liệu nhật ký
+├── visualizer.py (419 dòng) - ⚠️ Biểu đồ & trực quan hóa
+└── alerts.py (258 dòng) - Cảnh báo xu hướng
+
+pages/
+└── 9_📈_Xu_Hướng.py (371 dòng) - Main page
+```
+
+**Tính năng:**
+- ✅ Phân tích xu hướng huyết áp, đường huyết, cân nặng
+- ✅ Biểu đồ trực quan (Plotly)
+- ✅ Cảnh báo tự động khi chỉ số bất thường
+- ✅ So sánh theo thời gian (7 ngày, 30 ngày, 90 ngày)
+
+**Commit:** `72111c7`
+
+---
+
+#### 12. **FEATURE: Export PDF Reports** ✅ NEW!
+
+**Cấu trúc:**
+```
+export_reports/              # Ở thư mục gốc
+├── __init__.py (16 dòng)
+└── pdf_generator.py (377 dòng) - ⚠️ Tạo PDF reports
+```
+
+**Tính năng:**
+- ✅ Xuất báo cáo PDF sức khỏe
+- ✅ Bao gồm: Nhật ký, Thuốc, Thông tin y tế
+- ✅ Mang đi khám bác sĩ
+
+**Commit:** `72111c7`
+
+---
+
+#### 13. **MODULES MỚI: COPD, Asthma, Dyslipidemia, Obesity** ✅ NEW!
+
+**COPD (Bệnh Phổi Tắc Nghẽn Mạn Tính):**
+```
+diseases/respiratory/copd/
+├── info.py (546 dòng) - ❌ CẦN REFACTOR
+├── medications.py (421 dòng) - ❌ CẦN REFACTOR
+├── assessment.py (387 dòng) - ❌ CẦN REFACTOR
+├── exercises.py (359 dòng) - ❌ CẦN REFACTOR
+├── management.py (300 dòng) - ⚠️ Đúng giới hạn
+└── __init__.py (98 dòng)
+```
+
+**Asthma (Bệnh Hen Suyễn):**
+```
+diseases/respiratory/asthma/
+└── info.py (425 dòng) - ❌ CẦN REFACTOR & MỞ RỘNG
+```
+
+**Dyslipidemia (Rối Loạn Lipid Máu):**
+```
+diseases/metabolic/dyslipidemia/
+├── info.py (587 dòng) - ❌ CẦN REFACTOR
+├── risk_calculator.py (513 dòng) - ❌ CẦN REFACTOR
+├── medications.py (370 dòng) - ❌ CẦN REFACTOR
+├── nutrition/
+│   ├── cholesterol_foods.py (471 dòng) - ❌ CẦN REFACTOR
+│   ├── vietnamese_foods.py (340 dòng) - ❌ CẦN REFACTOR
+│   ├── food_classification.py (256 dòng)
+│   ├── fat_types.py (183 dòng)
+│   └── meal_plans.py (111 dòng)
+└── __init__.py (86 dòng)
+```
+
+**Obesity (Béo Phì):**
+```
+diseases/metabolic/obesity/
+├── exercise.py (415 dòng) - ❌ CẦN REFACTOR
+├── nutrition.py (414 dòng) - ❌ CẦN REFACTOR
+├── goals.py (406 dòng) - ❌ CẦN REFACTOR
+├── calculators.py (403 dòng) - ❌ CẦN REFACTOR
+├── info.py (368 dòng) - ❌ CẦN REFACTOR
+└── __init__.py (104 dòng)
+```
+
+**Tính năng:**
+- ✅ Thông tin đầy đủ về 4 bệnh mới
+- ✅ Hướng dẫn điều trị, thuốc, dinh dưỡng
+- ✅ Tích hợp vào trang 4_⚖️_Hội_Chứng_Chuyển_Hóa
+- ⚠️ **NHƯNG 19/23 files > 300 dòng - CẦN REFACTOR NGAY!**
+
+**Commits:** `f0e4b3d`, `c76d42b`, `72111c7`
 
 ---
 
@@ -268,44 +365,86 @@ pages/
 
 ### Tổng quan code quality:
 
-**Trước refactor:**
-- ❌ 10 files > 300 dòng
-- ❌ File lớn nhất: 1070 dòng (NGUY HIỂM!)
-- ❌ Khó maintain, khó debug
+**⚠️ THỰC TRẠNG HIỆN TẠI (30/10/2025):**
 
-**Sau refactor:**
-- ✅ **0 files > 300 dòng** 🎉 (MỤC TIÊU ĐẠT!)
-- ✅ File lớn nhất: ~350 dòng (management.py - chấp nhận được)
-- ✅ **14 modules nhỏ, rõ ràng**
-- ✅ Dễ maintain, dễ test, dễ mở rộng
+**Tổng số files Python:** 86 files
+
+**Files > 300 dòng:** ❌ **30 files** (35% tổng số!)
+
+**Phân loại:**
+- 🔴 **Files > 500 dòng:** 9 files (NGHIÊM TRỌNG!)
+- 🟡 **Files 400-500 dòng:** 12 files (CẦN REFACTOR SỚM)
+- 🟢 **Files 300-400 dòng:** 9 files (THEO DÕI)
+
+**Top 5 files lớn nhất:**
+1. ❌ `pages/4_⚖️_Hội_Chứng_Chuyển_Hóa.py` - **732 dòng**
+2. ❌ `core/ui_config.py` - **730 dòng**
+3. ❌ `diseases/metabolic/dyslipidemia/info.py` - **587 dòng**
+4. ❌ `diseases/respiratory/copd/info.py` - **546 dòng**
+5. ❌ `diseases/metabolic/dyslipidemia/risk_calculator.py` - **513 dòng**
+
+**Modules đã refactor tốt:** ✅ 4 modules
+- ✅ `medication_reminder/` - 4 files, ~172 dòng/file (XUẤT SẮC!)
+- ✅ `emergency_contacts/` - 4 files, ~115 dòng/file (TỐT!)
+- ✅ `diary_components/` - 5 files, ~156 dòng/file (TỐT!)
+- ✅ `diabetes/nutrition/` - 3 files (REFACTORED)
+
+**Modules cần refactor:** ❌ 4 modules MỚI
+- ❌ `diseases/respiratory/copd/` - 4/5 files > 300 dòng
+- ❌ `diseases/respiratory/asthma/` - 1 file 425 dòng (cần mở rộng)
+- ❌ `diseases/metabolic/dyslipidemia/` - 5/10 files > 300 dòng
+- ❌ `diseases/metabolic/obesity/` - 5/6 files > 300 dòng
 
 **Kết quả:**
-- **2,948 dòng** → **14 modules** (~210 dòng/module)
-- **Tăng khả năng maintain 5x**
+- ✅ **4 modules cũ đã refactor** - Dễ maintain
+- ❌ **4 modules mới chưa refactor** - Khó maintain
+- ⚠️ **Trung bình:** 239 dòng/file (chấp nhận được)
+- ❌ **Vấn đề:** 30 files outliers cần xử lý
 
 ---
 
 ## 🚀 KẾ HOẠCH PHIÊN SAU
 
-### ✅ **REFACTORING HOÀN TẤT 100%!**
+### ✅ **TÍNH NĂNG MỚI - HOÀN THÀNH!**
 
-Tất cả 4 files lớn đã được refactor thành công:
-- ✅ Nhật_Ký.py (1070 → 170 dòng)
-- ✅ nutrition.py (672 → 3 modules)
-- ✅ hypertension.py (609 → 3 modules)
-- ✅ heart_failure.py (597 → 3 modules)
+**Từ ROADMAP_PHAT_TRIEN.md:**
+1. ✅ **Medication Reminder** - Nhắc uống thuốc
+2. ✅ **Health Trends** - Phân tích xu hướng sức khỏe
+3. ✅ **Export PDF Reports** - Xuất báo cáo PDF
+4. ✅ **Emergency Contacts** - Số cấp cứu & sơ cứu
 
-### **Priority 1: New Features (từ ROADMAP_PHAT_TRIEN.md)**
-1. [x] **Medication Reminder** - Nhắc uống thuốc ✅ **HOÀN THÀNH!**
-2. [ ] **Health Trends** - Phân tích xu hướng sức khỏe từ dữ liệu
-3. [ ] **Export PDF Reports** - Xuất báo cáo PDF
-4. [ ] **Doctor/Hospital Finder** - Tìm bác sĩ/bệnh viện gần
-5. [ ] **More Vietnamese Food Data** - Thêm thực phẩm Việt Nam vào database GL
+**Modules bệnh mới:**
+5. ✅ **COPD** - Bệnh phổi tắc nghẽn mạn tính
+6. ✅ **Asthma** - Hen suyễn
+7. ✅ **Dyslipidemia** - Rối loạn lipid máu
+8. ✅ **Obesity** - Béo phì & quản lý cân nặng
 
-### **Priority 2: Testing & Documentation**
+### ⚠️ **VẤN ĐỀ CẦN XỬ LÝ - ƯU TIÊN CAO!**
+
+**30 files > 300 dòng cần refactor:**
+
+**🔴 Priority 1 - REFACTOR NGAY** (Tuần này):
+1. `pages/4_⚖️_Hội_Chứng_Chuyển_Hóa.py` (732 dòng) → Tách components
+2. `core/ui_config.py` (730 dòng) → Tách dark/light mode
+3. `diseases/metabolic/dyslipidemia/info.py` (587 dòng) → 3 files
+4. `diseases/respiratory/copd/info.py` (546 dòng) → 3 files
+5. `diseases/metabolic/dyslipidemia/risk_calculator.py` (513 dòng) → 2 files
+
+**🟡 Priority 2 - REFACTOR SỚM** (Tuần sau):
+- Dyslipidemia module (5 files > 300)
+- Obesity module (5 files > 300)
+- COPD module (4 files > 300)
+- Asthma module (cần mở rộng)
+
+**🟢 Priority 3 - THEO DÕI**:
+- health_trends/visualizer.py (419 dòng)
+- export_reports/pdf_generator.py (377 dòng)
+- Pages khác (3 files ~400 dòng)
+
+### **Priority 4: Testing & Documentation**
 - [ ] Write unit tests cho các modules mới
 - [ ] Update user documentation
-- [ ] Add more Vietnamese food data to GL database
+- [ ] Tạo REFACTOR_PLAN_V2.md
 
 ---
 
@@ -322,49 +461,67 @@ Tất cả 4 files lớn đã được refactor thành công:
 healthadvisor/
 ├── app.py - Main entry point
 ├── core/ - Core utilities
-│   ├── ui_config.py - Dark mode CSS
-│   ├── chatbot_enhanced.py - AI chatbot
-│   └── ...
-├── diary_components/ - Health diary modules (REFACTORED!)
-│   ├── instructions.py
-│   ├── data_manager.py
-│   ├── input_form.py
-│   └── charts.py
-├── medication_reminder/ - Medication tracking (NEW!)
-│   ├── medication_manager.py
-│   ├── scheduler.py
-│   └── history.py
+│   ├── ui_config.py (730 dòng) - ❌ Dark mode CSS - CẦN REFACTOR
+│   ├── chatbot_enhanced.py (396 dòng) - AI chatbot
+│   └── simple_explanations.py (341 dòng) - Giải thích đơn giản
+├── diary_components/ - ✅ Health diary (REFACTORED!)
+│   ├── instructions.py (354 dòng)
+│   ├── input_form.py (206 dòng)
+│   ├── data_manager.py (80 dòng)
+│   └── charts.py (121 dòng)
+├── medication_reminder/ - ✅ Medication tracking (NEW!)
+│   ├── medication_manager.py (211 dòng)
+│   ├── scheduler.py (208 dòng)
+│   └── history.py (228 dòng)
+├── emergency_contacts/ - ✅ Emergency & First Aid (NEW!)
+│   ├── first_aid.py (225 dòng)
+│   ├── contact_manager.py (119 dòng)
+│   └── emergency_numbers.py (83 dòng)
+├── health_trends/ - ⚠️ Health analytics (NEW!)
+│   ├── visualizer.py (419 dòng) - ❌ CẦN REFACTOR
+│   ├── analyzer.py (348 dòng)
+│   └── alerts.py (258 dòng)
+├── export_reports/ - Export PDF (NEW!)
+│   └── pdf_generator.py (377 dòng)
 ├── diseases/ - Disease modules
 │   ├── cardiovascular/
-│   │   ├── hypertension/ - (REFACTORED!)
-│   │   └── heart_failure/ - (REFACTORED!)
-│   ├── metabolic/diabetes/
-│   │   ├── info.py
-│   │   ├── medications.py
-│   │   ├── insulin.py
-│   │   ├── nutrition/ - (REFACTORED!)
-│   │   └── exercise.py
-│   └── neurological/
-└── pages/ - Streamlit pages
-    ├── 0_📖_Hướng_Dẫn.py - User guide
-    ├── 1_❤️_Tim_Mạch.py - Cardiovascular
+│   │   ├── hypertension/ - ✅ (REFACTORED!)
+│   │   └── heart_failure/ - ✅ (REFACTORED!)
+│   ├── metabolic/
+│   │   ├── diabetes/
+│   │   │   └── nutrition/ - ✅ (REFACTORED!)
+│   │   ├── dyslipidemia/ - ❌ (CẦN REFACTOR - 5 files > 300)
+│   │   └── obesity/ - ❌ (CẦN REFACTOR - 5 files > 300)
+│   └── respiratory/
+│       ├── copd/ - ❌ (CẦN REFACTOR - 4 files > 300)
+│       └── asthma/ - ❌ (CẦN MỞ RỘNG - 1 file 425 dòng)
+└── pages/ - Streamlit pages (10 pages)
+    ├── 0_📖_Hướng_Dẫn.py (393 dòng) - User guide
+    ├── 1_❤️_Tim_Mạch.py (446 dòng) - ❌ Cardiovascular
     ├── 2_🩸_Tiểu_Đường.py - Diabetes
     ├── 3_🧠_Thần_Kinh.py - Neurological
-    ├── 4_🤖_AI_Bác_Sĩ.py - AI Chatbot
-    ├── 5_🎓_Học_Dễ.py - Easy learning
-    ├── 6_📊_Nhật_Ký.py - Health diary
-    └── 7_💊_Nhắc_Thuốc.py - Medication reminder (NEW!)
+    ├── 4_⚖️_Hội_Chứng_Chuyển_Hóa.py (732 dòng) - ❌ Metabolic Syndrome
+    ├── 5_🤖_AI_Bác_Sĩ.py - AI Chatbot
+    ├── 6_🎓_Học_Dễ.py (319 dòng) - Easy learning
+    ├── 7_📊_Nhật_Ký.py (170 dòng) - ✅ Health diary
+    ├── 8_💊_Nhắc_Thuốc.py - Medication reminder
+    ├── 9_📈_Xu_Hướng.py (371 dòng) - Health trends
+    └── 10_🚨_Cấp_Cứu.py (463 dòng) - ❌ Emergency
 ```
 
 ---
 
 ## 🎯 CÁCH BẮT ĐẦU PHIÊN SAU
 
-1. **Đọc file này** (PROGRESS.md)
-2. **Đọc REFACTOR_PLAN.md** - Xem task còn lại
-3. **Check ROADMAP_PHAT_TRIEN.md** - Nếu muốn thêm feature mới
-4. **Chạy:** `python check_files.py` - Kiểm tra files cần refactor
-5. **Tiếp tục** từ Task 6: Refactor nutrition.py
+1. **Đọc file này** (PROGRESS.md) - Hiểu tình trạng dự án
+2. **HỎI USER** trước khi làm gì - Đừng tự ý refactor!
+3. **Kiểm tra files lớn:**
+   ```bash
+   python -c "import pathlib; files = [(str(p), sum(1 for _ in open(p, encoding='utf-8', errors='ignore'))) for p in pathlib.Path('.').rglob('*.py') if not any(x in str(p) for x in ['.git', '__pycache__'])]; print('\n'.join([f'{l:4d} - {f}' for f, l in sorted(files, key=lambda x: x[1], reverse=True)[:15]]))"
+   ```
+4. **Commit thường xuyên** - Sau mỗi task
+5. **Push lên GitHub** - Đừng để quá nhiều commits local
+6. **Theo dõi tokens** - Cảnh báo khi >80k
 
 ---
 
@@ -384,30 +541,39 @@ healthadvisor/
 
 ---
 
-**Last updated:** 31/10/2025 01:00  
-**Session completed:** New Features - Medication Reminder 💊 + Emergency Contacts 🚨  
-**Commits trong session này:** 7 commits (sẽ cập nhật)
-- `a16f523` - Fix: Sửa lỗi SYMPTOMS_SIMPLE → SYMPTOMS
-- `1f822c1` - Feature: Medication Reminder (Nhắc uống thuốc)
-- `cfac5f8` - Fix: Import paths cho Streamlit multipage
-- `09d2af9` - Fix: Thêm current_dir vào sys.path
+**Last updated:** 30/10/2025 - 23:45  
+**Session completed:** Code Audit & Quality Check 🔍  
+**Latest commits:**
+- `72111c7` - fix(dyslipidemia): Add missing keys in DYSLIPIDEMIA_INFO
+- `c76d42b` - feat(dyslipidemia): Add comprehensive cholesterol food classification
+- `f0e4b3d` - feat(copd): Add COPD module with detailed comparison vs Asthma
+- `2fc5197` - feat: Add automated file length checker
+- `55e7d7c` - refactor(dyslipidemia): Split nutrition.py (846 → 4 modules)
 - `ee7339a` - Refactor: Di chuyển modules ra thư mục gốc
-**Latest commit:** `ee7339a`
+**Latest commit:** `72111c7` (chưa push - có 1 commit ahead)
 
 ---
 
 ## 🎉 MILESTONE ACHIEVED!
 
-**TÍNH NĂNG MỚI: MEDICATION REMINDER**
-- ✅ Tính năng đầu tiên từ ROADMAP đã hoàn thành!
-- ✅ Modular structure (~220 dòng/file)
-- ✅ UI thân thiện cho người già
-- ✅ Lưu trữ dữ liệu local (JSON)
-- ✅ Đầy đủ tính năng: Quản lý, Lịch, Thống kê, FAQ
-- ✅ Xuất CSV để mang đi khám
+**8 TÍNH NĂNG MỚI HOÀN THÀNH:**
+- ✅ Medication Reminder - Nhắc uống thuốc
+- ✅ Health Trends - Phân tích xu hướng
+- ✅ Export PDF Reports - Xuất báo cáo
+- ✅ Emergency Contacts - Cấp cứu & sơ cứu
+- ✅ COPD Module - Bệnh phổi tắc nghẽn
+- ✅ Asthma Module - Hen suyễn
+- ✅ Dyslipidemia Module - Rối loạn lipid máu
+- ✅ Obesity Module - Béo phì & quản lý cân nặng
 
-**NEXT: 
-1. Commit & Push code
-2. Test thực tế với người dùng
-3. Tiếp tục tính năng tiếp theo: Health Trends / Export PDF**
+**⚠️ VẤN ĐỀ:**
+- ❌ **30 files > 300 dòng** (35% tổng số files)
+- ❌ **4 modules mới chưa refactor** (COPD, Asthma, Dyslipidemia, Obesity)
+- ⚠️ **PROGRESS.md đã SAI** từ trước - Đã sửa!
+
+**NEXT:** 
+1. ✅ Commit & Push code hiện tại
+2. ⚠️ **HỎI USER** có muốn refactor 30 files không?
+3. 📋 Tạo REFACTOR_PLAN_V2.md nếu user đồng ý
+4. 🧪 Test thực tế với người dùng
 

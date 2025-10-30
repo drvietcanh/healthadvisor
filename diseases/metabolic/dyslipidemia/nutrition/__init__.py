@@ -26,6 +26,13 @@ from .meal_plans import (
     get_nutrition_tips
 )
 
+from .cholesterol_foods import (
+    CHOLESTEROL_FOOD_CLASSIFICATION,
+    VIETNAMESE_DISHES_CHOLESTEROL,
+    COOKING_TIPS_REDUCE_CHOLESTEROL,
+    KEY_CHOLESTEROL_MESSAGES
+)
+
 __all__ = [
     # Food Classification
     'FOOD_SAFETY_CLASSIFICATION',
@@ -39,6 +46,12 @@ __all__ = [
     'GOOD_FOODS',
     'BAD_FOODS',
     'CHOLESTEROL_LOWERING_FOODS',
+    
+    # Cholesterol Foods
+    'CHOLESTEROL_FOOD_CLASSIFICATION',
+    'VIETNAMESE_DISHES_CHOLESTEROL',
+    'COOKING_TIPS_REDUCE_CHOLESTEROL',
+    'KEY_CHOLESTEROL_MESSAGES',
     
     # Meal Plans
     'get_diet_plan_vietnam',
