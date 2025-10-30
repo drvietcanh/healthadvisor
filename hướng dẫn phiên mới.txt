@@ -8,6 +8,7 @@ Commit sau mỗi task lớn
 Push lên GitHub thường xuyên
 Hỏi user trước khi làm task mới
 Tóm tắt progress định kỳ
+kiểm tra token sau mỗi tác vụ
 Cảnh báo khi message >80k tokens
 Hết phiên cũ Tạo progress.md lưu để để biết tình trạng app
 Hướng dẫn lệnh khi chạy phiên mới

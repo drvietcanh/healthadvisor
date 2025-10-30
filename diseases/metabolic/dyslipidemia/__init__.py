@@ -30,6 +30,8 @@ from .risk_calculator import (
 )
 
 from .nutrition import (
+    FOOD_SAFETY_CLASSIFICATION,
+    QUICK_REFERENCE_TABLE,
     FAT_TYPES_EXPLANATION,
     FAT_COMPARISON,
     GOOD_FOODS,
@@ -64,6 +66,8 @@ __all__ = [
     'get_treatment_recommendations',
     
     # Nutrition
+    'FOOD_SAFETY_CLASSIFICATION',
+    'QUICK_REFERENCE_TABLE',
     'FAT_TYPES_EXPLANATION',
     'FAT_COMPARISON',
     'GOOD_FOODS',
