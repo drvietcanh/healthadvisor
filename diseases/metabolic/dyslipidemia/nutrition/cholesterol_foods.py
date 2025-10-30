@@ -163,7 +163,7 @@ CHOLESTEROL_FOOD_CLASSIFICATION = {
                 "cholesterol": 40-60,
                 "note": "Ít cholesterol + Nhiều omega-3",
                 "recommendation": "⭐ RẤT TỐT, ăn 2-3 lần/tuần",
-                "highlight": true
+                "highlight": True
             },
             {
                 "name": "Cá nước ngọt (cá rô phi, cá chép)",
