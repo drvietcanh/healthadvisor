@@ -210,6 +210,43 @@ pages/
 
 **Commit:** `ee7339a`
 
+---
+
+#### 10. **FEATURE: Emergency Contacts (Số Cấp Cứu)** ✅ NEW!
+
+**Tính năng quan trọng - Có thể cứu mạng!**
+
+**Cấu trúc:**
+```
+emergency_contacts/              # Ở thư mục gốc
+├── __init__.py (30 dòng)
+├── emergency_numbers.py (80 dòng) - Số điện thoại cấp cứu VN
+├── first_aid.py (220 dòng) - Hướng dẫn sơ cứu chi tiết
+└── contact_manager.py (120 dòng) - Quản lý danh bạ cá nhân
+
+pages/
+└── 9_🚨_Cấp_Cứu.py (420 dòng) - Main page
+```
+
+**Tính năng:**
+- 🚨 **Số cấp cứu VN:** 115, 113, 114, Trung tâm chống độc
+- 📞 **Gọi điện 1 chạm:** Bấm vào số là gọi được ngay (trên điện thoại)
+- 🏥 **Hướng dẫn sơ cứu:** 5 tình huống (đau tim, đột quỵ, hạ đường huyết, ngã, đau ngực)
+- 👥 **Danh bạ cá nhân:** Lưu số con cháu, bác sĩ, bệnh viện
+- 📋 **Thông tin y tế:** Thuốc đang uống, dị ứng, bệnh nền, nhóm máu
+- 📄 **In ra giấy:** Mang theo khi đi khám
+
+**Đặc biệt:**
+- 🎨 **UI cho người già:** Font cực lớn (32-48px), nút to (padding 30px)
+- 🔴 **Màu cảnh báo rõ:** Đỏ cho 115, cam cho khẩn cấp
+- 📱 **Mobile-first:** Tối ưu cho điện thoại
+- 💡 **Hướng dẫn chi tiết:** F.A.S.T cho đột quỵ, quy tắc 15-15 cho hạ đường huyết
+- ⚡ **Aspirin liều VN:** 81mg (3-4 viên) - chuẩn hóa theo VN
+
+**Commit:** `PENDING`
+
+---
+
 **Refactoring note:**
 - Di chuyển `diary_components/` và `medication_reminder/` ra thư mục gốc
 - Đặt cùng cấp với `core/` và `diseases/` 
@@ -347,9 +384,9 @@ healthadvisor/
 
 ---
 
-**Last updated:** 31/10/2025 00:15  
-**Session completed:** New Feature - Medication Reminder 💊 + Bug Fixes  
-**Commits trong session này:** 5 commits
+**Last updated:** 31/10/2025 01:00  
+**Session completed:** New Features - Medication Reminder 💊 + Emergency Contacts 🚨  
+**Commits trong session này:** 7 commits (sẽ cập nhật)
 - `a16f523` - Fix: Sửa lỗi SYMPTOMS_SIMPLE → SYMPTOMS
 - `1f822c1` - Feature: Medication Reminder (Nhắc uống thuốc)
 - `cfac5f8` - Fix: Import paths cho Streamlit multipage
