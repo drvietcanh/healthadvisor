@@ -3,7 +3,7 @@ cat PROGRESS.md
 
 
 Nên:
-Luôn kiểm tra tách các module nhỏ ra dễ quản lý, mỗi module không quá 300 dòng
+Luôn tự kiểm tra độ dài các module sau nhiều tác vụ lớn, nếu > 300 dòng hãy cảnh báo và nghiên cứu tách các module nhỏ hợp lý ra dễ quản lý, mỗi module không quá 300 dòng
 Commit sau mỗi task lớn
 Push lên GitHub thường xuyên
 Hỏi user trước khi làm task mới
