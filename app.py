@@ -57,6 +57,37 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Welcome Banner - New users
+if 'first_visit' not in st.session_state:
+    st.session_state.first_visit = True
+
+if st.session_state.first_visit:
+    st.balloons()
+    st.success("🎉 **Chào mừng bạn đến với HealthAdvisor!** Hãy bắt đầu bằng cách chọn một trong các mục dưới đây:")
+    st.session_state.first_visit = False
+
+# Quick Actions
+st.markdown("### 🚀 Bạn muốn làm gì hôm nay?")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("📊 Kiểm tra Huyết Áp", use_container_width=True, type="primary"):
+        st.switch_page("pages/1_❤️_Tim_Mạch.py")
+    st.caption("Đánh giá huyết áp & nhận tư vấn")
+
+with col2:
+    if st.button("🩸 Kiểm tra Đường Huyết", use_container_width=True, type="primary"):
+        st.switch_page("pages/2_🩸_Tiểu_Đường.py")
+    st.caption("Chuyển đổi mmol/L ↔ mg/dL")
+
+with col3:
+    if st.button("🤖 Hỏi AI Bác Sĩ", use_container_width=True, type="primary"):
+        st.switch_page("pages/4_🤖_AI_Bác_Sĩ.py")
+    st.caption("Chat với AI - Miễn phí!")
+
+st.divider()
+
 # Lời chào
 greeting = get_greeting()
 st.markdown(f"### {greeting}! 👋")
