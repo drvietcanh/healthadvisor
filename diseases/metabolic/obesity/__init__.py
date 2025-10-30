@@ -54,7 +54,9 @@ from .goals import (
     create_weight_loss_goal,
     calculate_progress,
     get_milestones,
-    get_motivation_message
+    get_motivation_message,
+    get_weekly_tips,
+    get_daily_affirmations
 )
 
 __all__ = [
@@ -94,5 +96,7 @@ __all__ = [
     'calculate_progress',
     'get_milestones',
     'get_motivation_message',
+    'get_weekly_tips',
+    'get_daily_affirmations',
 ]
 
