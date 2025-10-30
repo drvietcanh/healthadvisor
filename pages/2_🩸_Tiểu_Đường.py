@@ -108,17 +108,25 @@ with tab3:
     col1, col2 = st.columns(2)
     with col1:
         st.success("**✅ NÊN ĂN:**")
-        foods = diabetes.NUTRITION_SIMPLE["what_to_eat_vn"]
-        for category_key, category in foods.items():
-            if category_key != "fats":
-                st.markdown(f"**{category['title']}**")
-                for food in category['foods'][:4]:
-                    st.markdown(f"- {food}")
+        st.markdown("""
+- 🍚 Gạo lứt, gạo nâu
+- 🥬 Rau xanh lá
+- 🍌 Chuối, cam, quýt
+- 🐟 Cá, thịt nạc
+- 🥛 Sữa ít béo
+- 🥜 Các loại hạt không muối
+        """)
     
     with col2:
         st.error("**🚫 TRÁNH:**")
-        for food in diabetes.NUTRITION_SIMPLE["foods_to_avoid_vn"][:8]:
-            st.markdown(food)
+        st.markdown("""
+- 🚫 Đường, kẹo, chocolate
+- 🚫 Nước ngọt, trà sữa
+- 🚫 Bánh ngọt, bánh kem
+- 🚫 Đồ chiên rán
+- 🚫 Mì gói
+- 🚫 Đồ ăn nhanh
+        """)
 
 # ============= TAB CÔNG CỤ =============
 with tab4:

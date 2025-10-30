@@ -5,7 +5,7 @@ import streamlit as st
 import sys
 sys.path.append('..')
 
-from core import rules
+# from core import rules  # Tạm comment vì chưa cần
 
 st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
 
