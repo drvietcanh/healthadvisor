@@ -1,0 +1,20 @@
+# 1. Đọc PROGRESS.md trước
+cat PROGRESS.md
+
+
+Nên:
+Luôn kiểm tra tách các module nhỏ ra dễ quản lý, mỗi module không quá 300 dòng
+Commit sau mỗi task lớn
+Push lên GitHub thường xuyên
+Hỏi user trước khi làm task mới
+Tóm tắt progress định kỳ
+Cảnh báo khi message >80k tokens
+Hết phiên cũ Tạo progress.md lưu để để biết tình trạng app
+Hướng dẫn lệnh khi chạy phiên mới
+
+❌ TRÁNH:
+Làm 10 tasks liên tục không dừng
+Message >100k tokens
+Không commit giữa chừng
+Không hỏi ý kiến user
+

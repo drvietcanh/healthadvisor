@@ -8,18 +8,16 @@ from datetime import datetime
 import sys
 import os
 
-# Thêm thư mục gốc và pages vào path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-sys.path.insert(0, parent_dir)
-sys.path.insert(0, current_dir)
+# Thêm thư mục gốc vào path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from core.ui_config import get_custom_css
 from diary_components import (
     render_instructions, render_bp_guide, render_file_guide,
-    load_csv_data, save_csv_data, initialize_health_data,
+    load_csv_data, save_csv_data,
     render_input_form, render_charts, render_data_table, render_statistics
 )
+from diary_components.data_manager import initialize_health_data
 
 # Cấu hình trang
 st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
