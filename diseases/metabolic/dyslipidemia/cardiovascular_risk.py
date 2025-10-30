@@ -405,3 +405,4 @@ def get_treatment_recommendations(
         "note": f"Cần giảm LDL {reduction_needed:.0f} mg/dL ({reduction_pct:.0f}%)" if reduction_needed > 0 else "LDL đã đạt mục tiêu!"
     }
 
+
