@@ -105,6 +105,47 @@ def get_custom_css(dark_mode=False):
                 padding: 0.75rem 1.5rem !important;
                 border-radius: 8px 8px 0 0 !important;
                 font-weight: 500 !important;
+                color: var(--text-color) !important;
+            }
+            
+            .stTabs [data-baseweb="tab"][aria-selected="true"] {
+                color: var(--accent-color) !important;
+                background-color: rgba(77, 166, 255, 0.1) !important;
+            }
+            
+            /* Selectbox & Dropdown */
+            [data-baseweb="select"] {
+                background-color: var(--secondary-bg) !important;
+            }
+            
+            [data-baseweb="select"] * {
+                color: var(--text-color) !important;
+            }
+            
+            /* Dropdown menu */
+            [role="listbox"] {
+                background-color: var(--secondary-bg) !important;
+                border: 1px solid var(--border-color) !important;
+            }
+            
+            [role="option"] {
+                color: var(--text-color) !important;
+                background-color: var(--secondary-bg) !important;
+            }
+            
+            [role="option"]:hover {
+                background-color: rgba(77, 166, 255, 0.2) !important;
+            }
+            
+            /* Radio & Checkbox labels */
+            [data-baseweb="radio"] label,
+            [data-baseweb="checkbox"] label {
+                color: var(--text-color) !important;
+            }
+            
+            /* All form labels */
+            label {
+                color: var(--text-color) !important;
             }
             
             /* Info boxes */
@@ -114,12 +155,79 @@ def get_custom_css(dark_mode=False):
                 font-size: 1.05rem !important;
             }
             
-            /* Sidebar */
+            .stAlert * {
+                color: var(--text-color) !important;
+            }
+            
+            /* Sidebar - IMPROVED */
             [data-testid="stSidebar"] {
                 background-color: var(--secondary-bg) !important;
             }
             
+            /* Sidebar - ALL text elements */
+            [data-testid="stSidebar"] * {
+                color: var(--text-color) !important;
+            }
+            
+            /* Sidebar navigation links */
+            [data-testid="stSidebar"] a {
+                color: var(--text-color) !important;
+                text-decoration: none !important;
+            }
+            
+            [data-testid="stSidebar"] a:hover {
+                color: var(--accent-color) !important;
+                background-color: rgba(77, 166, 255, 0.1) !important;
+            }
+            
+            /* Sidebar page links */
+            [data-testid="stSidebarNav"] li {
+                color: var(--text-color) !important;
+            }
+            
+            [data-testid="stSidebarNav"] a {
+                color: var(--text-color) !important;
+                font-size: 1.1rem !important;
+                padding: 0.75rem 1rem !important;
+                border-radius: 8px !important;
+            }
+            
+            [data-testid="stSidebarNav"] a:hover {
+                background-color: rgba(77, 166, 255, 0.15) !important;
+                color: #ffffff !important;
+            }
+            
+            /* Active page */
+            [data-testid="stSidebarNav"] a[aria-current="page"] {
+                background-color: var(--accent-color) !important;
+                color: #ffffff !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Sidebar markdown text */
             [data-testid="stSidebar"] [data-testid="stMarkdown"] {
+                color: var(--text-color) !important;
+            }
+            
+            [data-testid="stSidebar"] [data-testid="stMarkdown"] p,
+            [data-testid="stSidebar"] [data-testid="stMarkdown"] span,
+            [data-testid="stSidebar"] [data-testid="stMarkdown"] div {
+                color: var(--text-color) !important;
+            }
+            
+            /* Sidebar widgets */
+            [data-testid="stSidebar"] label {
+                color: var(--text-color) !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Sidebar buttons */
+            [data-testid="stSidebar"] button {
+                color: var(--text-color) !important;
+            }
+            
+            /* Radio buttons in sidebar */
+            [data-testid="stSidebar"] [data-baseweb="radio"] label {
                 color: var(--text-color) !important;
             }
             
