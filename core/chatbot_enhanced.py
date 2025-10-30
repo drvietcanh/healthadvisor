@@ -1,9 +1,22 @@
 """
-Enhanced Chatbot - Hỏi đáp thông minh như bác sĩ thật
+Enhanced Chatbot - Hỗ trợ cả OpenAI và Gemini API
 """
 import streamlit as st
-from typing import List, Dict
+from typing import List, Dict, Optional
 import os
+
+# Import AI libraries
+try:
+    import openai
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
+
+try:
+    import google.generativeai as genai
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
 
 
 class MedicalChatbot:
@@ -199,9 +212,16 @@ Tốt hơn GỌI NHẦM còn hơn BỎ LỠ!
         
         return answers.get(question_type, "")
     
-    def generate_response(self, user_message: str, use_ai: bool = True) -> tuple:
+    def generate_response(self, user_message: str, use_ai: bool = True, provider: str = "gemini", api_key: Optional[str] = None) -> tuple:
         """
         Tạo phản hồi cho câu hỏi
+        
+        Args:
+            user_message: Câu hỏi của người dùng
+            use_ai: Có dùng AI không
+            provider: "gemini" hoặc "openai"
+            api_key: API key (optional)
+            
         Returns: (response_text, new_context, suggested_questions)
         """
         
@@ -229,47 +249,87 @@ Tốt hơn GỌI NHẦM còn hơn BỎ LỠ!
         
         # Nếu không có câu trả lời nhanh, dùng AI hoặc template
         if use_ai:
-            response = self._get_ai_response(user_message, context)
+            response = self._get_ai_response(user_message, context, provider=provider, api_key=api_key)
         else:
             response = self._get_template_response(user_message, context)
         
         suggestions = self.get_suggested_questions(context)
         return response, context, suggestions
     
-    def _get_ai_response(self, message: str, context: str) -> str:
-        """Gọi AI (OpenAI) để trả lời"""
-        try:
-            import openai
-            
-            api_key = os.getenv("OPENAI_API_KEY")
-            if not api_key:
-                return self._get_template_response(message, context)
-            
-            # System prompt theo context
-            system_prompts = {
-                "hypertension": "Bạn là chuyên gia tăng huyết áp. Giải thích đơn giản, dễ hiểu. Luôn nhắc gọi 115 nếu nguy hiểm.",
-                "diabetes": "Bạn là chuyên gia tiểu đường. Giải thích về đường huyết bằng cả mmol/L và mg/dL. Ngôn ngữ dễ hiểu.",
-                "stroke": "Bạn là chuyên gia đột quỵ. Nhấn mạnh BE-FAST và thời gian vàng. Luôn nhắc GỌI 115.",
-                "general": "Bạn là bác sĩ gia đình thân thiện. Giải thích y khoa bằng ngôn ngữ đời thường. An toàn là trên hết."
-            }
-            
-            system_prompt = system_prompts.get(context, system_prompts["general"])
-            system_prompt += "\n\nQUY TẮC: Không chẩn đoán, không kê đơn. Chỉ giáo dục và tư vấn chung."
-            
-            client = openai.OpenAI(api_key=api_key)
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": message}
-                ],
-                temperature=0.7,
-                max_tokens=500
-            )
-            
-            return response.choices[0].message.content
-            
-        except Exception as e:
+    def _get_ai_response(self, message: str, context: str, provider: str = "gemini", api_key: Optional[str] = None) -> str:
+        """
+        Gọi AI (OpenAI hoặc Gemini) để trả lời
+        
+        Args:
+            message: Câu hỏi của người dùng
+            context: Ngữ cảnh (hypertension, diabetes, stroke, general)
+            provider: "openai" hoặc "gemini"
+            api_key: API key (nếu không có sẽ lấy từ env/secrets)
+        """
+        # System prompts theo context
+        system_prompts = {
+            "hypertension": "Bạn là chuyên gia tăng huyết áp. Giải thích đơn giản, dễ hiểu bằng tiếng Việt. Luôn nhắc gọi 115 nếu nguy hiểm.",
+            "diabetes": "Bạn là chuyên gia tiểu đường. Giải thích về đường huyết bằng cả mmol/L và mg/dL. Ngôn ngữ dễ hiểu, tiếng Việt.",
+            "stroke": "Bạn là chuyên gia đột quỵ. Nhấn mạnh BE-FAST và thời gian vàng. Luôn nhắc GỌI 115 NGAY. Trả lời bằng tiếng Việt.",
+            "general": "Bạn là bác sĩ gia đình thân thiện. Giải thích y khoa bằng ngôn ngữ đời thường, dễ hiểu. An toàn là trên hết. Trả lời bằng tiếng Việt."
+        }
+        
+        system_prompt = system_prompts.get(context, system_prompts["general"])
+        system_prompt += "\n\nQUY TẮC: Không chẩn đoán, không kê đơn. Chỉ giáo dục và tư vấn chung. Trả lời ngắn gọn, dễ hiểu."
+        
+        # Thử Gemini trước (miễn phí!)
+        if provider == "gemini":
+            try:
+                if not GEMINI_AVAILABLE:
+                    raise ImportError("google-generativeai not installed")
+                
+                # Lấy API key từ parameter hoặc env/secrets
+                gemini_key = api_key or os.getenv("GEMINI_API_KEY") or st.secrets.get("GEMINI_API_KEY")
+                
+                if not gemini_key:
+                    return "⚠️ Chưa có Gemini API key. Vui lòng nhập API key ở sidebar!"
+                
+                genai.configure(api_key=gemini_key)
+                model = genai.GenerativeModel('gemini-pro')
+                
+                # Kết hợp system prompt + user message
+                full_prompt = f"{system_prompt}\n\nCâu hỏi: {message}"
+                
+                response = model.generate_content(full_prompt)
+                return response.text
+                
+            except Exception as e:
+                return f"❌ Lỗi Gemini: {str(e)}\n\nVui lòng kiểm tra API key hoặc chuyển sang OpenAI."
+        
+        # Thử OpenAI
+        elif provider == "openai":
+            try:
+                if not OPENAI_AVAILABLE:
+                    raise ImportError("openai not installed")
+                
+                # Lấy API key
+                openai_key = api_key or os.getenv("OPENAI_API_KEY") or st.secrets.get("OPENAI_API_KEY")
+                
+                if not openai_key:
+                    return "⚠️ Chưa có OpenAI API key. Vui lòng nhập API key ở sidebar!"
+                
+                client = openai.OpenAI(api_key=openai_key)
+                response = client.chat.completions.create(
+                    model="gpt-4o-mini",
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": message}
+                    ],
+                    temperature=0.7,
+                    max_tokens=500
+                )
+                
+                return response.choices[0].message.content
+                
+            except Exception as e:
+                return f"❌ Lỗi OpenAI: {str(e)}\n\nVui lòng kiểm tra API key."
+        
+        else:
             return self._get_template_response(message, context)
     
     def _get_template_response(self, message: str, context: str) -> str:

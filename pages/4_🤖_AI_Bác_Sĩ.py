@@ -22,11 +22,79 @@ if "current_context" not in st.session_state:
 if "show_welcome" not in st.session_state:
     st.session_state.show_welcome = True
 
-# Sidebar - Chọn chuyên khoa
+# Sidebar - Cài đặt AI
 with st.sidebar:
-    st.header("⚙️ Cài đặt")
+    st.header("⚙️ Cài đặt AI")
+    
+    # Chọn AI Provider
+    st.subheader("1️⃣ Chọn AI Provider")
+    provider = st.radio(
+        "Chọn nhà cung cấp AI:",
+        ["gemini", "openai"],
+        format_func=lambda x: {
+            "gemini": "🌟 Gemini (Google) - MIỄN PHÍ!",
+            "openai": "🤖 OpenAI (ChatGPT) - Trả phí"
+        }[x],
+        key="ai_provider"
+    )
+    
+    # Nhập API Key
+    st.subheader("2️⃣ Nhập API Key")
+    
+    if provider == "gemini":
+        st.info("💡 **Lấy Gemini API miễn phí:**\n\n1. Vào https://aistudio.google.com/app/apikey\n2. Đăng nhập Gmail\n3. Click 'Create API key'\n4. Copy và dán vào đây")
+        
+        # Kiểm tra API key từ secrets hoặc env
+        gemini_key_from_secrets = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", ""))
+        
+        if gemini_key_from_secrets:
+            st.success("✅ Đã có API key từ Secrets")
+            api_key = gemini_key_from_secrets
+            use_ai = True
+        else:
+            api_key = st.text_input(
+                "Gemini API Key:",
+                type="password",
+                placeholder="AIzaSy...",
+                help="Dán API key vừa lấy từ Google AI Studio"
+            )
+            
+            if api_key:
+                st.success("✅ API key đã nhập!")
+                use_ai = True
+            else:
+                st.warning("⚠️ Chưa có API key - Chỉ dùng câu trả lời mẫu")
+                use_ai = False
+                
+    else:  # OpenAI
+        st.info("💰 **Lấy OpenAI API key (trả phí):**\n\n1. Vào https://platform.openai.com/api-keys\n2. Đăng nhập\n3. Click 'Create new secret key'\n4. Copy và dán vào đây")
+        
+        # Kiểm tra API key từ secrets hoặc env
+        openai_key_from_secrets = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY", ""))
+        
+        if openai_key_from_secrets:
+            st.success("✅ Đã có API key từ Secrets")
+            api_key = openai_key_from_secrets
+            use_ai = True
+        else:
+            api_key = st.text_input(
+                "OpenAI API Key:",
+                type="password",
+                placeholder="sk-...",
+                help="Dán API key từ OpenAI Platform"
+            )
+            
+            if api_key:
+                st.success("✅ API key đã nhập!")
+                use_ai = True
+            else:
+                st.warning("⚠️ Chưa có API key - Chỉ dùng câu trả lời mẫu")
+                use_ai = False
+    
+    st.divider()
     
     # Chọn chuyên khoa
+    st.subheader("3️⃣ Chọn chuyên khoa")
     disease_type = st.selectbox(
         "Chọn chuyên khoa:",
         ["general", "cardiovascular", "diabetes", "neurological"],
@@ -38,17 +106,6 @@ with st.sidebar:
         }[x],
         key="disease_selector"
     )
-    
-    # Kiểm tra API key
-    has_api_key = bool(os.getenv("OPENAI_API_KEY"))
-    
-    if has_api_key:
-        st.success("✅ AI đã sẵn sàng")
-        use_ai = st.checkbox("Sử dụng AI", value=True, help="Bật/tắt AI (cần API key)")
-    else:
-        st.warning("⚠️ Chưa có API key OpenAI")
-        st.info("Để dùng AI, thêm OPENAI_API_KEY vào file `.streamlit/secrets.toml`")
-        use_ai = False
     
     # Nút reset
     if st.button("🔄 Bắt đầu cuộc trò chuyện mới", use_container_width=True):
@@ -113,7 +170,9 @@ if st.session_state.show_welcome and len(st.session_state.messages) == 0:
                 st.session_state.messages.append({"role": "user", "content": suggestion})
                 response, context, new_suggestions = st.session_state.chatbot.generate_response(
                     suggestion, 
-                    use_ai=use_ai
+                    use_ai=use_ai,
+                    provider=provider,
+                    api_key=api_key if use_ai else None
                 )
                 st.session_state.messages.append({"role": "assistant", "content": response})
                 st.session_state.current_context = context
@@ -149,7 +208,9 @@ if user_input:
         with st.spinner("Đang suy nghĩ..."):
             response, context, suggestions = st.session_state.chatbot.generate_response(
                 user_input, 
-                use_ai=use_ai
+                use_ai=use_ai,
+                provider=provider,
+                api_key=api_key if use_ai else None
             )
             st.markdown(response)
             
