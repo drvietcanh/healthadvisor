@@ -59,20 +59,6 @@ VIETNAM_EMERGENCY_NUMBERS = {
         "icon": "🚒",
         "color": "orange",
         "priority": 2
-    },
-    "1900-54-54-58": {
-        "name": "Trung tâm chống độc BV Bạch Mai",
-        "name_en": "Poison Control Center",
-        "description": "Tư vấn và điều trị ngộ độc",
-        "when_to_call": [
-            "Ngộ độc thức ăn",
-            "Ngộ độc thuốc",
-            "Nuốt phải hóa chất",
-            "Cần tư vấn khẩn về độc chất"
-        ],
-        "icon": "☠️",
-        "color": "purple",
-        "priority": 3
     }
 }
 
@@ -87,7 +73,6 @@ def get_emergency_number_by_type(emergency_type):
         "medical": "115",
         "police": "113",
         "fire": "114-chay",
-        "poison": "1900-54-54-58",
         "health": "114"
     }
     

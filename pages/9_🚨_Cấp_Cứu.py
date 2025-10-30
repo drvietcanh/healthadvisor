@@ -140,7 +140,7 @@ with tab1:
     
     cols = st.columns(2)
     
-    other_numbers = ["113", "114-chay", "114", "1900-54-54-58"]
+    other_numbers = ["113", "114-chay", "114"]
     
     for idx, number in enumerate(other_numbers):
         info = VIETNAM_EMERGENCY_NUMBERS[number]
