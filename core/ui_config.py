@@ -159,6 +159,78 @@ def get_custom_css(dark_mode=False):
             ::-webkit-scrollbar-thumb:hover {
                 background: var(--accent-color);
             }
+            
+            /* MOBILE RESPONSIVE - DARK MODE */
+            @media only screen and (max-width: 768px) {
+                /* Giảm padding cho mobile */
+                .main {
+                    padding: 0.5rem !important;
+                }
+                
+                /* Headers nhỏ hơn trên mobile */
+                h1 { font-size: 2rem !important; }
+                h2 { font-size: 1.75rem !important; }
+                h3 { font-size: 1.5rem !important; }
+                
+                /* Text vẫn đủ lớn để đọc */
+                p, li, span, div {
+                    font-size: 1rem !important;
+                }
+                
+                /* Buttons full width và dễ bấm */
+                .stButton button {
+                    width: 100% !important;
+                    font-size: 1.2rem !important;
+                    padding: 1rem !important;
+                    min-height: 56px !important;
+                }
+                
+                /* Inputs full width */
+                input, textarea, select {
+                    width: 100% !important;
+                    font-size: 1.1rem !important;
+                    min-height: 52px !important;
+                }
+                
+                /* Columns stack trên mobile */
+                [data-testid="column"] {
+                    width: 100% !important;
+                    margin-bottom: 1rem !important;
+                }
+                
+                /* Cards padding nhỏ hơn */
+                .disease-card {
+                    padding: 1rem !important;
+                    margin: 0.75rem 0 !important;
+                }
+                
+                /* Tabs dễ bấm hơn */
+                .stTabs [data-baseweb="tab"] {
+                    font-size: 1rem !important;
+                    padding: 0.75rem 1rem !important;
+                    min-height: 48px !important;
+                }
+                
+                /* Sidebar full width khi mở */
+                [data-testid="stSidebar"] {
+                    width: 100% !important;
+                }
+                
+                /* Metrics lớn hơn */
+                [data-testid="stMetricValue"] {
+                    font-size: 1.75rem !important;
+                }
+            }
+            
+            /* TABLET */
+            @media only screen and (min-width: 769px) and (max-width: 1024px) {
+                h1 { font-size: 2.25rem !important; }
+                h2 { font-size: 1.875rem !important; }
+                
+                .stButton button {
+                    min-height: 52px !important;
+                }
+            }
         </style>
         """
     else:
@@ -340,6 +412,168 @@ def get_custom_css(dark_mode=False):
             /* Tooltips */
             [data-baseweb="tooltip"] {
                 font-size: 1rem !important;
+            }
+            
+            /* MOBILE RESPONSIVE - LIGHT MODE */
+            @media only screen and (max-width: 768px) {
+                /* Giảm padding cho mobile */
+                .main {
+                    padding: 0.5rem !important;
+                }
+                
+                /* Headers nhỏ hơn trên mobile */
+                h1 { font-size: 2rem !important; }
+                h2 { font-size: 1.75rem !important; }
+                h3 { font-size: 1.5rem !important; }
+                h4 { font-size: 1.25rem !important; }
+                
+                /* Text vẫn đủ lớn để đọc */
+                p, li, span, div {
+                    font-size: 1rem !important;
+                    line-height: 1.6 !important;
+                }
+                
+                /* Buttons full width và dễ bấm */
+                .stButton button {
+                    width: 100% !important;
+                    font-size: 1.2rem !important;
+                    padding: 1rem !important;
+                    min-height: 56px !important;
+                    margin: 0.5rem 0 !important;
+                }
+                
+                /* Inputs full width và lớn */
+                input, textarea, select {
+                    width: 100% !important;
+                    font-size: 1.1rem !important;
+                    padding: 0.875rem !important;
+                    min-height: 52px !important;
+                }
+                
+                /* Columns stack trên mobile */
+                [data-testid="column"] {
+                    width: 100% !important;
+                    margin-bottom: 1rem !important;
+                }
+                
+                /* Cards padding nhỏ hơn */
+                .disease-card {
+                    padding: 1rem !important;
+                    margin: 0.75rem 0 !important;
+                }
+                
+                /* Tabs dễ bấm */
+                .stTabs [data-baseweb="tab"] {
+                    font-size: 1rem !important;
+                    padding: 0.75rem 1rem !important;
+                    min-height: 48px !important;
+                    flex: 1 1 auto !important;
+                }
+                
+                .stTabs [data-baseweb="tab-list"] {
+                    flex-wrap: wrap !important;
+                    gap: 0.5rem !important;
+                }
+                
+                /* Expanders */
+                .streamlit-expanderHeader {
+                    font-size: 1.1rem !important;
+                    padding: 0.875rem !important;
+                }
+                
+                /* Info boxes */
+                .stAlert {
+                    font-size: 1rem !important;
+                    padding: 0.875rem 1rem !important;
+                }
+                
+                /* Sidebar */
+                [data-testid="stSidebar"] {
+                    width: 100% !important;
+                    padding: 1rem !important;
+                }
+                
+                /* Metrics lớn và rõ */
+                [data-testid="stMetricValue"] {
+                    font-size: 1.75rem !important;
+                }
+                
+                [data-testid="stMetricLabel"] {
+                    font-size: 1rem !important;
+                }
+                
+                /* Form labels */
+                label {
+                    font-size: 1.1rem !important;
+                    font-weight: 600 !important;
+                }
+                
+                /* Number inputs */
+                [data-baseweb="input"] input {
+                    font-size: 1.2rem !important;
+                }
+                
+                /* Selectbox */
+                [data-baseweb="select"] {
+                    min-height: 52px !important;
+                }
+                
+                /* Radio buttons */
+                [data-baseweb="radio"] label {
+                    font-size: 1.1rem !important;
+                    padding: 0.75rem !important;
+                }
+                
+                /* Checkboxes */
+                [data-baseweb="checkbox"] label {
+                    font-size: 1.1rem !important;
+                }
+                
+                /* Tables responsive */
+                table {
+                    font-size: 0.95rem !important;
+                    display: block !important;
+                    overflow-x: auto !important;
+                }
+                
+                /* Download buttons */
+                [data-testid="stDownloadButton"] button {
+                    width: 100% !important;
+                    min-height: 56px !important;
+                }
+            }
+            
+            /* TABLET */
+            @media only screen and (min-width: 769px) and (max-width: 1024px) {
+                h1 { font-size: 2.25rem !important; }
+                h2 { font-size: 1.875rem !important; }
+                h3 { font-size: 1.625rem !important; }
+                
+                .stButton button {
+                    min-height: 52px !important;
+                }
+                
+                input, textarea, select {
+                    min-height: 50px !important;
+                }
+            }
+            
+            /* SMALL PHONES */
+            @media only screen and (max-width: 480px) {
+                /* Font nhỏ hơn cho màn hình rất nhỏ */
+                h1 { font-size: 1.75rem !important; }
+                h2 { font-size: 1.5rem !important; }
+                h3 { font-size: 1.25rem !important; }
+                
+                p, li, span, div {
+                    font-size: 0.95rem !important;
+                }
+                
+                /* Tabs stack vertical */
+                .stTabs [data-baseweb="tab"] {
+                    width: 100% !important;
+                    text-align: center !important;
+                }
             }
         </style>
         """
