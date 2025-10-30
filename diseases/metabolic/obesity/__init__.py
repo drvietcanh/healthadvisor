@@ -39,7 +39,8 @@ from .nutrition import (
     FOOD_CATEGORIES,
     calculate_daily_calories,
     get_meal_plan,
-    get_nutrition_tips
+    get_nutrition_tips,
+    find_food_calories
 )
 
 from .exercise import (
@@ -83,6 +84,7 @@ __all__ = [
     'calculate_daily_calories',
     'get_meal_plan',
     'get_nutrition_tips',
+    'find_food_calories',
     
     # Exercise
     'EXERCISES_CALORIES',

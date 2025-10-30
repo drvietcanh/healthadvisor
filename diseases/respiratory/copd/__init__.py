@@ -1,0 +1,98 @@
+"""
+COPD Module - Bệnh Phổi Tắc Nghẽn Mạn Tính
+===========================================
+
+Module cung cấp thông tin toàn diện về COPD
+"""
+
+from .info import (
+    COPD_INFO,
+    COPD_VS_ASTHMA,
+    CAUSES,
+    SYMPTOMS,
+    COMPLICATIONS,
+    DIAGNOSIS,
+    PREVENTION,
+    RELATED_DISEASES
+)
+
+from .assessment import (
+    MMRC_SCALE,
+    CAT_QUESTIONNAIRE,
+    GOLD_CLASSIFICATION,
+    SIX_MINUTE_WALK_TEST,
+    calculate_cat_score
+)
+
+from .medications import (
+    TREATMENT_PRINCIPLES,
+    BRONCHODILATORS,
+    INHALED_CORTICOSTEROIDS,
+    OTHER_MEDICATIONS,
+    OXYGEN_THERAPY,
+    INHALER_TECHNIQUE
+)
+
+from .management import (
+    SMOKING_CESSATION,
+    PULMONARY_REHABILITATION,
+    EXACERBATION_MANAGEMENT,
+    NUTRITION,
+    VACCINATION
+)
+
+from .exercises import (
+    EXERCISE_BENEFITS,
+    EXERCISE_PRINCIPLES,
+    BREATHING_TECHNIQUES,
+    AEROBIC_EXERCISES,
+    STRENGTH_EXERCISES,
+    FLEXIBILITY_EXERCISES,
+    DAILY_ACTIVITIES,
+    FOUR_WEEK_PROGRAM
+)
+
+__all__ = [
+    # Info
+    'COPD_INFO',
+    'COPD_VS_ASTHMA',
+    'CAUSES',
+    'SYMPTOMS',
+    'COMPLICATIONS',
+    'DIAGNOSIS',
+    'PREVENTION',
+    'RELATED_DISEASES',
+    
+    # Assessment
+    'MMRC_SCALE',
+    'CAT_QUESTIONNAIRE',
+    'GOLD_CLASSIFICATION',
+    'SIX_MINUTE_WALK_TEST',
+    'calculate_cat_score',
+    
+    # Medications
+    'TREATMENT_PRINCIPLES',
+    'BRONCHODILATORS',
+    'INHALED_CORTICOSTEROIDS',
+    'OTHER_MEDICATIONS',
+    'OXYGEN_THERAPY',
+    'INHALER_TECHNIQUE',
+    
+    # Management
+    'SMOKING_CESSATION',
+    'PULMONARY_REHABILITATION',
+    'EXACERBATION_MANAGEMENT',
+    'NUTRITION',
+    'VACCINATION',
+    
+    # Exercises
+    'EXERCISE_BENEFITS',
+    'EXERCISE_PRINCIPLES',
+    'BREATHING_TECHNIQUES',
+    'AEROBIC_EXERCISES',
+    'STRENGTH_EXERCISES',
+    'FLEXIBILITY_EXERCISES',
+    'DAILY_ACTIVITIES',
+    'FOUR_WEEK_PROGRAM',
+]
+
