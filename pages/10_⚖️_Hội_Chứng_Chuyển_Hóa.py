@@ -19,7 +19,7 @@ parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 sys.path.insert(0, parent_dir)
 
 from diseases.metabolic import obesity
-from core.ui_config import apply_custom_css
+from core.ui_config import get_custom_css
 
 # Page config
 st.set_page_config(
@@ -29,7 +29,9 @@ st.set_page_config(
 )
 
 # Apply custom CSS
-apply_custom_css()
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 # Title
 st.title("⚖️ Hội Chứng Chuyển Hóa & Quản Lý Cân Nặng")
