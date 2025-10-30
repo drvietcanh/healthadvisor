@@ -135,6 +135,25 @@ with col3:
     if st.button("➡️ Vào trang Thần Kinh", key="neuro", use_container_width=True):
         st.switch_page("pages/3_🧠_Thần_Kinh.py")
 
+# Trang học dễ
+st.markdown("---")
+st.markdown("## 🎓 Học Y Khoa Siêu Dễ!")
+
+col_learn1, col_learn2 = st.columns(2)
+with col_learn1:
+    st.markdown("""
+    <div style="background-color: #e3f2fd; padding: 1rem; border-radius: 10px;">
+        <h4>💡 Giải thích bằng hình ảnh</h4>
+        <p>• So sánh với đời thường<br>
+        • Mẹo nhớ siêu dễ<br>
+        • Trắc nghiệm vui<br>
+        • Công cụ so sánh trực quan</p>
+    </div>
+    """, unsafe_allow_html=True)
+with col_learn2:
+    if st.button("📚 Vào trang Học Dễ", key="learn", use_container_width=True, type="primary"):
+        st.switch_page("pages/5_🎓_Học_Dễ.py")
+
 # Chatbot AI
 st.markdown("---")
 st.markdown("## 🤖 Trò chuyện với AI Bác sĩ")
