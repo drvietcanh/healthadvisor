@@ -5,7 +5,7 @@ import streamlit as st
 import sys
 sys.path.append('..')
 
-from core.chatbot import HealthChatbot
+from core.chatbot_enhanced import MedicalChatbot
 import os
 
 st.set_page_config(page_title="AI Bác Sĩ", page_icon="🤖", layout="wide")
@@ -16,9 +16,11 @@ st.title("🤖 AI Bác Sĩ - Trợ lý sức khỏe thông minh")
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "chatbot" not in st.session_state:
-    st.session_state.chatbot = None
-if "disease_selected" not in st.session_state:
-    st.session_state.disease_selected = False
+    st.session_state.chatbot = MedicalChatbot()
+if "current_context" not in st.session_state:
+    st.session_state.current_context = "general"
+if "show_welcome" not in st.session_state:
+    st.session_state.show_welcome = True
 
 # Sidebar - Chọn chuyên khoa
 with st.sidebar:
@@ -51,8 +53,9 @@ with st.sidebar:
     # Nút reset
     if st.button("🔄 Bắt đầu cuộc trò chuyện mới", use_container_width=True):
         st.session_state.messages = []
-        st.session_state.chatbot = None
-        st.session_state.disease_selected = False
+        st.session_state.chatbot = MedicalChatbot()
+        st.session_state.current_context = "general"
+        st.session_state.show_welcome = True
         st.rerun()
     
     st.divider()
@@ -91,12 +94,30 @@ with st.sidebar:
 """)
 
 # Main content
-st.markdown("""
-<div style="background-color: #f0f8ff; padding: 1rem; border-radius: 10px; border-left: 5px solid #1f77b4;">
-    <b>👋 Chào bạn!</b> Tôi là AI Bác sĩ, trợ lý sức khỏe của bạn.<br>
-    Hãy hỏi tôi bất kỳ điều gì về sức khỏe nhé! 😊
-</div>
-""", unsafe_allow_html=True)
+# Hiển thị welcome message lần đầu
+if st.session_state.show_welcome and len(st.session_state.messages) == 0:
+    welcome_msg = st.session_state.chatbot.get_welcome_message()
+    st.markdown(welcome_msg)
+    st.session_state.show_welcome = False
+    
+    # Hiển thị câu hỏi gợi ý đầu tiên
+    st.markdown("### 💬 Câu hỏi phổ biến:")
+    suggestions = st.session_state.chatbot.get_suggested_questions("general")
+    
+    cols = st.columns(2)
+    for idx, suggestion in enumerate(suggestions[:4]):  # Hiển thị 4 câu đầu
+        col_idx = idx % 2
+        with cols[col_idx]:
+            if st.button(f"❓ {suggestion}", key=f"quick_{idx}", use_container_width=True):
+                # Tự động gửi câu hỏi này
+                st.session_state.messages.append({"role": "user", "content": suggestion})
+                response, context, new_suggestions = st.session_state.chatbot.generate_response(
+                    suggestion, 
+                    use_ai=use_ai
+                )
+                st.session_state.messages.append({"role": "assistant", "content": response})
+                st.session_state.current_context = context
+                st.rerun()
 
 st.divider()
 
@@ -116,10 +137,6 @@ for message in st.session_state.messages:
 user_input = st.chat_input("Hỏi gì đó... (ví dụ: Huyết áp bao nhiêu là bình thường?)")
 
 if user_input:
-    # Khởi tạo chatbot nếu chưa có
-    if st.session_state.chatbot is None:
-        st.session_state.chatbot = HealthChatbot(disease_type=disease_type)
-    
     # Hiển thị tin nhắn người dùng
     with st.chat_message("user", avatar="👤"):
         st.markdown(user_input)
@@ -130,35 +147,53 @@ if user_input:
     # Lấy phản hồi từ chatbot
     with st.chat_message("assistant", avatar="🤖"):
         with st.spinner("Đang suy nghĩ..."):
-            response = st.session_state.chatbot.get_response(user_input, use_ai=use_ai)
+            response, context, suggestions = st.session_state.chatbot.generate_response(
+                user_input, 
+                use_ai=use_ai
+            )
             st.markdown(response)
+            
+            # Hiển thị câu hỏi gợi ý tiếp theo
+            if suggestions:
+                st.markdown("---")
+                st.markdown("**💡 Câu hỏi tiếp theo:**")
+                cols = st.columns(2)
+                for idx, suggestion in enumerate(suggestions[:4]):
+                    col_idx = idx % 2
+                    with cols[col_idx]:
+                        st.button(
+                            f"❓ {suggestion}", 
+                            key=f"suggest_{len(st.session_state.messages)}_{idx}",
+                            on_click=lambda s=suggestion: st.session_state.messages.append({"role": "temp", "content": s})
+                        )
     
     # Thêm phản hồi vào lịch sử
     st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.current_context = context
 
-# Nếu chưa có tin nhắn, hiển thị gợi ý
-if len(st.session_state.messages) == 0:
-    st.markdown("### 💬 Bắt đầu trò chuyện bằng cách nhập câu hỏi bên dưới!")
+# Hiển thị gợi ý dựa trên context hiện tại
+if len(st.session_state.messages) > 0:
+    # Lấy câu hỏi gợi ý theo context
+    current_suggestions = st.session_state.chatbot.get_suggested_questions(
+        st.session_state.current_context
+    )
     
-    # Quick buttons
-    st.markdown("**Hoặc chọn chủ đề:**")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button("❤️ Huyết áp cao", use_container_width=True):
-            user_input = "Tôi muốn biết về tăng huyết áp"
-            st.rerun()
-    
-    with col2:
-        if st.button("🩸 Tiểu đường", use_container_width=True):
-            user_input = "Tôi muốn biết về bệnh tiểu đường"
-            st.rerun()
-    
-    with col3:
-        if st.button("🧠 Đột quỵ", use_container_width=True):
-            user_input = "Làm sao nhận biết đột quỵ?"
-            st.rerun()
+    if current_suggestions:
+        st.markdown("---")
+        st.markdown("### 💡 Câu hỏi liên quan:")
+        
+        cols = st.columns(2)
+        for idx, suggestion in enumerate(current_suggestions[:4]):
+            col_idx = idx % 2
+            with cols[col_idx]:
+                if st.button(
+                    f"❓ {suggestion}", 
+                    key=f"bottom_suggest_{idx}",
+                    use_container_width=True
+                ):
+                    # Tự động điền vào input
+                    st.session_state.temp_question = suggestion
+                    st.rerun()
 
 # Footer
 st.divider()
