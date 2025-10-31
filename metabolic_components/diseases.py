@@ -26,22 +26,28 @@ def render_diseases_tab():
                 st.markdown(f"""
                 **Cơ chế:**
                 
-                {disease_data['mechanism']}
-                
-                **Triệu chứng:**
+                {disease_data.get('mechanism', 'Chưa có thông tin')}
                 """)
-                for symptom in disease_data['symptoms']:
-                    st.markdown(f"• {symptom}")
+                
+                if 'symptoms' in disease_data:
+                    st.markdown("**Triệu chứng:**")
+                    symptoms = disease_data['symptoms']
+                    if isinstance(symptoms, list):
+                        for symptom in symptoms:
+                            st.markdown(f"• {symptom}")
+                    elif isinstance(symptoms, str):
+                        st.markdown(f"• {symptoms}")
             
             with col2:
-                if disease_data['page']:
+                if disease_data.get('page'):
                     st.info(f"📖 Xem thêm tại trang:\n**{disease_data['page']}**")
                 
-                st.success(f"""
-                **Phòng ngừa:**
-                
-                {disease_data['prevention']}
-                """)
+                if 'prevention' in disease_data:
+                    st.success(f"""
+                    **Phòng ngừa:**
+                    
+                    {disease_data['prevention']}
+                    """)
     
     # Indirect consequences
     st.markdown("---")
@@ -55,22 +61,28 @@ def render_diseases_tab():
                 st.markdown(f"""
                 **Cơ chế:**
                 
-                {disease_data['mechanism']}
-                
-                **Triệu chứng:**
+                {disease_data.get('mechanism', 'Chưa có thông tin')}
                 """)
-                for symptom in disease_data['symptoms']:
-                    st.markdown(f"• {symptom}")
+                
+                if 'symptoms' in disease_data:
+                    st.markdown("**Triệu chứng:**")
+                    symptoms = disease_data['symptoms']
+                    if isinstance(symptoms, list):
+                        for symptom in symptoms:
+                            st.markdown(f"• {symptom}")
+                    elif isinstance(symptoms, str):
+                        st.markdown(f"• {symptoms}")
             
             with col2:
-                if disease_data['page']:
+                if disease_data.get('page'):
                     st.info(f"📖 Xem thêm tại trang:\n**{disease_data['page']}**")
                 
-                st.success(f"""
-                **Phòng ngừa:**
-                
-                {disease_data['prevention']}
-                """)
+                if 'prevention' in disease_data:
+                    st.success(f"""
+                    **Phòng ngừa:**
+                    
+                    {disease_data['prevention']}
+                    """)
     
     # Other complications
     st.markdown("---")
@@ -84,22 +96,28 @@ def render_diseases_tab():
                 st.markdown(f"""
                 **Cơ chế:**
                 
-                {disease_data['mechanism']}
-                
-                **Triệu chứng:**
+                {disease_data.get('mechanism', 'Chưa có thông tin')}
                 """)
-                for symptom in disease_data['symptoms']:
-                    st.markdown(f"• {symptom}")
+                
+                if 'symptoms' in disease_data:
+                    st.markdown("**Triệu chứng:**")
+                    symptoms = disease_data['symptoms']
+                    if isinstance(symptoms, list):
+                        for symptom in symptoms:
+                            st.markdown(f"• {symptom}")
+                    elif isinstance(symptoms, str):
+                        st.markdown(f"• {symptoms}")
             
             with col2:
-                if disease_data['page']:
+                if disease_data.get('page'):
                     st.info(f"📖 Xem thêm tại trang:\n**{disease_data['page']}**")
                 
-                st.success(f"""
-                **Phòng ngừa:**
-                
-                {disease_data['prevention']}
-                """)
+                if 'prevention' in disease_data:
+                    st.success(f"""
+                    **Phòng ngừa:**
+                    
+                    {disease_data['prevention']}
+                    """)
     
     # Prevention summary
     st.markdown("---")
