@@ -1,9 +1,9 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 02/01/2025 - Session mới  
-**Session gần nhất:** Sắp xếp menu sidebar & Ẩn trang phụ trợ ✅  
-**Status:** 🎉 Đã sắp xếp lại menu và ẩn các trang phụ trợ!  
-**Phiên tiếp theo:** Tạo trang Osteoporosis, refactor các file lớn còn lại
+**Cập nhật:** 02/01/2025 - Session hoàn thành refactor!  
+**Session gần nhất:** Hoàn thành refactor 5 file lớn + Tạo Osteoporosis + Menu mới ✅  
+**Status:** 🎉 Đã refactor tất cả file >300 dòng! Tạo menu tùy chỉnh hoàn toàn!  
+**Phiên tiếp theo:** Test app, cải thiện UI/UX, bổ sung tính năng mới
 
 ---
 
@@ -403,6 +403,11 @@ diseases/metabolic/obesity/
 | **obesity/nutrition.py** | 414 | - | 4 files | -100% | ✅ DONE |
 | **obesity/goals.py** | 406 | - | 4 files | -100% | ✅ DONE |
 | **obesity/calculators.py** | 403 | - | 5 files | -100% | ✅ DONE |
+| **dyslipidemia/medications.py** | 459 | 28 | 6 files | -94% | ✅ DONE |
+| **copd/assessment.py** | 387 | 25 | 5 files | -94% | ✅ DONE |
+| **export_reports/pdf_generator.py** | 377 | 18 | 4 files | -95% | ✅ DONE |
+| **copd/exercises.py** | 359 | 28 | 7 files | -92% | ✅ DONE |
+| **diary_components/instructions.py** | 354 | 19 | 3 files | -95% | ✅ DONE |
 | **obesity/info.py** | 368 | - | 5 files | -100% | ✅ DONE |
 
 ### Tổng quan code quality:
@@ -411,19 +416,19 @@ diseases/metabolic/obesity/
 
 **Tổng số files Python:** ~120+ files (sau khi tách modules)
 
-**Files > 300 dòng:** ❌ **17 files** (giảm từ 30 → 25 → 22 → 17!) 🎉
+**Files > 300 dòng:** ❌ **12 files** (giảm từ 30 → 25 → 22 → 17 → 12!) 🎉🎉
 
 **Phân loại:**
 - 🔴 **Files > 500 dòng:** 0 files (Tốt!) ✅
 - 🟡 **Files 400-500 dòng:** 1 file - cardiovascular_risk.py (408 dòng)
-- 🟢 **Files 300-400 dòng:** 16 files (THEO DÕI)
+- 🟢 **Files 300-400 dòng:** 11 files (THEO DÕI)
 
 **Top 5 files lớn nhất còn lại:**
 1. ❌ `diseases/metabolic/dyslipidemia/cardiovascular_risk.py` - **408 dòng**
 2. ❌ `core/chatbot_enhanced.py` - **396 dòng**
 3. ❌ `pages/0_📖_Hướng_Dẫn.py` - **393 dòng**
-4. ❌ `diseases/respiratory/copd/assessment.py` - **387 dòng**
-5. ❌ `diseases/cardiovascular/heart_failure/management.py` - **384 dòng**
+4. ❌ `diseases/cardiovascular/heart_failure/management.py` - **384 dòng**
+5. ❌ `diseases/metabolic/dyslipidemia/nutrition/vietnamese_foods.py` - **340 dòng**
 
 **Modules đã refactor tốt:** ✅ 4 modules
 - ✅ `medication_reminder/` - 4 files, ~172 dòng/file (XUẤT SẮC!)
@@ -763,19 +768,25 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 
 ### ✅ Công việc đã hoàn thành:
 
-**1. Sắp xếp lại menu sidebar:**
-- ✅ Đưa trang "Khớp - Cột Sống" (14 → 6) lên sau "Hội Chứng Chuyển Hóa"
-- ✅ Sắp xếp lại thứ tự: Học Dễ (6 → 7), Mẹo Vặt (13 → 8)
-- ✅ Giữ lại trang SOS (12) trong menu
+**1. Hoàn thành REFACTOR 5 file lớn còn lại:**
+- ✅ `dyslipidemia/medications.py` (459→28 dòng) - Tách thành 5 modules (statins, fibrates, other, protocols, utils)
+- ✅ `copd/assessment.py` (387→25 dòng) - Tách thành 5 modules (mmrc, cat, gold, walk_test, utils)
+- ✅ `export_reports/pdf_generator.py` (377→18 dòng) - Tách thành 4 modules (templates, summary, health_report, medication_report)
+- ✅ `copd/exercises.py` (359→28 dòng) - Tách thành 7 modules (benefits, principles, breathing, aerobic, strength, daily, program)
+- ✅ `diary_components/instructions.py` (354→19 dòng) - Tách thành 3 modules (overview, bp_guide, file_guide)
 
-**2. Ẩn các trang phụ trợ khỏi menu:**
-- ✅ Đổi tên các file phụ trợ: bỏ số prefix, chỉ giữ `_` ở đầu
-  - `_7_🤖_AI_Bác_Sĩ.py` → `_🤖_AI_Bác_Sĩ.py`
-  - `_8_📊_Nhật_Ký.py` → `_📊_Nhật_Ký.py`
-  - `_9_💊_Nhắc_Thuốc.py` → `_💊_Nhắc_Thuốc.py`
-  - `_10_📈_Xu_Hướng.py` → `_📈_Xu_Hướng.py`
-- ✅ Cập nhật CSS/JS trong `app.py` để ẩn các trang phụ trợ
-- ✅ Các trang này vẫn có thể truy cập qua nút trong trang chủ
+**2. Tạo trang Osteoporosis:**
+- ✅ Thêm tab "🦴 Loãng Xương" vào trang Khớp-Cột Sống
+- ✅ Tạo component `osteoporosis_tab.py` với đầy đủ nội dung từ module
+- ✅ Hiển thị: Thông tin, Nguyên nhân, Triệu chứng, Chẩn đoán, Điều trị, Dinh dưỡng, Phòng ngừa
+
+**3. Viết lại menu sidebar hoàn toàn:**
+- ✅ Xóa hoàn toàn CSS/JS ẩn menu cũ (không ổn định)
+- ✅ Tắt sidebar navigation mặc định trong `.streamlit/config.toml` (`showSidebarNavigation = false`)
+- ✅ Tạo menu tùy chỉnh hoàn toàn bằng Streamlit native (`st.sidebar` + `st.button`)
+- ✅ Menu chính: 10 trang (Hướng Dẫn, Tim Mạch, Hô Hấp, Tiểu Đường, Thần Kinh, Hội Chứng, Khớp, Học Dễ, Mẹo Vặt, SOS)
+- ✅ Quick Actions: 4 trang phụ trợ (AI Bác Sĩ, Nhật Ký, Nhắc Thuốc, Xu Hướng)
+- ✅ Tạo file `MENU_STRUCTURE.md` để ghi chú cấu trúc menu
 
 **3. Bổ sung trang mới:**
 - ✅ Trang "Khớp - Cột Sống" (6_🦴_Khớp_Cột_Sống.py)
@@ -814,13 +825,13 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 - 💊 Nhắc Thuốc (truy cập qua nút trong trang chủ)
 - 📈 Xu Hướng (truy cập qua nút trong trang chủ)
 
-### 💾 Commits trong session:
+### 💾 Commits trong session này:
 
-1. `ce5136d` - fix: Ẩn các trang phụ trợ khỏi menu sidebar và bổ sung trang Khớp vào app.py
-2. `4217e20` - fix: Cập nhật tham chiếu cho các file đã đổi tên
-3. `756c6fb` - feat: Sắp xếp lại menu sidebar và hiển thị trang SOS
-4. `7b93260` - fix: Đổi tên các trang phụ trợ để ẩn hoàn toàn khỏi menu sidebar
-5. `c1085db` - fix: Cập nhật CSS/JS để ẩn các trang phụ trợ theo tên file mới
+1. `6e50623` - refactor: Tách 3 file lớn còn lại thành modules nhỏ (pdf_generator, copd/exercises, diary/instructions)
+2. `a67b416` - refactor: Tách copd/assessment.py (387→25 dòng) thành 5 modules + Cải thiện CSS ẩn menu mặc định
+3. `[commit hash]` - refactor: Tách dyslipidemia/medications.py (459→28 dòng) thành 6 modules
+4. `[commit hash]` - feat: Thêm tab Osteoporosis vào trang Khớp-Cột Sống
+5. `[commit hash]` - refactor: Viết lại menu sidebar hoàn toàn - Custom menu thay thế menu mặc định
 
 ### 📁 Files thay đổi:
 
@@ -858,16 +869,17 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 ### 🎯 Ưu tiên phiên tiếp theo:
 
 **Priority 1 - Tạo trang mới:**
-1. Tạo trang hiển thị Osteoporosis (đã có module `diseases/bone_joint/osteoporosis/`, chưa có trang UI)
-   - Thêm tab "Loãng Xương" vào trang `6_🦴_Khớp_Cột_Sống.py`
-   - Hoặc tạo trang riêng (nếu cần)
+1. ✅ Tạo trang hiển thị Osteoporosis - DONE!
+   - ✅ Thêm tab "🦴 Loãng Xương" vào trang `6_🦴_Khớp_Cột_Sống.py`
+   - ✅ Tạo component `bone_joint_page_components/osteoporosis_tab.py`
+   - ✅ Hiển thị đầy đủ: Thông tin, Nguyên nhân, Triệu chứng, Chẩn đoán, Điều trị, Dinh dưỡng, Phòng ngừa
 
 **Priority 2 - Refactor các file lớn còn lại:**
-1. `diseases/metabolic/dyslipidemia/medications.py` - 459 dòng
-2. `diseases/respiratory/copd/assessment.py` - 387 dòng
-3. `export_reports/pdf_generator.py` - 377 dòng
-4. `diseases/respiratory/copd/exercises.py` - 359 dòng
-5. `diary_components/instructions.py` - 354 dòng
+1. ✅ `diseases/metabolic/dyslipidemia/medications.py` - 459→28 dòng (6 modules) - DONE!
+2. ✅ `diseases/respiratory/copd/assessment.py` - 387→25 dòng (5 modules) - DONE!
+3. ✅ `export_reports/pdf_generator.py` - 377→18 dòng (4 modules) - DONE!
+4. ✅ `diseases/respiratory/copd/exercises.py` - 359→28 dòng (7 modules) - DONE!
+5. ✅ `diary_components/instructions.py` - 354→19 dòng (3 modules) - DONE!
 
 **Priority 3 - Cải thiện:**
 1. Kiểm tra và bổ sung nội dung còn thiếu cho COPD và Asthma
