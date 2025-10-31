@@ -21,17 +21,20 @@ from .info import (
     HEALTH_RISKS,
     CAUSES,
     PREVENTION,
-    RELATED_DISEASES
+    RELATED_DISEASES,
+    WEIGHT_LOSS_BENEFITS
 )
 
-from .calculators import (
+from .calculator import (
     calculate_bmi,
     calculate_tdee,
     calculate_whr,
     calculate_body_fat_percentage,
     calculate_ideal_weight,
     get_bmi_category,
-    get_weight_loss_timeline
+    get_weight_loss_timeline,
+    calculate_calories_deficit,
+    get_milestone_benefits
 )
 
 from .nutrition import (
@@ -40,7 +43,8 @@ from .nutrition import (
     calculate_daily_calories,
     get_meal_plan,
     get_nutrition_tips,
-    find_food_calories
+    find_food_calories,
+    calculate_meal_calories
 )
 
 from .exercise import (
@@ -48,7 +52,9 @@ from .exercise import (
     EXERCISE_LEVELS,
     calculate_calories_burned,
     get_exercise_plan,
-    get_safe_exercise_tips
+    get_safe_exercise_tips,
+    get_exercise_by_location,
+    get_food_equivalents
 )
 
 from .goals import (
@@ -57,7 +63,11 @@ from .goals import (
     get_milestones,
     get_motivation_message,
     get_weekly_tips,
-    get_daily_affirmations
+    get_daily_affirmations,
+    calculate_bmi_goal,
+    get_milestone_benefits,
+    get_celebration,
+    get_goal_recommendation
 )
 
 __all__ = [
@@ -68,6 +78,7 @@ __all__ = [
     'CAUSES',
     'PREVENTION',
     'RELATED_DISEASES',
+    'WEIGHT_LOSS_BENEFITS',
     
     # Calculators
     'calculate_bmi',
@@ -77,6 +88,8 @@ __all__ = [
     'calculate_ideal_weight',
     'get_bmi_category',
     'get_weight_loss_timeline',
+    'calculate_calories_deficit',
+    'get_milestone_benefits',
     
     # Nutrition
     'VIETNAMESE_FOODS',
@@ -85,6 +98,7 @@ __all__ = [
     'get_meal_plan',
     'get_nutrition_tips',
     'find_food_calories',
+    'calculate_meal_calories',
     
     # Exercise
     'EXERCISES_CALORIES',
@@ -92,6 +106,8 @@ __all__ = [
     'calculate_calories_burned',
     'get_exercise_plan',
     'get_safe_exercise_tips',
+    'get_exercise_by_location',
+    'get_food_equivalents',
     
     # Goals
     'create_weight_loss_goal',
@@ -100,5 +116,8 @@ __all__ = [
     'get_motivation_message',
     'get_weekly_tips',
     'get_daily_affirmations',
+    'calculate_bmi_goal',
+    'get_celebration',
+    'get_goal_recommendation',
 ]
 

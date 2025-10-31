@@ -1,13 +1,9 @@
 """
-Goals & Motivation - Mục tiêu & Động lực
-========================================
-
-Đặt mục tiêu giảm cân, theo dõi tiến trình, động viên
+Goal Calculators - Tính toán mục tiêu giảm cân
 """
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from datetime import datetime, timedelta
-import random
 
 
 def create_weight_loss_goal(
@@ -28,6 +24,9 @@ def create_weight_loss_goal(
     Returns:
         Dict với goal details
     """
+    from .milestones import get_milestone_benefits
+    from .motivation import get_goal_recommendation
+    
     if current_weight <= target_weight:
         return {
             "error": "Cân nặng mục tiêu phải nhỏ hơn cân nặng hiện tại"
@@ -106,6 +105,8 @@ def calculate_progress(
     Returns:
         Dict với progress details
     """
+    from .motivation import get_motivation_message
+    
     start_weight = goal["current_weight"]
     target_weight = goal["target_weight"]
     total_loss_needed = start_weight - target_weight
@@ -190,189 +191,6 @@ def calculate_progress(
     }
 
 
-def get_milestones(current_weight: float, target_weight: float) -> List[Dict]:
-    """
-    Tạo danh sách milestones
-    
-    Args:
-        current_weight: Cân nặng hiện tại
-        target_weight: Cân nặng mục tiêu
-    
-    Returns:
-        List of milestone dicts
-    """
-    total_loss = current_weight - target_weight
-    milestones = []
-    
-    for pct in [5, 10, 15, 20, 25]:
-        loss_kg = current_weight * (pct / 100)
-        milestone_weight = current_weight - loss_kg
-        
-        if milestone_weight >= target_weight:
-            milestones.append({
-                "percentage": pct,
-                "weight": round(milestone_weight, 1),
-                "loss_kg": round(loss_kg, 1),
-                "benefits": get_milestone_benefits(pct),
-                "celebration": get_celebration(pct)
-            })
-    
-    return milestones
-
-
-def get_milestone_benefits(percentage: int) -> List[str]:
-    """Lợi ích khi đạt mốc giảm cân"""
-    benefits = {
-        5: [
-            "✅ Giảm đường huyết rõ rệt",
-            "✅ Giảm huyết áp 5-10 mmHg",
-            "✅ Giảm triglyceride 20-30%",
-            "✅ Cải thiện chất lượng ngủ",
-            "✅ Tăng năng lượng"
-        ],
-        10: [
-            "🎯 Giảm nguy cơ tiểu đường 50%",
-            "🎯 Giảm huyết áp 10-20 mmHg",
-            "🎯 Cải thiện lipid máu đáng kể",
-            "🎯 Giảm đau khớp gối rõ rệt",
-            "🎯 Tăng sức khỏe tim mạch",
-            "🎯 Cải thiện tự tin, tâm lý"
-        ],
-        15: [
-            "🏆 Đảo ngược tiền tiểu đường",
-            "🏆 Có thể ngừng thuốc huyết áp (theo bác sĩ)",
-            "🏆 Cải thiện đáng kể sức khỏe tim mạch",
-            "🏆 Giảm size quần áo 2-3 size",
-            "🏆 Tăng tuổi thọ 2-5 năm",
-            "🏆 Cải thiện sức khỏe tình dục"
-        ],
-        20: [
-            "👑 Sức khỏe tuyệt vời",
-            "👑 Đảo ngược hầu hết biến chứng",
-            "👑 Giảm nguy cơ ung thư",
-            "👑 Chất lượng cuộc sống cao",
-            "👑 Trẻ hóa 5-10 tuổi",
-            "👑 Tự tin hoàn toàn"
-        ],
-        25: [
-            "⭐ Hoàn hảo!",
-            "⭐ Thành tích đáng tự hào",
-            "⭐ Cảm hứng cho người khác",
-            "⭐ Sống khỏe, sống vui"
-        ]
-    }
-    return benefits.get(percentage, ["Tiếp tục phát huy!"])
-
-
-def get_celebration(percentage: int) -> str:
-    """Lời chúc mừng khi đạt mốc"""
-    celebrations = {
-        5: "🎈 Bước đầu thành công! Tự thưởng cho mình đi!",
-        10: "🎉 Đã giảm 10%! Thật tuyệt vời!",
-        15: "🎊 15% rồi! Bạn là nguồn cảm hứng!",
-        20: "🏅 20%! Thành tích phi thường!",
-        25: "👑 25%! Bạn là nhà vô địch!"
-    }
-    return celebrations.get(percentage, "🌟 Tiếp tục nào!")
-
-
-def get_motivation_message(status: str = None, progress_pct: float = 0) -> str:
-    """
-    Lấy câu động viên
-    
-    Args:
-        status: Status của tiến trình
-        progress_pct: Phần trăm hoàn thành
-    
-    Returns:
-        Motivational message
-    """
-    if status == "completed":
-        messages = [
-            "🎉 Chúc mừng! Bạn đã hoàn thành mục tiêu! Tự hào về bản thân nhé!",
-            "👑 Xuất sắc! Bạn đã chứng minh sức mạnh của ý chí!",
-            "⭐ Thật tuyệt vời! Giờ hãy duy trì thành quả này!"
-        ]
-    elif progress_pct >= 75:
-        messages = [
-            "💪 Sắp đến đích rồi! Đừng bỏ cuộc bây giờ!",
-            "🔥 Bạn làm được! Chỉ còn chút nữa thôi!",
-            "⚡ Tiếp tục phấn đấu! Victory is near!"
-        ]
-    elif progress_pct >= 50:
-        messages = [
-            "👍 Đã đi được nửa đường! Bạn rất giỏi!",
-            "🌟 Tốt lắm! Momentum đang ở bên bạn!",
-            "💫 Cứ giữ nhịp này! Bạn sẽ thành công!"
-        ]
-    elif progress_pct >= 25:
-        messages = [
-            "✊ Đã có tiến bộ! Từng bước nhỏ, thành quả lớn!",
-            "🌱 Đang trên đường đúng! Kiên trì là chìa khóa!",
-            "💚 Bạn làm rất tốt! Hãy tin vào quá trình!"
-        ]
-    elif progress_pct > 0:
-        messages = [
-            "🚀 Khởi đầu tốt! Every journey begins with a single step!",
-            "🌻 Bước đầu thành công! Tiếp tục nào!",
-            "💙 Bạn đã bắt đầu - đó là điều quan trọng nhất!"
-        ]
-    else:
-        messages = [
-            "💪 Hãy bắt đầu hôm nay! Bạn làm được!",
-            "🔥 Đừng trì hoãn! Hành trình ngàn dặm bắt đầu từ bước chân đầu tiên!",
-            "⭐ Tin vào bản thân! Hãy bắt đầu ngay bây giờ!"
-        ]
-    
-    return random.choice(messages)
-
-
-def get_goal_recommendation(weekly_loss: float) -> str:
-    """Khuyến nghị về tốc độ giảm cân"""
-    if weekly_loss < 0.3:
-        return "⚠️ Quá chậm - có thể tăng cường thêm tập luyện"
-    elif weekly_loss <= 0.5:
-        return "✅ Tốc độ AN TOÀN và BỀN VỮNG - Phù hợp người già"
-    elif weekly_loss <= 0.75:
-        return "✅ Tốc độ TỐT - Cân bằng giữa hiệu quả và an toàn"
-    elif weekly_loss <= 1.0:
-        return "⚠️ Tốc độ NHANH - Cần giám sát sức khỏe, đảm bảo dinh dưỡng"
-    else:
-        return "🚫 QUÁ NHANH - Nguy hiểm! Nên giảm xuống 0.5-1kg/tuần"
-
-
-def get_weekly_tips() -> List[str]:
-    """Tips động viên hàng tuần"""
-    return [
-        "📸 Chụp ảnh tiến trình mỗi tuần - Bạn sẽ thấy sự khác biệt!",
-        "📝 Ghi nhật ký ăn uống - Viết ra để kiểm soát tốt hơn!",
-        "👥 Tìm bạn đồng hành - Cùng nhau vượt qua khó khăn!",
-        "🎯 Đặt mục tiêu nhỏ mỗi tuần - Dễ đạt, dễ tạo động lực!",
-        "🎁 Tự thưởng khi đạt mốc - Nhưng không phải bằng đồ ăn nhé!",
-        "💪 Nhớ rằng: Progress > Perfection!",
-        "🌟 Mỗi ngày tốt hơn 1% = 1 năm tốt hơn 3,700%!",
-        "🔥 Thất bại là một phần của thành công - Đừng bỏ cuộc!",
-        "💚 Yêu bản thân, chăm sóc sức khỏe - Đó là đầu tư tốt nhất!",
-        "🌈 Hãy tập trung vào cảm giác khỏe mạnh, không chỉ con số!"
-    ]
-
-
-def get_daily_affirmations() -> List[str]:
-    """Lời khẳng định tích cực hàng ngày"""
-    return [
-        "💪 Hôm nay tôi chọn sức khỏe",
-        "🌟 Tôi đang trở nên khỏe mạnh hơn mỗi ngày",
-        "✨ Cơ thể tôi xứng đáng được chăm sóc tốt nhất",
-        "🎯 Tôi có khả năng đạt mục tiêu của mình",
-        "💚 Tôi yêu và tôn trọng cơ thể mình",
-        "🔥 Tôi mạnh mẽ hơn tôi nghĩ",
-        "🌈 Mỗi bước nhỏ đều quan trọng",
-        "⭐ Tôi xứng đáng có một cuộc sống khỏe mạnh",
-        "💫 Tôi kiên trì và không bỏ cuộc",
-        "🌻 Tôi chọn tiến bộ, không phải hoàn hảo"
-    ]
-
-
 def calculate_bmi_goal(height_cm: float, target_bmi: float = 22.0) -> Dict:
     """
     Tính cân nặng mục tiêu dựa trên BMI
@@ -404,3 +222,5 @@ def calculate_bmi_goal(height_cm: float, target_bmi: float = 22.0) -> Dict:
         "note": "Chuẩn Việt Nam/Châu Á: BMI 18.5-23.0 là khỏe mạnh"
     }
 
+
+__all__ = ['create_weight_loss_goal', 'calculate_progress', 'calculate_bmi_goal']
