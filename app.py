@@ -81,14 +81,59 @@ with st.sidebar:
 # Áp dụng CSS tùy chỉnh
 st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
-# CSS để ẩn sidebar navigation mặc định của Streamlit (nếu vẫn hiển thị)
+# CSS để ẨN HOÀN TOÀN sidebar navigation mặc định của Streamlit
 hide_default_nav_css = """
 <style>
-    /* Ẩn hoàn toàn sidebar navigation mặc định của Streamlit */
-    nav[data-testid="stSidebarNav"] {
+    /* Ẩn hoàn toàn sidebar navigation mặc định - PHẢI ẨN TRƯỚC KHI HIỂN THỊ MENU MỚI */
+    nav[data-testid="stSidebarNav"],
+    nav[data-testid="stSidebarNav"] *,
+    section[data-testid="stSidebarNav"] {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* Đảm bảo sidebar container không bị ảnh hưởng */
+    section[data-testid="stSidebar"] {
+        display: block !important;
     }
 </style>
+
+<script>
+    // JavaScript để ẩn menu mặc định - chạy ngay lập tức
+    (function() {
+        function hideDefaultNav() {
+            const navs = document.querySelectorAll('nav[data-testid="stSidebarNav"], section[data-testid="stSidebarNav"]');
+            navs.forEach(nav => {
+                nav.style.display = 'none';
+                nav.style.visibility = 'hidden';
+                nav.style.opacity = '0';
+                nav.style.height = '0';
+                nav.style.width = '0';
+            });
+        }
+        
+        // Chạy ngay
+        hideDefaultNav();
+        
+        // Chạy lại sau khi DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hideDefaultNav);
+        }
+        
+        // Chạy lại sau khi Streamlit render
+        const observer = new MutationObserver(hideDefaultNav);
+        if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true });
+        }
+        
+        // Chạy định kỳ (fallback)
+        setInterval(hideDefaultNav, 100);
+    })();
+</script>
 """
 st.markdown(hide_default_nav_css, unsafe_allow_html=True)
 
