@@ -45,13 +45,61 @@ with tab1:
                         st.divider()
     
     # Triệu chứng
-    with st.expander("🩺 Triệu chứng COPD"):
+    with st.expander("🩺 Triệu chứng COPD", expanded=True):
         if hasattr(copd, 'SYMPTOMS') and copd.SYMPTOMS:
-            for symptom_key, symptom_info in copd.SYMPTOMS.items():
-                if isinstance(symptom_info, dict):
-                    st.markdown(f"**{symptom_info.get('name', symptom_key)}:**")
-                    st.caption(symptom_info.get('description', ''))
-                    st.divider()
+            symptoms_dict = copd.SYMPTOMS
+            
+            # 1. Triệu chứng chính
+            if "main_symptoms" in symptoms_dict:
+                main = symptoms_dict["main_symptoms"]
+                st.subheader(f"{main.get('title', '🔍 Triệu Chứng Chính')}")
+                if "symptoms" in main:
+                    for symptom in main["symptoms"]:
+                        if isinstance(symptom, dict):
+                            st.markdown(f"### {symptom.get('icon', '')} {symptom.get('name', '')}")
+                            if "details" in symptom:
+                                for detail in symptom["details"]:
+                                    st.markdown(f"- {detail}")
+                            if "progression" in symptom:
+                                st.info(f"💡 {symptom['progression']}")
+                            if "note" in symptom:
+                                st.caption(f"⚠️ {symptom['note']}")
+                            st.divider()
+            
+            # 2. Dấu hiệu sớm
+            if "early_warning_signs" in symptoms_dict:
+                early = symptoms_dict["early_warning_signs"]
+                st.subheader(f"{early.get('title', '⚠️ Dấu Hiệu Sớm')}")
+                if "signs" in early:
+                    for sign in early["signs"]:
+                        st.markdown(f"- {sign}")
+                if "action" in early:
+                    st.warning(early["action"])
+                st.divider()
+            
+            # 3. Triệu chứng nặng
+            if "severe_symptoms" in symptoms_dict:
+                severe = symptoms_dict["severe_symptoms"]
+                st.error(f"### {severe.get('title', '🚨 Triệu Chứng NẶNG')}")
+                if "symptoms" in severe:
+                    for symptom in severe["symptoms"]:
+                        st.markdown(f"- {symptom}")
+                if "action" in severe:
+                    st.error(f"**{severe['action']}**")
+                st.divider()
+            
+            # 4. Yếu tố kích phát đợt cấp
+            if "exacerbation_triggers" in symptoms_dict:
+                triggers = symptoms_dict["exacerbation_triggers"]
+                st.subheader(f"{triggers.get('title', '🔥 Yếu Tố Kích Phát')}")
+                if "triggers" in triggers:
+                    st.markdown("**Các yếu tố khiến bệnh nặng lên:**")
+                    for trigger in triggers["triggers"]:
+                        st.markdown(f"- {trigger}")
+                if "prevention" in triggers:
+                    st.success("**Cách phòng ngừa:**")
+                    for prev in triggers["prevention"]:
+                        st.markdown(f"- {prev}")
     
     # Điều trị
     with st.expander("💊 Điều trị COPD"):
@@ -115,15 +163,92 @@ with tab2:
                         st.divider()
     
     # Triệu chứng
-    with st.expander("🩺 Triệu chứng hen suyễn"):
+    with st.expander("🩺 Triệu chứng hen suyễn", expanded=True):
         if hasattr(asthma, 'SYMPTOMS') and asthma.SYMPTOMS:
-            symptoms = asthma.SYMPTOMS
-            if isinstance(symptoms, dict):
-                for symptom_key, symptom_info in symptoms.items():
-                    if isinstance(symptom_info, dict):
-                        st.markdown(f"**{symptom_info.get('name', symptom_key)}:**")
-                        st.caption(symptom_info.get('description', ''))
-                        st.divider()
+            symptoms_dict = asthma.SYMPTOMS
+            
+            # 1. Triệu chứng chính
+            if "main_symptoms" in symptoms_dict:
+                main = symptoms_dict["main_symptoms"]
+                st.subheader(f"{main.get('title', '🔍 Triệu Chứng Chính')}")
+                if "symptoms" in main:
+                    for symptom in main["symptoms"]:
+                        if isinstance(symptom, dict):
+                            st.markdown(f"### {symptom.get('icon', '')} {symptom.get('name', '')}")
+                            if "description" in symptom:
+                                st.markdown(f"*{symptom['description']}*")
+                            if "characteristics" in symptom:
+                                st.markdown("**Đặc điểm:**")
+                                for char in symptom["characteristics"]:
+                                    st.markdown(f"- {char}")
+                            if "details" in symptom:
+                                st.markdown("**Chi tiết:**")
+                                for detail in symptom["details"]:
+                                    st.markdown(f"- {detail}")
+                            if "patterns" in symptom:
+                                st.markdown("**Kiểu ho:**")
+                                for pattern in symptom["patterns"]:
+                                    st.markdown(f"- {pattern}")
+                            if "feelings" in symptom:
+                                st.markdown("**Cảm giác:**")
+                                for feeling in symptom["feelings"]:
+                                    st.markdown(f"- {feeling}")
+                            if "key" in symptom:
+                                st.success(symptom["key"])
+                            if "note" in symptom:
+                                st.info(symptom["note"])
+                            if "common_mistake" in symptom:
+                                st.warning(f"⚠️ {symptom['common_mistake']}")
+                            st.divider()
+            
+            # 2. Khi nào hay hen
+            if "timing_patterns" in symptoms_dict:
+                timing = symptoms_dict["timing_patterns"]
+                st.subheader(f"{timing.get('title', '⏰ Khi Nào Hay Hen?')}")
+                if "patterns" in timing:
+                    for pattern in timing["patterns"]:
+                        if isinstance(pattern, dict):
+                            st.markdown(f"**{pattern.get('time', '')}**")
+                            if "reason" in pattern:
+                                st.caption(f"Lý do: {pattern['reason']}")
+                            if "examples" in pattern:
+                                st.markdown("Ví dụ:")
+                                for ex in pattern["examples"]:
+                                    st.markdown(f"- {ex}")
+                            if "triggers" in pattern:
+                                st.markdown("Yếu tố:")
+                                for trigger in pattern["triggers"]:
+                                    st.markdown(f"- {trigger}")
+                            if "tip" in pattern:
+                                st.info(f"💡 {pattern['tip']}")
+                            if "note" in pattern:
+                                st.caption(pattern["note"])
+                            st.divider()
+            
+            # 3. Cơn hen nặng
+            if "severe_attack_signs" in symptoms_dict:
+                severe = symptoms_dict["severe_attack_signs"]
+                st.error(f"### {severe.get('title', '🚨 Cơn Hen NẶNG')}")
+                if "danger_signs" in severe:
+                    for sign in severe["danger_signs"]:
+                        st.markdown(f"- {sign}")
+                if "action" in severe:
+                    st.error(f"**{severe['action']}**")
+                if "while_waiting" in severe:
+                    st.warning("**Trong lúc chờ xe cấp cứu:**")
+                    for step in severe["while_waiting"]:
+                        st.markdown(f"- {step}")
+                st.divider()
+            
+            # 4. Triệu chứng ở trẻ em
+            if "children_specific" in symptoms_dict:
+                children = symptoms_dict["children_specific"]
+                st.subheader(f"{children.get('title', '👶 Triệu Chứng Ở Trẻ Em')}")
+                if "signs" in children:
+                    for sign in children["signs"]:
+                        st.markdown(f"- {sign}")
+                if "note" in children:
+                    st.warning(children["note"])
     
     # Yếu tố kích phát
     with st.expander("⚠️ Yếu tố kích phát"):
