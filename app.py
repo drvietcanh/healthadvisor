@@ -174,6 +174,29 @@ with col4:
     if st.button("➡️ Vào trang Thần Kinh", key="neuro", use_container_width=True):
         st.switch_page("pages/4_🧠_Thần_Kinh.py")
 
+# Thêm hàng mới cho Khớp - Cột sống
+st.markdown("---")
+st.markdown("## 🏥 Chuyên khoa khác:")
+
+col_a, col_b, col_c = st.columns(3)
+
+with col_a:
+    st.markdown("""
+    <div class="disease-card">
+        <h3>🦴 Khớp - Cột Sống</h3>
+        <p>Thoái hóa khớp, viêm khớp, đau lưng, gút</p>
+        <ul style="text-align: left;">
+            <li>Thoái hóa khớp gối, háng</li>
+            <li>Viêm khớp dạng thấp</li>
+            <li>Đau thắt lưng, thoát vị đĩa đệm</li>
+            <li>Bệnh Gút</li>
+            <li>Bài tập cho khớp</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    if st.button("➡️ Vào trang Khớp - Cột sống", key="joint", use_container_width=True):
+        st.switch_page("pages/14_🦴_Khớp_Cột_Sống.py")
+
 # Trang học dễ
 st.markdown("---")
 st.markdown("## 🎓 Học Y Khoa Siêu Dễ!")
