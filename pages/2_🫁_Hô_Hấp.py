@@ -102,19 +102,58 @@ with tab1:
                         st.markdown(f"- {prev}")
     
     # Điều trị
-    with st.expander("💊 Điều trị COPD"):
+    with st.expander("💊 Điều trị COPD", expanded=True):
         st.markdown("### Nguyên tắc điều trị")
         if hasattr(copd, 'TREATMENT_PRINCIPLES') and copd.TREATMENT_PRINCIPLES:
             principles = copd.TREATMENT_PRINCIPLES
             if isinstance(principles, dict):
                 st.markdown(principles.get("overview", ""))
         
-        st.markdown("### Thuốc giãn phế quản")
+        # Thuốc giãn phế quản - Chi tiết
         if hasattr(copd, 'BRONCHODILATORS') and copd.BRONCHODILATORS:
-            for med_key, med_info in list(copd.BRONCHODILATORS.items())[:3]:
-                if isinstance(med_info, dict):
-                    st.markdown(f"**{med_info.get('name', med_key)}**")
-                    st.caption(med_info.get('description', ''))
+            st.markdown("### Thuốc giãn phế quản")
+            bronchodilators = copd.BRONCHODILATORS
+            st.markdown(bronchodilators.get("simple_explanation", ""))
+            
+            # Thuốc ngắn hạn
+            if "short_acting" in bronchodilators:
+                st.markdown("#### ⚡ Thuốc Ngắn Hạn (Dùng KHI CẦN)")
+                short = bronchodilators["short_acting"]
+                st.info(f"**{short.get('name', '')}** - {short.get('use', '')}")
+                
+                if "saba" in short:
+                    saba = short["saba"]
+                    st.markdown(f"**{saba.get('name', '')}:**")
+                    if "examples_vietnam" in saba:
+                        for ex in saba["examples_vietnam"][:2]:
+                            st.markdown(f"- **{ex.get('name', '')}** ({ex.get('brand', '')})")
+                            st.caption(f"  → Liều: {ex.get('dose', '')} | Tác dụng: {ex.get('onset', '')} - {ex.get('duration', '')}")
+                            st.caption(f"  → Giá: {ex.get('price', '')}")
+                
+                if "when_to_use" in short:
+                    st.markdown("**Khi nào dùng:**")
+                    for when in short["when_to_use"][:4]:
+                        st.markdown(f"- {when}")
+                if "warning" in short:
+                    st.warning(short["warning"])
+                st.divider()
+            
+            # Thuốc dài hạn
+            if "long_acting" in bronchodilators:
+                st.markdown("#### 🛡️ Thuốc Dài Hạn (Dùng HÀNG NGÀY)")
+                long_act = bronchodilators["long_acting"]
+                st.info(f"**{long_act.get('name', '')}** - {long_act.get('use', '')}")
+                
+                if "lama" in long_act:
+                    lama = long_act["lama"]
+                    st.markdown(f"**{lama.get('name', '')}:**")
+                    if "examples_vietnam" in lama:
+                        for ex in lama["examples_vietnam"][:2]:
+                            st.markdown(f"- **{ex.get('name', '')}** ({ex.get('brand', '')})")
+                            st.caption(f"  → Liều: {ex.get('dose', '')} | Tác dụng: {ex.get('duration', '')}")
+                            st.caption(f"  → Giá: {ex.get('price', '')}")
+                            if ex.get('note'):
+                                st.success(f"💡 {ex['note']}")
     
     # Vận động và tập luyện
     with st.expander("🏃 Vận động & Tập luyện"):
@@ -127,10 +166,32 @@ with tab1:
         if hasattr(copd, 'BREATHING_TECHNIQUES') and copd.BREATHING_TECHNIQUES:
             techniques = copd.BREATHING_TECHNIQUES
             if isinstance(techniques, dict):
-                for tech_key, tech_info in list(techniques.items())[:2]:
-                    if isinstance(tech_info, dict):
-                        st.markdown(f"**{tech_info.get('name', tech_key)}**")
-                        st.caption(tech_info.get('description', ''))
+                # Thở môi
+                if "pursed_lip" in techniques:
+                    tech = techniques["pursed_lip"]
+                    st.markdown(f"**{tech.get('name', 'Thở Môi')}**")
+                    st.caption(tech.get('when', ''))
+                    if "how" in tech:
+                        st.markdown("**Cách tập:**")
+                        for step in tech["how"][:5]:
+                            st.markdown(f"- {step}")
+                    if "benefit" in tech:
+                        st.success("**Lợi ích:** " + " | ".join(tech["benefit"][:3]))
+                    st.caption(f"💡 {tech.get('practice', '')}")
+                    st.divider()
+                
+                # Thở bụng
+                if "diaphragmatic_breathing" in techniques:
+                    tech = techniques["diaphragmatic_breathing"]
+                    st.markdown(f"**{tech.get('name', 'Thở Bụng')}**")
+                    st.caption(tech.get('when', ''))
+                    if "how" in tech:
+                        st.markdown("**Cách tập:**")
+                        for step in tech["how"][:5]:
+                            st.markdown(f"- {step}")
+                    if "benefit" in tech:
+                        st.success("**Lợi ích:** " + " | ".join(tech["benefit"][:3]))
+                    st.caption(f"💡 {tech.get('practice', '')}")
     
     # Quản lý COPD
     with st.expander("🛡️ Quản lý COPD", expanded=True):
@@ -343,26 +404,94 @@ with tab2:
                     st.warning(children["note"])
     
     # Yếu tố kích phát
-    with st.expander("⚠️ Yếu tố kích phát"):
+    with st.expander("⚠️ Yếu tố kích phát", expanded=True):
         if hasattr(asthma, 'TRIGGERS') and asthma.TRIGGERS:
             triggers = asthma.TRIGGERS
-            if isinstance(triggers, dict):
-                for trigger_key, trigger_info in list(triggers.items())[:5]:
-                    if isinstance(trigger_info, dict):
-                        st.markdown(f"**{trigger_info.get('name', trigger_key)}**")
-                        st.caption(trigger_info.get('description', ''))
+            st.markdown(f"### {triggers.get('title', 'Yếu tố kích phát')}")
+            st.info(triggers.get('description', ''))
+            
+            if "allergens" in triggers:
+                allergens = triggers["allergens"]
+                st.markdown(f"#### {allergens.get('name', 'Dị Nguyên')}")
+                if "items" in allergens:
+                    for item in allergens["items"][:3]:
+                        st.markdown(f"**{item.get('trigger', '')}**")
+                        if "how_to_avoid" in item:
+                            st.markdown("**Cách tránh:**")
+                            for method in item["how_to_avoid"][:3]:
+                                st.markdown(f"- {method}")
+                        st.divider()
+            
+            if "irritants" in triggers:
+                irritants = triggers["irritants"]
+                st.markdown(f"#### {irritants.get('name', 'Chất Kích Thích')}")
+                if "items" in irritants:
+                    for item in irritants["items"][:3]:
+                        st.markdown(f"**{item.get('trigger', '')}**")
+                        if item.get('danger'):
+                            st.error(item['danger'])
+                        if "how_to_avoid" in item:
+                            st.markdown("**Cách tránh:**")
+                            for method in item["how_to_avoid"][:2]:
+                                st.markdown(f"- {method}")
+                        if item.get('action'):
+                            st.warning(item['action'])
+                        st.divider()
+            
+            if "weather" in triggers:
+                weather = triggers["weather"]
+                st.markdown(f"#### {weather.get('name', 'Thời Tiết')}")
+                if "triggers" in weather:
+                    for trigger in weather["triggers"][:2]:
+                        st.markdown(f"**{trigger.get('condition', '')}**")
+                        if trigger.get('when'):
+                            st.caption(f"Khi: {trigger['when']}")
+                        if "how_to_avoid" in trigger:
+                            st.markdown("**Cách tránh:**")
+                            for method in trigger["how_to_avoid"][:2]:
+                                st.markdown(f"- {method}")
                         st.divider()
     
     # Phân loại mức độ
-    with st.expander("📊 Phân loại mức độ hen suyễn"):
+    with st.expander("📊 Phân loại mức độ hen suyễn", expanded=True):
         if hasattr(asthma, 'SEVERITY_CLASSIFICATION') and asthma.SEVERITY_CLASSIFICATION:
             severity = asthma.SEVERITY_CLASSIFICATION
-            if isinstance(severity, dict):
-                for severity_key, severity_info in severity.items():
-                    if isinstance(severity_info, dict):
-                        st.markdown(f"**{severity_info.get('name', severity_key)}**")
-                        st.caption(severity_info.get('description', ''))
-                        st.divider()
+            st.markdown(f"### {severity.get('title', 'Phân Loại Mức Độ Hen')}")
+            
+            if "intermittent" in severity:
+                s = severity["intermittent"]
+                st.markdown(f"#### {s.get('icon', '🟢')} {s.get('name', '')}")
+                st.markdown(f"**Tần suất triệu chứng:** {s.get('symptoms_frequency', '')}")
+                st.markdown(f"**Ban đêm:** {s.get('nighttime', '')}")
+                st.markdown(f"**Ảnh hưởng:** {s.get('daily_life', '')}")
+                st.caption(f"💡 Ví dụ: {s.get('example', '')}")
+                st.divider()
+            
+            if "mild_persistent" in severity:
+                s = severity["mild_persistent"]
+                st.markdown(f"#### {s.get('icon', '🟡')} {s.get('name', '')}")
+                st.markdown(f"**Tần suất triệu chứng:** {s.get('symptoms_frequency', '')}")
+                st.markdown(f"**Ban đêm:** {s.get('nighttime', '')}")
+                st.markdown(f"**Ảnh hưởng:** {s.get('daily_life', '')}")
+                st.caption(f"💡 Ví dụ: {s.get('example', '')}")
+                st.divider()
+            
+            if "moderate_persistent" in severity:
+                s = severity["moderate_persistent"]
+                st.markdown(f"#### {s.get('icon', '🟠')} {s.get('name', '')}")
+                st.markdown(f"**Tần suất triệu chứng:** {s.get('symptoms_frequency', '')}")
+                st.markdown(f"**Ban đêm:** {s.get('nighttime', '')}")
+                st.markdown(f"**Ảnh hưởng:** {s.get('daily_life', '')}")
+                st.caption(f"💡 Ví dụ: {s.get('example', '')}")
+                st.divider()
+            
+            if "severe_persistent" in severity:
+                s = severity["severe_persistent"]
+                st.error(f"#### {s.get('icon', '🔴')} {s.get('name', '')}")
+                st.markdown(f"**Tần suất triệu chứng:** {s.get('symptoms_frequency', '')}")
+                st.markdown(f"**Ban đêm:** {s.get('nighttime', '')}")
+                st.markdown(f"**Ảnh hưởng:** {s.get('daily_life', '')}")
+                st.caption(f"💡 Ví dụ: {s.get('example', '')}")
     
     # Điều trị
     with st.expander("💊 Điều trị hen suyễn", expanded=True):
