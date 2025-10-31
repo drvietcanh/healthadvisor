@@ -131,6 +131,98 @@ with tab1:
                     if isinstance(tech_info, dict):
                         st.markdown(f"**{tech_info.get('name', tech_key)}**")
                         st.caption(tech_info.get('description', ''))
+    
+    # Quản lý COPD
+    with st.expander("🛡️ Quản lý COPD", expanded=True):
+        # Bỏ thuốc lá
+        if hasattr(copd, 'SMOKING_CESSATION') and copd.SMOKING_CESSATION:
+            st.subheader("🚭 Bỏ Thuốc Lá - QUAN TRỌNG NHẤT!")
+            smoking = copd.SMOKING_CESSATION
+            st.markdown(smoking.get("importance", ""))
+            if "benefits_timeline" in smoking:
+                st.markdown("### Lợi ích theo thời gian:")
+                for benefit_item in smoking["benefits_timeline"][:4]:
+                    if isinstance(benefit_item, dict):
+                        st.markdown(f"**{benefit_item.get('time', '')}:** {benefit_item.get('benefit', '')}")
+            if "methods" in smoking:
+                st.markdown("### Phương pháp bỏ thuốc:")
+                for method in smoking["methods"][:2]:
+                    if isinstance(method, dict):
+                        st.markdown(f"**{method.get('method', '')}** - Tỷ lệ thành công: {method.get('success_rate', '')}")
+            st.divider()
+        
+        # Phục hồi chức năng phổi
+        if hasattr(copd, 'PULMONARY_REHABILITATION') and copd.PULMONARY_REHABILITATION:
+            st.subheader("🏃 Phục Hồi Chức Năng Phổi")
+            rehab = copd.PULMONARY_REHABILITATION
+            st.markdown(rehab.get("what_is_it", ""))
+            if "benefits" in rehab:
+                st.markdown("### Lợi ích:")
+                for benefit in rehab["benefits"][:4]:
+                    st.markdown(f"- {benefit}")
+            if "home_program" in rehab:
+                home = rehab["home_program"]
+                st.markdown(f"### {home.get('title', 'Chương trình tại nhà:')}")
+                for exercise in home.get("exercises", [])[:4]:
+                    st.markdown(f"- {exercise}")
+            st.divider()
+        
+        # Dinh dưỡng
+        if hasattr(copd, 'NUTRITION') and copd.NUTRITION:
+            st.subheader("🍽️ Dinh Dưỡng")
+            nutrition = copd.NUTRITION
+            st.warning(nutrition.get("importance", ""))
+            if "recommendations" in nutrition:
+                for rec in nutrition["recommendations"][:3]:
+                    if isinstance(rec, dict):
+                        st.markdown(f"**{rec.get('principle', '')}**")
+                        st.caption(f"{rec.get('reason', '')}")
+                        st.markdown(f"→ {rec.get('advice', rec.get('target', ''))}")
+            st.divider()
+        
+        # Vắc-xin
+        if hasattr(copd, 'VACCINATION') and copd.VACCINATION:
+            st.subheader("💉 Vắc-xin Phòng Đợt Cấp")
+            vacc = copd.VACCINATION
+            if "influenza_vaccine" in vacc:
+                flu = vacc["influenza_vaccine"]
+                st.markdown(f"**{flu.get('name', '')}** - {flu.get('frequency', '')}")
+                st.caption(f"Lợi ích: {flu.get('benefit', '')} | Giá: {flu.get('price', '')}")
+            if "pneumococcal_vaccine" in vacc:
+                pneumo = vacc["pneumococcal_vaccine"]
+                st.markdown(f"**{pneumo.get('name', '')}**")
+                if "types" in pneumo:
+                    for vax_type in pneumo["types"][:1]:
+                        st.caption(f"{vax_type.get('type', '')} - Giá: {vax_type.get('price', '')}")
+            st.divider()
+        
+        # Xử trí đợt cấp
+        if hasattr(copd, 'EXACERBATION_MANAGEMENT') and copd.EXACERBATION_MANAGEMENT:
+            st.subheader("🚨 Xử Trí Đợt Cấp")
+            exac = copd.EXACERBATION_MANAGEMENT
+            st.markdown(exac.get("what_is_exacerbation", ""))
+            if "warning_signs" in exac:
+                st.markdown("### Dấu hiệu cảnh báo:")
+                for sign in exac["warning_signs"][:4]:
+                    st.markdown(f"- {sign}")
+            if "action_plan" in exac:
+                plan = exac["action_plan"]
+                for zone_key in ["green_zone", "yellow_zone", "red_zone"]:
+                    if zone_key in plan:
+                        zone = plan[zone_key]
+                        st.markdown(f"### {zone.get('name', '')}")
+                        if isinstance(zone.get("signs"), list):
+                            for sign in zone.get("signs", [])[:2]:
+                                st.markdown(f"- {sign}")
+                        else:
+                            st.markdown(f"- {zone.get('signs', '')}")
+                        if "action" in zone:
+                            if isinstance(zone["action"], list):
+                                for act in zone["action"][:3]:
+                                    st.markdown(f"- {act}")
+                            else:
+                                st.markdown(f"- {zone['action']}")
+                        st.divider()
 
 with tab2:
     st.header("🌬️ Hen Suyễn (Asthma)")
@@ -341,38 +433,119 @@ with tab2:
                     st.divider()
     
     # Quản lý
-    with st.expander("🛡️ Quản lý hen suyễn"):
+    with st.expander("🛡️ Quản lý hen suyễn", expanded=True):
+        # Phòng ngừa
         if hasattr(asthma, 'PREVENTION') and asthma.PREVENTION:
             prevention = asthma.PREVENTION
-            st.subheader("Phòng ngừa đợt cấp")
+            st.subheader("🛡️ Phòng Ngừa Đợt Cấp")
+            
             if "avoid_triggers" in prevention:
-                st.markdown("**Tránh yếu tố kích phát:**")
-                for method in prevention["avoid_triggers"].get("methods", [])[:5]:
+                triggers_section = prevention["avoid_triggers"]
+                st.markdown(f"**{triggers_section.get('title', 'Tránh Yếu Tố Kích Phát')}**")
+                for method in triggers_section.get("methods", [])[:6]:
                     st.markdown(f"- {method}")
+            
+            if "regular_medication" in prevention:
+                med_section = prevention["regular_medication"]
+                st.markdown(f"**{med_section.get('title', '')}**")
+                st.info(med_section.get("importance", ""))
+                if "tips" in med_section:
+                    for tip in med_section["tips"][:4]:
+                        st.markdown(f"- {tip}")
+            
+            if "vaccination" in prevention:
+                vacc_section = prevention["vaccination"]
+                st.markdown(f"### {vacc_section.get('title', '💉 Vắc-xin')}")
+                if "influenza" in vacc_section:
+                    flu = vacc_section["influenza"]
+                    st.markdown(f"**{flu.get('vaccine', '')}** - {flu.get('frequency', '')}")
+                    st.caption(f"Lợi ích: {flu.get('benefit', '')} | Giá: {flu.get('price', '')}")
             st.divider()
         
+        # Theo dõi tại nhà
+        if hasattr(asthma, 'HOME_MONITORING') and asthma.HOME_MONITORING:
+            st.subheader("📊 Theo Dõi Tại Nhà")
+            monitoring = asthma.HOME_MONITORING
+            
+            if "peak_flow_meter" in monitoring:
+                peak_flow = monitoring["peak_flow_meter"]
+                st.markdown(f"### {peak_flow.get('title', '')}")
+                st.caption(peak_flow.get('what_is_it', ''))
+                if "benefit" in peak_flow:
+                    st.markdown("**Lợi ích:**")
+                    for benefit in peak_flow["benefit"][:3]:
+                        st.markdown(f"- {benefit}")
+                if "zones" in peak_flow:
+                    zones = peak_flow["zones"]
+                    st.markdown("**Vùng:**")
+                    st.success(f"🟢 {zones.get('green', '')}")
+                    st.warning(f"🟡 {zones.get('yellow', '')}")
+                    st.error(f"🔴 {zones.get('red', '')}")
+            
+            if "symptom_diary" in monitoring:
+                diary = monitoring["symptom_diary"]
+                st.markdown(f"### {diary.get('title', '📝 Nhật Ký Triệu Chứng')}")
+                st.markdown("**Ghi lại:**")
+                for item in diary.get("what_to_record", [])[:5]:
+                    st.markdown(f"- {item}")
+            st.divider()
+        
+        # Lối sống
         if hasattr(asthma, 'LIFESTYLE') and asthma.LIFESTYLE:
             lifestyle = asthma.LIFESTYLE
+            st.subheader("🏃 Lối Sống Tốt Cho Hen Suyễn")
+            
             if "exercise" in lifestyle:
-                st.subheader("🏃 Tập thể dục")
                 ex = lifestyle["exercise"]
+                st.markdown(f"### {ex.get('title', 'Tập Thể Dục')}")
+                st.info(ex.get('benefit', ''))
                 st.markdown("**Khuyến nghị:**")
-                for rec in ex.get("recommended", [])[:3]:
+                for rec in ex.get("recommended", [])[:4]:
                     st.markdown(f"- {rec}")
+                st.markdown("**Lưu ý:**")
+                for prec in ex.get("precautions", [])[:3]:
+                    st.markdown(f"- {prec}")
+            
+            if "diet" in lifestyle:
+                diet = lifestyle["diet"]
+                st.markdown(f"### {diet.get('title', 'Chế Độ Ăn')}")
+                st.markdown("**Nên ăn:**")
+                for food in diet.get("foods_to_eat", [])[:4]:
+                    st.markdown(f"- {food}")
+                st.markdown("**Nên tránh:**")
+                for food in diet.get("foods_to_avoid", [])[:3]:
+                    st.markdown(f"- {food}")
             st.divider()
         
+        # Xử trí đợt cấp
         if hasattr(asthma, 'EXACERBATION_MANAGEMENT') and asthma.EXACERBATION_MANAGEMENT:
-            st.subheader("🚨 Xử trí đợt cấp")
+            st.subheader("🚨 Xử Trí Đợt Cấp")
             exac = asthma.EXACERBATION_MANAGEMENT
-            if "severe" in exac:
-                severe = exac["severe"]
-                st.error("### Cơn Hen Nặng")
+            
+            if "mild_moderate" in exac:
+                mild = exac["mild_moderate"]
+                st.markdown(f"### {mild.get('title', 'Cơn Hen Nhẹ → Vừa')}")
                 st.markdown("**Dấu hiệu:**")
-                for sign in severe.get("signs", [])[:3]:
+                for sign in mild.get("signs", [])[:4]:
                     st.markdown(f"- {sign}")
                 st.markdown("**Xử lý:**")
-                for action in severe.get("action", [])[:3]:
+                for action in mild.get("action", [])[:5]:
                     st.markdown(f"- {action}")
+                st.divider()
+            
+            if "severe" in exac:
+                severe = exac["severe"]
+                st.error(f"### {severe.get('title', 'Cơn Hen Nặng')}")
+                st.markdown("**Dấu hiệu:**")
+                for sign in severe.get("signs", [])[:5]:
+                    st.markdown(f"- {sign}")
+                st.markdown("**Xử lý:**")
+                for action in severe.get("action", [])[:6]:
+                    st.markdown(f"- {action}")
+                if "while_waiting" in severe:
+                    st.warning("**Trong lúc chờ xe cấp cứu:**")
+                    for step in severe["while_waiting"][:4]:
+                        st.markdown(f"- {step}")
 
 # Nút quay lại
 st.divider()
