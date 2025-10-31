@@ -1,9 +1,9 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
 **Cập nhật:** 31/10/2025 - Session mới  
-**Session gần nhất:** Refactor Obesity Module ✅  
-**Status:** 🎉 17/30 FILES REFACTORED (57%)!  
-**Phiên tiếp theo:** Tiếp tục refactor các modules còn lại
+**Session gần nhất:** Bổ sung bệnh mới & Hoàn thiện Hô Hấp ✅  
+**Status:** 🎉 Đã hoàn thiện nhiều tính năng mới!  
+**Phiên tiếp theo:** Refactor các file lớn còn lại, tạo trang Osteoporosis
 
 ---
 
@@ -646,7 +646,52 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 
 ---
 
-## 📋 TÓM TẮT SESSION MỚI (31/10/2025)
+## 📋 TÓM TẮT SESSION MỚI NHẤT
+
+### ✅ Công việc đã hoàn thành trong phiên này:
+
+**1. Bổ sung bệnh và tính năng mới:**
+- ✅ Tạo module bệnh Loãng xương (Osteoporosis) đầy đủ (8 files)
+- ✅ Bổ sung điều trị và quản lý Asthma (medications.py, management.py)
+- ✅ Thêm 5 sơ cứu cấp cứu mới: sốc phản vệ, co giật, hôn mê, ngộ độc rượu, gãy xương
+- ✅ Đổi tên trang "Cấp cứu" → "SOS" (10_🆘_SOS.py)
+
+**2. Hoàn thiện trang Hô Hấp:**
+- ✅ Bổ sung đầy đủ quản lý COPD: bỏ thuốc lá, phục hồi chức năng, dinh dưỡng, vắc-xin, đợt cấp
+- ✅ Bổ sung đầy đủ quản lý Hen: phòng ngừa, theo dõi tại nhà, lối sống, xử trí đợt cấp
+- ✅ Chi tiết thuốc COPD: SABA, SAMA, LABA, LAMA với liều, giá
+- ✅ Chi tiết kỹ thuật thở: thở môi, thở bụng với hướng dẫn từng bước
+- ✅ Chi tiết yếu tố kích phát hen: dị nguyên, chất kích thích, thời tiết
+- ✅ Chi tiết phân loại mức độ hen: 4 mức độ với đầy đủ thông tin
+
+**3. Refactoring:**
+- ✅ Tách pages/0_📖_Hướng_Dẫn.py (381 dòng) thành guide_components/ (4 files)
+
+### 📊 Commits trong phiên này:
+- `48e7e0a` - Bổ sung chi tiết đầy đủ cho trang Hô Hấp
+- `cbbf8fe` - Đổi tên trang Cấp cứu thành SOS, bổ sung quản lý COPD và Hen
+- `1807200` - Bổ sung đầy đủ quản lý COPD và Hen
+- `6329719` - Thêm module bệnh Loãng xương (Osteoporosis)
+- `4fc9da8` - Bổ sung điều trị Asthma, thêm sơ cứu, tách guide page
+
+### 🎯 Việc cần làm tiếp theo:
+
+**Priority 1 - Refactor các file lớn còn lại:**
+1. `export_reports/pdf_generator.py` - 373 dòng
+2. `diseases/respiratory/copd/assessment.py` - 369 dòng  
+3. `diseases/metabolic/dyslipidemia/medications.py` - 357 dòng
+4. `diary_components/instructions.py` - 347 dòng
+
+**Priority 2 - Tạo trang mới:**
+1. Tạo trang hiển thị Osteoporosis (đã có module, chưa có trang UI)
+
+**Priority 3 - Cải thiện:**
+1. Kiểm tra và bổ sung nội dung còn thiếu cho COPD và Asthma
+2. Tiếp tục bổ sung các sơ cứu cấp cứu khác nếu cần
+
+---
+
+## 📋 TÓM TẮT SESSION TRƯỚC (31/10/2025)
 
 ### ✅ Công việc đã hoàn thành:
 
@@ -709,5 +754,6 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 - HỎI USER trước khi làm bất cứ gì
 - Commit sau mỗi file refactor
 - Theo dõi tokens (>80k thì dừng lại)
-- Ưu tiên Dyslipidemia cardiovascular_risk.py (408 dòng)
+- Ưu tiên: Tạo trang Osteoporosis, sau đó refactor các file lớn còn lại
+- Kiểm tra các module COPD và Asthma đã đầy đủ chưa
 
