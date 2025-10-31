@@ -69,7 +69,7 @@ if df is None or len(df) == 0:
     """)
     
     if st.button("➡️ Đi đến Nhật Ký", use_container_width=True):
-        st.switch_page("pages/6_📊_Nhật_Ký.py")
+        st.switch_page("pages/8_📊_Nhật_Ký.py")
     
     st.stop()
 

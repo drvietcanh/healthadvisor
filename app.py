@@ -75,7 +75,7 @@ with col2:
 
 with col3:
     if st.button("🤖 Hỏi AI Bác Sĩ", use_container_width=True, type="primary"):
-        st.switch_page("pages/4_🤖_AI_Bác_Sĩ.py")
+        st.switch_page("pages/7_🤖_AI_Bác_Sĩ.py")
     st.caption("Chat với AI - Miễn phí!")
 
 st.divider()
@@ -191,7 +191,7 @@ with col_learn1:
     """, unsafe_allow_html=True)
 with col_learn2:
     if st.button("📚 Vào trang Học Dễ", key="learn", use_container_width=True, type="primary"):
-        st.switch_page("pages/5_🎓_Học_Dễ.py")
+        st.switch_page("pages/6_🎓_Học_Dễ.py")
 
 # Chatbot AI
 st.markdown("---")
@@ -208,7 +208,7 @@ with col_a:
     """)
 with col_b:
     if st.button("💬 Bắt đầu trò chuyện", key="chatbot", use_container_width=True, type="primary"):
-        st.switch_page("pages/4_🤖_AI_Bác_Sĩ.py")
+        st.switch_page("pages/7_🤖_AI_Bác_Sĩ.py")
 
 # Thông tin liên hệ cấp cứu
 st.markdown("---")
