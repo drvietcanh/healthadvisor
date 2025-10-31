@@ -28,7 +28,12 @@ def render_first_aid_tab():
         "electric_shock": "⚡ Điện giật",
         "spinal_injury": "🦴 Chấn thương cột sống cổ",
         "fall": "🤕 Ngã",
-        "chest_pain": "💔 Đau ngực"
+        "chest_pain": "💔 Đau ngực",
+        "anaphylaxis": "⚡ Sốc phản vệ",
+        "seizure": "⚡ Co giật (Động kinh)",
+        "unconscious": "😴 Hôn mê/Bất tỉnh",
+        "alcohol_poisoning": "🍺 Ngộ độc rượu",
+        "fracture": "🦴 Gãy xương"
     }
     
     selected = st.selectbox(

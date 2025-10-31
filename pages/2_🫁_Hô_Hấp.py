@@ -271,6 +271,108 @@ with tab2:
                         st.markdown(f"**{severity_info.get('name', severity_key)}**")
                         st.caption(severity_info.get('description', ''))
                         st.divider()
+    
+    # Điều trị
+    with st.expander("💊 Điều trị hen suyễn", expanded=True):
+        # Thuốc cắt cơn
+        if hasattr(asthma, 'QUICK_RELIEF_MEDICATIONS') and asthma.QUICK_RELIEF_MEDICATIONS:
+            st.subheader("⚡ Thuốc Cắt Cơn (Cấp Cứu)")
+            relief = asthma.QUICK_RELIEF_MEDICATIONS
+            st.markdown(relief.get("description", ""))
+            if "salbutamol" in relief:
+                sal = relief["salbutamol"]
+                st.markdown(f"### {sal.get('name', 'Salbutamol')}")
+                st.caption(sal.get('how_it_works', ''))
+                st.markdown(f"**Tác dụng:** {sal.get('onset', '')} - {sal.get('duration', '')}")
+                st.markdown("**Khi nào dùng:**")
+                for when in sal.get("when_to_use", []):
+                    st.markdown(f"- {when}")
+                st.markdown(f"**Liều:** {sal.get('dosage', {}).get('adult', '')}")
+                st.divider()
+        
+        # Thuốc kiểm soát
+        if hasattr(asthma, 'CONTROLLER_MEDICATIONS') and asthma.CONTROLLER_MEDICATIONS:
+            st.subheader("🛡️ Thuốc Kiểm Soát (Dự Phòng)")
+            controller = asthma.CONTROLLER_MEDICATIONS
+            st.markdown(controller.get("description", ""))
+            
+            if "ics" in controller:
+                ics = controller["ics"]
+                st.markdown(f"### {ics.get('title', '')}")
+                st.caption(ics.get('description', ''))
+                if "medications" in ics:
+                    for med in ics["medications"][:2]:
+                        st.markdown(f"**{med.get('name', '')}** - {med.get('dose', '')}")
+                        st.caption(f"Giá: {med.get('price', '')}")
+                st.markdown("**Tác dụng phụ:**")
+                for se in ics.get("side_effects", [])[:3]:
+                    st.markdown(f"- {se}")
+                st.divider()
+        
+        # Kỹ thuật xịt thuốc
+        if hasattr(asthma, 'INHALER_TECHNIQUE') and asthma.INHALER_TECHNIQUE:
+            st.subheader("🎯 Cách Xịt Thuốc Đúng")
+            technique = asthma.INHALER_TECHNIQUE
+            st.warning(technique.get("importance", ""))
+            if "steps" in technique:
+                for step_info in technique["steps"]:
+                    st.markdown(f"**Bước {step_info.get('step', '')}:** {step_info.get('action', '')}")
+                    if step_info.get('note'):
+                        st.caption(step_info['note'])
+            st.divider()
+        
+        # Kế hoạch hành động
+        if hasattr(asthma, 'ACTION_PLAN') and asthma.ACTION_PLAN:
+            st.subheader("📋 Kế Hoạch Hành Động")
+            plan = asthma.ACTION_PLAN
+            for zone_key in ["green_zone", "yellow_zone", "red_zone"]:
+                if zone_key in plan:
+                    zone = plan[zone_key]
+                    st.markdown(f"### {zone.get('name', '')}")
+                    if "signs" in zone:
+                        for sign in zone["signs"]:
+                            st.markdown(f"- {sign}")
+                    if "action" in zone:
+                        if isinstance(zone["action"], list):
+                            for act in zone["action"]:
+                                st.markdown(f"- {act}")
+                        else:
+                            st.markdown(f"- {zone['action']}")
+                    st.divider()
+    
+    # Quản lý
+    with st.expander("🛡️ Quản lý hen suyễn"):
+        if hasattr(asthma, 'PREVENTION') and asthma.PREVENTION:
+            prevention = asthma.PREVENTION
+            st.subheader("Phòng ngừa đợt cấp")
+            if "avoid_triggers" in prevention:
+                st.markdown("**Tránh yếu tố kích phát:**")
+                for method in prevention["avoid_triggers"].get("methods", [])[:5]:
+                    st.markdown(f"- {method}")
+            st.divider()
+        
+        if hasattr(asthma, 'LIFESTYLE') and asthma.LIFESTYLE:
+            lifestyle = asthma.LIFESTYLE
+            if "exercise" in lifestyle:
+                st.subheader("🏃 Tập thể dục")
+                ex = lifestyle["exercise"]
+                st.markdown("**Khuyến nghị:**")
+                for rec in ex.get("recommended", [])[:3]:
+                    st.markdown(f"- {rec}")
+            st.divider()
+        
+        if hasattr(asthma, 'EXACERBATION_MANAGEMENT') and asthma.EXACERBATION_MANAGEMENT:
+            st.subheader("🚨 Xử trí đợt cấp")
+            exac = asthma.EXACERBATION_MANAGEMENT
+            if "severe" in exac:
+                severe = exac["severe"]
+                st.error("### Cơn Hen Nặng")
+                st.markdown("**Dấu hiệu:**")
+                for sign in severe.get("signs", [])[:3]:
+                    st.markdown(f"- {sign}")
+                st.markdown("**Xử lý:**")
+                for action in severe.get("action", [])[:3]:
+                    st.markdown(f"- {action}")
 
 # Nút quay lại
 st.divider()
