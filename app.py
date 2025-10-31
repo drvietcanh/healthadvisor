@@ -42,6 +42,98 @@ with st.sidebar:
 # Áp dụng CSS tùy chỉnh
 st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
+# Ẩn các trang phụ trợ khỏi sidebar menu bằng CSS + JavaScript (giữ lại SOS)
+hide_sidebar_pages_css = """
+<style>
+    /* Ẩn các trang phụ trợ trong sidebar - Cách 1: theo href (KHÔNG ẩn SOS) */
+    nav[data-testid="stSidebarNav"] a[href*="_7_"],
+    nav[data-testid="stSidebarNav"] a[href*="_8_"],
+    nav[data-testid="stSidebarNav"] a[href*="_9_"],
+    nav[data-testid="stSidebarNav"] a[href*="_10_"],
+    nav[data-testid="stSidebarNav"] a[href*="AI_Bác_Sĩ"],
+    nav[data-testid="stSidebarNav"] a[href*="Nhật_Ký"],
+    nav[data-testid="stSidebarNav"] a[href*="Nhắc_Thuốc"],
+    nav[data-testid="stSidebarNav"] a[href*="Xu_Hướng"] {
+        display: none !important;
+    }
+    
+    /* Ẩn parent li element (KHÔNG ẩn SOS) */
+    nav[data-testid="stSidebarNav"] li:has(a[href*="_7_"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="_8_"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="_9_"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="_10_"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="AI_Bác_Sĩ"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="Nhật_Ký"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="Nhắc_Thuốc"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="Xu_Hướng"]) {
+        display: none !important;
+    }
+</style>
+
+<script>
+    // JavaScript để ẩn các trang phụ trợ - chạy sau khi DOM load (GIỮ LẠI SOS)
+    function hideSidebarPages() {
+        const nav = document.querySelector('[data-testid="stSidebarNav"]');
+        if (!nav) return;
+        
+        // Danh sách các pattern cần ẩn (KHÔNG bao gồm SOS)
+        const patternsToHide = [
+            '_7_', '_8_', '_9_', '_10_',
+            'AI_Bác_Sĩ', 'Nhật_Ký', 'Nhắc_Thuốc', 'Xu_Hướng'
+        ];
+        
+        // Tìm tất cả links trong sidebar
+        const links = nav.querySelectorAll('a');
+        links.forEach(link => {
+            const href = link.getAttribute('href') || '';
+            const text = link.textContent || '';
+            
+            // Bỏ qua nếu là trang SOS
+            if (href.includes('_12_') || href.includes('SOS')) {
+                return; // Giữ lại trang SOS
+            }
+            
+            // Kiểm tra nếu href chứa pattern cần ẩn
+            if (patternsToHide.some(pattern => href.includes(pattern))) {
+                // Ẩn link và parent li
+                link.style.display = 'none';
+                const parentLi = link.closest('li');
+                if (parentLi) {
+                    parentLi.style.display = 'none';
+                }
+            }
+            
+            // Kiểm tra theo text content (fallback) - KHÔNG ẩn Cấp Cứu
+            if (text.includes('5 AI Bác Sĩ') || 
+                text.includes('7 Nhật Ký') || 
+                text.includes('8 Nhắc Thuốc') || 
+                text.includes('9 Xu Hướng')) {
+                link.style.display = 'none';
+                const parentLi = link.closest('li');
+                if (parentLi) {
+                    parentLi.style.display = 'none';
+                }
+            }
+        });
+    }
+    
+    // Chạy ngay khi DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hideSidebarPages);
+    } else {
+        hideSidebarPages();
+    }
+    
+    // Chạy lại sau khi Streamlit render xong (MutationObserver)
+    const observer = new MutationObserver(hideSidebarPages);
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    // Chạy lại định kỳ (fallback)
+    setInterval(hideSidebarPages, 1000);
+</script>
+"""
+st.markdown(hide_sidebar_pages_css, unsafe_allow_html=True)
+
 # Header
 st.markdown('<div class="main-header">🏥 HealthAdvisor</div>', unsafe_allow_html=True)
 st.markdown(
@@ -195,7 +287,7 @@ with col_a:
     </div>
     """, unsafe_allow_html=True)
     if st.button("➡️ Vào trang Khớp - Cột sống", key="joint", use_container_width=True):
-        st.switch_page("pages/14_🦴_Khớp_Cột_Sống.py")
+        st.switch_page("pages/6_🦴_Khớp_Cột_Sống.py")
 
 # Trang học dễ
 st.markdown("---")
@@ -214,7 +306,7 @@ with col_learn1:
     """, unsafe_allow_html=True)
 with col_learn2:
     if st.button("📚 Vào trang Học Dễ", key="learn", use_container_width=True, type="primary"):
-        st.switch_page("pages/6_🎓_Học_Dễ.py")
+        st.switch_page("pages/7_🎓_Học_Dễ.py")
 
 # Chatbot AI
 st.markdown("---")
