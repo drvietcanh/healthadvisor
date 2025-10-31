@@ -7,13 +7,11 @@ font="sans serif"
 
 [client]
 showErrorDetails = true
+# Tắt sidebar navigation mặc định - Chúng ta tự quản lý menu bằng st.sidebar
+# Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
+showSidebarNavigation = false
 
 [server]
 maxUploadSize = 5
 enableXsrfProtection = true
 enableCORS = false
-
-# Tắt sidebar navigation mặc định - Chúng ta tự quản lý menu bằng st.sidebar
-# Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
-[client]
-showSidebarNavigation = false

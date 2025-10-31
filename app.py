@@ -82,59 +82,121 @@ with st.sidebar:
 st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
 # CSS để ẨN HOÀN TOÀN sidebar navigation mặc định của Streamlit
+# PHẢI ĐẶT TRƯỚC KHI RENDER NỘI DUNG KHÁC
 hide_default_nav_css = """
 <style>
-    /* Ẩn hoàn toàn sidebar navigation mặc định - PHẢI ẨN TRƯỚC KHI HIỂN THỊ MENU MỚI */
+    /* Ẩn HOÀN TOÀN sidebar navigation mặc định của Streamlit */
     nav[data-testid="stSidebarNav"],
     nav[data-testid="stSidebarNav"] *,
-    section[data-testid="stSidebarNav"] {
+    section[data-testid="stSidebarNav"],
+    div[data-testid="stSidebarNav"],
+    ul[data-testid="stSidebarNav"] {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
         height: 0 !important;
         width: 0 !important;
         overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
     }
     
-    /* Đảm bảo sidebar container không bị ảnh hưởng */
-    section[data-testid="stSidebar"] {
+    /* Ẩn search bar trong sidebar nav */
+    div[data-testid="stSidebarNav"] input,
+    div[data-testid="stSidebarNav"] button,
+    button[aria-label="View less"],
+    button[aria-label="View more"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
+    /* Đảm bảo sidebar container vẫn hiển thị */
+    section[data-testid="stSidebar"],
+    div[data-testid="stSidebar"] {
         display: block !important;
     }
 </style>
 
 <script>
-    // JavaScript để ẩn menu mặc định - chạy ngay lập tức
+    // JavaScript để ẩn menu mặc định - chạy ngay lập tức và liên tục
     (function() {
         function hideDefaultNav() {
-            const navs = document.querySelectorAll('nav[data-testid="stSidebarNav"], section[data-testid="stSidebarNav"]');
-            navs.forEach(nav => {
-                nav.style.display = 'none';
-                nav.style.visibility = 'hidden';
-                nav.style.opacity = '0';
-                nav.style.height = '0';
-                nav.style.width = '0';
+            // Tìm tất cả các selector có thể chứa menu mặc định
+            const selectors = [
+                'nav[data-testid="stSidebarNav"]',
+                'section[data-testid="stSidebarNav"]',
+                'div[data-testid="stSidebarNav"]',
+                'ul[data-testid="stSidebarNav"]',
+                '[class*="sidebar-nav"]',
+                '[id*="sidebar-nav"]'
+            ];
+            
+            selectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(el => {
+                    el.style.display = 'none';
+                    el.style.visibility = 'hidden';
+                    el.style.opacity = '0';
+                    el.style.height = '0';
+                    el.style.width = '0';
+                    el.style.position = 'absolute';
+                    el.style.left = '-9999px';
+                });
+            });
+            
+            // Ẩn search bar và nút view less/more
+            const searchBars = document.querySelectorAll('div[data-testid="stSidebarNav"] input, div[data-testid="stSidebarNav"] button');
+            searchBars.forEach(el => {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+            });
+            
+            // Ẩn tất cả nút view less/more
+            const buttons = document.querySelectorAll('button[aria-label*="View"], button[aria-label*="view"]');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes('View') || btn.getAttribute('aria-label')?.includes('View')) {
+                    btn.style.display = 'none';
+                    btn.style.visibility = 'hidden';
+                }
             });
         }
         
-        // Chạy ngay
-        hideDefaultNav();
+        // Chạy ngay lập tức
+        if (document.body) {
+            hideDefaultNav();
+        }
         
-        // Chạy lại sau khi DOM ready
+        // Chạy khi DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', hideDefaultNav);
+        } else {
+            hideDefaultNav();
         }
         
-        // Chạy lại sau khi Streamlit render
-        const observer = new MutationObserver(hideDefaultNav);
+        // MutationObserver để theo dõi thay đổi DOM
+        const observer = new MutationObserver(function(mutations) {
+            hideDefaultNav();
+        });
+        
+        // Bắt đầu observe
         if (document.body) {
-            observer.observe(document.body, { childList: true, subtree: true });
+            observer.observe(document.body, { 
+                childList: true, 
+                subtree: true,
+                attributes: true,
+                attributeFilter: ['style', 'class']
+            });
         }
         
-        // Chạy định kỳ (fallback)
-        setInterval(hideDefaultNav, 100);
+        // Fallback: chạy định kỳ
+        setInterval(hideDefaultNav, 50);
+        
+        // Chạy sau khi Streamlit load xong
+        window.addEventListener('load', hideDefaultNav);
     })();
 </script>
 """
+# PHẢI INJECT CSS TRƯỚC KHI RENDER NỘI DUNG KHÁC
 st.markdown(hide_default_nav_css, unsafe_allow_html=True)
 
 # Header
