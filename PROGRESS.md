@@ -425,11 +425,14 @@ diseases/metabolic/obesity/
 - ✅ `diary_components/` - 5 files, ~156 dòng/file (TỐT!)
 - ✅ `diabetes/nutrition/` - 3 files (REFACTORED)
 
-**Modules cần refactor:** ❌ 4 modules MỚI
-- ❌ `diseases/respiratory/copd/` - 4/5 files > 300 dòng
-- ❌ `diseases/respiratory/asthma/` - 1 file 425 dòng (cần mở rộng)
-- ❌ `diseases/metabolic/dyslipidemia/` - 5/10 files > 300 dòng
-- ❌ `diseases/metabolic/obesity/` - 5/6 files > 300 dòng
+**Modules cần refactor:** ❌ 3 modules MỚI
+- ❌ `diseases/metabolic/obesity/` - 5/6 files > 300 dòng (Priority cao nhất!)
+- ❌ `diseases/respiratory/copd/` - 3 files > 300 dòng (medications.py đã refactor)
+- ❌ `diseases/metabolic/dyslipidemia/` - 1-2 files > 300 dòng (đã refactor nhiều)
+
+**Modules đã refactor (mới):** ✅ 3 modules
+- ✅ `diseases/respiratory/asthma/` - 6 files, tất cả < 300 dòng
+- ✅ `health_trends/` - 4 files charts, tất cả < 300 dòng
 
 **Kết quả:**
 - ✅ **4 modules cũ đã refactor** - Dễ maintain
@@ -481,7 +484,6 @@ diseases/metabolic/obesity/
 - Dyslipidemia module (1-2 files > 300)
 
 **🟢 Priority 3 - THEO DÕI**:
-- health_trends/visualizer.py (419 dòng)
 - export_reports/pdf_generator.py (377 dòng)
 - Pages khác (3 files ~400 dòng)
 
