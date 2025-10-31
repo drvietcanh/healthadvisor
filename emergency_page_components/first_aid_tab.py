@@ -26,6 +26,7 @@ def render_first_aid_tab():
         "bleeding": "🩸 Chảy máu",
         "drowning": "🌊 Đuối nước",
         "electric_shock": "⚡ Điện giật",
+        "spinal_injury": "🦴 Chấn thương cột sống cổ",
         "fall": "🤕 Ngã",
         "chest_pain": "💔 Đau ngực"
     }
@@ -52,6 +53,11 @@ def render_first_aid_tab():
             st.markdown("### Các dấu hiệu khác:")
             for sign in guide['other_signs']:
                 st.markdown(f"- {sign}")
+        
+        if 'risk_situations' in guide:
+            st.warning(f"### {guide['risk_situations']['title']}")
+            for item in guide['risk_situations']['items']:
+                st.markdown(f"- {item}")
         
         st.divider()
         
