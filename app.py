@@ -68,6 +68,14 @@ hide_sidebar_pages_css = """
     nav[data-testid="stSidebarNav"] li:has(a[href*="_📈"]) {
         display: none !important;
     }
+    
+    /* Đảm bảo trang SOS (số 12) luôn hiển thị */
+    nav[data-testid="stSidebarNav"] a[href*="SOS"],
+    nav[data-testid="stSidebarNav"] a[href*="Cấp_Cứu"],
+    nav[data-testid="stSidebarNav"] li:has(a[href*="SOS"]),
+    nav[data-testid="stSidebarNav"] li:has(a[href*="Cấp_Cứu"]) {
+        display: block !important;
+    }
 </style>
 
 <script>
@@ -93,8 +101,18 @@ hide_sidebar_pages_css = """
             const href = link.getAttribute('href') || '';
             const text = link.textContent.trim() || '';
             
-            // Bỏ qua nếu là trang SOS
-            if (href.includes('SOS') || href.includes('Cấp_Cứu') || text.includes('Cấp Cứu') || text.includes('SOS')) {
+            // Đảm bảo trang SOS (số 12) luôn hiển thị
+            const isSOS = href.includes('SOS') || href.includes('Cấp_Cứu') || 
+                         text.includes('Cấp Cứu') || text.includes('SOS') ||
+                         text.match(/^12\s+/);
+            
+            if (isSOS) {
+                // Đảm bảo trang SOS hiển thị
+                link.style.display = '';
+                const parentLi = link.closest('li');
+                if (parentLi) {
+                    parentLi.style.display = '';
+                }
                 return; // Giữ lại trang SOS
             }
             
@@ -114,6 +132,16 @@ hide_sidebar_pages_css = """
             if (textMatch) {
                 const pageNumber = parseInt(textMatch[1]);
                 const pageName = textMatch[2];
+                
+                // Bỏ qua trang số 12 (SOS)
+                if (pageNumber === 12) {
+                    link.style.display = '';
+                    const parentLi = link.closest('li');
+                    if (parentLi) {
+                        parentLi.style.display = '';
+                    }
+                    return;
+                }
                 
                 // Ẩn nếu là số 5, 7, 8, 9 và tên khớp
                 if ([5, 7, 8, 9].includes(pageNumber)) {
