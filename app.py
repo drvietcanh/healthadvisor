@@ -70,7 +70,7 @@ with col1:
 
 with col2:
     if st.button("🩸 Kiểm tra Đường Huyết", use_container_width=True, type="primary"):
-        st.switch_page("pages/2_🩸_Tiểu_Đường.py")
+        st.switch_page("pages/3_🩸_Tiểu_Đường.py")
     st.caption("Chuyển đổi mmol/L ↔ mg/dL")
 
 with col3:

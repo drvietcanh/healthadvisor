@@ -192,9 +192,8 @@ with tab4:
     st.markdown(f"**{normal['name_vn']}:**")
     st.table({
         "Phân loại": ["Bình thường", "Tiền tiểu đường", "Tiểu đường"],
-        "mmol/L": [normal['normal']['mmol'], normal['prediabetes']['mmol'], normal['diabetes']['mmol']],
-        "mg/dL": [normal['normal']['mg'], normal['prediabetes']['mg'], normal['diabetes']['mg']],
-        "Trạng thái": [normal['normal']['status'], normal['prediabetes']['status'], normal['diabetes']['status']]
+        "mmol/L": [normal['normal_mmol'], normal['prediabetes_mmol'], normal['diabetes_mmol']],
+        "mg/dL": [normal['normal_mg'], normal['prediabetes_mg'], normal['diabetes_mg']]
     })
 
 # Nút quay lại
