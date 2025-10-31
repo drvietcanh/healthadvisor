@@ -193,7 +193,7 @@ def render_preventive_care():
         - **Cúm:** Mỗi năm 1 lần (trước mùa cúm)
         - **Viêm gan B:** 3 mũi (nếu chưa tiêm)
         - **Uốn ván:** Nhắc lại mỗi 10 năm
-        - **COVID-19:** Theo khuyến nghị y tế
+        - **Sởi - Quai bị - Rubella:** Nhắc lại nếu cần (theo chỉ định)
         
         **✅ Mẹo:**
         - Ghi chép lịch tiêm vào sổ y tế
