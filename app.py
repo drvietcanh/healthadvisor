@@ -167,7 +167,7 @@ with col2:
 
 with col3:
     if st.button("🤖 Hỏi AI Bác Sĩ", use_container_width=True, type="primary"):
-        st.switch_page("pages/_7_🤖_AI_Bác_Sĩ.py")
+        st.switch_page("pages/_🤖_AI_Bác_Sĩ.py")
     st.caption("Chat với AI - Miễn phí!")
 
 st.divider()
@@ -323,7 +323,7 @@ with col_a:
     """)
 with col_b:
     if st.button("💬 Bắt đầu trò chuyện", key="chatbot", use_container_width=True, type="primary"):
-        st.switch_page("pages/_7_🤖_AI_Bác_Sĩ.py")
+        st.switch_page("pages/_🤖_AI_Bác_Sĩ.py")
 
 # Thông tin liên hệ cấp cứu
 st.markdown("---")
