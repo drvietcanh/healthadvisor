@@ -45,7 +45,7 @@ st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_h
 # Ẩn các trang phụ trợ khỏi sidebar menu bằng CSS + JavaScript (giữ lại SOS)
 hide_sidebar_pages_css = """
 <style>
-    /* Ẩn các trang phụ trợ trong sidebar - Cập nhật pattern mới (không có số prefix) */
+    /* Ẩn các trang phụ trợ trong sidebar - Bắt theo số prefix và tên */
     nav[data-testid="stSidebarNav"] a[href*="AI_Bác_Sĩ"],
     nav[data-testid="stSidebarNav"] a[href*="Nhật_Ký"],
     nav[data-testid="stSidebarNav"] a[href*="Nhắc_Thuốc"],
@@ -76,26 +76,30 @@ hide_sidebar_pages_css = """
         const nav = document.querySelector('[data-testid="stSidebarNav"]');
         if (!nav) return;
         
-        // Danh sách các pattern cần ẩn (theo tên file mới - không có số prefix)
+        // Danh sách các pattern cần ẩn - bắt cả số prefix và tên
         const patternsToHide = [
             'AI_Bác_Sĩ', 'Nhật_Ký', 'Nhắc_Thuốc', 'Xu_Hướng',
             '_🤖', '_📊', '_💊', '_📈'
+        ];
+        
+        // Tên các trang cần ẩn (không phân biệt hoa thường)
+        const pageNamesToHide = [
+            'AI Bác Sĩ', 'Nhật Ký', 'Nhắc Thuốc', 'Xu Hướng'
         ];
         
         // Tìm tất cả links trong sidebar
         const links = nav.querySelectorAll('a');
         links.forEach(link => {
             const href = link.getAttribute('href') || '';
-            const text = link.textContent || '';
+            const text = link.textContent.trim() || '';
             
             // Bỏ qua nếu là trang SOS
             if (href.includes('SOS') || href.includes('Cấp_Cứu') || text.includes('Cấp Cứu') || text.includes('SOS')) {
                 return; // Giữ lại trang SOS
             }
             
-            // Kiểm tra nếu href chứa pattern cần ẩn
+            // Kiểm tra theo href pattern
             if (patternsToHide.some(pattern => href.includes(pattern))) {
-                // Ẩn link và parent li
                 link.style.display = 'none';
                 const parentLi = link.closest('li');
                 if (parentLi) {
@@ -104,12 +108,33 @@ hide_sidebar_pages_css = """
                 return;
             }
             
-            // Kiểm tra theo text content (fallback) - tìm số prefix + tên
-            if (text.match(/^[0-9]+\s+(AI Bác Sĩ|Nhật Ký|Nhắc Thuốc|Xu Hướng)/)) {
-                link.style.display = 'none';
-                const parentLi = link.closest('li');
-                if (parentLi) {
-                    parentLi.style.display = 'none';
+            // Kiểm tra theo text content - bắt số prefix 5, 7, 8, 9
+            // Pattern: "5 🤖 AI Bác Sĩ", "7 📊 Nhật Ký", etc.
+            const textMatch = text.match(/^([0-9]+)\s+(.+)$/);
+            if (textMatch) {
+                const pageNumber = parseInt(textMatch[1]);
+                const pageName = textMatch[2];
+                
+                // Ẩn nếu là số 5, 7, 8, 9 và tên khớp
+                if ([5, 7, 8, 9].includes(pageNumber)) {
+                    if (pageNamesToHide.some(name => pageName.includes(name) || name.includes(pageName.split(' ')[0]))) {
+                        link.style.display = 'none';
+                        const parentLi = link.closest('li');
+                        if (parentLi) {
+                            parentLi.style.display = 'none';
+                        }
+                        return;
+                    }
+                }
+                
+                // Ẩn nếu text chứa tên trang phụ trợ (bất kỳ số nào)
+                if (pageNamesToHide.some(name => text.includes(name))) {
+                    link.style.display = 'none';
+                    const parentLi = link.closest('li');
+                    if (parentLi) {
+                        parentLi.style.display = 'none';
+                    }
+                    return;
                 }
             }
         });
@@ -129,7 +154,7 @@ hide_sidebar_pages_css = """
     }
     
     // Chạy lại định kỳ (fallback) - tăng tần suất
-    setInterval(hideSidebarPages, 500);
+    setInterval(hideSidebarPages, 300);
     
     // Chạy khi sidebar được render
     window.addEventListener('load', hideSidebarPages);
