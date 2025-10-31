@@ -1,8 +1,38 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
 **Cập nhật:** 31/10/2025 - (Session mới nhất)  
-**Session gần nhất:** Refactor 9 Files - Phase 2 ✅  
-**Status:** 🎉 9/30 FILES REFACTORED (30%)!
+**Session gần nhất:** Refactor 12 Files - Phase 3 ✅  
+**Status:** 🎉 12/30 FILES REFACTORED (40%)!
+
+---
+
+## 🎯 CÁCH BẮT ĐẦU PHIÊN SAU
+
+**⚠️ QUAN TRỌNG - ĐỌC TRƯỚC KHI LÀM BẤT CỨ ĐIỀU GÌ:**
+
+1. **Đọc file này** (PROGRESS.md) - Hiểu tình trạng dự án
+   - Xem files đã refactor
+   - Xem files còn lại cần refactor
+   - Kiểm tra commits gần nhất
+
+2. **HỎI USER trước khi làm gì** - Đừng tự ý refactor!
+   - Hỏi xem user muốn làm gì
+   - Đợi user xác nhận trước khi bắt đầu
+   - Không tự ý chọn file để refactor
+
+3. **Commit thường xuyên** - Sau mỗi task
+   - Sau mỗi file refactor xong → commit ngay
+   - Message commit rõ ràng: "refactor: Tách file X (N→M dòng) thành Y modules"
+   - Không để quá nhiều thay đổi chưa commit
+
+4. **Push lên GitHub** - Đừng để quá nhiều commits local
+   - Sau 2-3 commits → đề nghị push
+   - Hoặc khi hoàn thành session → push
+
+5. **Theo dõi tokens** - Cảnh báo khi >80k
+   - Nếu tokens > 80k → đề nghị dừng lại
+   - Cập nhật tình trạng dự án vào PROGRESS.md
+   - Tóm tắt công việc đã làm
 
 ---
 
@@ -365,6 +395,9 @@ diseases/metabolic/obesity/
 | **glycemic.py** | 489 | 29 | 5 files | -94% | ✅ DONE |
 | **Cấp_Cứu.py** | 463 | 85 | 7 files | -82% | ✅ DONE |
 | **Tim_Mạch.py** | 446 | 45 | 6 files | -90% | ✅ DONE |
+| **asthma/info.py** | 425 | 26 | 6 files | -94% | ✅ DONE |
+| **copd/medications.py** | 421 | 28 | 6 files | -93% | ✅ DONE |
+| **health_trends/visualizer.py** | 419 | 37 | 4 files | -91% | ✅ DONE |
 
 ### Tổng quan code quality:
 
@@ -372,19 +405,19 @@ diseases/metabolic/obesity/
 
 **Tổng số files Python:** ~100+ files (sau khi tách modules)
 
-**Files > 300 dòng:** ❌ **25 files** (giảm từ 30 → 25!)
+**Files > 300 dòng:** ❌ **22 files** (giảm từ 30 → 25 → 22!)
 
 **Phân loại:**
 - 🔴 **Files > 500 dòng:** 9 files (NGHIÊM TRỌNG!)
-- 🟡 **Files 400-500 dòng:** 12 files (CẦN REFACTOR SỚM)
+- 🟡 **Files 400-500 dòng:** 9 files (CẦN REFACTOR SỚM) - Giảm từ 12 → 9!
 - 🟢 **Files 300-400 dòng:** 9 files (THEO DÕI)
 
 **Top 5 files lớn nhất còn lại:**
-1. ❌ `diseases/respiratory/asthma/info.py` - **425 dòng**
-2. ❌ `diseases/respiratory/copd/medications.py` - **421 dòng**
-3. ❌ `health_trends/visualizer.py` - **419 dòng**
-4. ❌ `diseases/metabolic/obesity/exercise.py` - **415 dòng**
-5. ❌ `diseases/metabolic/obesity/nutrition.py` - **414 dòng**
+1. ❌ `diseases/metabolic/obesity/exercise.py` - **415 dòng**
+2. ❌ `diseases/metabolic/obesity/nutrition.py` - **414 dòng**
+3. ❌ `diseases/metabolic/obesity/goals.py` - **406 dòng**
+4. ❌ `diseases/metabolic/obesity/calculators.py` - **403 dòng**
+5. ❌ `diseases/metabolic/obesity/info.py` - **368 dòng**
 
 **Modules đã refactor tốt:** ✅ 4 modules
 - ✅ `medication_reminder/` - 4 files, ~172 dòng/file (XUẤT SẮC!)
@@ -438,12 +471,14 @@ diseases/metabolic/obesity/
 7. ✅ `diseases/metabolic/diabetes/nutrition/glycemic.py` (489→29 dòng) → DONE!
 8. ✅ `pages/10_🚨_Cấp_Cứu.py` (463→85 dòng) → DONE!
 9. ✅ `pages/1_❤️_Tim_Mạch.py` (446→45 dòng) → DONE!
+10. ✅ `diseases/respiratory/asthma/info.py` (425→26 dòng) → DONE!
+11. ✅ `diseases/respiratory/copd/medications.py` (421→28 dòng) → DONE!
+12. ✅ `health_trends/visualizer.py` (419→37 dòng) → DONE!
 
 **Tiếp theo:**
-- Dyslipidemia module (5 files > 300)
-- Obesity module (5 files > 300)
-- COPD module (4 files > 300)
-- Asthma module (1 file 425 dòng)
+- Obesity module (5 files > 400 dòng) - Priority cao nhất!
+- COPD module (3 files còn lại > 300)
+- Dyslipidemia module (1-2 files > 300)
 
 **🟢 Priority 3 - THEO DÕI**:
 - health_trends/visualizer.py (419 dòng)
@@ -551,8 +586,11 @@ healthadvisor/
 ---
 
 **Last updated:** 31/10/2025 - (Session mới nhất)  
-**Session completed:** Refactor 9 Files - Phase 2 ✅  
+**Session completed:** Refactor 12 Files - Phase 3 ✅  
 **Latest commits (refactoring):**
+- `1ffb890` - refactor: Tách health_trends/visualizer.py (419→37 dòng) thành 4 modules
+- `1f8dd71` - refactor: Tách copd/medications.py (421→28 dòng) thành 6 modules
+- `02ecbba` - refactor: Tách asthma/info.py (425→26 dòng) thành 6 modules
 - `0409404` - refactor: Tách pages/1_❤️_Tim_Mạch.py (446→45 dòng) thành 5 components
 - `3bc64e2` - refactor: Tách glycemic.py (489→29 dòng) và Cấp_Cứu.py (463→85 dòng)
 - `590291c` - refactor: Tách cholesterol_foods.py (471→26 dòng)
@@ -576,20 +614,20 @@ healthadvisor/
 - ✅ Dyslipidemia Module - Rối loạn lipid máu
 - ✅ Obesity Module - Béo phì & quản lý cân nặng
 
-**✅ ĐÃ HOÀN THÀNH REFACTOR PHASE 1 & 2:**
-- ✅ 9 files lớn đã refactor thành 31+ modules nhỏ
+**✅ ĐÃ HOÀN THÀNH REFACTOR PHASE 1, 2 & 3:**
+- ✅ 12 files lớn đã refactor thành 40+ modules nhỏ
 - ✅ Tất cả modules mới < 300 dòng (tuân thủ chuẩn)
 - ✅ Dòng code giảm đáng kể (trung bình -85% cho mỗi file)
 - ✅ Commits đã push lên GitHub thành công
 
-**Modules mới tạo:**
-- ✅ `glycemic_index.py`, `glycemic_load_explanation.py`, `vietnamese_foods_gl.py`, `glycemic_tips.py`
-- ✅ `emergency_page_components/` (6 files)
-- ✅ `cardiovascular_page_components/` (5 files)
+**Modules mới tạo (Phase 3):**
+- ✅ `asthma/` - 6 files (basic_info, causes, symptoms, triggers, severity, __init__)
+- ✅ `copd/` - 6 files (treatment_principles, bronchodilators, corticosteroids, other_medications, oxygen_therapy, inhaler_technique)
+- ✅ `health_trends/` - 4 files (trend_charts, comparison_charts, weight_charts, calories_charts)
 
 **⚠️ CÒN LẠI:**
-- ❌ **25 files > 300 dòng** cần refactor (giảm từ 30 → 25)
-- 🟡 Ưu tiên tiếp theo: Asthma info (425 dòng), COPD medications (421 dòng), Visualizer (419 dòng)
+- ❌ **22 files > 300 dòng** cần refactor (giảm từ 30 → 25 → 22!)
+- 🟡 Ưu tiên tiếp theo: Obesity module (5 files > 400 dòng), COPD module (3 files > 300 dòng), Asthma medications (nếu có)
 
 **NEXT SESSION:**  
 Phiên sau tiếp tục refactor file tiếp theo. Đọc PROGRESS.md để biết tiến độ.
