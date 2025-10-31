@@ -1,9 +1,9 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 31/10/2025 - Session mới  
-**Session gần nhất:** Bổ sung bệnh mới & Hoàn thiện Hô Hấp ✅  
-**Status:** 🎉 Đã hoàn thiện nhiều tính năng mới!  
-**Phiên tiếp theo:** Refactor các file lớn còn lại, tạo trang Osteoporosis
+**Cập nhật:** 02/01/2025 - Session mới  
+**Session gần nhất:** Sắp xếp menu sidebar & Ẩn trang phụ trợ ✅  
+**Status:** 🎉 Đã sắp xếp lại menu và ẩn các trang phụ trợ!  
+**Phiên tiếp theo:** Tạo trang Osteoporosis, refactor các file lớn còn lại
 
 ---
 
@@ -756,4 +756,120 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 - Theo dõi tokens (>80k thì dừng lại)
 - Ưu tiên: Tạo trang Osteoporosis, sau đó refactor các file lớn còn lại
 - Kiểm tra các module COPD và Asthma đã đầy đủ chưa
+
+---
+
+## 📋 TÓM TẮT SESSION MỚI NHẤT (02/01/2025)
+
+### ✅ Công việc đã hoàn thành:
+
+**1. Sắp xếp lại menu sidebar:**
+- ✅ Đưa trang "Khớp - Cột Sống" (14 → 6) lên sau "Hội Chứng Chuyển Hóa"
+- ✅ Sắp xếp lại thứ tự: Học Dễ (6 → 7), Mẹo Vặt (13 → 8)
+- ✅ Giữ lại trang SOS (12) trong menu
+
+**2. Ẩn các trang phụ trợ khỏi menu:**
+- ✅ Đổi tên các file phụ trợ: bỏ số prefix, chỉ giữ `_` ở đầu
+  - `_7_🤖_AI_Bác_Sĩ.py` → `_🤖_AI_Bác_Sĩ.py`
+  - `_8_📊_Nhật_Ký.py` → `_📊_Nhật_Ký.py`
+  - `_9_💊_Nhắc_Thuốc.py` → `_💊_Nhắc_Thuốc.py`
+  - `_10_📈_Xu_Hướng.py` → `_📈_Xu_Hướng.py`
+- ✅ Cập nhật CSS/JS trong `app.py` để ẩn các trang phụ trợ
+- ✅ Các trang này vẫn có thể truy cập qua nút trong trang chủ
+
+**3. Bổ sung trang mới:**
+- ✅ Trang "Khớp - Cột Sống" (6_🦴_Khớp_Cột_Sống.py)
+  - Thoái hóa khớp, Viêm khớp dạng thấp
+  - Đau thắt lưng, Thoát vị đĩa đệm
+  - Bệnh Gút (có phần tăng acid uric chưa phải gút)
+  - Bài tập cho khớp
+- ✅ Trang "Mẹo Vặt" (8_💡_Mẹo_Vặt.py)
+  - Máy tính liều Paracetamol theo cân nặng
+  - Mẹo nhiệt độ cơ thể, cách đo, xử trí sốt
+  - Hướng dẫn uống thuốc & thức ăn
+  - Bài tập chung và riêng cho một số bệnh
+
+**4. Cập nhật nội dung:**
+- ✅ Bổ sung thuốc điều trị mỡ máu mới (PCSK9 inhibitors, Inclisiran, Bempedoic Acid)
+- ✅ Bổ sung thông tin về tăng acid uric chưa phải gút
+- ✅ Thêm cảnh báo quan trọng về Paracetamol + Rượu bia
+- ✅ Xóa thông tin tiêm chủng COVID-19 khỏi COPD
+
+### 📊 Thứ tự menu sidebar hiện tại:
+
+1. 📖 Hướng Dẫn (0)
+2. ❤️ Tim Mạch (1)
+3. 🫁 Hô Hấp (2)
+4. 🩸 Tiểu Đường (3)
+5. 🧠 Thần Kinh (4)
+6. ⚖️ Hội Chứng Chuyển Hóa (5)
+7. 🦴 Khớp - Cột Sống (6) ← Mới thêm
+8. 🎓 Học Dễ (7)
+9. 💡 Mẹo Vặt (8) ← Mới thêm
+10. 🆘 SOS (12)
+
+**Đã ẩn khỏi menu:**
+- 🤖 AI Bác Sĩ (truy cập qua nút trong trang chủ)
+- 📊 Nhật Ký (truy cập qua nút trong trang chủ)
+- 💊 Nhắc Thuốc (truy cập qua nút trong trang chủ)
+- 📈 Xu Hướng (truy cập qua nút trong trang chủ)
+
+### 💾 Commits trong session:
+
+1. `ce5136d` - fix: Ẩn các trang phụ trợ khỏi menu sidebar và bổ sung trang Khớp vào app.py
+2. `4217e20` - fix: Cập nhật tham chiếu cho các file đã đổi tên
+3. `756c6fb` - feat: Sắp xếp lại menu sidebar và hiển thị trang SOS
+4. `7b93260` - fix: Đổi tên các trang phụ trợ để ẩn hoàn toàn khỏi menu sidebar
+5. `c1085db` - fix: Cập nhật CSS/JS để ẩn các trang phụ trợ theo tên file mới
+
+### 📁 Files thay đổi:
+
+**Pages mới:**
+- `pages/6_🦴_Khớp_Cột_Sống.py`
+- `pages/8_💡_Mẹo_Vặt.py`
+- `pages/12_🆘_SOS.py` (hiển thị trong menu)
+
+**Pages đã đổi tên:**
+- `pages/_🤖_AI_Bác_Sĩ.py` (ẩn)
+- `pages/_📊_Nhật_Ký.py` (ẩn)
+- `pages/_💊_Nhắc_Thuốc.py` (ẩn)
+- `pages/_📈_Xu_Hướng.py` (ẩn)
+
+**Files cập nhật:**
+- `app.py` - CSS/JS ẩn trang phụ trợ, thêm nút Khớp-Cột Sống
+- `.streamlit/config.toml` - Comment về sidebar navigation
+
+**Modules mới:**
+- `health_tips/` - Module mẹo vặt y tế
+  - `paracetamol_calculator.py`
+  - `general_tips.py`
+  - `daily_tips.py`
+  - `exercise_guide.py`
+- `bone_joint_page_components/` - Components cho trang Khớp-Cột Sống
+  - `arthritis_tab.py`
+  - `spine_tab.py`
+  - `gout_tab.py`
+  - `exercises_tab.py`
+- `diseases/bone_joint/` - Module bệnh khớp và cột sống
+  - `arthritis/` - Thoái hóa khớp, Viêm khớp dạng thấp
+  - `spine/` - Đau lưng, Thoát vị đĩa đệm
+  - `gout/` - Bệnh Gút, Tăng acid uric
+
+### 🎯 Ưu tiên phiên tiếp theo:
+
+**Priority 1 - Tạo trang mới:**
+1. Tạo trang hiển thị Osteoporosis (đã có module `diseases/bone_joint/osteoporosis/`, chưa có trang UI)
+   - Thêm tab "Loãng Xương" vào trang `6_🦴_Khớp_Cột_Sống.py`
+   - Hoặc tạo trang riêng (nếu cần)
+
+**Priority 2 - Refactor các file lớn còn lại:**
+1. `diseases/metabolic/dyslipidemia/medications.py` - 459 dòng
+2. `diseases/respiratory/copd/assessment.py` - 387 dòng
+3. `export_reports/pdf_generator.py` - 377 dòng
+4. `diseases/respiratory/copd/exercises.py` - 359 dòng
+5. `diary_components/instructions.py` - 354 dòng
+
+**Priority 3 - Cải thiện:**
+1. Kiểm tra và bổ sung nội dung còn thiếu cho COPD và Asthma
+2. Test menu sidebar sau khi restart Streamlit (cần restart để CSS/JS có hiệu lực)
 
