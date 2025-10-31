@@ -14,7 +14,8 @@ from bone_joint_page_components import (
     render_back_pain_tab,
     render_herniated_disc_tab,
     render_gout_tab,
-    render_joint_exercises_tab
+    render_joint_exercises_tab,
+    render_osteoporosis_tab
 )
 from core.ui_config import get_custom_css
 
@@ -42,12 +43,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs cho các bệnh
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🦴 Thoái hóa khớp",
     "🔴 Viêm khớp dạng thấp",
     "🫁 Đau thắt lưng",
     "💔 Thoát vị đĩa đệm",
     "🦶 Bệnh Gút",
+    "🦴 Loãng Xương",
     "🏃 Bài tập khớp"
 ])
 
@@ -67,6 +69,9 @@ with tab5:
     render_gout_tab()
 
 with tab6:
+    render_osteoporosis_tab()
+
+with tab7:
     render_joint_exercises_tab()
 
 # Nút quay lại
