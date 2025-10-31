@@ -576,15 +576,20 @@ healthadvisor/
 - ✅ Dyslipidemia Module - Rối loạn lipid máu
 - ✅ Obesity Module - Béo phì & quản lý cân nặng
 
-**✅ ĐÃ HOÀN THÀNH REFACTOR PHASE 1:**
-- ✅ 6 files lớn nhất đã refactor thành 19 modules nhỏ
+**✅ ĐÃ HOÀN THÀNH REFACTOR PHASE 1 & 2:**
+- ✅ 9 files lớn đã refactor thành 31+ modules nhỏ
 - ✅ Tất cả modules mới < 300 dòng (tuân thủ chuẩn)
-- ✅ Dòng code giảm từ 3,579 → 276 (-92%)
+- ✅ Dòng code giảm đáng kể (trung bình -85% cho mỗi file)
 - ✅ Commits đã push lên GitHub thành công
 
+**Modules mới tạo:**
+- ✅ `glycemic_index.py`, `glycemic_load_explanation.py`, `vietnamese_foods_gl.py`, `glycemic_tips.py`
+- ✅ `emergency_page_components/` (6 files)
+- ✅ `cardiovascular_page_components/` (5 files)
+
 **⚠️ CÒN LẠI:**
-- ❌ **24 files > 300 dòng** cần refactor
-- 🟡 Ưu tiên tiếp theo: Glycemic.py (489 dòng), Visualizer (419 dòng)
+- ❌ **25 files > 300 dòng** cần refactor (giảm từ 30 → 25)
+- 🟡 Ưu tiên tiếp theo: Asthma info (425 dòng), COPD medications (421 dòng), Visualizer (419 dòng)
 
 **NEXT SESSION:**  
 Phiên sau tiếp tục refactor file tiếp theo. Đọc PROGRESS.md để biết tiến độ.
