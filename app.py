@@ -38,157 +38,59 @@ with st.sidebar:
         st.caption("☀️ Đang dùng chế độ sáng")
     
     st.divider()
+    
+    # Menu Navigation - Tùy chỉnh hoàn toàn
+    # Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
+    st.markdown("### 📂 Điều hướng")
+    
+    # Danh sách menu items (10 trang hiển thị)
+    menu_items = [
+        ("📖 Hướng Dẫn", "pages/0_📖_Hướng_Dẫn.py"),
+        ("❤️ Tim Mạch", "pages/1_❤️_Tim_Mạch.py"),
+        ("🫁 Hô Hấp", "pages/2_🫁_Hô_Hấp.py"),
+        ("🩸 Tiểu Đường", "pages/3_🩸_Tiểu_Đường.py"),
+        ("🧠 Thần Kinh", "pages/4_🧠_Thần_Kinh.py"),
+        ("⚖️ Hội Chứng Chuyển Hóa", "pages/5_⚖️_Hội_Chứng_Chuyển_Hóa.py"),
+        ("🦴 Khớp - Cột Sống", "pages/6_🦴_Khớp_Cột_Sống.py"),
+        ("🎓 Học Dễ", "pages/7_🎓_Học_Dễ.py"),
+        ("💡 Mẹo Vặt", "pages/8_💡_Mẹo_Vặt.py"),
+        ("🆘 SOS", "pages/12_🆘_SOS.py"),
+    ]
+    
+    # Hiển thị menu items
+    for label, page_path in menu_items:
+        if st.button(label, key=f"menu_{page_path}", use_container_width=True):
+            st.switch_page(page_path)
+    
+    st.divider()
+    
+    # Quick Actions - Các trang phụ trợ (ẩn khỏi menu chính)
+    st.markdown("### 🚀 Truy cập nhanh")
+    
+    quick_actions = [
+        ("🤖 AI Bác Sĩ", "pages/_🤖_AI_Bác_Sĩ.py"),
+        ("📊 Nhật Ký", "pages/_📊_Nhật_Ký.py"),
+        ("💊 Nhắc Thuốc", "pages/_💊_Nhắc_Thuốc.py"),
+        ("📈 Xu Hướng", "pages/_📈_Xu_Hướng.py"),
+    ]
+    
+    for label, page_path in quick_actions:
+        if st.button(label, key=f"quick_{page_path}", use_container_width=True):
+            st.switch_page(page_path)
 
 # Áp dụng CSS tùy chỉnh
 st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
 
-# Ẩn các trang phụ trợ khỏi sidebar menu bằng CSS + JavaScript (giữ lại SOS)
-hide_sidebar_pages_css = """
+# CSS để ẩn sidebar navigation mặc định của Streamlit (nếu vẫn hiển thị)
+hide_default_nav_css = """
 <style>
-    /* Ẩn các trang phụ trợ trong sidebar - Bắt theo số prefix và tên */
-    nav[data-testid="stSidebarNav"] a[href*="AI_Bác_Sĩ"],
-    nav[data-testid="stSidebarNav"] a[href*="Nhật_Ký"],
-    nav[data-testid="stSidebarNav"] a[href*="Nhắc_Thuốc"],
-    nav[data-testid="stSidebarNav"] a[href*="Xu_Hướng"],
-    nav[data-testid="stSidebarNav"] a[href*="_🤖"],
-    nav[data-testid="stSidebarNav"] a[href*="_📊"],
-    nav[data-testid="stSidebarNav"] a[href*="_💊"],
-    nav[data-testid="stSidebarNav"] a[href*="_📈"] {
+    /* Ẩn hoàn toàn sidebar navigation mặc định của Streamlit */
+    nav[data-testid="stSidebarNav"] {
         display: none !important;
-    }
-    
-    /* Ẩn parent li element (KHÔNG ẩn SOS) */
-    nav[data-testid="stSidebarNav"] li:has(a[href*="AI_Bác_Sĩ"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="Nhật_Ký"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="Nhắc_Thuốc"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="Xu_Hướng"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="_🤖"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="_📊"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="_💊"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="_📈"]) {
-        display: none !important;
-    }
-    
-    /* Đảm bảo trang SOS (số 12) luôn hiển thị */
-    nav[data-testid="stSidebarNav"] a[href*="SOS"],
-    nav[data-testid="stSidebarNav"] a[href*="Cấp_Cứu"],
-    nav[data-testid="stSidebarNav"] li:has(a[href*="SOS"]),
-    nav[data-testid="stSidebarNav"] li:has(a[href*="Cấp_Cứu"]) {
-        display: block !important;
     }
 </style>
-
-<script>
-    // JavaScript để ẩn các trang phụ trợ - chạy sau khi DOM load (GIỮ LẠI SOS)
-    function hideSidebarPages() {
-        const nav = document.querySelector('[data-testid="stSidebarNav"]');
-        if (!nav) return;
-        
-        // Danh sách các pattern cần ẩn - bắt cả số prefix và tên
-        const patternsToHide = [
-            'AI_Bác_Sĩ', 'Nhật_Ký', 'Nhắc_Thuốc', 'Xu_Hướng',
-            '_🤖', '_📊', '_💊', '_📈'
-        ];
-        
-        // Tên các trang cần ẩn (không phân biệt hoa thường)
-        const pageNamesToHide = [
-            'AI Bác Sĩ', 'Nhật Ký', 'Nhắc Thuốc', 'Xu Hướng'
-        ];
-        
-        // Tìm tất cả links trong sidebar
-        const links = nav.querySelectorAll('a');
-        links.forEach(link => {
-            const href = link.getAttribute('href') || '';
-            const text = link.textContent.trim() || '';
-            
-            // Đảm bảo trang SOS (số 12) luôn hiển thị
-            const isSOS = href.includes('SOS') || href.includes('Cấp_Cứu') || 
-                         text.includes('Cấp Cứu') || text.includes('SOS') ||
-                         text.match(/^12\s+/);
-            
-            if (isSOS) {
-                // Đảm bảo trang SOS hiển thị
-                link.style.display = '';
-                const parentLi = link.closest('li');
-                if (parentLi) {
-                    parentLi.style.display = '';
-                }
-                return; // Giữ lại trang SOS
-            }
-            
-            // Kiểm tra theo href pattern
-            if (patternsToHide.some(pattern => href.includes(pattern))) {
-                link.style.display = 'none';
-                const parentLi = link.closest('li');
-                if (parentLi) {
-                    parentLi.style.display = 'none';
-                }
-                return;
-            }
-            
-            // Kiểm tra theo text content - bắt số prefix 5, 7, 8, 9
-            // Pattern: "5 🤖 AI Bác Sĩ", "7 📊 Nhật Ký", etc.
-            const textMatch = text.match(/^([0-9]+)\s+(.+)$/);
-            if (textMatch) {
-                const pageNumber = parseInt(textMatch[1]);
-                const pageName = textMatch[2];
-                
-                // Bỏ qua trang số 12 (SOS)
-                if (pageNumber === 12) {
-                    link.style.display = '';
-                    const parentLi = link.closest('li');
-                    if (parentLi) {
-                        parentLi.style.display = '';
-                    }
-                    return;
-                }
-                
-                // Ẩn nếu là số 5, 7, 8, 9 và tên khớp
-                if ([5, 7, 8, 9].includes(pageNumber)) {
-                    if (pageNamesToHide.some(name => pageName.includes(name) || name.includes(pageName.split(' ')[0]))) {
-                        link.style.display = 'none';
-                        const parentLi = link.closest('li');
-                        if (parentLi) {
-                            parentLi.style.display = 'none';
-                        }
-                        return;
-                    }
-                }
-                
-                // Ẩn nếu text chứa tên trang phụ trợ (bất kỳ số nào)
-                if (pageNamesToHide.some(name => text.includes(name))) {
-                    link.style.display = 'none';
-                    const parentLi = link.closest('li');
-                    if (parentLi) {
-                        parentLi.style.display = 'none';
-                    }
-                    return;
-                }
-            }
-        });
-    }
-    
-    // Chạy ngay khi DOM ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', hideSidebarPages);
-    } else {
-        hideSidebarPages();
-    }
-    
-    // Chạy lại sau khi Streamlit render xong (MutationObserver)
-    const observer = new MutationObserver(hideSidebarPages);
-    if (document.body) {
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
-    
-    // Chạy lại định kỳ (fallback) - tăng tần suất
-    setInterval(hideSidebarPages, 300);
-    
-    // Chạy khi sidebar được render
-    window.addEventListener('load', hideSidebarPages);
-</script>
 """
-st.markdown(hide_sidebar_pages_css, unsafe_allow_html=True)
+st.markdown(hide_default_nav_css, unsafe_allow_html=True)
 
 # Header
 st.markdown('<div class="main-header">🏥 HealthAdvisor</div>', unsafe_allow_html=True)

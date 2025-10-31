@@ -13,7 +13,7 @@ maxUploadSize = 5
 enableXsrfProtection = true
 enableCORS = false
 
-# Tắt sidebar navigation mặc định (chúng ta sẽ tự quản lý)
-# Comment out nếu muốn dùng menu tự động của Streamlit
-# [client]
-# showSidebarNavigation = false
+# Tắt sidebar navigation mặc định - Chúng ta tự quản lý menu bằng st.sidebar
+# Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
+[client]
+showSidebarNavigation = false
