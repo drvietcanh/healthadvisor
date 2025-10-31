@@ -1,0 +1,44 @@
+"""
+Arthritis & Joint Diseases Module
+Bệnh khớp: Thoái hóa khớp, viêm khớp dạng thấp
+"""
+
+from .osteoarthritis import (
+    OSTEOARTHRITIS_INFO,
+    OSTEOARTHRITIS_SYMPTOMS,
+    OSTEOARTHRITIS_TREATMENT,
+    OSTEOARTHRITIS_MANAGEMENT
+)
+
+from .rheumatoid_arthritis import (
+    RHEUMATOID_ARTHRITIS_INFO,
+    RHEUMATOID_ARTHRITIS_SYMPTOMS,
+    RHEUMATOID_ARTHRITIS_TREATMENT,
+    RHEUMATOID_ARTHRITIS_MEDICATIONS
+)
+
+from .joint_management import (
+    JOINT_EXERCISES,
+    JOINT_NUTRITION,
+    JOINT_PROTECTION
+)
+
+__all__ = [
+    # Osteoarthritis
+    'OSTEOARTHRITIS_INFO',
+    'OSTEOARTHRITIS_SYMPTOMS',
+    'OSTEOARTHRITIS_TREATMENT',
+    'OSTEOARTHRITIS_MANAGEMENT',
+    
+    # Rheumatoid Arthritis
+    'RHEUMATOID_ARTHRITIS_INFO',
+    'RHEUMATOID_ARTHRITIS_SYMPTOMS',
+    'RHEUMATOID_ARTHRITIS_TREATMENT',
+    'RHEUMATOID_ARTHRITIS_MEDICATIONS',
+    
+    # Joint Management
+    'JOINT_EXERCISES',
+    'JOINT_NUTRITION',
+    'JOINT_PROTECTION'
+]
+

@@ -19,6 +19,10 @@ from health_tips.daily_tips import (
     render_daily_health_tips,
     render_preventive_care
 )
+from health_tips.exercise_guide import (
+    render_general_exercise_tips,
+    render_disease_specific_exercises
+)
 from core.ui_config import get_custom_css
 
 st.set_page_config(
@@ -46,10 +50,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "💊 Máy tính Paracetamol",
     "🌡️ Xử trí sốt",
     "💊 Thuốc & Thức ăn",
+    "🏃 Bài tập thể thao",
     "🌱 Chăm sóc hàng ngày",
     "🛡️ Phòng bệnh"
 ])
@@ -82,12 +87,18 @@ with tab2:
 with tab3:
     render_medicine_tips()
 
-# Tab 4: Chăm sóc hàng ngày
+# Tab 4: Bài tập thể thao
 with tab4:
+    render_general_exercise_tips()
+    st.divider()
+    render_disease_specific_exercises()
+
+# Tab 5: Chăm sóc hàng ngày
+with tab5:
     render_daily_health_tips()
 
-# Tab 5: Phòng bệnh
-with tab5:
+# Tab 6: Phòng bệnh
+with tab6:
     render_preventive_care()
 
 # Footer

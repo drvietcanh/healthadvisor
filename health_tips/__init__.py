@@ -20,6 +20,11 @@ from health_tips.daily_tips import (
     render_preventive_care
 )
 
+from health_tips.exercise_guide import (
+    render_general_exercise_tips,
+    render_disease_specific_exercises
+)
+
 __all__ = [
     "calculate_paracetamol_dose",
     "render_paracetamol_calculator",
@@ -28,6 +33,8 @@ __all__ = [
     "render_temperature_guide",
     "render_medicine_tips",
     "render_daily_health_tips",
-    "render_preventive_care"
+    "render_preventive_care",
+    "render_general_exercise_tips",
+    "render_disease_specific_exercises"
 ]
 
