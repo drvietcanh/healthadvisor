@@ -87,6 +87,138 @@ FIRST_AID_GUIDES = {
         "note": "⏱️ **VÀNG 3 GIỜ:** Điều trị trong 3-4.5 giờ đầu hiệu quả nhất!"
     },
     
+    "burns": {
+        "name": "Bỏng nhiệt/Nước sôi",
+        "icon": "🔥",
+        "signs": {
+            "title": "🔍 Phân loại bỏng:",
+            "items": [
+                "**Bỏng độ 1:** Đỏ da, đau nhẹ (như cháy nắng) - Tự khỏi vài ngày",
+                "**Bỏng độ 2:** Phồng rộp, đau nhiều - Cần chăm sóc cẩn thận",
+                "**Bỏng độ 3:** Da trắng/đen, mất cảm giác - NGUY HIỂM, cần bác sĩ ngay!"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY (Quy tắc 20 phút):",
+            "steps": [
+                "1️⃣ **DỘI NƯỚC LẠNH NGAY** - 15-20 phút liên tục",
+                "   - Nước máy, nước sạch (không đá lạnh!)",
+                "   - Giữ vết bỏng dưới vòi nước hoặc ngâm trong chậu",
+                "   - Mục đích: Hạ nhiệt độ da, giảm đau, giảm tổn thương",
+                "2️⃣ **CỞI BỎ quần áo/trang sức** - Nếu không dính vào da",
+                "   - Nếu dính chặt → KHÔNG được kéo ra!",
+                "   - Cắt xung quanh vải, để bác sĩ xử lý",
+                "3️⃣ **PHỦ vết bỏng bằng gạc sạch hoặc khăn sạch** - Tránh nhiễm trùng",
+                "   - Không băng quá chặt",
+                "4️⃣ **GIỮ ẤM** - Đắp chăn nhẹ (tránh vết bỏng)",
+                "5️⃣ **KHÔNG bôi gì lên vết bỏng** - Chờ bác sĩ"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG bôi kem, dầu, nước mắm, lá cây lên vết bỏng",
+                "❌ KHÔNG chọc phồng rộp (phồng rộp bảo vệ da non)",
+                "❌ KHÔNG dùng đá lạnh trực tiếp (làm tổn thương thêm)",
+                "❌ KHÔNG cởi quần áo nếu dính chặt vào da"
+            ]
+        },
+        "when_call_115": {
+            "title": "🚨 GỌI 115 NGAY NẾU:",
+            "items": [
+                "⛔ Bỏng rộng (lớn hơn lòng bàn tay)",
+                "⛔ Bỏng ở mặt, cổ, tay, chân, bộ phận sinh dục",
+                "⛔ Bỏng độ 3 (da trắng/đen, mất cảm giác)",
+                "⛔ Bỏng do điện, hóa chất",
+                "⛔ Trẻ em bỏng (dù nhỏ)",
+                "⛔ Người già >60 tuổi bỏng",
+                "⛔ Bỏng kèm khó thở, ngất xỉu"
+            ]
+        },
+        "note": "💡 **MẸO:** Bỏng nhẹ (độ 1-2, nhỏ) có thể tự chăm sóc. Bỏng nặng hoặc rộng → BÁC SĨ NGAY!"
+    },
+    
+    "choking_child": {
+        "name": "Trẻ em hóc dị vật (Nghẹn)",
+        "icon": "👶",
+        "signs": {
+            "title": "🔍 Dấu hiệu trẻ bị hóc:",
+            "items": [
+                "Ho dữ dội, khó thở",
+                "Mặt đỏ/tím, mắt trợn",
+                "Không nói được, không khóc được",
+                "Đưa tay lên cổ (động tác báo hiệu)",
+                "Mất ý thức (nếu nặng)"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY (Quy tắc 5 lần - 5 lần):",
+            "steps": [
+                "**CHO TRẺ < 1 TUỔI:**",
+                "",
+                "1️⃣ **VỖ LƯNG 5 LẦN:**",
+                "   - Đặt trẻ nằm sấp trên đùi, đầu thấp hơn ngực",
+                "   - Dùng gót bàn tay vỗ mạnh giữa 2 xương bả vai",
+                "   - Vỗ 5 lần, kiểm tra xem dị vật ra chưa",
+                "",
+                "2️⃣ **ÉP NGỰC 5 LẦN:**",
+                "   - Lật trẻ nằm ngửa trên đùi",
+                "   - Đặt 2 ngón tay giữa xương ức",
+                "   - Ấn mạnh xuống 5 lần (1 giây/lần)",
+                "",
+                "3️⃣ **LẶP LẠI** vỗ lưng - ép ngực cho đến khi:",
+                "   - Dị vật ra",
+                "   - Trẻ ho được, khóc được",
+                "   - Trẻ mất ý thức → Chuyển CPR",
+                "",
+                "**CHO TRẺ 1-8 TUỔI:**",
+                "",
+                "4️⃣ **VỖ LƯNG 5 LẦN:**",
+                "   - Trẻ cúi đầu thấp",
+                "   - Vỗ mạnh giữa 2 xương bả vai 5 lần",
+                "",
+                "5️⃣ **ÉP BỤNG (Heimlich) 5 LẦN:**",
+                "   - Đứng sau trẻ, vòng tay quanh eo",
+                "   - Một tay nắm đấm, đặt trên rốn",
+                "   - Tay kia nắm cổ tay, ấn mạnh vào trong và lên trên",
+                "   - Ấn 5 lần (như muốn nhấc trẻ lên)",
+                "",
+                "6️⃣ **LẶP LẠI** cho đến khi dị vật ra hoặc trẻ mất ý thức",
+                "",
+                "**TRẺ MẤT Ý THỨC:**",
+                "7️⃣ **GỌI 115 NGAY** - Đồng thời bắt đầu CPR nếu biết"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG móc tay vào miệng trẻ (đẩy dị vật sâu hơn)",
+                "❌ KHÔNG đánh vào lưng khi trẻ đang đứng thẳng",
+                "❌ KHÔNG cầm chân trẻ lộn ngược (nguy hiểm!)",
+                "❌ KHÔNG bỏ cuộc - Tiếp tục vỗ/ép cho đến khi giúp đỡ đến"
+            ]
+        },
+        "prevention": {
+            "title": "🛡️ PHÒNG NGỪA:",
+            "items": [
+                "✅ Cắt thức ăn nhỏ cho trẻ < 3 tuổi",
+                "✅ Tránh: nho nguyên quả, hạt, kẹo cứng",
+                "✅ Giám sát khi trẻ ăn",
+                "✅ Để đồ chơi nhỏ xa tầm tay trẻ"
+            ]
+        },
+        "when_call_115": {
+            "title": "🚨 GỌI 115 NGAY NẾU:",
+            "items": [
+                "⛔ Trẻ không thể ho, không thể thở",
+                "⛔ Trẻ tím tái, mất ý thức",
+                "⛔ Sau khi dị vật ra nhưng trẻ vẫn khó thở",
+                "⛔ Không chắc chắn dị vật đã ra hết"
+            ]
+        },
+        "note": "⏱️ **QUAN TRỌNG:** Mỗi giây đều quý! Hóc dị vật có thể gây tử vong trong vài phút!"
+    },
+    
     "hypoglycemia": {
         "name": "Hạ đường huyết (Tiểu đường)",
         "icon": "🍬",
@@ -216,6 +348,223 @@ FIRST_AID_GUIDES = {
             ]
         },
         "note": "⚠️ Đau ngực có thể là dấu hiệu đau tim - KHÔNG CHỦ QUAN!"
+    },
+    
+    "poisoning": {
+        "name": "Ngộ độc",
+        "icon": "☠️",
+        "signs": {
+            "title": "🔍 Dấu hiệu ngộ độc:",
+            "items": [
+                "Buồn nôn, nôn mửa",
+                "Đau bụng",
+                "Tiêu chảy",
+                "Chóng mặt, lơ mơ",
+                "Khó thở",
+                "Co giật (nếu nặng)"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY:",
+            "steps": [
+                "1️⃣ **GỌI 115 NGAY** - Hoặc Trung tâm chống độc: 024.3929.5743",
+                "2️⃣ **HỎI người bệnh** (nếu còn tỉnh):",
+                "   - Uống/Nhậu gì?",
+                "   - Bao nhiêu?",
+                "   - Khi nào?",
+                "3️⃣ **LƯU Ý:**",
+                "   - Nếu hôn mê, nằm nghiêng (tránh sặc)",
+                "   - Giữ lại vật gây ngộ độc (thuốc, chai lọ...)",
+                "   - KHÔNG tự ý gây nôn (trừ khi nhân viên y tế hướng dẫn)",
+                "4️⃣ **ĐỢI xe cấp cứu** - Theo dõi hô hấp, mạch"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG cho uống sữa/trứng sống (làm sai lệch)",
+                "❌ KHÔNG tự ý cho uống than hoạt tính (chỉ khi bác sĩ chỉ định)",
+                "❌ KHÔNG gây nôn khi uống chất tẩy/axit (làm bỏng thêm)",
+                "❌ KHÔNG bỏ cuộc - Tiếp tục theo dõi"
+            ]
+        },
+        "when_call_115": {
+            "title": "🚨 GỌI 115 HOẶC TRUNG TÂM CHỐNG ĐỘC NGAY:",
+            "items": [
+                "⛔ Nghi ngờ ngộ độc (dù nhẹ)",
+                "⛔ Hôn mê, lơ mơ",
+                "⛔ Khó thở",
+                "⛔ Co giật",
+                "⛔ Ngộ độc ở trẻ em"
+            ]
+        },
+        "note": "💡 **QUAN TRỌNG:** Mỗi phút đều quý! Gọi ngay Trung tâm chống độc để được hướng dẫn chính xác!"
+    },
+    
+    "bleeding": {
+        "name": "Chảy máu",
+        "icon": "🩸",
+        "signs": {
+            "title": "🔍 Phân loại chảy máu:",
+            "items": [
+                "**Chảy máu nhẹ:** Chảy ít, tự cầm sau vài phút",
+                "**Chảy máu vừa:** Chảy liên tục, cần ép chặt",
+                "**Chảy máu nặng:** Chảy thành tia, máu đỏ tươi - NGUY HIỂM!"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY:",
+            "steps": [
+                "1️⃣ **ÉP CHẶT VẾT THƯƠNG** - Dùng gạc sạch hoặc vải sạch",
+                "   - Đặt gạc lên vết thương",
+                "   - Dùng lòng bàn tay ép mạnh, liên tục",
+                "   - Ép ít nhất 5-10 phút (KHÔNG nhấc tay lên xem!)",
+                "",
+                "2️⃣ **NÂNG CAO** vùng chảy máu lên cao hơn tim (nếu có thể)",
+                "",
+                "3️⃣ **NẾU VẪN CHẢY:**",
+                "   - Thêm lớp gạc, tiếp tục ép",
+                "   - KHÔNG bỏ lớp gạc cũ (giữ lại để tạo cục máu đông)",
+                "",
+                "4️⃣ **GIỮ ẤM** - Đắp chăn nhẹ (tránh sốc do mất máu)",
+                "",
+                "5️⃣ **NẾU CHẢY MÁU NẶNG:**",
+                "   - GỌI 115 NGAY",
+                "   - Tiếp tục ép chặt trong lúc chờ"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG rửa vết thương khi đang chảy máu nhiều",
+                "❌ KHÔNG bỏ vật lạ ra (nếu có - để bác sĩ xử lý)",
+                "❌ KHÔNG buộc garo (trừ khi biết cách, rất nguy hiểm!)",
+                "❌ KHÔNG nhấc tay lên để xem máu đã cầm chưa"
+            ]
+        },
+        "when_call_115": {
+            "title": "🚨 GỌI 115 NGAY NẾU:",
+            "items": [
+                "⛔ Chảy máu không cầm sau 10 phút ép chặt",
+                "⛔ Chảy máu thành tia (mạch máu lớn)",
+                "⛔ Mất nhiều máu (choáng váng, da xanh, mạch nhanh)",
+                "⛔ Chảy máu ở cổ, ngực, bụng",
+                "⛔ Có vật lạ cắm trong vết thương"
+            ]
+        },
+        "note": "💡 **QUAN TRỌNG:** Ép chặt là cách tốt nhất để cầm máu. Đừng bỏ cuộc!"
+    },
+    
+    "drowning": {
+        "name": "Đuối nước",
+        "icon": "🌊",
+        "signs": {
+            "title": "🔍 Dấu hiệu đuối nước:",
+            "items": [
+                "Người trong nước, không nổi được",
+                "Kêu cứu, vẫy tay",
+                "Ho, sặc nước",
+                "Tím tái, mất ý thức (nếu đã chìm)"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY (Ưu tiên an toàn bản thân!):",
+            "steps": [
+                "1️⃣ **GỌI 115 NGAY** - Đồng thời kêu cứu",
+                "",
+                "2️⃣ **NẾU BIẾT BƠI:**",
+                "   - Ném phao cứu sinh, dây, gậy cho nạn nhân",
+                "   - Nếu nhảy xuống: Nhảy từ phía sau, tránh bị kéo xuống",
+                "   - Đưa nạn nhân lên bờ an toàn",
+                "",
+                "3️⃣ **KHI ĐÃ LÊN BỜ:**",
+                "   - Đặt nạn nhân nằm ngửa",
+                "   - Kiểm tra thở, mạch",
+                "",
+                "4️⃣ **NẾU KHÔNG THỞ:**",
+                "   - Bắt đầu CPR ngay (ép tim + thổi ngạt)",
+                "   - Tiếp tục cho đến khi xe cấp cứu đến",
+                "",
+                "5️⃣ **NẾU CÒN THỞ:**",
+                "   - Đặt nằm nghiêng (tránh sặc nước)",
+                "   - Giữ ấm, theo dõi",
+                "   - Dù tỉnh vẫn cần đưa bệnh viện"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG nhảy xuống nếu KHÔNG biết bơi",
+                "❌ KHÔNG để nạn nhân nằm ngửa nếu đang nôn (sặc!)",
+                "❌ KHÔNG bỏ cuộc CPR sớm (có thể cứu sống sau 20-30 phút)",
+                "❌ KHÔNG xốc nước (vô ích, nguy hiểm!)"
+            ]
+        },
+        "prevention": {
+            "title": "🛡️ PHÒNG NGỪA:",
+            "items": [
+                "✅ Học bơi từ nhỏ",
+                "✅ Không bơi một mình",
+                "✅ Mặc áo phao khi đi tàu thuyền",
+                "✅ Không uống rượu khi bơi",
+                "✅ Giám sát trẻ em khi gần nước"
+            ]
+        },
+        "note": "⏱️ **QUAN TRỌNG:** Đuối nước gây tử vong nhanh. An toàn bản thân là trên hết!"
+    },
+    
+    "electric_shock": {
+        "name": "Điện giật",
+        "icon": "⚡",
+        "signs": {
+            "title": "🔍 Dấu hiệu:",
+            "items": [
+                "Người bị điện giật đang tiếp xúc nguồn điện",
+                "Co giật, không rời tay được",
+                "Bỏng ở điểm tiếp xúc",
+                "Ngất xỉu, ngừng thở"
+            ]
+        },
+        "actions": {
+            "title": "⚡ XỬ LÝ NGAY (An toàn bản thân trước!):",
+            "steps": [
+                "1️⃣ **TẮT NGUỒN ĐIỆN NGAY** - Rút phích cắm, tắt công tắc",
+                "   - Nếu không tắt được → Dùng vật không dẫn điện (gỗ, nhựa) đẩy nạn nhân ra",
+                "   - TUYỆT ĐỐI KHÔNG chạm vào nạn nhân khi còn điện!",
+                "",
+                "2️⃣ **GỌI 115 NGAY**",
+                "",
+                "3️⃣ **KIỂM TRA** thở, mạch",
+                "",
+                "4️⃣ **NẾU KHÔNG THỞ:**",
+                "   - Bắt đầu CPR (ép tim + thổi ngạt)",
+                "   - Tiếp tục cho đến khi xe cấp cứu đến",
+                "",
+                "5️⃣ **NẾU CÒN THỞ:**",
+                "   - Đặt nằm nghiêng",
+                "   - Giữ ấm",
+                "   - Che vết bỏng bằng gạc sạch",
+                "   - KHÔNG bôi gì lên vết bỏng"
+            ]
+        },
+        "dont": {
+            "title": "❌ TUYỆT ĐỐI KHÔNG:",
+            "items": [
+                "❌ KHÔNG chạm vào nạn nhân khi còn điện",
+                "❌ KHÔNG dùng tay ướt, kim loại để kéo nạn nhân",
+                "❌ KHÔNG bỏ cuộc CPR sớm"
+            ]
+        },
+        "when_call_115": {
+            "title": "🚨 GỌI 115 NGAY:",
+            "items": [
+                "⛔ Người bị điện giật (dù nhẹ)",
+                "⛔ Bất tỉnh, ngừng thở",
+                "⛔ Bỏng do điện (dù nhỏ)",
+                "⛔ Điện giật ở trẻ em"
+            ]
+        },
+        "note": "💡 **QUAN TRỌNG:** Điện giật có thể gây ngừng tim ngay. Xử trí nhanh quyết định sống còn!"
     }
 }
 

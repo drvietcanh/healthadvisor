@@ -244,35 +244,44 @@ def render_dyslipidemia_tab():
             st.subheader("📊 Kết quả phân loại:")
             
             # Total Cholesterol
-            if classification["total_cholesterol"]["level"] == "Tối ưu":
-                st.success(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {classification['total_cholesterol']['level']}")
-            elif classification["total_cholesterol"]["level"] in ["Cao", "Rất cao"]:
-                st.error(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {classification['total_cholesterol']['level']}")
-            else:
-                st.warning(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {classification['total_cholesterol']['level']}")
+            if "cholesterol" in classification:
+                chol_info = classification["cholesterol"]
+                label = chol_info.get("label", "")
+                if "Tối ưu" in label or "Bình thường" in label:
+                    st.success(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {label} {chol_info.get('icon', '')}")
+                elif "Cao" in label or "Rất cao" in label or "Nguy hiểm" in label:
+                    st.error(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {label} {chol_info.get('icon', '')}")
+                else:
+                    st.warning(f"**Cholesterol toàn phần:** {total_chol} mmol/L - {label} {chol_info.get('icon', '')}")
             
             # LDL
-            if classification["ldl"]["level"] == "Tối ưu":
-                st.success(f"**LDL (mỡ xấu):** {ldl} mmol/L - {classification['ldl']['level']}")
-            elif classification["ldl"]["level"] in ["Cao", "Rất cao"]:
-                st.error(f"**LDL (mỡ xấu):** {ldl} mmol/L - {classification['ldl']['level']}")
-            else:
-                st.warning(f"**LDL (mỡ xấu):** {ldl} mmol/L - {classification['ldl']['level']}")
-            st.caption(classification["ldl"]["recommendation"])
+            if "ldl" in classification:
+                ldl_info = classification["ldl"]
+                label = ldl_info.get("label", "")
+                if "Tối ưu" in label or "Bình thường" in label:
+                    st.success(f"**LDL (mỡ xấu):** {ldl} mmol/L - {label} {ldl_info.get('icon', '')}")
+                elif "Cao" in label or "Rất cao" in label or "Nguy hiểm" in label:
+                    st.error(f"**LDL (mỡ xấu):** {ldl} mmol/L - {label} {ldl_info.get('icon', '')}")
+                else:
+                    st.warning(f"**LDL (mỡ xấu):** {ldl} mmol/L - {label} {ldl_info.get('icon', '')}")
             
             # HDL
-            if classification["hdl"]["level"] == "Cao (Tốt)":
-                st.success(f"**HDL (mỡ tốt):** {hdl} mmol/L - {classification['hdl']['level']}")
-            else:
-                st.warning(f"**HDL (mỡ tốt):** {hdl} mmol/L - {classification['hdl']['level']}")
-            st.caption(classification["hdl"]["recommendation"])
+            if "hdl" in classification:
+                hdl_info = classification["hdl"]
+                label = hdl_info.get("label", "")
+                if "Cao" in label or "Tốt" in label:
+                    st.success(f"**HDL (mỡ tốt):** {hdl} mmol/L - {label} {hdl_info.get('icon', '')}")
+                else:
+                    st.warning(f"**HDL (mỡ tốt):** {hdl} mmol/L - {label} {hdl_info.get('icon', '')}")
             
             # Triglyceride
-            if classification["triglyceride"]["level"] == "Bình thường":
-                st.success(f"**Triglyceride:** {tg} mmol/L - {classification['triglyceride']['level']}")
-            elif classification["triglyceride"]["level"] in ["Cao", "Rất cao"]:
-                st.error(f"**Triglyceride:** {tg} mmol/L - {classification['triglyceride']['level']}")
-            else:
-                st.warning(f"**Triglyceride:** {tg} mmol/L - {classification['triglyceride']['level']}")
-            st.caption(classification["triglyceride"]["recommendation"])
+            if "triglyceride" in classification:
+                tg_info = classification["triglyceride"]
+                label = tg_info.get("label", "")
+                if "Bình thường" in label or "Tốt" in label:
+                    st.success(f"**Triglyceride:** {tg} mmol/L - {label} {tg_info.get('icon', '')}")
+                elif "Cao" in label or "Rất cao" in label or "Nguy hiểm" in label:
+                    st.error(f"**Triglyceride:** {tg} mmol/L - {label} {tg_info.get('icon', '')}")
+                else:
+                    st.warning(f"**Triglyceride:** {tg} mmol/L - {label} {tg_info.get('icon', '')}")
 

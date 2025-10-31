@@ -41,18 +41,24 @@ with tab1:
             st.markdown(f"**Điều trị:** {type_info['treatment']}")
             st.divider()
     
-    with st.expander("🔍 Dấu hiệu nhận biết - 3 chữ NHIỀU"):
-        st.markdown(diabetes.SYMPTOMS["classic_3P_vn"]["title"])
+    with st.expander("🔍 Dấu hiệu nhận biết - 3 chữ NHIỀU", expanded=True):
+        st.markdown("### 🚰 KHÁT NHIỀU (Uống nhiều)")
+        st.markdown("**Triệu chứng điển hình:** Uống nước mãi mà vẫn thấy khát, khô miệng, khô họng")
+        st.markdown("**Lý do:** Đường trong máu cao → cơ thể cố gắng đào thải qua nước tiểu → mất nước → khát")
+        st.divider()
         
-        for symptom in diabetes.SYMPTOMS["classic_3P_vn"]["symptoms"]:
-            st.markdown(f"### {symptom['name']}")
-            st.markdown(f"**{symptom['description']}**")
-            for detail in symptom['details']:
-                st.markdown(detail)
-            st.divider()
+        st.markdown("### 🚽 TIỂU NHIỀU (Đi tiểu nhiều)")
+        st.markdown("**Triệu chứng điển hình:** Đi tiểu nhiều lần, đặc biệt ban đêm phải dậy đi tiểu")
+        st.markdown("**Lý do:** Thận phải lọc nhiều đường → nước tiểu nhiều → đi tiểu nhiều")
+        st.divider()
         
-        st.subheader("Triệu chứng khác:")
-        for symptom in diabetes.SYMPTOMS["other_symptoms_vn"][:5]:
+        st.markdown("### 😋 ĂN NHIỀU (Đói bất thường)")
+        st.markdown("**Triệu chứng điển hình:** Ăn nhiều mà vẫn đói, luôn thèm ăn")
+        st.markdown("**Lý do:** Đường không vào được tế bào → tế bào đói → não báo đói liên tục")
+        st.divider()
+        
+        st.subheader("📋 Triệu chứng khác thường gặp:")
+        for symptom in diabetes.SYMPTOMS["common_vn"][3:]:  # Bỏ qua 3 triệu chứng đầu (đã nói ở trên)
             st.markdown(f"- {symptom}")
     
     with st.expander("🚨 Khi nào GỌI CẤP CỨU 115?"):

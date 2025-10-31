@@ -108,7 +108,7 @@ st.markdown("""
 # Các chuyên khoa
 st.markdown("## 🏨 Chọn chuyên khoa bạn quan tâm:")
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.markdown("""
@@ -129,6 +129,22 @@ with col1:
 with col2:
     st.markdown("""
     <div class="disease-card">
+        <h3>🫁 Hô Hấp</h3>
+        <p>COPD, Hen suyễn</p>
+        <ul style="text-align: left;">
+            <li>Triệu chứng COPD</li>
+            <li>Điều trị hen suyễn</li>
+            <li>Kỹ thuật thở</li>
+            <li>Phòng ngừa</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    if st.button("➡️ Vào trang Hô Hấp", key="respiratory", use_container_width=True):
+        st.switch_page("pages/2_🫁_Hô_Hấp.py")
+
+with col3:
+    st.markdown("""
+    <div class="disease-card">
         <h3>🩸 Tiểu Đường</h3>
         <p>Típ 1, Típ 2, Tiền tiểu đường</p>
         <ul style="text-align: left;">
@@ -140,9 +156,9 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
     if st.button("➡️ Vào trang Tiểu Đường", key="diabetes", use_container_width=True):
-        st.switch_page("pages/2_🩸_Tiểu_Đường.py")
+        st.switch_page("pages/3_🩸_Tiểu_Đường.py")
 
-with col3:
+with col4:
     st.markdown("""
     <div class="disease-card">
         <h3>🧠 Thần Kinh</h3>
@@ -156,7 +172,7 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
     if st.button("➡️ Vào trang Thần Kinh", key="neuro", use_container_width=True):
-        st.switch_page("pages/3_🧠_Thần_Kinh.py")
+        st.switch_page("pages/4_🧠_Thần_Kinh.py")
 
 # Trang học dễ
 st.markdown("---")

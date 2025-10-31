@@ -19,7 +19,13 @@ def render_first_aid_tab():
     situations = {
         "heart_attack": "❤️ Đau tim cấp",
         "stroke": "🧠 Đột quỵ (F.A.S.T)",
+        "choking_child": "👶 Trẻ em hóc dị vật",
+        "burns": "🔥 Bỏng nhiệt/Nước sôi",
         "hypoglycemia": "🍬 Hạ đường huyết",
+        "poisoning": "☠️ Ngộ độc",
+        "bleeding": "🩸 Chảy máu",
+        "drowning": "🌊 Đuối nước",
+        "electric_shock": "⚡ Điện giật",
         "fall": "🤕 Ngã",
         "chest_pain": "💔 Đau ngực"
     }
