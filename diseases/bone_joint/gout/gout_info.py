@@ -33,10 +33,10 @@ Giống như đường tan trong nước, acid uric trong máu cũng vậy.
 - **Bệnh Gút:** Acid uric cao + CÓ CƠN ĐAU KHỚP
 
 📊 Mức acid uric:
-- Bình thường: Nam < 7 mg/dL (420 μmol/L), Nữ < 6 mg/dL (360 μmol/L)
-- Tăng nhẹ: 7-8 mg/dL (chưa cần thuốc, chỉ thay đổi lối sống)
-- Tăng cao: > 8 mg/dL (nguy cơ gút cao)
-- Rất cao: > 9-10 mg/dL (nguy cơ rất cao)
+- Bình thường: Nam < 7 mg/dL (≈ 0.4 mmol/L, 420 μmol/L), Nữ < 6 mg/dL (≈ 0.3 mmol/L, 360 μmol/L)
+- Tăng nhẹ: 7-8 mg/dL (≈ 0.4-0.5 mmol/L, chưa cần thuốc, chỉ thay đổi lối sống)
+- Tăng cao: > 8 mg/dL (≈ > 0.5 mmol/L, nguy cơ gút cao)
+- Rất cao: > 9-10 mg/dL (≈ > 0.5-0.6 mmol/L, nguy cơ rất cao)
 
 ⚠️ LƯU Ý QUAN TRỌNG:
 - Chỉ 10-20% người acid uric cao → BỊ GÚT
@@ -48,7 +48,7 @@ Giống như đường tan trong nước, acid uric trong máu cũng vậy.
             "no_medication": {
                 "title": "KHÔNG cần thuốc (Chỉ thay đổi lối sống):",
                 "conditions": [
-                    "Acid uric 7-8 mg/dL",
+                    "Acid uric 7-8 mg/dL (≈ 0.4-0.5 mmol/L)",
                     "Chưa có cơn gút",
                     "Không có sỏi thận",
                     "Không có bệnh tim mạch, tiểu đường"
@@ -66,7 +66,7 @@ Giống như đường tan trong nước, acid uric trong máu cũng vậy.
             "consider_medication": {
                 "title": "Cân nhắc thuốc:",
                 "conditions": [
-                    "Acid uric > 8-9 mg/dL",
+                    "Acid uric > 8-9 mg/dL (≈ > 0.5 mmol/L)",
                     "Đã có >1 cơn gút",
                     "Có sỏi thận do acid uric",
                     "Có bệnh tim mạch, tiểu đường + acid uric cao"

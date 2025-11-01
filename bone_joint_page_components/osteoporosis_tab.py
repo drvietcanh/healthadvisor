@@ -357,7 +357,8 @@ def render_osteoporosis_tab():
                 if "balance" in exercise:
                     balance = exercise["balance"]
                     st.markdown(f"#### {balance.get('title', '')}")
-                    st.markdown(balance.get("why", ""))
+                    if balance.get("benefit"):
+                        st.info(f"**Lợi ích:** {balance.get('benefit', '')}")
                     for ex in balance.get("exercises", []):
                         st.markdown(f"- {ex}")
             
@@ -365,17 +366,24 @@ def render_osteoporosis_tab():
             if "prevent_falls" in PREVENTION:
                 falls = PREVENTION["prevent_falls"]
                 st.markdown(f"### {falls.get('title', '')}")
-                st.markdown(falls.get("why", ""))
                 
                 if "home_safety" in falls:
                     safety = falls["home_safety"]
-                    st.markdown(f"#### {safety.get('title', '')}")
-                    for tip in safety.get("tips", []):
-                        st.markdown(f"- {tip}")
+                    # home_safety là list, không phải dict
+                    st.markdown("#### 🏠 An toàn trong nhà:")
+                    if isinstance(safety, list):
+                        for tip in safety:
+                            st.markdown(f"- {tip}")
+                    else:
+                        st.markdown(f"- {safety}")
                 
-                if "outdoor_safety" in falls:
-                    outdoor = falls["outdoor_safety"]
-                    st.markdown(f"#### {outdoor.get('title', '')}")
-                    for tip in outdoor.get("tips", []):
-                        st.markdown(f"- {tip}")
+                if "personal" in falls:
+                    personal = falls["personal"]
+                    # personal là list, không phải dict
+                    st.markdown("#### 👤 Bản thân:")
+                    if isinstance(personal, list):
+                        for tip in personal:
+                            st.markdown(f"- {tip}")
+                    else:
+                        st.markdown(f"- {personal}")
 

@@ -125,3 +125,30 @@ def get_greeting() -> str:
     else:
         return "Chào buổi tối"
 
+
+def format_with_units(value_mgdl: float, unit_type: str = "glucose") -> str:
+    """
+    Format giá trị mg/dL và tự động thêm đơn vị mmol/L tương ứng
+    
+    Args:
+        value_mgdl: Giá trị theo mg/dL
+        unit_type: Loại xét nghiệm ("glucose", "uric_acid", "creatinine")
+    
+    Returns:
+        String với cả 2 đơn vị, ví dụ: "126 mg/dL (7.0 mmol/L)"
+    """
+    if unit_type == "glucose":
+        # Đường huyết: 1 mmol/L = 18 mg/dL
+        mmol_value = value_mgdl / 18
+        return f"{int(value_mgdl)} mg/dL ({mmol_value:.1f} mmol/L)"
+    elif unit_type == "uric_acid":
+        # Acid uric: 1 mg/dL = 59.5 μmol/L (nhưng thường dùng mg/dL)
+        # Không có mmol/L cho acid uric, chỉ có μmol/L
+        umol_value = value_mgdl * 59.5
+        return f"{value_mgdl:.1f} mg/dL ({umol_value:.0f} μmol/L)"
+    elif unit_type == "creatinine":
+        # Creatinine: 1 mg/dL = 88.4 μmol/L (không có mmol/L)
+        umol_value = value_mgdl * 88.4
+        return f"{value_mgdl:.1f} mg/dL ({umol_value:.0f} μmol/L)"
+    else:
+        return f"{value_mgdl} mg/dL"

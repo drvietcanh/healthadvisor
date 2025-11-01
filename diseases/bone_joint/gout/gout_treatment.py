@@ -38,12 +38,12 @@ GOUT_TREATMENT = {
     
     "long_term": {
         "title": "2️⃣ Điều Trị Lâu Dài (Ngăn tái phát):",
-        "goal": "Giảm acid uric máu < 6 mg/dL (360 μmol/L)",
+        "goal": "Giảm acid uric máu < 6 mg/dL (≈ 0.3 mmol/L, 360 μmol/L)",
         "when_start": [
             ">2 cơn gút/năm",
             "Có hạt tophi",
             "Có sỏi thận do acid uric",
-            "Acid uric > 8 mg/dL dù chưa có cơn"
+            "Acid uric > 8 mg/dL (≈ > 0.5 mmol/L) dù chưa có cơn"
         ],
         "medications": {
             "allopurinol": {
@@ -83,7 +83,7 @@ GOUT_MEDICATIONS = {
     """,
     
     "monitoring": [
-        "Xét nghiệm acid uric máu: Mục tiêu < 6 mg/dL (360 μmol/L)",
+        "Xét nghiệm acid uric máu: Mục tiêu < 6 mg/dL (≈ 0.3 mmol/L, 360 μmol/L)",
         "Xét nghiệm định kỳ: Gan, thận, máu (mỗi 3-6 tháng)",
         "Theo dõi số cơn gút (giảm dần khi điều trị đúng)",
         "Theo dõi hạt tophi (nhỏ dần, mất sau 1-2 năm)"
@@ -126,7 +126,7 @@ GOUT_PREVENTION = {
     
     "medication_adherence": [
         "Dùng thuốc hạ acid uric ĐỀU ĐẶN, không bỏ",
-        "Mục tiêu: Acid uric < 6 mg/dL",
+        "Mục tiêu: Acid uric < 6 mg/dL (≈ 0.3 mmol/L)",
         "Theo dõi định kỳ với bác sĩ",
         "Dùng Colchicine dự phòng khi mới bắt đầu thuốc hạ acid uric"
     ],
