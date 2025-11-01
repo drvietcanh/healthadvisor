@@ -765,7 +765,82 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 
 ---
 
-## 📋 TÓM TẮT SESSION MỚI NHẤT (02/01/2025)
+## 📋 TÓM TẮT SESSION MỚI NHẤT (03/01/2025)
+
+### ✅ Công việc đã hoàn thành:
+
+**1. Kết nối GitHub và Streamlit Cloud:**
+- ✅ Đã push tất cả commits lên GitHub (`origin/main`)
+- ✅ Tạo file `DEPLOYMENT_STREAMLIT_CLOUD.md` với hướng dẫn deploy
+- ✅ Tạo file `STREAMLIT_CLOUD_UPDATE.md` với hướng dẫn kiểm tra và cập nhật
+
+**2. Fix lỗi AttributeError trong osteoporosis_tab.py:**
+- ✅ Sửa lỗi xử lý `home_safety` và `personal` (chúng là list, không phải dict)
+- ✅ Commit: `7199662` - fix: Sửa lỗi AttributeError trong osteoporosis_tab.py
+- ✅ Đã push lên GitHub và Streamlit Cloud sẽ tự động redeploy
+
+**3. Tạo module sidebar_menu.py:**
+- ✅ Tạo `core/sidebar_menu.py` với 2 functions: `render_sidebar_menu()` và `hide_default_nav()`
+- ✅ Tạm ẩn menu sidebar để phát triển thêm chức năng sau
+- ✅ Commit: `14f8735` - feat: Tạo module sidebar_menu.py và ẩn menu tạm thời
+
+**4. Cập nhật đơn vị acid uric:**
+- ✅ Bỏ đơn vị mmol/L cho acid uric (chỉ giữ mg/dL và μmol/L)
+- ✅ Sửa công thức quy đổi chính xác: 1 mg/dL = 0.0595 mmol/L = 59.5 μmol/L
+- ✅ Cập nhật tất cả giá trị acid uric trong `gout_info.py` và `gout_treatment.py`
+- ✅ Cập nhật function `format_with_units()` trong `core/utils.py`
+
+**5. Thêm thuốc điều trị gút mới:**
+- ✅ **Lesinurad** - Thuốc mới, dùng kết hợp với Allopurinol/Febuxostat
+- ✅ **Pegloticase (Krystexxa)** - Enzyme tiêm tĩnh mạch, dùng cho ca nặng
+- ✅ **Anakinra (Kineret)** - Thuốc mới cho cơn gút cấp nặng
+- ✅ Thêm thông tin: liều dùng, cơ chế, chỉ định, tác dụng phụ, giá cả
+
+### 💾 Commits trong session này:
+
+1. `889fa3e` - docs: Cập nhật PROGRESS.md - Lưu tiến trình session
+2. `094d52d` - docs: Thêm hướng dẫn kiểm tra và cập nhật Streamlit Cloud
+3. `1d789ad` - feat: Bỏ mmol/L cho acid uric + Thêm thuốc điều trị gút mới
+4. `7199662` - fix: Sửa lỗi AttributeError trong osteoporosis_tab.py
+5. `14f8735` - feat: Tạo module sidebar_menu.py và ẩn menu tạm thời
+
+### 📁 Files thay đổi:
+
+**Files mới:**
+- `core/sidebar_menu.py` - Module menu sidebar tùy chỉnh
+- `DEPLOYMENT_STREAMLIT_CLOUD.md` - Hướng dẫn deploy
+- `STREAMLIT_CLOUD_UPDATE.md` - Hướng dẫn cập nhật
+
+**Files đã sửa:**
+- `bone_joint_page_components/osteoporosis_tab.py` - Fix lỗi AttributeError
+- `diseases/bone_joint/gout/gout_info.py` - Cập nhật đơn vị acid uric
+- `diseases/bone_joint/gout/gout_treatment.py` - Thêm thuốc mới + cập nhật đơn vị
+- `core/utils.py` - Thêm function `format_with_units()` và cập nhật cho acid uric
+- `app.py` - Tạm ẩn menu sidebar
+- `pages/1_❤️_Tim_Mạch.py` - Thêm import sidebar_menu (tạm ẩn)
+- `pages/2_🫁_Hô_Hấp.py` - Thêm import sidebar_menu (tạm ẩn)
+- `pages/3_🩸_Tiểu_Đường.py` - Thêm import sidebar_menu (tạm ẩn)
+- `pages/4_🧠_Thần_Kinh.py` - Thêm import sidebar_menu (tạm ẩn)
+
+### 🎯 Ưu tiên phiên tiếp theo:
+
+**Priority 1 - Phát triển menu sidebar:**
+1. Phát triển thêm chức năng cho menu sidebar
+2. Bật lại menu sidebar với các tính năng mới
+3. Test menu trên tất cả các trang
+
+**Priority 2 - Cải thiện:**
+1. Kiểm tra app trên Streamlit Cloud sau khi redeploy
+2. Test tất cả các trang để đảm bảo không còn lỗi
+3. Cải thiện UI/UX nếu cần
+
+**Priority 3 - Refactor (nếu còn files lớn):**
+1. Kiểm tra lại số lượng files > 300 dòng
+2. Refactor các files lớn còn lại nếu có
+
+---
+
+## 📋 TÓM TẮT SESSION TRƯỚC (02/01/2025)
 
 ### ✅ Công việc đã hoàn thành:
 
