@@ -8,8 +8,16 @@ sys.path.append('..')
 from diseases.metabolic import diabetes
 from core.utils import convert_blood_sugar, calculate_bmi
 from core.ui_config import get_custom_css
+from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 
 st.set_page_config(page_title="Tiểu Đường", page_icon="🩸", layout="wide")
+
+# Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
+hide_default_nav()
+
+# Render menu sidebar tùy chỉnh
+# TẠM ẨN - Sẽ phát triển thêm chức năng sau
+# render_sidebar_menu()
 
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:

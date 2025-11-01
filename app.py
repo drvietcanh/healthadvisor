@@ -16,6 +16,8 @@ st.set_page_config(
 )
 
 # Dark Mode Toggle trong Sidebar
+# TẠM ẨN - Sẽ phát triển thêm chức năng sau
+"""
 with st.sidebar:
     st.markdown("### ⚙️ Cài đặt Giao diện")
     
@@ -77,6 +79,11 @@ with st.sidebar:
     for label, page_path in quick_actions:
         if st.button(label, key=f"quick_{page_path}", use_container_width=True):
             st.switch_page(page_path)
+"""
+
+# Khởi tạo dark mode state (vẫn cần cho CSS)
+if 'dark_mode' not in st.session_state:
+    st.session_state.dark_mode = False
 
 # Áp dụng CSS tùy chỉnh
 st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
