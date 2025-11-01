@@ -142,8 +142,7 @@ def format_with_units(value_mgdl: float, unit_type: str = "glucose") -> str:
         mmol_value = value_mgdl / 18
         return f"{int(value_mgdl)} mg/dL ({mmol_value:.1f} mmol/L)"
     elif unit_type == "uric_acid":
-        # Acid uric: 1 mg/dL = 59.5 μmol/L (nhưng thường dùng mg/dL)
-        # Không có mmol/L cho acid uric, chỉ có μmol/L
+        # Acid uric: 1 mg/dL = 59.5 μmol/L (chỉ dùng mg/dL và μmol/L)
         umol_value = value_mgdl * 59.5
         return f"{value_mgdl:.1f} mg/dL ({umol_value:.0f} μmol/L)"
     elif unit_type == "creatinine":

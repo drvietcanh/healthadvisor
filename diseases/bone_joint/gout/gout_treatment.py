@@ -26,6 +26,14 @@ GOUT_TREATMENT = {
                 "dose": "20-40mg/ngày, giảm dần",
                 "when": "Không dung nạp Colchicine/NSAIDs",
                 "note": "Hiệu quả nhanh, nhưng có tác dụng phụ"
+            },
+            {
+                "drug": "Anakinra (Kineret)",
+                "dose": "Tiêm dưới da 100mg/ngày, 3-5 ngày",
+                "when": "Cơn gút cấp nặng, không đáp ứng thuốc thông thường",
+                "mechanism": "Kháng IL-1 (chống viêm mạnh)",
+                "note": "Thuốc mới, đắt, chỉ dùng tại bệnh viện cho ca nặng",
+                "price": "Rất đắt, chưa phổ biến ở Việt Nam"
             }
         ],
         "other_measures": [
@@ -38,12 +46,12 @@ GOUT_TREATMENT = {
     
     "long_term": {
         "title": "2️⃣ Điều Trị Lâu Dài (Ngăn tái phát):",
-        "goal": "Giảm acid uric máu < 6 mg/dL (≈ 0.3 mmol/L, 360 μmol/L)",
+        "goal": "Giảm acid uric máu < 6 mg/dL (< 360 μmol/L)",
         "when_start": [
             ">2 cơn gút/năm",
             "Có hạt tophi",
             "Có sỏi thận do acid uric",
-            "Acid uric > 8 mg/dL (≈ > 0.5 mmol/L) dù chưa có cơn"
+            "Acid uric > 8 mg/dL (> 480 μmol/L) dù chưa có cơn"
         ],
         "medications": {
             "allopurinol": {
@@ -65,8 +73,26 @@ GOUT_TREATMENT = {
             },
             "benzbromarone": {
                 "drug": "Benzbromarone",
+                "dose": "50-200mg/ngày",
                 "mechanism": "Tăng thải acid uric",
-                "note": "Hiệu quả nhưng ít dùng do độc gan"
+                "note": "Hiệu quả nhưng ít dùng do độc gan. Chỉ dùng khi thận tốt"
+            },
+            "lesinurad": {
+                "drug": "Lesinurad",
+                "dose": "200mg/ngày",
+                "mechanism": "Ức chế thải acid uric qua thận (URAT1 inhibitor)",
+                "when": "Dùng kết hợp với Allopurinol hoặc Febuxostat",
+                "note": "Thuốc mới, tăng hiệu quả khi dùng chung với Allopurinol. Chỉ dùng khi thận tốt, uống nhiều nước",
+                "price": "Đắt, ít dùng ở Việt Nam"
+            },
+            "pegloticase": {
+                "drug": "Pegloticase (Krystexxa)",
+                "dose": "Tiêm tĩnh mạch 8mg/2 tuần",
+                "mechanism": "Enzyme chuyển uric acid thành allantoin (thải qua nước tiểu)",
+                "when": "Gút nặng, không đáp ứng Allopurinol/Febuxostat, nhiều hạt tophi",
+                "note": "Thuốc MỚI NHẤT, rất đắt, chỉ dùng cho ca nặng. Tiêm tại bệnh viện",
+                "contraindication": "Không dùng với Allopurinol/Febuxostat (nguy hiểm!)",
+                "price": "Rất đắt (hàng trăm triệu/tháng), chưa có ở Việt Nam"
             }
         },
         "important": "⚠️ Khi bắt đầu thuốc hạ acid uric → Có thể tăng cơn gút (tinh thể tan ra). Dùng Colchicine dự phòng 3-6 tháng!"
@@ -83,7 +109,7 @@ GOUT_MEDICATIONS = {
     """,
     
     "monitoring": [
-        "Xét nghiệm acid uric máu: Mục tiêu < 6 mg/dL (≈ 0.3 mmol/L, 360 μmol/L)",
+        "Xét nghiệm acid uric máu: Mục tiêu < 6 mg/dL (< 360 μmol/L)",
         "Xét nghiệm định kỳ: Gan, thận, máu (mỗi 3-6 tháng)",
         "Theo dõi số cơn gút (giảm dần khi điều trị đúng)",
         "Theo dõi hạt tophi (nhỏ dần, mất sau 1-2 năm)"
@@ -100,6 +126,23 @@ GOUT_MEDICATIONS = {
             "Dị ứng nặng (HIẾM nhưng nguy hiểm)",
             "Tăng cơn gút khi mới bắt đầu (dùng Colchicine dự phòng)",
             "Tăng men gan nhẹ"
+        ],
+        "febuxostat": [
+            "Tăng cơn gút khi mới bắt đầu (như Allopurinol)",
+            "Tăng nguy cơ tim mạch (nghiên cứu cho thấy nhẹ)",
+            "Tăng men gan",
+            "Dị ứng da (ít hơn Allopurinol)"
+        ],
+        "pegloticase": [
+            "Phản ứng dị ứng nặng (có thể gây sốc)",
+            "Phải tiêm tại bệnh viện, theo dõi sát",
+            "Rất đắt tiền",
+            "Không dùng kèm Allopurinol/Febuxostat (nguy hiểm!)"
+        ],
+        "lesinurad": [
+            "Tăng nguy cơ sỏi thận (phải uống nhiều nước)",
+            "Không dùng đơn độc, phải kết hợp với Allopurinol/Febuxostat",
+            "Không dùng nếu suy thận"
         ]
     }
 }
@@ -126,7 +169,7 @@ GOUT_PREVENTION = {
     
     "medication_adherence": [
         "Dùng thuốc hạ acid uric ĐỀU ĐẶN, không bỏ",
-        "Mục tiêu: Acid uric < 6 mg/dL (≈ 0.3 mmol/L)",
+        "Mục tiêu: Acid uric < 6 mg/dL (< 360 μmol/L)",
         "Theo dõi định kỳ với bác sĩ",
         "Dùng Colchicine dự phòng khi mới bắt đầu thuốc hạ acid uric"
     ],
