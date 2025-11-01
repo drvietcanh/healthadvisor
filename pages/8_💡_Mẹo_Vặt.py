@@ -72,7 +72,7 @@ with tab1:
     nhưng cần dùng ĐÚNG CÁCH để tránh nguy hiểm.
     """)
     
-    from health_tips.paracetamol_calculator import get_paracetamol_guidelines
+    from health_tips.paracetamol import get_paracetamol_guidelines
     st.markdown(get_paracetamol_guidelines())
 
 # Tab 2: Xử trí sốt

@@ -3,7 +3,7 @@ Health Tips Module
 Mẹo vặt y tế và công cụ tính toán hữu ích cho người dân
 """
 
-from health_tips.paracetamol_calculator import (
+from health_tips.paracetamol import (
     calculate_paracetamol_dose,
     render_paracetamol_calculator,
     get_paracetamol_guidelines
