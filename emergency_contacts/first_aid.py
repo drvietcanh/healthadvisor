@@ -15,6 +15,7 @@ from .first_aid_pediatric import FIRST_AID_PEDIATRIC
 from .first_aid_environmental import FIRST_AID_ENVIRONMENTAL
 from .first_aid_medical import FIRST_AID_MEDICAL
 from .first_aid_additional import FIRST_AID_ADDITIONAL
+from .first_aid_additional2 import FIRST_AID_ADDITIONAL2
 
 # Tổng hợp tất cả
 FIRST_AID_GUIDES = {}
@@ -24,6 +25,7 @@ FIRST_AID_GUIDES.update(FIRST_AID_PEDIATRIC)
 FIRST_AID_GUIDES.update(FIRST_AID_ENVIRONMENTAL)
 FIRST_AID_GUIDES.update(FIRST_AID_MEDICAL)
 FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL)
+FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL2)
 
 
 def get_first_aid_guide(condition):
