@@ -30,16 +30,17 @@ LIGHT_MODE_CSS = """
         margin-bottom: 1rem !important;
     }
     
-    h1 { font-size: 2.5rem !important; }
-    h2 { font-size: 2rem !important; }
-    h3 { font-size: 1.75rem !important; }
+    h1 { font-size: 2.75rem !important; }
+    h2 { font-size: 2.25rem !important; }
+    h3 { font-size: 2rem !important; }
     h4 { font-size: 1.5rem !important; }
     
     /* Text - Larger font for elderly users */
     p, li, span, div {
-        font-size: 1.1rem !important;
-        line-height: 1.8 !important;
+        font-size: 1.2rem !important;
+        line-height: 1.9 !important;
         color: var(--text-color);
+        margin-bottom: 0.75rem !important;
     }
     
     /* Stronger emphasis */
@@ -48,13 +49,13 @@ LIGHT_MODE_CSS = """
         color: #000;
     }
     
-    /* Cards */
+    /* Cards - Better spacing */
     .disease-card {
         background-color: var(--secondary-bg);
         border: 2px solid var(--border-color);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem 0;
+        border-radius: 15px;
+        padding: 1.75rem;
+        margin: 1.25rem 0;
         transition: all 0.3s ease;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
@@ -67,12 +68,12 @@ LIGHT_MODE_CSS = """
     
     /* Buttons - Larger and more visible */
     .stButton button {
-        font-size: 1.1rem !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px !important;
-        font-weight: 500 !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem 1.75rem !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
         transition: all 0.3s ease !important;
-        min-height: 48px !important;
+        min-height: 56px !important;
     }
     
     .stButton button:hover {
@@ -82,11 +83,11 @@ LIGHT_MODE_CSS = """
     
     /* Inputs - Larger for easy tapping */
     input, textarea, select {
-        font-size: 1.1rem !important;
-        padding: 0.75rem !important;
-        border-radius: 8px !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem !important;
+        border-radius: 10px !important;
         border: 2px solid var(--border-color) !important;
-        min-height: 48px !important;
+        min-height: 52px !important;
     }
     
     input:focus, textarea:focus, select:focus {
@@ -94,12 +95,12 @@ LIGHT_MODE_CSS = """
         box-shadow: 0 0 0 3px rgba(31, 119, 180, 0.1) !important;
     }
     
-    /* Expanders */
+    /* Expanders - Larger and more visible */
     .streamlit-expanderHeader {
-        font-size: 1.2rem !important;
+        font-size: 1.3rem !important;
         font-weight: 600 !important;
         background-color: var(--secondary-bg) !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         padding: 1rem !important;
     }
     
@@ -113,18 +114,20 @@ LIGHT_MODE_CSS = """
     }
     
     .stTabs [data-baseweb="tab"] {
-        font-size: 1.1rem !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px 8px 0 0 !important;
-        font-weight: 500 !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem 1.75rem !important;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600 !important;
+        min-height: 52px !important;
     }
     
     /* Info boxes - Better contrast */
     .stAlert {
-        border-radius: 8px !important;
-        padding: 1rem 1.5rem !important;
-        font-size: 1.05rem !important;
+        border-radius: 10px !important;
+        padding: 1.25rem 1.75rem !important;
+        font-size: 1.15rem !important;
         border-left: 5px solid !important;
+        margin-bottom: 1.5rem !important;
     }
     
     /* Warning box */
@@ -151,9 +154,9 @@ LIGHT_MODE_CSS = """
         padding: 2rem 1rem !important;
     }
     
-    /* Dividers */
+    /* Dividers - More spacing */
     hr {
-        margin: 2rem 0 !important;
+        margin: 2.5rem 0 !important;
         border-top: 2px solid var(--border-color) !important;
     }
     

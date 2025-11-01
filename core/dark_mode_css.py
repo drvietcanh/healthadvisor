@@ -28,24 +28,26 @@ DARK_MODE_CSS = """
         font-weight: 600 !important;
     }
     
-    h1 { font-size: 2.5rem !important; }
-    h2 { font-size: 2rem !important; }
-    h3 { font-size: 1.75rem !important; }
+    h1 { font-size: 2.75rem !important; }
+    h2 { font-size: 2.25rem !important; }
+    h3 { font-size: 2rem !important; }
+    h4 { font-size: 1.5rem !important; }
     
-    /* Text */
+    /* Text - Larger for elderly users */
     p, li, span, div {
-        font-size: 1.1rem !important;
-        line-height: 1.8 !important;
+        font-size: 1.2rem !important;
+        line-height: 1.9 !important;
         color: var(--text-color);
+        margin-bottom: 0.75rem !important;
     }
     
-    /* Cards */
+    /* Cards - Better spacing */
     .disease-card {
         background-color: var(--secondary-bg);
         border: 2px solid var(--border-color);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1rem 0;
+        border-radius: 15px;
+        padding: 1.75rem;
+        margin: 1.25rem 0;
         transition: all 0.3s ease;
     }
     
@@ -55,13 +57,14 @@ DARK_MODE_CSS = """
         transform: translateY(-2px);
     }
     
-    /* Buttons */
+    /* Buttons - Larger for easier clicking */
     .stButton button {
-        font-size: 1.1rem !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px !important;
-        font-weight: 500 !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem 1.75rem !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
         transition: all 0.3s ease !important;
+        min-height: 56px !important;
     }
     
     .stButton button:hover {
@@ -69,23 +72,25 @@ DARK_MODE_CSS = """
         box-shadow: 0 4px 8px rgba(77, 166, 255, 0.4);
     }
     
-    /* Inputs */
+    /* Inputs - Larger for elderly users */
     input, textarea, select {
-        font-size: 1.1rem !important;
-        padding: 0.75rem !important;
-        border-radius: 8px !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem !important;
+        border-radius: 10px !important;
         background-color: var(--secondary-bg) !important;
         color: var(--text-color) !important;
-        border: 1px solid var(--border-color) !important;
+        border: 2px solid var(--border-color) !important;
+        min-height: 52px !important;
     }
     
-    /* Expanders */
+    /* Expanders - Larger and more visible */
     .streamlit-expanderHeader {
-        font-size: 1.2rem !important;
+        font-size: 1.3rem !important;
         font-weight: 600 !important;
         background-color: var(--secondary-bg) !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         color: var(--text-color) !important;
+        padding: 1rem !important;
     }
     
     /* Tabs */
@@ -94,11 +99,12 @@ DARK_MODE_CSS = """
     }
     
     .stTabs [data-baseweb="tab"] {
-        font-size: 1.1rem !important;
-        padding: 0.75rem 1.5rem !important;
-        border-radius: 8px 8px 0 0 !important;
-        font-weight: 500 !important;
+        font-size: 1.2rem !important;
+        padding: 0.875rem 1.75rem !important;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600 !important;
         color: var(--text-color) !important;
+        min-height: 52px !important;
     }
     
     .stTabs [data-baseweb="tab"][aria-selected="true"] {
@@ -141,11 +147,12 @@ DARK_MODE_CSS = """
         color: var(--text-color) !important;
     }
     
-    /* Info boxes */
+    /* Info boxes - Larger and more readable */
     .stAlert {
-        border-radius: 8px !important;
-        padding: 1rem 1.5rem !important;
-        font-size: 1.05rem !important;
+        border-radius: 10px !important;
+        padding: 1.25rem 1.75rem !important;
+        font-size: 1.15rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
     .stAlert * {
@@ -272,25 +279,27 @@ DARK_MODE_CSS = """
         h1 { font-size: 2rem !important; }
         h2 { font-size: 1.75rem !important; }
         h3 { font-size: 1.5rem !important; }
+        h4 { font-size: 1.25rem !important; }
         
         /* Text vẫn đủ lớn để đọc */
         p, li, span, div {
-            font-size: 1rem !important;
+            font-size: 1.1rem !important;
+            line-height: 1.8 !important;
         }
         
         /* Buttons full width và dễ bấm */
         .stButton button {
             width: 100% !important;
-            font-size: 1.2rem !important;
+            font-size: 1.3rem !important;
             padding: 1rem !important;
-            min-height: 56px !important;
+            min-height: 60px !important;
         }
         
         /* Inputs full width */
         input, textarea, select {
             width: 100% !important;
-            font-size: 1.1rem !important;
-            min-height: 52px !important;
+            font-size: 1.2rem !important;
+            min-height: 56px !important;
         }
         
         /* Columns stack trên mobile */
