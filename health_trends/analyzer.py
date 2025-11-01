@@ -4,7 +4,9 @@ Analyzer - Phân tích xu hướng dữ liệu sức khỏe
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
+import streamlit as st
 
+@st.cache_data(ttl=300)  # Cache 5 phút
 def calculate_trend(data, days=7):
     """
     Tính xu hướng tăng/giảm/ổn định
@@ -49,6 +51,7 @@ def calculate_trend(data, days=7):
         "second_avg": round(second_half, 1)
     }
 
+@st.cache_data(ttl=300)
 def analyze_blood_pressure_trend(df, days=30):
     """
     Phân tích xu hướng huyết áp
@@ -113,6 +116,7 @@ def analyze_blood_pressure_trend(df, days=30):
         "days_analyzed": days
     }
 
+@st.cache_data(ttl=300)
 def analyze_blood_sugar_trend(df, days=30):
     """
     Phân tích xu hướng đường huyết
@@ -181,6 +185,7 @@ def analyze_blood_sugar_trend(df, days=30):
         "days_analyzed": days
     }
 
+@st.cache_data(ttl=300)
 def analyze_weight_trend(df, days=30):
     """
     Phân tích xu hướng cân nặng
@@ -251,6 +256,7 @@ def analyze_weight_trend(df, days=30):
         "days_analyzed": days
     }
 
+@st.cache_data(ttl=300)
 def get_overall_health_score(bp_analysis, bs_analysis, weight_analysis):
     """
     Tính điểm sức khỏe tổng thể (0-100)
