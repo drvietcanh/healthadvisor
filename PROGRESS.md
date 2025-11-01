@@ -1,9 +1,9 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 03/01/2025 - Session fix bugs + Cập nhật nội dung  
-**Session gần nhất:** Fix lỗi AttributeError + Cập nhật đơn vị acid uric + Thêm thuốc gút mới ✅  
-**Status:** 🎉 Code đã ổn định, tất cả thay đổi đã push lên GitHub và Streamlit Cloud  
-**Phiên tiếp theo:** Test app trên Streamlit Cloud, cải thiện UI/UX, bổ sung tính năng mới
+**Cập nhật:** 03/01/2025 - Session tối ưu UI + Thêm bệnh mới ✅  
+**Session gần nhất:** Tối ưu font/spacing + Thêm 3 bệnh cấp cứu + Performance cache + Thêm bệnh Rối loạn nhịp tim ✅  
+**Status:** 🎉 App đã được cải thiện đáng kể về UI/UX và nội dung  
+**Phiên tiếp theo:** Tiếp tục thêm bệnh mới (Viêm phổi, Đau đầu), tính năng Drug Interaction
 
 ---
 
@@ -765,78 +765,92 @@ Phiên sau tiếp tục refactor các files còn lại. Đọc PROGRESS.md để
 
 ---
 
-## 📋 TÓM TẮT SESSION MỚI NHẤT (03/01/2025)
+## 📋 TÓM TẮT SESSION MỚI NHẤT (03/01/2025 - CHIỀU)
 
 ### ✅ Công việc đã hoàn thành:
 
-**1. Kết nối GitHub và Streamlit Cloud:**
-- ✅ Đã push tất cả commits lên GitHub (`origin/main`)
-- ✅ Tạo file `DEPLOYMENT_STREAMLIT_CLOUD.md` với hướng dẫn deploy
-- ✅ Tạo file `STREAMLIT_CLOUD_UPDATE.md` với hướng dẫn kiểm tra và cập nhật
+**1. Hoàn thành refactor 4 files lớn:**
+- ✅ `pages/2_🫁_Hô_Hấp.py` (691 → 43 dòng, -94%) - Tách thành respiratory_page_components/ với 2 modules
+- ✅ `pages/_📈_Xu_Hướng.py` (371 → 164 dòng, -56%) - Tách thành 6 modules trong health_trends_page_components/
+- ✅ `diseases/cardiovascular/heart_failure/management.py` (384 dòng) - Tách thành 5 modules trong daily_management/
+- ✅ `health_tips/paracetamol_calculator.py` (356 dòng) - Tách thành 3 modules trong paracetamol/
 
-**2. Fix lỗi AttributeError trong osteoporosis_tab.py:**
-- ✅ Sửa lỗi xử lý `home_safety` và `personal` (chúng là list, không phải dict)
-- ✅ Commit: `7199662` - fix: Sửa lỗi AttributeError trong osteoporosis_tab.py
-- ✅ Đã push lên GitHub và Streamlit Cloud sẽ tự động redeploy
+**2. Tối ưu UI/UX cho người già (Option 1):**
+- ✅ **Tăng font sizes:** Base text 1.1→1.2rem, h1 2.5→2.75rem, h2 2→2.25rem
+- ✅ **Buttons:** Height 48→56px, mobile 60px, font 1.2rem
+- ✅ **Inputs:** Height 52px, border 2px, mobile 56px
+- ✅ **Cards:** Padding 1.5→1.75rem, radius 15px
+- ✅ **Alerts:** Font 1.15rem, spacing +50%
+- ✅ **Line-height:** 1.8→1.9 cho dễ đọc
+- ✅ Files: `core/dark_mode_css.py`, `core/light_mode_css.py`
 
-**3. Tạo module sidebar_menu.py:**
-- ✅ Tạo `core/sidebar_menu.py` với 2 functions: `render_sidebar_menu()` và `hide_default_nav()`
-- ✅ Tạm ẩn menu sidebar để phát triển thêm chức năng sau
-- ✅ Commit: `14f8735` - feat: Tạo module sidebar_menu.py và ẩn menu tạm thời
+**3. Thêm 3 bệnh cấp cứu mới (Option 2):**
+- ✅ **Chảy máu cam (Nosebleed):** Xử lý đúng cách, phòng ngừa, khi nào gọi 115
+- ✅ **Nghẹn người lớn (Choking Adult):** Heimlich maneuver chi tiết
+- ✅ **Ngộ độc thực phẩm (Food Poisoning):** Tiêu chảy, nôn, xử trí, phòng ngừa
+- ✅ Files: `emergency_contacts/first_aid_additional2.py`, update `first_aid.py`
 
-**4. Cập nhật đơn vị acid uric:**
-- ✅ Bỏ đơn vị mmol/L cho acid uric (chỉ giữ mg/dL và μmol/L)
-- ✅ Sửa công thức quy đổi chính xác: 1 mg/dL = 0.0595 mmol/L = 59.5 μmol/L
-- ✅ Cập nhật tất cả giá trị acid uric trong `gout_info.py` và `gout_treatment.py`
-- ✅ Cập nhật function `format_with_units()` trong `core/utils.py`
+**4. Tối ưu Performance (Option 4):**
+- ✅ Thêm `@st.cache_data` (300s TTL) cho `health_trends/analyzer.py`
+- ✅ Cache các functions: `calculate_trend`, `analyze_blood_pressure_trend`, `analyze_blood_sugar_trend`, `analyze_weight_trend`, `get_overall_health_score`
+- ✅ Giảm tải tính toán khi user xem lại dữ liệu
 
-**5. Thêm thuốc điều trị gút mới:**
-- ✅ **Lesinurad** - Thuốc mới, dùng kết hợp với Allopurinol/Febuxostat
-- ✅ **Pegloticase (Krystexxa)** - Enzyme tiêm tĩnh mạch, dùng cho ca nặng
-- ✅ **Anakinra (Kineret)** - Thuốc mới cho cơn gút cấp nặng
-- ✅ Thêm thông tin: liều dùng, cơ chế, chỉ định, tác dụng phụ, giá cả
+**5. Thêm bệnh Rối loạn nhịp tim (Arrhythmia):**
+- ✅ Tạo `cardiovascular_page_components/arrhythmia_tab.py` với đầy đủ nội dung
+- ✅ 3 loại chính: Tim đập nhanh, Tim đập chậm, Tim bỏ sót nhịp
+- ✅ Nguyên nhân, triệu chứng, xử trí tại nhà
+- ✅ Khi nào khám bác sĩ, khi nào gọi 115
+- ✅ Thuốc điều trị, máy tạo nhịp tim
+- ✅ Thêm tab vào `pages/1_❤️_Tim_Mạch.py`
 
 ### 💾 Commits trong session này:
 
-1. `889fa3e` - docs: Cập nhật PROGRESS.md - Lưu tiến trình session
-2. `094d52d` - docs: Thêm hướng dẫn kiểm tra và cập nhật Streamlit Cloud
-3. `1d789ad` - feat: Bỏ mmol/L cho acid uric + Thêm thuốc điều trị gút mới
-4. `7199662` - fix: Sửa lỗi AttributeError trong osteoporosis_tab.py
-5. `14f8735` - feat: Tạo module sidebar_menu.py và ẩn menu tạm thời
+1. `df1dfd4` - docs: Thêm kế hoạch phát triển tiếp theo với 4 options
+2. `0ab69d1` - refactor: Tách paracetamol_calculator.py (356 dòng) thành 3 modules
+3. `345dde0` - refactor: Tách Xu_Hướng.py (371 dòng) thành 6 components
+4. `88e3421` - refactor: Tách heart_failure/management.py (384 dòng) thành 5 modules
+5. `998b000` - refactor: Tách pages/2_Hô_Hấp.py (691 dòng) thành 3 modules
+6. `e11c95e` - UI: Tăng font & spacing cho người già - Option 1
+7. `cdc4e2d` - Emergency: Thêm 3 bệnh cấp cứu mới - Option 2
+8. `afcbd9f` - Performance: Thêm @st.cache_data cho analysis - Option 4
+9. `TBD` - feat: Thêm bệnh Rối loạn nhịp tim - Arrhythmia
 
 ### 📁 Files thay đổi:
 
 **Files mới:**
-- `core/sidebar_menu.py` - Module menu sidebar tùy chỉnh
-- `DEPLOYMENT_STREAMLIT_CLOUD.md` - Hướng dẫn deploy
-- `STREAMLIT_CLOUD_UPDATE.md` - Hướng dẫn cập nhật
+- `KE_HOACH_PHAT_TRIEN_TIEP_THEO.md` - Kế hoạch phát triển
+- `cardiovascular_page_components/arrhythmia_tab.py` - Tab rối loạn nhịp tim
+- `emergency_contacts/first_aid_additional2.py` - 3 bệnh cấp cứu mới
+- `respiratory_page_components/` - 2 modules cho Hô Hấp
+- `health_trends_page_components/` - 6 modules cho Xu Hướng
+- `diseases/cardiovascular/heart_failure/daily_management/` - 5 modules cho Quản lý Suy tim
+- `health_tips/paracetamol/` - 3 modules cho Paracetamol
 
 **Files đã sửa:**
-- `bone_joint_page_components/osteoporosis_tab.py` - Fix lỗi AttributeError
-- `diseases/bone_joint/gout/gout_info.py` - Cập nhật đơn vị acid uric
-- `diseases/bone_joint/gout/gout_treatment.py` - Thêm thuốc mới + cập nhật đơn vị
-- `core/utils.py` - Thêm function `format_with_units()` và cập nhật cho acid uric
-- `app.py` - Tạm ẩn menu sidebar
-- `pages/1_❤️_Tim_Mạch.py` - Thêm import sidebar_menu (tạm ẩn)
-- `pages/2_🫁_Hô_Hấp.py` - Thêm import sidebar_menu (tạm ẩn)
-- `pages/3_🩸_Tiểu_Đường.py` - Thêm import sidebar_menu (tạm ẩn)
-- `pages/4_🧠_Thần_Kinh.py` - Thêm import sidebar_menu (tạm ẩn)
+- `core/dark_mode_css.py` - Tăng font, spacing, button sizes
+- `core/light_mode_css.py` - Tăng font, spacing, button sizes
+- `emergency_contacts/first_aid.py` - Import module mới
+- `health_trends/analyzer.py` - Thêm @st.cache_data decorators
+- `pages/2_🫁_Hô_Hấp.py` - Import components, giảm size
+- `pages/_📈_Xu_Hướng.py` - Import components, giảm size
+- `pages/8_💡_Mẹo_Vặt.py` - Import từ module mới
+- `pages/1_❤️_Tim_Mạch.py` - Thêm tab Rối loạn nhịp tim
+- `cardiovascular_page_components/__init__.py` - Export tab mới
 
 ### 🎯 Ưu tiên phiên tiếp theo:
 
-**Priority 1 - Phát triển menu sidebar:**
-1. Phát triển thêm chức năng cho menu sidebar
-2. Bật lại menu sidebar với các tính năng mới
-3. Test menu trên tất cả các trang
+**Priority 1 - Thêm bệnh mới:**
+1. Viêm phổi (Pneumonia) - Module cho trang Hô Hấp
+2. Đau đầu/Migraine - Module cho trang Thần Kinh
 
-**Priority 2 - Cải thiện:**
-1. Kiểm tra app trên Streamlit Cloud sau khi redeploy
-2. Test tất cả các trang để đảm bảo không còn lỗi
-3. Cải thiện UI/UX nếu cần
+**Priority 2 - Tính năng mới:**
+1. Drug Interaction Checker - Kiểm tra tương tác thuốc
+2. Health Diary reminders - Nhắc nhở nhập dữ liệu hàng ngày
 
-**Priority 3 - Refactor (nếu còn files lớn):**
-1. Kiểm tra lại số lượng files > 300 dòng
-2. Refactor các files lớn còn lại nếu có
+**Priority 3 - Tối ưu:**
+1. Lazy loading cho disease modules
+2. Optimize imports
+3. Test performance trên Streamlit Cloud
 
 ---
 
