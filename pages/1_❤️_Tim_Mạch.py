@@ -5,7 +5,10 @@ File này tổng hợp từ cardiovascular_page_components/
 """
 import streamlit as st
 import sys
-sys.path.append('..')
+import os
+
+# Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from cardiovascular_page_components import (
     render_hypertension_tab,

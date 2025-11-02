@@ -3,7 +3,10 @@ Trang tư vấn về bệnh Tiểu Đường
 """
 import streamlit as st
 import sys
-sys.path.append('..')
+import os
+
+# Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from diseases.metabolic import diabetes
 from core.utils import convert_blood_sugar, calculate_bmi

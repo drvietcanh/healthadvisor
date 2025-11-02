@@ -3,7 +3,10 @@ Trang tư vấn về bệnh Tiêu Hóa
 """
 import streamlit as st
 import sys
-sys.path.append('..')
+import os
+
+# Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav

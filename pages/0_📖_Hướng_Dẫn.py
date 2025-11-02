@@ -7,8 +7,8 @@ import streamlit as st
 import sys
 import os
 
-sys.path.append('..')
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
