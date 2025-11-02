@@ -17,7 +17,9 @@ from health_tips.general_tips import (
 
 from health_tips.daily_tips import (
     render_daily_health_tips,
-    render_preventive_care
+    render_preventive_care,
+    render_nutrition_bone_health,
+    render_nutrition_cholesterol
 )
 
 from health_tips.exercise_guide import (
@@ -35,6 +37,8 @@ __all__ = [
     "render_daily_health_tips",
     "render_preventive_care",
     "render_general_exercise_tips",
-    "render_disease_specific_exercises"
+    "render_disease_specific_exercises",
+    "render_nutrition_bone_health",
+    "render_nutrition_cholesterol"
 ]
 

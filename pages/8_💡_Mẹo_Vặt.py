@@ -41,7 +41,8 @@ render_sidebar_menu()
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
+extra_large_font = st.session_state.get('extra_large_font', False)
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
 
 # Header
 st.title("💡 Mẹo Vặt Y Tế - Kiến thức hữu ích hàng ngày")
@@ -57,13 +58,14 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "💊 Máy tính Paracetamol",
     "🌡️ Xử trí sốt",
     "💊 Thuốc & Thức ăn",
     "🏃 Bài tập thể thao",
     "🌱 Chăm sóc hàng ngày",
-    "🛡️ Phòng bệnh"
+    "🛡️ Phòng bệnh",
+    "🍽️ Dinh dưỡng"
 ])
 
 # Tab 1: Máy tính Paracetamol
@@ -107,6 +109,21 @@ with tab5:
 # Tab 6: Phòng bệnh
 with tab6:
     render_preventive_care()
+
+# Tab 7: Dinh dưỡng
+with tab7:
+    from health_tips.daily_tips import render_nutrition_bone_health, render_nutrition_cholesterol
+    
+    st.markdown("### 🍽️ Mẹo Dinh Dưỡng")
+    st.info("💡 Chọn một trong hai mẹo dinh dưỡng dưới đây:")
+    
+    sub_tab1, sub_tab2 = st.tabs(["🦴 Xương chắc khỏe", "❤️ Giảm Cholesterol"])
+    
+    with sub_tab1:
+        render_nutrition_bone_health()
+    
+    with sub_tab2:
+        render_nutrition_cholesterol()
 
 # Footer
 st.divider()

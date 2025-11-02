@@ -29,7 +29,8 @@ if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False
 
 # Áp dụng CSS tùy chỉnh
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
+extra_large_font = st.session_state.get('extra_large_font', False)
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
 
 # Header
 st.markdown('<div class="main-header">🏥 HealthAdvisor</div>', unsafe_allow_html=True)
@@ -50,24 +51,57 @@ if st.session_state.first_visit:
 # Quick Actions
 st.markdown("### 🚀 Bạn muốn làm gì hôm nay?")
 
+# Nút SOS nổi bật (ưu tiên cao nhất)
+st.markdown("""
+<div style='background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%); 
+            padding: 1.5rem; border-radius: 15px; text-align: center; 
+            margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);'>
+    <h2 style='color: white; margin: 0; font-size: 1.8rem;'>🆘 CẤP CỨU - SOS</h2>
+    <p style='color: white; margin: 0.5rem 0 0 0; opacity: 0.95; font-size: 1.1rem;'>
+        Số điện thoại khẩn cấp & Hướng dẫn sơ cứu
+    </p>
+</div>
+""", unsafe_allow_html=True)
+
+if st.button("🆘 Vào Trang SOS Ngay", use_container_width=True, type="primary"):
+    st.switch_page("pages/12_🆘_SOS.py")
+
+st.divider()
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    if st.button("📊 Kiểm tra Huyết Áp", use_container_width=True, type="primary"):
+    if st.button("📊 Kiểm tra Huyết Áp", use_container_width=True, type="secondary"):
         st.switch_page("pages/1_❤️_Tim_Mạch.py")
     st.caption("Đánh giá huyết áp & nhận tư vấn")
 
 with col2:
-    if st.button("🩸 Kiểm tra Đường Huyết", use_container_width=True, type="primary"):
+    if st.button("🩸 Kiểm tra Đường Huyết", use_container_width=True, type="secondary"):
         st.switch_page("pages/3_🩸_Tiểu_Đường.py")
     st.caption("Chuyển đổi mmol/L ↔ mg/dL")
 
 with col3:
-    if st.button("🤖 Hỏi AI Bác Sĩ", use_container_width=True, type="primary"):
+    if st.button("🤖 Hỏi AI Bác Sĩ", use_container_width=True, type="secondary"):
         st.switch_page("pages/_🤖_AI_Bác_Sĩ.py")
     st.caption("Chat với AI - Miễn phí!")
 
 st.divider()
+
+# Hiển thị Favorites nếu có
+try:
+    from core.favorites_manager import render_favorites_home
+    render_favorites_home()
+    st.divider()
+except ImportError:
+    pass
+
+# Hiển thị Recent Pages nếu có
+try:
+    from core.recent_pages import render_recent_home
+    render_recent_home()
+    st.divider()
+except ImportError:
+    pass
 
 # Lời chào
 greeting = get_greeting()

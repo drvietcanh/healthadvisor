@@ -22,9 +22,20 @@ render_sidebar_menu()
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
+extra_large_font = st.session_state.get('extra_large_font', False)
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
 
 st.title("🫁 Tư vấn Hô Hấp")
+
+# Tự động thêm vào recent
+from core.recent_pages import add_to_recent
+add_to_recent("2_🫁_Hô_Hấp", "🫁 Hô Hấp")
+
+# Nút yêu thích
+from core.favorites_manager import render_favorite_button
+col_title, col_fav = st.columns([4, 1])
+with col_fav:
+    render_favorite_button("2_🫁_Hô_Hấp", "🫁 Hô Hấp")
 
 # Tabs cho các bệnh hô hấp
 tab1, tab2, tab3, tab4 = st.tabs(["🫁 COPD (Phổi Tắc Nghẽn)", "🌬️ Hen Suyễn", "🫁 Viêm phổi", "🤧 Ho Mãn Tính"])

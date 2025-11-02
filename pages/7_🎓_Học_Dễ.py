@@ -20,7 +20,8 @@ render_sidebar_menu()
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_html=True)
+extra_large_font = st.session_state.get('extra_large_font', False)
+st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
 
 st.title("🎓 Học Y Khoa Siêu Dễ!")
 st.markdown("### Giải thích bằng hình ảnh - Ai cũng hiểu! 😊")

@@ -171,7 +171,11 @@ def render_sidebar_menu():
         if 'dark_mode' not in st.session_state:
             st.session_state.dark_mode = False
         
-        # Toggle
+        # Initialize extra large font state
+        if 'extra_large_font' not in st.session_state:
+            st.session_state.extra_large_font = False
+        
+        # Toggle Dark Mode
         dark_mode = st.toggle(
             "🌙 Chế độ Tối (Dark Mode)",
             value=st.session_state.dark_mode,
@@ -180,36 +184,95 @@ def render_sidebar_menu():
         
         st.session_state.dark_mode = dark_mode
         
+        # Toggle Extra Large Font
+        extra_large_font = st.toggle(
+            "🔤 Font Siêu Lớn",
+            value=st.session_state.extra_large_font,
+            help="Tăng font lên 22-24px - Dễ đọc hơn cho người mắt kém"
+        )
+        
+        st.session_state.extra_large_font = extra_large_font
+        
         if dark_mode:
             st.caption("✅ Đang dùng chế độ tối")
         else:
             st.caption("☀️ Đang dùng chế độ sáng")
         
+        if extra_large_font:
+            st.caption("✅ Font siêu lớn đã bật")
+        
         st.divider()
         
-        # Menu Navigation - Tùy chỉnh hoàn toàn
-        # Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
-        st.markdown("### 📂 Điều hướng")
+        # Search Bar
+        try:
+            from core.search_component import render_search_bar
+            render_search_bar()
+            st.divider()
+        except ImportError:
+            pass  # Nếu chưa có search component thì bỏ qua
         
-        # Danh sách menu items (13 trang hiển thị)
-        menu_items = [
-            ("📖 Hướng Dẫn", "0_📖_Hướng_Dẫn"),
+        # Favorites
+        try:
+            from core.favorites_manager import render_favorites_sidebar
+            render_favorites_sidebar()
+            st.divider()
+        except ImportError:
+            pass
+        
+        # Recent Pages
+        try:
+            from core.recent_pages import render_recent_sidebar
+            render_recent_sidebar()
+            st.divider()
+        except ImportError:
+            pass
+        
+        # Menu Navigation - Tùy chỉnh hoàn toàn
+        # Chia thành 4 nhóm theo mức độ ưu tiên
+        
+        # ===== NHÓM 1: MENU CHÍNH (Priority 1 - Quan trọng nhất) =====
+        st.markdown("### 📂 Menu Chính")
+        
+        priority_1_items = [
+            ("🆘 SOS", "12_🆘_SOS"),  # Đưa SOS lên đầu
             ("❤️ Tim Mạch", "1_❤️_Tim_Mạch"),
-            ("🫁 Hô Hấp", "2_🫁_Hô_Hấp"),
             ("🩸 Tiểu Đường", "3_🩸_Tiểu_Đường"),
             ("🧠 Thần Kinh", "4_🧠_Thần_Kinh"),
-            ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
+            ("🫁 Hô Hấp", "2_🫁_Hô_Hấp"),
+        ]
+        
+        for label, page_name in priority_1_items:
+            st.page_link(f"pages/{page_name}.py", label=label, icon=None)
+        
+        st.divider()
+        
+        # ===== NHÓM 2: CHUYÊN KHOA (Priority 2) =====
+        st.markdown("### 🏥 Chuyên Khoa")
+        
+        priority_2_items = [
             ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
+            ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
             ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
             ("👁️ Mắt", "10_👁️_Mắt"),
             ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
-            ("🆘 SOS", "12_🆘_SOS"),
-            ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
-            ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
         ]
         
-        # Hiển thị menu items - dùng page_link để tránh lỗi với st.switch_page trong loop
-        for label, page_name in menu_items:
+        for label, page_name in priority_2_items:
+            st.page_link(f"pages/{page_name}.py", label=label, icon=None)
+        
+        st.divider()
+        
+        # ===== NHÓM 3: HỖ TRỢ (Priority 3) =====
+        st.markdown("### 💡 Hỗ Trợ")
+        
+        priority_3_items = [
+            ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
+            ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
+            ("📖 Hướng Dẫn", "0_📖_Hướng_Dẫn"),
+            ("🤖 AI Bác Sĩ", "_🤖_AI_Bác_Sĩ"),
+        ]
+        
+        for label, page_name in priority_3_items:
             st.page_link(f"pages/{page_name}.py", label=label, icon=None)
         
         st.divider()
