@@ -8,7 +8,7 @@ sys.path.append('..')
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from diseases.neurological import headache
-from neurological_page_components import render_dementia_tab
+from neurological_page_components import render_dementia_tab, render_insomnia_tab
 # from core import rules  # Tạm comment vì chưa cần
 
 st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
@@ -28,7 +28,7 @@ st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_h
 st.title("🧠 Tư vấn Thần Kinh")
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["🚨 Đột Quỵ", "⚡ Động Kinh", "💆 Đau Đầu", "🧠 Sa Sút Trí Tuệ", "📊 Kiểm Tra BE-FAST"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["🚨 Đột Quỵ", "⚡ Động Kinh", "💆 Đau Đầu", "🧠 Sa Sút Trí Tuệ", "😴 Mất Ngủ", "📊 Kiểm Tra BE-FAST"])
 
 # ============= TAB ĐỘT QUỴ =============
 with tab1:
@@ -360,8 +360,12 @@ with tab3:
 with tab4:
     render_dementia_tab()
 
-# ============= TAB KIỂM TRA BE-FAST =============
+# ============= TAB MẤT NGỦ =============
 with tab5:
+    render_insomnia_tab()
+
+# ============= TAB KIỂM TRA BE-FAST =============
+with tab6:
     st.header("📊 Kiểm tra triệu chứng đột quỵ")
     
     st.warning("⚠️ Công cụ này chỉ để tham khảo. Nếu nghi ngờ đột quỵ → GỌI 115 NGAY!")
