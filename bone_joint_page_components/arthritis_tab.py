@@ -4,10 +4,7 @@ Hiển thị thoái hóa khớp và viêm khớp dạng thấp
 """
 
 import streamlit as st
-import sys
-import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 try:
     from diseases.bone_joint.arthritis import (

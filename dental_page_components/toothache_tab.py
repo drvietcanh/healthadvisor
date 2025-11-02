@@ -3,10 +3,7 @@ Toothache Tab Component
 """
 
 import streamlit as st
-import sys
-import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 from diseases.dental import TOOTHACHE_INFO
 

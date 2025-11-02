@@ -4,10 +4,7 @@ Hiển thị đau thắt lưng và thoát vị đĩa đệm
 """
 
 import streamlit as st
-import sys
-import os
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
 
 try:
     from diseases.bone_joint.spine import (
