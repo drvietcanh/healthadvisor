@@ -4,13 +4,14 @@ Trang tư vấn về bệnh Tim Mạch
 File này tổng hợp từ cardiovascular_page_components/
 """
 import streamlit as st
+
+st.set_page_config(page_title="Tim Mạch", page_icon="❤️", layout="wide")
+
 import sys
 import os
 
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-st.set_page_config(page_title="Tim Mạch", page_icon="❤️", layout="wide")
 
 from cardiovascular_page_components import (
     render_hypertension_tab,

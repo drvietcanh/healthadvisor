@@ -4,6 +4,9 @@ Trang tư vấn về bệnh Thần Kinh (Đột quỵ, Động kinh...)
 REFACTORED: Tách tabs thành components
 """
 import streamlit as st
+
+st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
+
 import sys
 import os
 
@@ -11,8 +14,6 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 sys.path.insert(0, parent_dir)
-
-st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav

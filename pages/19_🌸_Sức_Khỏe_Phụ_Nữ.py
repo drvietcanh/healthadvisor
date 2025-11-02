@@ -2,6 +2,9 @@
 Trang Sức Khỏe Phụ Nữ
 """
 import streamlit as st
+
+st.set_page_config(page_title="Sức Khỏe Phụ Nữ", page_icon="🌸", layout="wide")
+
 import sys
 import os
 
@@ -13,8 +16,6 @@ from women_health_page_components import (
     render_menopause_tab,
     render_menstruation_tab
 )
-
-st.set_page_config(page_title="Sức Khỏe Phụ Nữ", page_icon="🌸", layout="wide")
 
 hide_default_nav()
 render_sidebar_menu()

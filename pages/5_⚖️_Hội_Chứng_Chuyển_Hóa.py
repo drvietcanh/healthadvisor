@@ -9,13 +9,6 @@ REFACTORED: Đã tách thành 5 components để dễ quản lý
 """
 
 import streamlit as st
-import sys
-import os
-
-# Add parent directory to path for imports
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-sys.path.insert(0, parent_dir)
 
 # Page config - PHẢI ĐẶT TRƯỚC IMPORT
 st.set_page_config(
@@ -23,6 +16,14 @@ st.set_page_config(
     page_icon="⚖️",
     layout="wide"
 )
+
+import sys
+import os
+
+# Add parent directory to path for imports
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
 
 # Import components
 from metabolic_components import (

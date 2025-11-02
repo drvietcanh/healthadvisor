@@ -3,17 +3,18 @@ Trang Mẹo Vặt Y Tế
 Tổng hợp các mẹo vặt hữu ích hàng ngày về thuốc, chăm sóc sức khỏe
 """
 import streamlit as st
-import sys
-import os
-
-# Thêm thư mục gốc vào path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(
     page_title="Mẹo Vặt Y Tế",
     page_icon="💡",
     layout="wide"
 )
+
+import sys
+import os
+
+# Thêm thư mục gốc vào path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from health_tips import (
     render_paracetamol_calculator,

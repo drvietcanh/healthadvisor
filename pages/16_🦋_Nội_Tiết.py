@@ -5,13 +5,6 @@ Endocrinology Page
 """
 
 import streamlit as st
-import sys
-import os
-
-# Thêm thư mục gốc vào path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
-sys.path.insert(0, parent_dir)
 
 # Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
 st.set_page_config(
@@ -19,6 +12,14 @@ st.set_page_config(
     page_icon="🦋",
     layout="wide"
 )
+
+import sys
+import os
+
+# Thêm thư mục gốc vào path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
 
 from endocrine_page_components import render_thyroid_tab
 from core.ui_config import get_custom_css

@@ -3,16 +3,17 @@ Trang tư vấn về bệnh Khớp - Cột sống
 """
 
 import streamlit as st
-import sys
-import os
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(
     page_title="Khớp - Cột sống",
     page_icon="🦴",
     layout="wide"
 )
+
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from bone_joint_page_components import (
     render_osteoarthritis_tab,

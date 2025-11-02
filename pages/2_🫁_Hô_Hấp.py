@@ -4,13 +4,14 @@ COPD và Hen Suyễn
 """
 
 import streamlit as st
+
+st.set_page_config(page_title="Hô Hấp", page_icon="🫁", layout="wide")
+
 import sys
 import os
 
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-st.set_page_config(page_title="Hô Hấp", page_icon="🫁", layout="wide")
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav

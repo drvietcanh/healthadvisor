@@ -2,6 +2,9 @@
 Trang tư vấn về bệnh Ký Sinh Trùng
 """
 import streamlit as st
+
+st.set_page_config(page_title="Ký Sinh Trùng", page_icon="🐛", layout="wide")
+
 import sys
 import os
 
@@ -21,8 +24,6 @@ from parasitology_page_components import (
     render_toxoplasmosis_tab,
     render_malaria_tab
 )
-
-st.set_page_config(page_title="Ký Sinh Trùng", page_icon="🐛", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

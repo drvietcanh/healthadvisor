@@ -5,17 +5,18 @@ Thiết kế đặc biệt cho người già: Font to, nút lớn, màu rõ ràn
 File này tổng hợp từ emergency_page_components/
 """
 import streamlit as st
-import sys
-import os
-
-# Thêm thư mục gốc vào path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(
     page_title="SOS - Cấp Cứu",
     page_icon="🆘",
     layout="wide"
 )
+
+import sys
+import os
+
+# Thêm thư mục gốc vào path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from emergency_page_components import (
     get_emergency_css,

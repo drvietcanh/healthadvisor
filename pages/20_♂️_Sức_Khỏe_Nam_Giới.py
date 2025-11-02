@@ -2,6 +2,9 @@
 Trang Sức Khỏe Nam Giới
 """
 import streamlit as st
+
+st.set_page_config(page_title="Sức Khỏe Nam Giới", page_icon="♂️", layout="wide")
+
 import sys
 import os
 
@@ -10,8 +13,6 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from men_health_page_components import render_ed_tab, render_prostate_tab
-
-st.set_page_config(page_title="Sức Khỏe Nam Giới", page_icon="♂️", layout="wide")
 
 hide_default_nav()
 render_sidebar_menu()

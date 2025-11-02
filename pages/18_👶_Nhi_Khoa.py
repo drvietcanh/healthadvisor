@@ -2,6 +2,9 @@
 Trang tư vấn về bệnh Nhi Khoa
 """
 import streamlit as st
+
+st.set_page_config(page_title="Nhi Khoa", page_icon="👶", layout="wide")
+
 import sys
 import os
 
@@ -15,8 +18,6 @@ from pediatrics_page_components import (
     render_diarrhea_tab,
     render_seizure_tab
 )
-
-st.set_page_config(page_title="Nhi Khoa", page_icon="👶", layout="wide")
 
 # Ẩn menu mặc định
 hide_default_nav()
