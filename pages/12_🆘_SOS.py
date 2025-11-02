@@ -37,7 +37,9 @@ render_sidebar_menu()
 if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False
 extra_large_font = st.session_state.get('extra_large_font', False)
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
+css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font)
+if css_content:
+    st.markdown(css_content, unsafe_allow_html=True)
 
 # CSS đặc biệt cho trang SOS
 st.markdown(get_emergency_css(), unsafe_allow_html=True)

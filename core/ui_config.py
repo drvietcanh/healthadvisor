@@ -24,15 +24,21 @@ def get_custom_css(dark_mode=False, extra_large_font=False):
     
     Returns:
         str: CSS string cho dark mode hoặc light mode + viewport meta tag + extra large font (nếu cần)
+        LUÔN trả về string hợp lệ, không bao giờ None
     """
-    # Đảm bảo có CSS mặc định nếu import lỗi
-    css = DARK_MODE_CSS if dark_mode else LIGHT_MODE_CSS
-    if not css or css is None:
-        css = ""  # Fallback về string rỗng
-    
-    # Thêm CSS cho font siêu lớn nếu bật
-    if extra_large_font:
-        extra_font_css = """
+    try:
+        # Đảm bảo có CSS mặc định nếu import lỗi
+        css = DARK_MODE_CSS if dark_mode else LIGHT_MODE_CSS
+        
+        # Kiểm tra nếu CSS là None hoặc không phải string
+        if css is None:
+            css = ""
+        elif not isinstance(css, str):
+            css = str(css) if css else ""
+        
+        # Thêm CSS cho font siêu lớn nếu bật
+        if extra_large_font:
+            extra_font_css = """
     <style>
         /* Extra Large Font Mode - Font siêu lớn cho người mắt kém */
         p, li, span, div {
@@ -95,12 +101,14 @@ def get_custom_css(dark_mode=False, extra_large_font=False):
         }
     </style>
         """
-        css = css + extra_font_css
-    
-    # Viewport meta tag đã được thêm vào cuối CSS string
-    # Streamlit sẽ inject vào <head> tự động
-    # Đảm bảo luôn trả về string hợp lệ
-    return css if css else ""
+            css = css + extra_font_css
+        
+        # Đảm bảo luôn trả về string hợp lệ
+        return str(css) if css else ""
+        
+    except Exception as e:
+        # Nếu có lỗi bất kỳ, trả về string rỗng
+        return ""
 
 
 def get_loading_spinner_css():
