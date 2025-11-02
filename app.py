@@ -30,7 +30,9 @@ if 'dark_mode' not in st.session_state:
 
 # Áp dụng CSS tùy chỉnh
 extra_large_font = st.session_state.get('extra_large_font', False)
-st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font), unsafe_allow_html=True)
+css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font)
+if css_content:  # Chỉ hiển thị nếu có CSS
+    st.markdown(css_content, unsafe_allow_html=True)
 
 # Header
 st.markdown('<div class="main-header">🏥 HealthAdvisor</div>', unsafe_allow_html=True)

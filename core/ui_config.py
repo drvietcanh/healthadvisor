@@ -3,8 +3,15 @@ UI Configuration và Dark Mode cho HealthAdvisor
 REFACTORED: Tách CSS ra 2 files riêng để dễ quản lý
 """
 
-from .dark_mode_css import DARK_MODE_CSS
-from .light_mode_css import LIGHT_MODE_CSS
+try:
+    from .dark_mode_css import DARK_MODE_CSS
+except ImportError:
+    DARK_MODE_CSS = ""
+
+try:
+    from .light_mode_css import LIGHT_MODE_CSS
+except ImportError:
+    LIGHT_MODE_CSS = ""
 
 
 def get_custom_css(dark_mode=False, extra_large_font=False):
@@ -18,7 +25,10 @@ def get_custom_css(dark_mode=False, extra_large_font=False):
     Returns:
         str: CSS string cho dark mode hoặc light mode + viewport meta tag + extra large font (nếu cần)
     """
+    # Đảm bảo có CSS mặc định nếu import lỗi
     css = DARK_MODE_CSS if dark_mode else LIGHT_MODE_CSS
+    if not css or css is None:
+        css = ""  # Fallback về string rỗng
     
     # Thêm CSS cho font siêu lớn nếu bật
     if extra_large_font:
@@ -89,7 +99,8 @@ def get_custom_css(dark_mode=False, extra_large_font=False):
     
     # Viewport meta tag đã được thêm vào cuối CSS string
     # Streamlit sẽ inject vào <head> tự động
-    return css
+    # Đảm bảo luôn trả về string hợp lệ
+    return css if css else ""
 
 
 def get_loading_spinner_css():
