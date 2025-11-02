@@ -22,15 +22,19 @@ from diary_components.data_manager import initialize_health_data
 # Cấu hình trang
 st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
 
-# Áp dụng Dark Mode
 try:
-    if 'dark_mode' not in st.session_state:
-        st.session_state.dark_mode = False
-    if 'extra_large_font' not in st.session_state:
-        st.session_state.extra_large_font = False
-    css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=st.session_state.extra_large_font)
-    if css_content:
-        st.markdown(css_content, unsafe_allow_html=True)
+    # Kiểm tra session_state có tồn tại và là dict
+    if hasattr(st, 'session_state') and st.session_state is not None:
+        if 'dark_mode' not in st.session_state:
+            st.session_state.dark_mode = False
+        if 'extra_large_font' not in st.session_state:
+            st.session_state.extra_large_font = False
+        css_content = get_custom_css(
+            dark_mode=st.session_state.dark_mode, 
+            extra_large_font=st.session_state.extra_large_font
+        )
+        if css_content:
+            st.markdown(css_content, unsafe_allow_html=True)
 except Exception:
     # Nếu có lỗi, bỏ qua CSS - app vẫn chạy được
     pass
