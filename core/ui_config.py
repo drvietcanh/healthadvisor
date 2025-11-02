@@ -3,14 +3,22 @@ UI Configuration và Dark Mode cho HealthAdvisor
 REFACTORED: Tách CSS ra 2 files riêng để dễ quản lý
 """
 
+# Import CSS files với xử lý lỗi an toàn
+DARK_MODE_CSS = ""
+LIGHT_MODE_CSS = ""
+
 try:
-    from .dark_mode_css import DARK_MODE_CSS
-except ImportError:
+    from .dark_mode_css import DARK_MODE_CSS as _DARK_MODE_CSS
+    if _DARK_MODE_CSS:
+        DARK_MODE_CSS = _DARK_MODE_CSS
+except (ImportError, AttributeError, TypeError) as e:
     DARK_MODE_CSS = ""
 
 try:
-    from .light_mode_css import LIGHT_MODE_CSS
-except ImportError:
+    from .light_mode_css import LIGHT_MODE_CSS as _LIGHT_MODE_CSS
+    if _LIGHT_MODE_CSS:
+        LIGHT_MODE_CSS = _LIGHT_MODE_CSS
+except (ImportError, AttributeError, TypeError) as e:
     LIGHT_MODE_CSS = ""
 
 
