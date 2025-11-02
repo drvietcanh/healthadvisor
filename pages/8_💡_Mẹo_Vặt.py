@@ -9,6 +9,12 @@ import os
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(
+    page_title="Mẹo Vặt Y Tế",
+    page_icon="💡",
+    layout="wide"
+)
+
 from health_tips import (
     render_paracetamol_calculator,
     render_fever_tips,
@@ -26,12 +32,6 @@ from health_tips.exercise_guide import (
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-st.set_page_config(
-    page_title="Mẹo Vặt Y Tế",
-    page_icon="💡",
-    layout="wide"
-)
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

@@ -8,11 +8,11 @@ import os
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Thận-Tiết Niệu", page_icon="🧪", layout="wide")
+
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from renal_page_components import render_ckd_tab, render_kidney_stones_tab, render_uti_tab, render_nocturia_tab, render_bph_tab
-
-st.set_page_config(page_title="Thận-Tiết Niệu", page_icon="🧪", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

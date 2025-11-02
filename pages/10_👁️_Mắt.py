@@ -8,11 +8,11 @@ import os
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Mắt", page_icon="👁️", layout="wide")
+
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from eye_page_components import render_cataract_tab, render_glaucoma_tab, render_amd_tab, render_dry_eye_tab, render_presbyopia_tab
-
-st.set_page_config(page_title="Mắt", page_icon="👁️", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

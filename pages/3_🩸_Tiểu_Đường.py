@@ -8,12 +8,12 @@ import os
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Tiểu Đường", page_icon="🩸", layout="wide")
+
 from diseases.metabolic import diabetes
 from core.utils import convert_blood_sugar, calculate_bmi
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-st.set_page_config(page_title="Tiểu Đường", page_icon="🩸", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

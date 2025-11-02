@@ -10,6 +10,8 @@ import os
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Tim Mạch", page_icon="❤️", layout="wide")
+
 from cardiovascular_page_components import (
     render_hypertension_tab,
     render_heart_failure_tab,
@@ -21,8 +23,6 @@ from cardiovascular_page_components import (
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-st.set_page_config(page_title="Tim Mạch", page_icon="❤️", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()
