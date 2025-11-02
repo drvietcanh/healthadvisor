@@ -53,8 +53,8 @@ BP_CLASSIFICATION = {
         "advice_vn": "Cần dùng thuốc + thay đổi lối sống. Khám bác sĩ trong 1 tuần."
     },
     "crisis": {
-        "range": ">180/120 mmHg",
-        "name_vn": "CƠN TÁN HUYẾT ÁP - CẤP CỨU",
+        "range": "≥180/≥120 mmHg",
+        "name_vn": "CƠN TĂNG HUYẾT ÁP - CẤP CỨU",
         "advice_vn": "🚨 GỌI 115 NGAY! Nguy cơ đột quỵ, nhồi máu tim cao!"
     }
 }

@@ -53,7 +53,7 @@ def render_blood_pressure_tab():
         # Hiển thị bảng phân loại
         st.subheader("Bảng phân loại huyết áp:")
         st.table({
-            "Phân loại": ["Bình thường", "Cao bình thường", "THA Độ 1", "THA Độ 2", "Cơn tán"],
+            "Phân loại": ["Bình thường", "Cao bình thường", "THA Độ 1", "THA Độ 2", "Cơn tăng huyết áp"],
             "Tâm thu (mmHg)": ["< 120", "120-129", "130-139", "≥ 140", "≥ 180"],
             "Tâm trương (mmHg)": ["< 80", "< 80", "80-89", "≥ 90", "≥ 120"]
         })

@@ -31,7 +31,7 @@ def classify_blood_pressure(systolic: int, diastolic: int) -> dict:
     if systolic >= 180 or diastolic >= 120:
         return {
             "level": "crisis",
-            "name_vn": "CƠN TÁN HUYẾT ÁP",
+            "name_vn": "CƠN TĂNG HUYẾT ÁP",
             "color": "red",
             "action_vn": "🚨 GỌI 115 NGAY!"
         }
