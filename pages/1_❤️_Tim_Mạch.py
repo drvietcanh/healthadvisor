@@ -13,7 +13,8 @@ from cardiovascular_page_components import (
     render_dyslipidemia_tab,
     render_blood_pressure_tab,
     render_arrhythmia_tab,
-    render_myocardial_infarction_tab
+    render_myocardial_infarction_tab,
+    render_atherosclerosis_tab
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
@@ -35,12 +36,13 @@ st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_h
 st.title("❤️ Tư vấn Tim Mạch")
 
 # Tabs cho các bệnh tim mạch
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🩺 Tăng Huyết Áp", 
     "💔 Suy Tim", 
     "🧈 Rối Loạn Lipid Máu", 
     "❤️‍🩹 Rối Loạn Nhịp Tim",
     "💔 Nhồi Máu Cơ Tim",
+    "🫀 Xơ Vữa Động Mạch",
     "📊 Đo Huyết Áp"
 ])
 
@@ -60,6 +62,9 @@ with tab5:
     render_myocardial_infarction_tab()
 
 with tab6:
+    render_atherosclerosis_tab()
+
+with tab7:
     render_blood_pressure_tab()
 
 # Nút quay lại

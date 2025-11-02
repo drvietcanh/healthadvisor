@@ -9,6 +9,7 @@ from .dyslipidemia_tab import render_dyslipidemia_tab
 from .blood_pressure_tab import render_blood_pressure_tab
 from .arrhythmia_tab import render_arrhythmia_tab
 from .myocardial_infarction_tab import render_myocardial_infarction_tab
+from .atherosclerosis_tab import render_atherosclerosis_tab
 
 __all__ = [
     'render_hypertension_tab',
@@ -16,6 +17,7 @@ __all__ = [
     'render_dyslipidemia_tab',
     'render_blood_pressure_tab',
     'render_arrhythmia_tab',
-    'render_myocardial_infarction_tab'
+    'render_myocardial_infarction_tab',
+    'render_atherosclerosis_tab'
 ]
 
