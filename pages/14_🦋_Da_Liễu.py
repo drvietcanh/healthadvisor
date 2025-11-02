@@ -18,7 +18,8 @@ from dermatology_page_components import (
     render_onychomycosis_tab,
     render_eczema_tab,
     render_pruritus_tab,
-    render_pressure_ulcer_tab
+    render_pressure_ulcer_tab,
+    render_psoriasis_tab
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
@@ -77,12 +78,13 @@ with col_fav:
     render_favorite_button("14_🦋_Da_Liễu", "🦋 Da Liễu")
 
 # Tabs cho các bệnh
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "🦶 Nấm Da",
     "💅 Nấm Móng",
     "🌿 Chàm Khô",
     "🔴 Ngứa Da",
-    "🛏️ Loét Tì Đè"
+    "🛏️ Loét Tì Đè",
+    "🦠 Vảy Nến"
 ])
 
 with tab1:
@@ -99,6 +101,9 @@ with tab4:
 
 with tab5:
     render_pressure_ulcer_tab()
+
+with tab6:
+    render_psoriasis_tab()
 
 # Nút quay lại
 st.divider()

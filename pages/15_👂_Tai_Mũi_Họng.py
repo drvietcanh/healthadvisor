@@ -18,7 +18,8 @@ from ent_page_components import (
     render_tinnitus_tab,
     render_chronic_pharyngitis_tab,
     render_vertigo_tab,
-    render_otitis_media_tab
+    render_otitis_media_tab,
+    render_chronic_sinusitis_tab
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
@@ -77,12 +78,13 @@ with col_fav:
     render_favorite_button("15_👂_Tai_Mũi_Họng", "👂 Tai Mũi Họng")
 
 # Tabs cho các bệnh
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "👂 Điếc/Lãng Tai",
     "🔊 Ù Tai",
     "🫁 Viêm Họng Mạn",
     "🌀 Chóng Mặt",
-    "🦻 Viêm Tai Giữa"
+    "🦻 Viêm Tai Giữa",
+    "👃 Viêm Xoang Mạn"
 ])
 
 with tab1:
@@ -99,6 +101,9 @@ with tab4:
 
 with tab5:
     render_otitis_media_tab()
+
+with tab6:
+    render_chronic_sinusitis_tab()
 
 # Nút quay lại
 st.divider()

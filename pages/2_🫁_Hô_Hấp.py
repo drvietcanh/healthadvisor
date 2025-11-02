@@ -9,7 +9,7 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from respiratory_page_components import render_copd_tab, render_asthma_tab, render_pneumonia_tab, render_chronic_cough_tab
+from respiratory_page_components import render_copd_tab, render_asthma_tab, render_pneumonia_tab, render_chronic_cough_tab, render_sleep_apnea_tab
 
 st.set_page_config(page_title="Hô Hấp", page_icon="🫁", layout="wide")
 
@@ -50,7 +50,7 @@ with col_fav:
     render_favorite_button("2_🫁_Hô_Hấp", "🫁 Hô Hấp")
 
 # Tabs cho các bệnh hô hấp
-tab1, tab2, tab3, tab4 = st.tabs(["🫁 COPD (Phổi Tắc Nghẽn)", "🌬️ Hen Suyễn", "🫁 Viêm phổi", "🤧 Ho Mãn Tính"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["🫁 COPD (Phổi Tắc Nghẽn)", "🌬️ Hen Suyễn", "🫁 Viêm phổi", "🤧 Ho Mãn Tính", "😴 Ngưng Thở Khi Ngủ"])
 
 with tab1:
     render_copd_tab()
@@ -63,6 +63,9 @@ with tab3:
 
 with tab4:
     render_chronic_cough_tab()
+
+with tab5:
+    render_sleep_apnea_tab()
 
 # Nút quay lại
 st.divider()

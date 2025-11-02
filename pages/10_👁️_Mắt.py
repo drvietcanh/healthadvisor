@@ -7,7 +7,7 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from eye_page_components import render_cataract_tab, render_glaucoma_tab, render_amd_tab, render_dry_eye_tab
+from eye_page_components import render_cataract_tab, render_glaucoma_tab, render_amd_tab, render_dry_eye_tab, render_presbyopia_tab
 
 st.set_page_config(page_title="Mắt", page_icon="👁️", layout="wide")
 
@@ -37,7 +37,7 @@ except Exception:
 
 st.title("👁️ Tư vấn Mắt")
 
-tab1, tab2, tab3, tab4 = st.tabs(["👁️ Đục Thủy Tinh Thể", "👁️ Tăng Nhãn Áp", "👁️ Thoái Hóa Hoàng Điểm", "👁️ Khô Mắt"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["👁️ Đục Thủy Tinh Thể", "👁️ Tăng Nhãn Áp", "👁️ Thoái Hóa Hoàng Điểm", "👁️ Khô Mắt", "👓 Lão Thị"])
 
 with tab1:
     render_cataract_tab()
@@ -50,6 +50,9 @@ with tab3:
 
 with tab4:
     render_dry_eye_tab()
+
+with tab5:
+    render_presbyopia_tab()
 
 st.divider()
 if st.button("⬅️ Quay lại trang chính"):

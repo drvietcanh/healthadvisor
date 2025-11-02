@@ -10,6 +10,7 @@ from .periodontitis_tab import render_periodontitis_tab
 from .toothache_tab import render_toothache_tab
 from .tooth_loss_tab import render_tooth_loss_tab
 from .xerostomia_tab import render_xerostomia_tab
+from .caries_tab import render_caries_tab
 
 __all__ = [
     'render_gingivitis_tab',
@@ -17,5 +18,6 @@ __all__ = [
     'render_toothache_tab',
     'render_tooth_loss_tab',
     'render_xerostomia_tab',
+    'render_caries_tab',
 ]
 

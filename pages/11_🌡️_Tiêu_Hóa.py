@@ -10,7 +10,8 @@ from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from digestive_page_components import (
     render_gerd_tab, render_constipation_tab,
     render_gastritis_tab, render_peptic_ulcer_tab,
-    render_diarrhea_tab, render_colitis_tab
+    render_diarrhea_tab, render_colitis_tab,
+    render_ibs_tab
 )
 
 st.set_page_config(page_title="Tiêu Hóa", page_icon="🌡️", layout="wide")
@@ -41,13 +42,14 @@ except Exception:
 
 st.title("🌡️ Tư vấn Tiêu Hóa")
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🌡️ Trào Ngược Dạ Dày",
     "🚽 Táo Bón",
     "🔥 Viêm Dạ Dày",
     "🩸 Loét Dạ Dày",
     "💧 Tiêu Chảy Cấp",
-    "🫀 Viêm Đại Tràng"
+    "🫀 Viêm Đại Tràng",
+    "🫀 Hội Chứng Ruột Kích Thích"
 ])
 
 with tab1:
@@ -67,6 +69,9 @@ with tab5:
 
 with tab6:
     render_colitis_tab()
+
+with tab7:
+    render_ibs_tab()
 
 st.divider()
 if st.button("⬅️ Quay lại trang chính"):
