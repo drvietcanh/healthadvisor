@@ -48,12 +48,45 @@ FIRST_AID_CARDIOVASCULAR = {
         "name": "Đột quỵ (Tai biến mạch máu não)",
         "icon": "🧠",
         "signs": {
-            "title": "🔍 Nhận biết nhanh bằng F.A.S.T:",
+            "title": "🔍 Nhận biết nhanh bằng BE-FAST (Nhớ 6 chữ):",
             "items": [
-                "**F - Face (Mặt):** Cười méo một bên, xệ một bên mặt",
-                "**A - Arm (Tay):** Giơ 2 tay lên, 1 tay rơi xuống, yếu",
-                "**S - Speech (Nói):** Nói lảm nhảm, ngọng, không nói được",
-                "**T - Time (Gọi ngay):** GỌI 115 NGAY!"
+                "**B - Balance (Mất thăng bằng):**",
+                "   - Chóng mặt đột ngột, loạng choạng",
+                "   - Đi không thẳng, dễ ngã",
+                "   - Mất thăng bằng khi đứng",
+                "",
+                "**E - Eyes (Rối loạn thị giác):**",
+                "   - Nhìn mờ, nhìn đôi đột ngột",
+                "   - Mất một phần thị trường (nhìn không thấy một bên)",
+                "   - Nhắm mắt không được, mắt lệch",
+                "",
+                "**F - Face (Xệ mặt):**",
+                "   - Một bên mặt xệ xuống, méo miệng",
+                "   - Nụ cười lệch, không đối xứng",
+                "   - Nhướng mày không được một bên",
+                "",
+                "**A - Arm (Yếu tay chân):**",
+                "   - Yếu, tê một bên tay/chân đột ngột",
+                "   - Giơ hai tay lên, một tay rơi xuống",
+                "   - Không cầm nắm được, đi chân kéo lê",
+                "",
+                "**S - Speech (Nói khó):**",
+                "   - Nói lắp, nói không rõ tiếng",
+                "   - Nói không ra lời, ú ớ",
+                "   - Không hiểu người khác nói gì",
+                "",
+                "**T - Time (Thời gian - GỌI 115!):**",
+                "   - GHI NHỚ thời điểm bình thường cuối cùng",
+                "   - GỌI 115 NGAY - Mỗi phút trì hoãn = 2 triệu tế bào não chết!"
+            ]
+        },
+        "befast_summary": {
+            "title": "📋 TÓM TẮT BE-FAST (Dễ nhớ):",
+            "items": [
+                "🔴 **Bất kỳ 1 dấu hiệu nào → GỌI 115 NGAY!**",
+                "⏱️ **Ghi nhớ giờ xuất hiện** - Quan trọng cho điều trị",
+                "🚫 **KHÔNG chờ xem có tự khỏi không**",
+                "🚑 **KHÔNG tự lái xe** - Để nhân viên y tế xử lý"
             ]
         },
         "other_signs": [

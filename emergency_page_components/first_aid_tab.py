@@ -18,7 +18,7 @@ def render_first_aid_tab():
     # Chọn tình huống
     situations = {
         "heart_attack": "❤️ Đau tim cấp",
-        "stroke": "🧠 Đột quỵ (F.A.S.T)",
+        "stroke": "🧠 Đột quỵ (BE-FAST)",
         "choking_child": "👶 Trẻ em hóc dị vật",
         "choking_adult": "😰 Người lớn hóc dị vật",
         "burns": "🔥 Bỏng nhiệt/Nước sôi",
@@ -63,6 +63,13 @@ def render_first_aid_tab():
                 st.markdown(f"{sign}")
             if 'note' in guide['signs']:
                 st.info(guide['signs']['note'])
+        
+        # BE-FAST Summary (cho đột quỵ)
+        if 'befast_summary' in guide:
+            st.markdown(f"### {guide['befast_summary']['title']}")
+            for item in guide['befast_summary']['items']:
+                st.markdown(f"{item}")
+            st.error("**🚨 QUAN TRỌNG:** Chỉ cần 1 dấu hiệu → GỌI 115 NGAY, đừng chờ!")
         
         # Phân loại (cho bỏng)
         if 'classification' in guide:

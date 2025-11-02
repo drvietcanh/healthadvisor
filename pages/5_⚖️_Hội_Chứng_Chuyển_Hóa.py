@@ -81,3 +81,8 @@ st.caption("""
 💡 **Lưu ý:** Thông tin chỉ mang tính tham khảo. Hãy tham khảo bác sĩ trước khi bắt đầu chương trình giảm cân,
 đặc biệt nếu bạn có bệnh nền hoặc >60 tuổi.
 """)
+
+# Nút quay lại
+st.divider()
+if st.button("⬅️ Quay lại trang chính"):
+    st.switch_page("app.py")

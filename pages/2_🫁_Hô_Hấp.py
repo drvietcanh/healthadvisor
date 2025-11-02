@@ -43,5 +43,5 @@ with tab4:
 
 # Nút quay lại
 st.divider()
-if st.button("🏠 Về Trang Chủ"):
+if st.button("⬅️ Quay lại trang chính"):
     st.switch_page("app.py")

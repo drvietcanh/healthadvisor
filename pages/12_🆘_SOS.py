@@ -87,6 +87,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Nút quay lại
-if st.button("🏠 Về Trang Chủ", use_container_width=True):
+st.divider()
+if st.button("⬅️ Quay lại trang chính"):
     st.switch_page("app.py")
 

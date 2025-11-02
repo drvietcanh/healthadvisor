@@ -68,3 +68,8 @@ st.markdown("""
     <p>Made with ❤️ for Vietnamese Healthcare</p>
 </div>
 """, unsafe_allow_html=True)
+
+# Nút quay lại
+st.divider()
+if st.button("⬅️ Quay lại trang chính"):
+    st.switch_page("app.py")
