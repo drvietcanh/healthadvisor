@@ -249,14 +249,15 @@ def render_sidebar_menu():
         # ===== NHÓM 2: CHUYÊN KHOA (Priority 2) =====
         st.markdown("### 🏥 Chuyên Khoa")
         
-        priority_2_items = [
-            ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
-            ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
-            ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
-            ("👁️ Mắt", "10_👁️_Mắt"),
-            ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
-            ("🦷 Răng Hàm Mặt", "13_🦷_Răng_Hàm_Mặt"),
-        ]
+       priority_2_items = [
+           ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
+           ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
+           ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
+           ("👁️ Mắt", "10_👁️_Mắt"),
+           ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
+           ("🦷 Răng Hàm Mặt", "13_🦷_Răng_Hàm_Mặt"),
+           ("🦋 Da Liễu", "14_🦋_Da_Liễu"),
+       ]
         
         for label, page_name in priority_2_items:
             st.page_link(f"pages/{page_name}.py", label=label, icon=None)
