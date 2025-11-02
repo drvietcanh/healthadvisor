@@ -13,11 +13,11 @@ from health_tips import (
     render_paracetamol_calculator,
     render_fever_tips,
     render_temperature_guide,
-    render_medicine_tips
-)
-from health_tips.daily_tips import (
+    render_medicine_tips,
     render_daily_health_tips,
-    render_preventive_care
+    render_preventive_care,
+    render_nutrition_bone_health,
+    render_nutrition_cholesterol
 )
 from health_tips.exercise_guide import (
     render_general_exercise_tips,
@@ -124,8 +124,6 @@ with tab6:
 
 # Tab 7: Dinh dưỡng
 with tab7:
-    from health_tips.daily_tips import render_nutrition_bone_health, render_nutrition_cholesterol
-    
     st.markdown("### 🍽️ Mẹo Dinh Dưỡng")
     st.info("💡 Chọn một trong hai mẹo dinh dưỡng dưới đây:")
     
