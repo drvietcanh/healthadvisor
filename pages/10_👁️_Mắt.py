@@ -7,7 +7,7 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from eye_page_components import render_cataract_tab
+from eye_page_components import render_cataract_tab, render_glaucoma_tab
 
 st.set_page_config(page_title="Mắt", page_icon="👁️", layout="wide")
 
@@ -19,10 +19,13 @@ st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_h
 
 st.title("👁️ Tư vấn Mắt")
 
-tab1, = st.tabs(["👁️ Đục Thủy Tinh Thể"])
+tab1, tab2 = st.tabs(["👁️ Đục Thủy Tinh Thể", "👁️ Tăng Nhãn Áp"])
 
 with tab1:
     render_cataract_tab()
+
+with tab2:
+    render_glaucoma_tab()
 
 st.divider()
 if st.button("⬅️ Quay lại trang chính"):
