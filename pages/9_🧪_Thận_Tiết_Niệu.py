@@ -7,7 +7,7 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from renal_page_components import render_ckd_tab, render_kidney_stones_tab, render_uti_tab
+from renal_page_components import render_ckd_tab, render_kidney_stones_tab, render_uti_tab, render_nocturia_tab, render_bph_tab
 
 st.set_page_config(page_title="Thận-Tiết Niệu", page_icon="🧪", layout="wide")
 
@@ -38,7 +38,7 @@ except Exception:
 st.title("🧪 Tư vấn Thận-Tiết Niệu")
 
 # Tabs
-tab1, tab2, tab3 = st.tabs(["🫘 Suy Thận Mạn", "🪨 Sỏi Thận", "🦠 Nhiễm Trùng Tiết Niệu"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["🫘 Suy Thận Mạn", "🪨 Sỏi Thận", "🦠 Nhiễm Trùng Tiết Niệu", "🌙 Tiểu Đêm", "🫀 Phì Đại Tuyến Tiền Liệt"])
 
 # ============= TAB SUY THẬN MẠN =============
 with tab1:
@@ -51,6 +51,14 @@ with tab2:
 # ============= TAB NHIỄM TRÙNG TIẾT NIỆU =============
 with tab3:
     render_uti_tab()
+
+# ============= TAB TIỂU ĐÊM =============
+with tab4:
+    render_nocturia_tab()
+
+# ============= TAB PHÌ ĐẠI TUYẾN TIỀN LIỆT =============
+with tab5:
+    render_bph_tab()
 
 # Nút quay lại
 st.divider()

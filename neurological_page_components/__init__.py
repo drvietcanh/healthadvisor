@@ -17,6 +17,7 @@ from .stroke_tab import render_stroke_tab
 from .epilepsy_tab import render_epilepsy_tab
 from .headache_tab import render_headache_tab
 from .befast_check_tab import render_befast_check_tab
+from .parkinson_tab import render_parkinson_tab
 
 __all__ = [
     'render_dementia_tab',
@@ -25,4 +26,5 @@ __all__ = [
     'render_epilepsy_tab',
     'render_headache_tab',
     'render_befast_check_tab',
+    'render_parkinson_tab',
 ]

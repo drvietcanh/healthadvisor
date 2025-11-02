@@ -20,7 +20,8 @@ from neurological_page_components import (
     render_headache_tab,
     render_dementia_tab,
     render_insomnia_tab,
-    render_befast_check_tab
+    render_befast_check_tab,
+    render_parkinson_tab
 )
 
 st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
@@ -61,7 +62,7 @@ with col_fav:
     render_favorite_button("4_🧠_Thần_Kinh", "🧠 Thần Kinh")
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["🚨 Đột Quỵ", "⚡ Động Kinh", "💆 Đau Đầu", "🧠 Sa Sút Trí Tuệ", "😴 Mất Ngủ", "📊 Kiểm Tra BE-FAST"])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["🚨 Đột Quỵ", "⚡ Động Kinh", "💆 Đau Đầu", "🧠 Sa Sút Trí Tuệ", "😴 Mất Ngủ", "🧠 Bệnh Parkinson", "📊 Kiểm Tra BE-FAST"])
 
 # Render tabs
 with tab1:
@@ -80,6 +81,9 @@ with tab5:
     render_insomnia_tab()
 
 with tab6:
+    render_parkinson_tab()
+
+with tab7:
     render_befast_check_tab()
 
 # Nút quay lại
