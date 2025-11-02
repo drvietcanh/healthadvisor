@@ -226,11 +226,9 @@ with col_b:
 st.markdown("---")
 st.markdown("## 🚨 Số điện thoại cấp cứu")
 
-col_x, col_y, col_z = st.columns(3)
+col_x, col_z = st.columns(2)
 with col_x:
     st.info("**☎️ Cấp cứu:** 115")
-with col_y:
-    st.info("**☎️ Tư vấn sức khỏe:** 1900 9095")
 with col_z:
     st.info("**☎️ Bệnh viện:** 114")
 
