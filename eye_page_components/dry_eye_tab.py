@@ -1,8 +1,6 @@
 """Khô Mắt Tab Component"""
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.eye import dry_eye
 
 

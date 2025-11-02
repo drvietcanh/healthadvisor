@@ -4,8 +4,6 @@ Input Form - Form nhập dữ liệu sức khỏe
 import streamlit as st
 from datetime import datetime
 import pandas as pd
-import sys
-sys.path.append('../..')
 from core.utils import classify_blood_pressure
 
 

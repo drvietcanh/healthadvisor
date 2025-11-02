@@ -4,8 +4,6 @@ Hiển thị thông tin về bệnh Nhồi Máu Cơ Tim
 """
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.cardiovascular import myocardial_infarction as mi
 
 

@@ -3,8 +3,6 @@
 """
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.bone_joint import neck_shoulder_pain
 
 

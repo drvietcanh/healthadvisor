@@ -1,8 +1,6 @@
 """Trào Ngược Dạ Dày Tab Component"""
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.digestive import gerd
 
 

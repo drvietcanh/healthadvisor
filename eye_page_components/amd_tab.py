@@ -1,8 +1,6 @@
 """Thoái Hóa Hoàng Điểm Tab Component"""
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.eye import amd
 
 

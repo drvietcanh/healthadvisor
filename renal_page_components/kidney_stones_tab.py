@@ -1,8 +1,6 @@
 """Sỏi Thận Tab Component"""
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.renal import kidney_stones
 
 

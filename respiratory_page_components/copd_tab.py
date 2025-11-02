@@ -4,8 +4,6 @@ Hiển thị thông tin về bệnh COPD
 """
 
 import streamlit as st
-import sys
-sys.path.append('..')
 from diseases.respiratory import copd
 
 
