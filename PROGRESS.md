@@ -1,27 +1,28 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 11/02/2025 - Session mới: HOÀN THIỆN Ký Sinh Trùng + Thêm 3 chuyên khoa mới ✅  
+**Cập nhật:** 11/02/2025 - Session: FIX CRITICAL IMPORT ERRORS ✅  
 **Session mới nhất:** 
 - ✅ **HOÀN THIỆN KÝ SINH TRÙNG:** Bổ sung đầy đủ 7 stub bệnh (Giun Móc, Giun Kim, Sán Dây, Sán Lá Gan, Lỵ Amip, Giardia, Toxoplasma)
 - ✅ **CHUYÊN KHOA MỚI:** Thêm 3 trang mới
   - 👶 Nhi Khoa: Sốt, Tiêu Chảy, Co Giật/Động Kinh
   - 🌸 Sức Khỏe Phụ Nữ: Mãn Kinh, Rối Loạn Kinh Nguyệt
   - ♂️ Sức Khỏe Nam Giới: Rối Loạn Cương Dương, Tiền Liệt Tuyến
-- ✅ **CẬP NHẬT MENU:** Sidebar menu thêm 3 trang mới
-- ✅ **SỬA LỖI CRITICAL:** Fix import lỗi cho tất cả 27 pages (st.set_page_config phải ở đầu file)
-- ✅ **NGUYÊN TẮC NỘI DUNG:** Ngôn ngữ đơn giản, dễ hiểu cho người dân bình thường
+- ✅ **SỬA LỖI CRITICAL:** 
+  - Fix `st.set_page_config()` phải ở đầu file cho **31 pages** (26 chính + 5 ẩn)
+  - Xóa `sys.path.insert/append` tự động trong **113 component files** - gây lỗi import trên Streamlit Cloud
+  - Thêm `__init__.py` cho `diseases/respiratory` và `diseases/renal`
+  - Tổng cộng: **83 files changed, 257 dòng thêm, 410 dòng xóa** 🎉
 
 **Status:** 🎉 **86+ BỆNH đã có đầy đủ!** 17 chuyên khoa hoàn chỉnh ✅  
 **Latest Commits:** 
-- `ab4fa10` - 🔧 Sửa app.py: st.set_page_config() ở đầu
-- `37b8d77` - 🔧 Sửa toàn bộ import cho 26 pages
+- `6d44749` - 🔧 Fix: Thêm __init__.py cho diseases/respiratory và diseases/renal
+- `2aa456a` - 🔧 Fix: Xóa sys.path.insert/append tự động trong 113 component files
+- `59b619b` - 🔧 Fix critical: Xóa sys.path.insert/append trong tất cả component files
+- `5dbc542` - 🔧 Fix: st.set_page_config() cho 5 trang ẩn còn lại
+- `24f13fe` - 🔧 Fix critical: st.set_page_config() phải ở đầu file cho TẤT CẢ 26 pages
 - `f4d9048` - ✅ Cập nhật sidebar menu: Thêm 3 trang mới
 - `3da716d` - ✅ Thêm trang Sức Khỏe Nam Giới
 - `d22d5ce` - ✅ Thêm trang Sức Khỏe Phụ Nữ
-- `e9a7be1` - ✅ Thêm trang Nhi Khoa
-- `0e95aa0` - ✅ Hoàn thiện Ký Sinh Trùng: 9 bệnh đầy đủ
-- `db9649f` - ✅ Thêm Sán Dây & Sán Lá Gan
-- `2d65da8` - ✅ Thêm Giun Móc & Giun Kim
 
 ---
 
