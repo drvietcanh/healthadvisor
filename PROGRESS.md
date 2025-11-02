@@ -1,9 +1,9 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 03/01/2025 - Session tối ưu UI + Thêm bệnh mới ✅  
-**Session gần nhất:** Tối ưu font/spacing + Thêm 3 bệnh cấp cứu + Performance cache + Thêm bệnh Rối loạn nhịp tim ✅  
-**Status:** 🎉 App đã được cải thiện đáng kể về UI/UX và nội dung  
-**Phiên tiếp theo:** Tiếp tục thêm bệnh mới (Viêm phổi, Đau đầu), tính năng Drug Interaction
+**Cập nhật:** 03/01/2025 - Session thêm 3 bệnh mới: Viêm phổi, Đau đầu, Bỏng nhiệt ✅  
+**Session gần nhất:** Thêm module Viêm phổi (Pneumonia), Đau đầu/Migraine, bổ sung chi tiết Bỏng nhiệt ✅  
+**Status:** 🎉 App đã có đầy đủ các bệnh quan trọng cho người già  
+**Phiên tiếp theo:** Xem xét bổ sung bệnh mới cho các chuyên khoa (nếu cần)
 
 ---
 
@@ -21,14 +21,27 @@
    - Đợi user xác nhận trước khi bắt đầu
    - Không tự ý chọn file để refactor
 
-3. **Commit thường xuyên** - Sau mỗi task
-   - Sau mỗi file refactor xong → commit ngay
-   - Message commit rõ ràng: "refactor: Tách file X (N→M dòng) thành Y modules"
-   - Không để quá nhiều thay đổi chưa commit
-
-4. **Push lên GitHub** - Đừng để quá nhiều commits local
-   - Sau 2-3 commits → đề nghị push
-   - Hoặc khi hoàn thành session → push
+3. **⚡ COMMIT & PUSH NGAY SAU MỖI TASK** - QUY TẮC BẮT BUỘC!
+   
+   **⚠️ QUAN TRỌNG: Sau mỗi task/tính năng hoàn thành, PHẢI commit và push NGAY!**
+   
+   **Quy trình:**
+   1. Hoàn thành task/tính năng (ví dụ: thêm bệnh mới, refactor file...)
+   2. `git add .`
+   3. `git commit -m "feat/refactor/fix: mô tả rõ ràng công việc"`
+   4. `git push origin main`
+   5. Sau đó mới tiếp tục task tiếp theo
+   
+   **Lợi ích:**
+   - ✅ Lưu tiến trình liên tục, không mất dữ liệu
+   - ✅ Dễ rollback nếu có lỗi
+   - ✅ Theo dõi công việc rõ ràng qua git history
+   - ✅ Tránh dồn nhiều thay đổi vào 1 commit lớn
+   
+   **Ví dụ commit messages:**
+   - `feat: Thêm module bệnh Viêm phổi vào trang Hô Hấp`
+   - `refactor: Tách file X (500→50 dòng) thành 5 modules`
+   - `fix: Sửa lỗi import trong pneumonia_tab.py`
 
 5. **Theo dõi tokens** - Cảnh báo khi >80k
    - Nếu tokens > 80k → đề nghị dừng lại
