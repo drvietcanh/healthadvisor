@@ -260,6 +260,9 @@ def render_sidebar_menu():
             ("👂 Tai Mũi Họng", "15_👂_Tai_Mũi_Họng"),
             ("🎯 Nội Tiết", "16_🦋_Nội_Tiết"),
             ("🐛 Ký Sinh Trùng", "17_🐛_Ký_Sinh_Trùng"),
+            ("👶 Nhi Khoa", "18_👶_Nhi_Khoa"),
+            ("🌸 Sức Khỏe Phụ Nữ", "19_🌸_Sức_Khỏe_Phụ_Nữ"),
+            ("♂️ Sức Khỏe Nam Giới", "20_♂️_Sức_Khỏe_Nam_Giới"),
         ]
         
         for label, page_name in priority_2_items:
