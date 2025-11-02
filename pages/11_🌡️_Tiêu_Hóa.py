@@ -7,7 +7,11 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from digestive_page_components import render_gerd_tab, render_constipation_tab
+from digestive_page_components import (
+    render_gerd_tab, render_constipation_tab,
+    render_gastritis_tab, render_peptic_ulcer_tab,
+    render_diarrhea_tab, render_colitis_tab
+)
 
 st.set_page_config(page_title="Tiêu Hóa", page_icon="🌡️", layout="wide")
 
@@ -37,13 +41,32 @@ except Exception:
 
 st.title("🌡️ Tư vấn Tiêu Hóa")
 
-tab1, tab2 = st.tabs(["🌡️ Trào Ngược Dạ Dày", "🚽 Táo Bón"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+    "🌡️ Trào Ngược Dạ Dày",
+    "🚽 Táo Bón",
+    "🔥 Viêm Dạ Dày",
+    "🩸 Loét Dạ Dày",
+    "💧 Tiêu Chảy Cấp",
+    "🫀 Viêm Đại Tràng"
+])
 
 with tab1:
     render_gerd_tab()
 
 with tab2:
     render_constipation_tab()
+
+with tab3:
+    render_gastritis_tab()
+
+with tab4:
+    render_peptic_ulcer_tab()
+
+with tab5:
+    render_diarrhea_tab()
+
+with tab6:
+    render_colitis_tab()
 
 st.divider()
 if st.button("⬅️ Quay lại trang chính"):
