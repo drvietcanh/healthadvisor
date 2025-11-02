@@ -41,7 +41,7 @@ hide_default_nav()
 # Render menu sidebar tùy chỉnh
 render_sidebar_menu()
 
-# Apply custom CSS
+
 try:
     # Kiểm tra session_state có tồn tại và là dict
     if hasattr(st, 'session_state') and st.session_state is not None:
