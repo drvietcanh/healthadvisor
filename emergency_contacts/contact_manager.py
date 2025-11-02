@@ -4,10 +4,12 @@ Contact Manager - Quản lý danh bạ cá nhân và thông tin y tế
 import json
 import os
 from datetime import datetime
+import streamlit as st
 
 CONTACTS_FILE = "data/emergency_contacts.json"
 MEDICAL_INFO_FILE = "data/medical_info.json"
 
+@st.cache_data(ttl=60, show_spinner=False)  # Cache 1 phút
 def load_contacts():
     """Đọc danh sách contacts"""
     if not os.path.exists(CONTACTS_FILE):
@@ -24,6 +26,9 @@ def save_contacts(contacts):
     os.makedirs("data", exist_ok=True)
     with open(CONTACTS_FILE, 'w', encoding='utf-8') as f:
         json.dump(contacts, f, ensure_ascii=False, indent=2)
+    
+    # Xóa cache để reload dữ liệu mới
+    load_contacts.clear()
 
 def add_personal_contact(name, phone, relationship, notes=""):
     """
@@ -63,6 +68,7 @@ def get_all_personal_contacts():
 
 # ============= THÔNG TIN Y TẾ =============
 
+@st.cache_data(ttl=60, show_spinner=False)  # Cache 1 phút
 def load_medical_info():
     """Đọc thông tin y tế"""
     if not os.path.exists(MEDICAL_INFO_FILE):
@@ -110,6 +116,9 @@ def save_medical_info(medications="", allergies="", conditions="", blood_type=""
     
     with open(MEDICAL_INFO_FILE, 'w', encoding='utf-8') as f:
         json.dump(info, f, ensure_ascii=False, indent=2)
+    
+    # Xóa cache để reload dữ liệu mới
+    load_medical_info.clear()
     
     return True
 

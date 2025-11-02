@@ -11,6 +11,7 @@ from .medication_manager import get_all_medications
 # File lưu lịch sử
 HISTORY_FILE = "data/medication_history.json"
 
+@st.cache_data(ttl=60, show_spinner=False)  # Cache 1 phút
 def load_history():
     """Đọc lịch sử uống thuốc"""
     if not os.path.exists(HISTORY_FILE):
@@ -27,6 +28,9 @@ def save_history(history):
     os.makedirs("data", exist_ok=True)
     with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
+    
+    # Xóa cache để reload dữ liệu mới
+    load_history.clear()
 
 def mark_as_taken(med_id, scheduled_time, actual_time=None, notes=""):
     """Đánh dấu đã uống thuốc"""

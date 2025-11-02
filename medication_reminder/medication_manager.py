@@ -10,6 +10,7 @@ import os
 # File lưu trữ dữ liệu
 DATA_FILE = "data/medications.json"
 
+@st.cache_data(ttl=60, show_spinner=False)  # Cache 1 phút
 def load_medications():
     """Đọc danh sách thuốc từ file"""
     if not os.path.exists(DATA_FILE):
@@ -27,6 +28,9 @@ def save_medications(medications):
     os.makedirs("data", exist_ok=True)
     with open(DATA_FILE, 'w', encoding='utf-8') as f:
         json.dump(medications, f, ensure_ascii=False, indent=2)
+    
+    # Xóa cache để reload dữ liệu mới
+    load_medications.clear()
 
 def add_medication(name, dosage, frequency, times, notes="", start_date=None):
     """
