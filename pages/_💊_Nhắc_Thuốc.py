@@ -3,17 +3,18 @@ Trang Nhắc Uống Thuốc - Medication Reminder
 Giúp người dùng (đặc biệt người già) nhớ uống thuốc đúng giờ
 """
 import streamlit as st
-import sys
-import os
-
-# Thêm thư mục gốc vào path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(
     page_title="Nhắc Uống Thuốc",
     page_icon="💊",
     layout="wide"
 )
+
+import sys
+import os
+
+# Thêm thư mục gốc vào path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from medication_reminder import (
     render_medication_form,

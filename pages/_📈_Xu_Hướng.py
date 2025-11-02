@@ -3,18 +3,19 @@ Trang Phân tích Xu hướng Sức khỏe
 Phân tích dữ liệu từ Nhật ký, đưa ra cảnh báo và gợi ý
 """
 import streamlit as st
-import sys
-import os
-from datetime import datetime, timedelta
-
-# Thêm thư mục gốc vào path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(
     page_title="Xu Hướng Sức Khỏe",
     page_icon="📈",
     layout="wide"
 )
+
+import sys
+import os
+from datetime import datetime, timedelta
+
+# Thêm thư mục gốc vào path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from health_trends import (
     analyze_blood_pressure_trend,

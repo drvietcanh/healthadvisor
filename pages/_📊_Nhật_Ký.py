@@ -3,6 +3,10 @@ Trang Nhật ký Sức khỏe - Theo dõi huyết áp, đường huyết, cân n
 REFACTORED VERSION - Sử dụng modular components
 """
 import streamlit as st
+
+# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
+st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
+
 import pandas as pd
 from datetime import datetime
 import sys
@@ -10,9 +14,6 @@ import os
 
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
-st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
 
 from core.ui_config import get_custom_css
 from diary_components import (

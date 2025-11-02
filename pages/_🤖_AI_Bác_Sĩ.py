@@ -2,13 +2,14 @@
 Trang Chatbot AI - Trò chuyện tư vấn y tế
 """
 import streamlit as st
+
+st.set_page_config(page_title="AI Bác Sĩ", page_icon="🤖", layout="wide")
+
 import sys
 import os
 
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-st.set_page_config(page_title="AI Bác Sĩ", page_icon="🤖", layout="wide")
 
 from core.chatbot_enhanced import MedicalChatbot
 from core.ui_config import get_custom_css
