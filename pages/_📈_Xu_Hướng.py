@@ -41,8 +41,9 @@ st.set_page_config(
 try:
     if 'dark_mode' not in st.session_state:
         st.session_state.dark_mode = False
-    extra_large_font = st.session_state.get('extra_large_font', False)
-    css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font)
+    if 'extra_large_font' not in st.session_state:
+        st.session_state.extra_large_font = False
+    css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=st.session_state.extra_large_font)
     if css_content:
         st.markdown(css_content, unsafe_allow_html=True)
 except Exception:
