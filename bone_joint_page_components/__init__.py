@@ -18,6 +18,7 @@ from .gout_tab import render_gout_tab
 from .exercises_tab import render_joint_exercises_tab
 
 from .osteoporosis_tab import render_osteoporosis_tab
+from .neck_shoulder_tab import render_neck_shoulder_tab
 
 __all__ = [
     'render_osteoarthritis_tab',
@@ -26,6 +27,7 @@ __all__ = [
     'render_herniated_disc_tab',
     'render_gout_tab',
     'render_joint_exercises_tab',
-    'render_osteoporosis_tab'
+    'render_osteoporosis_tab',
+    'render_neck_shoulder_tab'
 ]
 
