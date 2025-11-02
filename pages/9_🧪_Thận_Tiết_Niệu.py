@@ -7,7 +7,7 @@ sys.path.append('..')
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-from renal_page_components import render_ckd_tab
+from renal_page_components import render_ckd_tab, render_kidney_stones_tab
 
 st.set_page_config(page_title="Thận-Tiết Niệu", page_icon="🧪", layout="wide")
 
@@ -26,11 +26,15 @@ st.markdown(get_custom_css(dark_mode=st.session_state.dark_mode), unsafe_allow_h
 st.title("🧪 Tư vấn Thận-Tiết Niệu")
 
 # Tabs
-tab1, = st.tabs(["🫘 Suy Thận Mạn"])
+tab1, tab2 = st.tabs(["🫘 Suy Thận Mạn", "🪨 Sỏi Thận"])
 
 # ============= TAB SUY THẬN MẠN =============
 with tab1:
     render_ckd_tab()
+
+# ============= TAB SỎI THẬN =============
+with tab2:
+    render_kidney_stones_tab()
 
 # Nút quay lại
 st.divider()
