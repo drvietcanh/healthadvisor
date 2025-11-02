@@ -24,12 +24,19 @@ from health_tips.exercise_guide import (
     render_disease_specific_exercises
 )
 from core.ui_config import get_custom_css
+from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 
 st.set_page_config(
     page_title="Mẹo Vặt Y Tế",
     page_icon="💡",
     layout="wide"
 )
+
+# Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
+hide_default_nav()
+
+# Render menu sidebar tùy chỉnh
+render_sidebar_menu()
 
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:

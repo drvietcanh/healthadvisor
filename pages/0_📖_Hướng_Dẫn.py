@@ -11,6 +11,7 @@ sys.path.append('..')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from core.ui_config import get_custom_css
+from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from guide_components import (
     render_quick_start_tab,
     render_detailed_guide_tab,
@@ -19,6 +20,12 @@ from guide_components import (
 )
 
 st.set_page_config(page_title="Hướng dẫn", page_icon="📖", layout="wide")
+
+# Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
+hide_default_nav()
+
+# Render menu sidebar tùy chỉnh
+render_sidebar_menu()
 
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:

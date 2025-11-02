@@ -41,6 +41,37 @@ def hide_default_nav():
         div[data-testid="stSidebar"] {
             display: block !important;
         }
+        
+        /* MOBILE: Đảm bảo sidebar có thể mở được */
+        @media only screen and (max-width: 768px) {
+            /* Sidebar button toggle - luôn hiển thị trên mobile */
+            button[data-testid="baseButton-header"][aria-label*="sidebar"] {
+                display: block !important;
+                position: fixed !important;
+                top: 1rem !important;
+                left: 1rem !important;
+                z-index: 999 !important;
+                background-color: var(--accent-color) !important;
+                color: white !important;
+                padding: 0.75rem !important;
+                border-radius: 50% !important;
+                width: 56px !important;
+                height: 56px !important;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+            }
+            
+            /* Sidebar khi mở trên mobile - full screen overlay */
+            [data-testid="stSidebar"][aria-expanded="true"] {
+                width: 100vw !important;
+                max-width: 100vw !important;
+                z-index: 999 !important;
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                height: 100vh !important;
+                overflow-y: auto !important;
+            }
+        }
     </style>
     
     <script>
@@ -130,7 +161,7 @@ def render_sidebar_menu():
     Render menu sidebar tùy chỉnh cho tất cả các trang
     Bao gồm:
     - Dark Mode Toggle
-    - Menu Điều hướng (10 trang chính)
+    - Menu Điều hướng (13 trang chính)
     - Quick Actions (4 trang phụ trợ)
     """
     with st.sidebar:
@@ -160,7 +191,7 @@ def render_sidebar_menu():
         # Xem MENU_STRUCTURE.md để biết chi tiết về cấu trúc menu
         st.markdown("### 📂 Điều hướng")
         
-        # Danh sách menu items (10 trang hiển thị)
+        # Danh sách menu items (13 trang hiển thị)
         menu_items = [
             ("📖 Hướng Dẫn", "0_📖_Hướng_Dẫn"),
             ("❤️ Tim Mạch", "1_❤️_Tim_Mạch"),
@@ -171,6 +202,9 @@ def render_sidebar_menu():
             ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
             ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
             ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
+            ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
+            ("👁️ Mắt", "10_👁️_Mắt"),
+            ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
             ("🆘 SOS", "12_🆘_SOS"),
         ]
         

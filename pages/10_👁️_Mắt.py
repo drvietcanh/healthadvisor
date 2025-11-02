@@ -11,7 +11,11 @@ from eye_page_components import render_cataract_tab, render_glaucoma_tab, render
 
 st.set_page_config(page_title="Mắt", page_icon="👁️", layout="wide")
 
+# Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()
+
+# Render menu sidebar tùy chỉnh
+render_sidebar_menu()
 
 if 'dark_mode' not in st.session_state:
     st.session_state.dark_mode = False

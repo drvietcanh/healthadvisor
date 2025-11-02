@@ -17,8 +17,7 @@ st.set_page_config(page_title="Thần Kinh", page_icon="🧠", layout="wide")
 hide_default_nav()
 
 # Render menu sidebar tùy chỉnh
-# TẠM ẨN - Sẽ phát triển thêm chức năng sau
-# render_sidebar_menu()
+render_sidebar_menu()
 
 # Áp dụng Dark Mode
 if 'dark_mode' not in st.session_state:
