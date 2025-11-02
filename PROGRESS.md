@@ -1,18 +1,23 @@
 # 📊 TIẾN ĐỘ DỰ ÁN - HEALTHADVISOR
 
-**Cập nhật:** 03/01/2025 - Session hoàn thành Giai đoạn 1 (Quick Wins) ✅  
-**Session gần nhất:** 
-- ✅ Hoàn thành 7 task Giai đoạn 1:
-  1. Sắp xếp lại menu theo priority (4 nhóm)
-  2. Thêm nút SOS nhanh ở trang chủ
-  3. Thêm Font siêu lớn mode (24px)
-  4. Thêm Search Bar với 50+ từ khóa, fuzzy search
-  5. Thêm Favorites/Bookmarks system
-  6. Thêm Recent Pages tracking (10 trang)
-  7. Bổ sung 5 mẹo vặt mới (Quên thuốc, Đọc nhãn, Xương chắc, Giảm cholesterol)
+**Cập nhật:** 03/01/2025 - Session hoàn thành Giai đoạn 2 (50% - 2/4 tasks) ✅  
+**Session mới nhất:** 
+- ✅ **Bổ sung 5 tình huống cấp cứu mới:**
+  1. Ngã và không đứng dậy được (người già)
+  2. Lú lẫn đột ngột
+  3. Khó thở đột ngột
+  4. Ngất xỉu (Syncope)
+  5. Tăng/tụt huyết áp khủng hoảng
+  
+- ✅ **Tạo trang Răng Hàm Mặt với 5 bệnh:**
+  1. Viêm Nướu (Gingivitis)
+  2. Viêm Quanh Răng (Periodontitis)
+  3. Đau Răng Cấp
+  4. Răng Lung Lay / Rụng Răng
+  5. Khô Miệng (Xerostomia)
 
-**Status:** 🎉 Giai đoạn 1 hoàn thành - App có UI/UX tốt hơn, tính năng tìm kiếm và cá nhân hóa  
-**Phiên tiếp theo:** Bắt đầu Giai đoạn 2 (Text-to-Speech, Health Dashboard, thêm cấp cứu, trang Răng Hàm Mặt)
+**Status:** 🎉 Giai đoạn 2 hoàn thành 50% - Thêm 5 tình huống cấp cứu và trang Răng Hàm Mặt  
+**Phiên tiếp theo:** Hoàn thiện Giai đoạn 2 (Text-to-Speech, Health Dashboard)
 
 ---
 

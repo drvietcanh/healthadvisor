@@ -33,40 +33,43 @@
 
 ---
 
-## 🔄 GIAI ĐOẠN 2 - TÍNH NĂNG QUAN TRỌNG (CHƯA BẮT ĐẦU)
+## 🔄 GIAI ĐOẠN 2 - TÍNH NĂNG QUAN TRỌNG (✅ HOÀN THÀNH MỘT PHẦN)
 
 **Thời gian:** Tuần 3-4  
 **Mục tiêu:** Bổ sung các tính năng quan trọng
 
 ### **Danh sách công việc:**
 
-#### **2.1. 🔊 Text-to-Speech (Đọc to nội dung)**
+#### **2.1. 🔊 Text-to-Speech (Đọc to nội dung)** ⚪ CHƯA BẮT ĐẦU
 - Nút "Đọc cho tôi nghe" ở mỗi trang
 - Pause, Play, Tốc độ đọc
 - Sử dụng Web Speech API hoặc pyttsx3
 
-#### **2.2. 📊 Health Dashboard (Theo dõi chỉ số sức khỏe)**
+#### **2.2. 📊 Health Dashboard (Theo dõi chỉ số sức khỏe)** ⚪ CHƯA BẮT ĐẦU
 - Biểu đồ huyết áp (hàng ngày)
 - Biểu đồ đường huyết
 - Cân nặng, BMI
 - Nhịp tim
 - Xuất file Excel/PDF
 
-#### **2.3. 🆘 Bổ sung 3-5 tình huống cấp cứu mới**
-- Ngã và không đứng dậy được (người già)
-- Lú lẫn đột ngột
-- Khó thở đột ngột
-- Ngất xỉu (Syncope)
-- Tăng/tụt huyết áp khủng hoảng
+#### **2.3. 🆘 Bổ sung 3-5 tình huống cấp cứu mới** ✅ HOÀN THÀNH
+- ✅ Ngã và không đứng dậy được (người già)
+- ✅ Lú lẫn đột ngột
+- ✅ Khó thở đột ngột
+- ✅ Ngất xỉu (Syncope)
+- ✅ Tăng/tụt huyết áp khủng hoảng
 
-#### **2.4. 🦷 Tạo trang Răng Hàm Mặt (3-5 bệnh)**
-- Viêm nướu (Gingivitis)
-- Răng lung lay/rụng răng
-- Khô miệng (Xerostomia)
-- Đau răng cấp
-- Viêm quanh răng (Periodontitis)
+#### **2.4. 🦷 Tạo trang Răng Hàm Mặt (3-5 bệnh)** ✅ HOÀN THÀNH
+- ✅ Viêm nướu (Gingivitis)
+- ✅ Viêm quanh răng (Periodontitis)
+- ✅ Đau răng cấp
+- ✅ Răng lung lay/rụng răng
+- ✅ Khô miệng (Xerostomia)
 
-**Thời gian ước tính:** 30-40 giờ
+**Thời gian ước tính:** 30-40 giờ  
+**Đã hoàn thành:** 50% (2/4 tasks)
+
+**Commit:** `bd9c231` - feat: Giai đoạn 2 - Thêm 5 tình huống cấp cứu mới và trang Răng Hàm Mặt
 
 ---
 
