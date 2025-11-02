@@ -19,12 +19,16 @@ hide_default_nav()
 render_sidebar_menu()
 
 # Áp dụng Dark Mode
-if 'dark_mode' not in st.session_state:
-    st.session_state.dark_mode = False
-extra_large_font = st.session_state.get('extra_large_font', False)
-css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font)
-if css_content:
-    st.markdown(css_content, unsafe_allow_html=True)
+try:
+    if 'dark_mode' not in st.session_state:
+        st.session_state.dark_mode = False
+    extra_large_font = st.session_state.get('extra_large_font', False)
+    css_content = get_custom_css(dark_mode=st.session_state.dark_mode, extra_large_font=extra_large_font)
+    if css_content:
+        st.markdown(css_content, unsafe_allow_html=True)
+except Exception:
+    # Nếu có lỗi, bỏ qua CSS - app vẫn chạy được
+    pass
 
 st.title("🩸 Tư vấn Tiểu Đường")
 
