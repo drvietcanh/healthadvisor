@@ -20,6 +20,7 @@ def render_first_aid_tab():
         "heart_attack": "❤️ Đau tim cấp",
         "stroke": "🧠 Đột quỵ (F.A.S.T)",
         "choking_child": "👶 Trẻ em hóc dị vật",
+        "choking_adult": "😰 Người lớn hóc dị vật",
         "burns": "🔥 Bỏng nhiệt/Nước sôi",
         "hypoglycemia": "🍬 Hạ đường huyết",
         "poisoning": "☠️ Ngộ độc",
@@ -33,7 +34,14 @@ def render_first_aid_tab():
         "seizure": "⚡ Co giật (Động kinh)",
         "unconscious": "😴 Hôn mê/Bất tỉnh",
         "alcohol_poisoning": "🍺 Ngộ độc rượu",
-        "fracture": "🦴 Gãy xương"
+        "fracture": "🦴 Gãy xương",
+        "cardiac_arrest": "💔 Ngừng tim - CPR",
+        "heat_stroke": "☀️ Sốc nhiệt/Cảm nắng",
+        "nosebleed": "🩸 Chảy máu cam nặng",
+        "acute_abdominal_pain": "😣 Đau bụng cấp",
+        "head_injury": "🤕 Chấn thương đầu",
+        "snake_bite": "🐍 Rắn cắn",
+        "food_poisoning": "🍽️ Ngộ độc thực phẩm"
     }
     
     selected = st.selectbox(
@@ -91,6 +99,65 @@ def render_first_aid_tab():
             st.markdown(f"### {guide['severe']['title']}")
             for step in guide['severe']['steps']:
                 st.markdown(f"{step}")
+        
+        # Tự xử lý (self_help)
+        if 'self_help' in guide:
+            st.markdown(f"### {guide['self_help']['title']}")
+            for step in guide['self_help']['steps']:
+                st.markdown(f"{step}")
+        
+        # Phân biệt (vs_heat_exhaustion)
+        if 'vs_heat_exhaustion' in guide:
+            vs = guide['vs_heat_exhaustion']
+            st.markdown(f"### {vs.get('title', '')}")
+            col1, col2 = st.columns(2)
+            with col1:
+                if 'heat_exhaustion' in vs:
+                    he = vs['heat_exhaustion']
+                    st.success(f"**{he.get('name', '')}**")
+                    for symptom in he.get('symptoms', []):
+                        st.markdown(f"- {symptom}")
+                    if he.get('action'):
+                        st.info(he['action'])
+            with col2:
+                if 'heat_stroke' in vs:
+                    hs = vs['heat_stroke']
+                    st.error(f"**{hs.get('name', '')}**")
+                    for symptom in hs.get('symptoms', []):
+                        st.markdown(f"- {symptom}")
+                    if hs.get('action'):
+                        st.error(hs['action'])
+        
+        # Ép ngực đơn giản (compression_only)
+        if 'compression_only' in guide:
+            comp = guide['compression_only']
+            st.markdown(f"### {comp.get('title', '')}")
+            st.caption(comp.get('description', ''))
+            for step in comp.get('steps', []):
+                st.markdown(f"- {step}")
+            if comp.get('note'):
+                st.info(comp['note'])
+        
+        # Nguyên nhân nguy hiểm (dangerous_causes)
+        if 'dangerous_causes' in guide:
+            dc = guide['dangerous_causes']
+            st.warning(f"### {dc.get('title', '')}")
+            for cause in dc.get('causes', []):
+                st.markdown(f"- {cause}")
+        
+        # Theo dõi (observations)
+        if 'observations' in guide:
+            obs = guide['observations']
+            st.info(f"### {obs.get('title', '')}")
+            for item in obs.get('items', []):
+                st.markdown(f"- {item}")
+        
+        # Bệnh viện (hospitals)
+        if 'hospitals' in guide:
+            hosp = guide['hospitals']
+            st.markdown(f"### {hosp.get('title', '')}")
+            for hospital in hosp.get('vietnam', []):
+                st.markdown(f"- {hospital}")
         
         # Khi nào gọi 115
         if 'call_115' in guide:
