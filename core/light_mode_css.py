@@ -333,21 +333,53 @@ LIGHT_MODE_CSS = """
     
     /* SMALL PHONES */
     @media only screen and (max-width: 480px) {
-        /* Font nhỏ hơn cho màn hình rất nhỏ */
+        /* Font nhỏ hơn cho màn hình rất nhỏ nhưng vẫn đủ đọc */
         h1 { font-size: 1.75rem !important; }
         h2 { font-size: 1.5rem !important; }
         h3 { font-size: 1.25rem !important; }
         
         p, li, span, div {
-            font-size: 0.95rem !important;
+            font-size: 1rem !important; /* Tăng từ 0.95rem để dễ đọc hơn */
+            line-height: 1.7 !important;
         }
         
-        /* Tabs stack vertical */
+        /* Tabs stack vertical và dễ bấm */
         .stTabs [data-baseweb="tab"] {
             width: 100% !important;
             text-align: center !important;
+            min-height: 52px !important; /* Tăng từ 48px */
+            font-size: 1.1rem !important; /* Tăng font */
+            padding: 1rem !important;
+        }
+        
+        /* Buttons lớn hơn trên màn hình nhỏ */
+        .stButton button {
+            min-height: 60px !important; /* Tăng từ 56px */
+            font-size: 1.3rem !important;
+            padding: 1.25rem !important;
+        }
+        
+        /* Inputs lớn hơn */
+        input, textarea, select {
+            min-height: 56px !important;
+            font-size: 1.2rem !important;
+        }
+        
+        /* Expanders dễ bấm */
+        .streamlit-expanderHeader {
+            font-size: 1.2rem !important;
+            padding: 1rem !important;
+            min-height: 52px !important;
+        }
+    }
+    
+    /* Viewport meta tag injection via CSS - Thêm vào head */
+    @supports (-webkit-appearance: none) {
+        html {
+            -webkit-text-size-adjust: 100%;
         }
     }
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 """
 

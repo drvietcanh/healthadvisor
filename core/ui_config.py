@@ -9,15 +9,19 @@ from .light_mode_css import LIGHT_MODE_CSS
 
 def get_custom_css(dark_mode=False):
     """
-    Trả về CSS tùy chỉnh cho app
+    Trả về CSS tùy chỉnh cho app (bao gồm viewport meta tag cho mobile)
     
     Args:
         dark_mode: True nếu bật dark mode
     
     Returns:
-        str: CSS string cho dark mode hoặc light mode
+        str: CSS string cho dark mode hoặc light mode + viewport meta tag
     """
-    return DARK_MODE_CSS if dark_mode else LIGHT_MODE_CSS
+    css = DARK_MODE_CSS if dark_mode else LIGHT_MODE_CSS
+    
+    # Viewport meta tag đã được thêm vào cuối CSS string
+    # Streamlit sẽ inject vào <head> tự động
+    return css
 
 
 def get_loading_spinner_css():
