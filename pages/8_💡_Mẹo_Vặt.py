@@ -17,7 +17,8 @@ from health_tips import (
     render_daily_health_tips,
     render_preventive_care,
     render_nutrition_bone_health,
-    render_nutrition_cholesterol
+    render_nutrition_cholesterol,
+    render_common_ailments_tab
 )
 from health_tips.exercise_guide import (
     render_general_exercise_tips,
@@ -70,14 +71,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tabs
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
     "💊 Máy tính Paracetamol",
     "🌡️ Xử trí sốt",
     "💊 Thuốc & Thức ăn",
     "🏃 Bài tập thể thao",
     "🌱 Chăm sóc hàng ngày",
     "🛡️ Phòng bệnh",
-    "🍽️ Dinh dưỡng"
+    "🍽️ Dinh dưỡng",
+    "🩺 Bệnh thường gặp"
 ])
 
 # Tab 1: Máy tính Paracetamol
@@ -134,6 +136,10 @@ with tab7:
     
     with sub_tab2:
         render_nutrition_cholesterol()
+
+# Tab 8: Bệnh thường gặp
+with tab8:
+    render_common_ailments_tab()
 
 # Footer
 st.divider()

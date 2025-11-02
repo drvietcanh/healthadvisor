@@ -47,6 +47,13 @@ except ImportError:
     render_general_exercise_tips = None
     render_disease_specific_exercises = None
 
+try:
+    from health_tips.practical_tips import (
+        render_common_ailments_tab
+    )
+except ImportError:
+    render_common_ailments_tab = None
+
 __all__ = [
     "calculate_paracetamol_dose",
     "render_paracetamol_calculator",
@@ -59,6 +66,7 @@ __all__ = [
     "render_general_exercise_tips",
     "render_disease_specific_exercises",
     "render_nutrition_bone_health",
-    "render_nutrition_cholesterol"
+    "render_nutrition_cholesterol",
+    "render_common_ailments_tab"
 ]
 
