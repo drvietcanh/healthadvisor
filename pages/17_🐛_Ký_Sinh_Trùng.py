@@ -15,6 +15,7 @@ from parasitology_page_components import (
     render_hookworm_tab,
     render_pinworm_tab,
     render_tapeworm_tab,
+    render_liver_fluke_tab,
     render_amoebic_dysentery_tab,
     render_giardiasis_tab,
     render_toxoplasmosis_tab,
@@ -65,11 +66,12 @@ st.markdown("""
 st.divider()
 
 # Tabs cho các bệnh
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9 = st.tabs([
     "🐛 Giun Đũa",
     "🪱 Giun Móc",
     "🪲 Giun Kim", 
     "🐍 Sán Dây",
+    "🪲 Sán Lá Gan",
     "🦠 Lỵ Amip",
     "💧 Nhiễm Ký Sinh Giardia",
     "🐱 Toxoplasma",
@@ -89,15 +91,18 @@ with tab4:
     render_tapeworm_tab()
 
 with tab5:
-    render_amoebic_dysentery_tab()
+    render_liver_fluke_tab()
 
 with tab6:
-    render_giardiasis_tab()
+    render_amoebic_dysentery_tab()
 
 with tab7:
-    render_toxoplasmosis_tab()
+    render_giardiasis_tab()
 
 with tab8:
+    render_toxoplasmosis_tab()
+
+with tab9:
     render_malaria_tab()
 
 # Lưu ý cuối
