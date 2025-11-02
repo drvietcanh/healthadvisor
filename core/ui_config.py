@@ -6,6 +6,7 @@ REFACTORED: Tách CSS ra 2 files riêng để dễ quản lý
 # Import CSS files với xử lý lỗi an toàn
 DARK_MODE_CSS = ""
 LIGHT_MODE_CSS = ""
+MOBILE_OPTIMIZATION = ""
 
 try:
     from .dark_mode_css import DARK_MODE_CSS as _DARK_MODE_CSS
@@ -20,6 +21,12 @@ try:
         LIGHT_MODE_CSS = _LIGHT_MODE_CSS
 except (ImportError, AttributeError, TypeError) as e:
     LIGHT_MODE_CSS = ""
+
+try:
+    from .mobile_optimization import get_mobile_optimization
+    MOBILE_OPTIMIZATION = get_mobile_optimization() if get_mobile_optimization else ""
+except (ImportError, AttributeError, TypeError) as e:
+    MOBILE_OPTIMIZATION = ""
 
 
 def get_custom_css(dark_mode=False, extra_large_font=False):
@@ -110,6 +117,10 @@ def get_custom_css(dark_mode=False, extra_large_font=False):
     </style>
         """
             css = css + extra_font_css
+        
+        # Thêm mobile optimization (tab navigation, gestures, offline indicator)
+        if MOBILE_OPTIMIZATION:
+            css = css + MOBILE_OPTIMIZATION
         
         # Đảm bảo luôn trả về string hợp lệ
         return str(css) if css else ""
