@@ -162,22 +162,21 @@ def render_sidebar_menu():
         
         # Danh sách menu items (10 trang hiển thị)
         menu_items = [
-            ("📖 Hướng Dẫn", "pages/0_📖_Hướng_Dẫn.py"),
-            ("❤️ Tim Mạch", "pages/1_❤️_Tim_Mạch.py"),
-            ("🫁 Hô Hấp", "pages/2_🫁_Hô_Hấp.py"),
-            ("🩸 Tiểu Đường", "pages/3_🩸_Tiểu_Đường.py"),
-            ("🧠 Thần Kinh", "pages/4_🧠_Thần_Kinh.py"),
-            ("⚖️ Hội Chứng Chuyển Hóa", "pages/5_⚖️_Hội_Chứng_Chuyển_Hóa.py"),
-            ("🦴 Khớp - Cột Sống", "pages/6_🦴_Khớp_Cột_Sống.py"),
-            ("🎓 Học Dễ", "pages/7_🎓_Học_Dễ.py"),
-            ("💡 Mẹo Vặt", "pages/8_💡_Mẹo_Vặt.py"),
-            ("🆘 SOS", "pages/12_🆘_SOS.py"),
+            ("📖 Hướng Dẫn", "0_📖_Hướng_Dẫn"),
+            ("❤️ Tim Mạch", "1_❤️_Tim_Mạch"),
+            ("🫁 Hô Hấp", "2_🫁_Hô_Hấp"),
+            ("🩸 Tiểu Đường", "3_🩸_Tiểu_Đường"),
+            ("🧠 Thần Kinh", "4_🧠_Thần_Kinh"),
+            ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
+            ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
+            ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
+            ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
+            ("🆘 SOS", "12_🆘_SOS"),
         ]
         
-        # Hiển thị menu items
-        for label, page_path in menu_items:
-            if st.button(label, key=f"menu_{page_path}", use_container_width=True):
-                st.switch_page(page_path)
+        # Hiển thị menu items - dùng page_link để tránh lỗi với st.switch_page trong loop
+        for label, page_name in menu_items:
+            st.page_link(f"pages/{page_name}.py", label=label, icon=None)
         
         st.divider()
         
@@ -185,13 +184,12 @@ def render_sidebar_menu():
         st.markdown("### 🚀 Truy cập nhanh")
         
         quick_actions = [
-            ("🤖 AI Bác Sĩ", "pages/_🤖_AI_Bác_Sĩ.py"),
-            ("📊 Nhật Ký", "pages/_📊_Nhật_Ký.py"),
-            ("💊 Nhắc Thuốc", "pages/_💊_Nhắc_Thuốc.py"),
-            ("📈 Xu Hướng", "pages/_📈_Xu_Hướng.py"),
+            ("🤖 AI Bác Sĩ", "_🤖_AI_Bác_Sĩ"),
+            ("📊 Nhật Ký", "_📊_Nhật_Ký"),
+            ("💊 Nhắc Thuốc", "_💊_Nhắc_Thuốc"),
+            ("📈 Xu Hướng", "_📈_Xu_Hướng"),
         ]
         
-        for label, page_path in quick_actions:
-            if st.button(label, key=f"quick_{page_path}", use_container_width=True):
-                st.switch_page(page_path)
+        for label, page_name in quick_actions:
+            st.page_link(f"pages/{page_name}.py", label=label, icon=None)
 

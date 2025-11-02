@@ -52,7 +52,21 @@ def render_first_aid_tab():
         if 'signs' in guide:
             st.markdown(f"### {guide['signs']['title']}")
             for sign in guide['signs']['items']:
-                st.markdown(f"- {sign}")
+                st.markdown(f"{sign}")
+            if 'note' in guide['signs']:
+                st.info(guide['signs']['note'])
+        
+        # Phân loại (cho bỏng)
+        if 'classification' in guide:
+            st.markdown(f"### {guide['classification']['title']}")
+            st.caption(guide['classification'].get('rule', ''))
+            if 'examples' in guide['classification']:
+                for ex in guide['classification']['examples']:
+                    st.markdown(f"- {ex}")
+            if 'severe_if' in guide['classification']:
+                st.warning("**Bỏng nặng nếu:**")
+                for item in guide['classification']['severe_if']:
+                    st.markdown(f"- {item}")
         
         if 'other_signs' in guide:
             st.markdown("### Các dấu hiệu khác:")
@@ -83,6 +97,24 @@ def render_first_aid_tab():
             st.error(f"### {guide['call_115']['title']}")
             for item in guide['call_115']['items']:
                 st.markdown(f"{item}")
+        
+        # Khi nào gọi 115 (when_call_115 - cho bỏng)
+        if 'when_call_115' in guide:
+            st.error(f"### {guide['when_call_115']['title']}")
+            for item in guide['when_call_115']['items']:
+                st.markdown(f"- {item}")
+        
+        # Chăm sóc tại nhà (cho bỏng)
+        if 'home_care' in guide:
+            st.info(f"### {guide['home_care']['title']}")
+            for step in guide['home_care']['steps']:
+                st.markdown(f"{step}")
+        
+        # Biến chứng (cho bỏng)
+        if 'complications' in guide:
+            st.warning(f"### {guide['complications']['title']}")
+            for item in guide['complications']['items']:
+                st.markdown(f"- {item}")
         
         # Không được làm
         if 'dont' in guide:

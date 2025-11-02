@@ -8,11 +8,44 @@ FIRST_AID_TRAUMA = {
         "name": "Bỏng nhiệt/Nước sôi",
         "icon": "🔥",
         "signs": {
-            "title": "🔍 Phân loại bỏng:",
+            "title": "🔍 Phân loại bỏng chi tiết:",
             "items": [
-                "**Bỏng độ 1:** Đỏ da, đau nhẹ (như cháy nắng) - Tự khỏi vài ngày",
-                "**Bỏng độ 2:** Phồng rộp, đau nhiều - Cần chăm sóc cẩn thận",
-                "**Bỏng độ 3:** Da trắng/đen, mất cảm giác - NGUY HIỂM, cần bác sĩ ngay!"
+                "**Bỏng độ 1 (Bỏng nông):**",
+                "   - Đỏ da, đau nhẹ (như cháy nắng)",
+                "   - Da khô, không phồng rộp",
+                "   - Tự khỏi sau 3-7 ngày, không để sẹo",
+                "   - 💡 Có thể tự chăm sóc tại nhà",
+                "",
+                "**Bỏng độ 2 (Bỏng trung bình):**",
+                "   - Đỏ da, phồng rộp (bóng nước)",
+                "   - Đau nhiều, chảy dịch",
+                "   - Da ướt, hơi trắng khi ấn",
+                "   - Khỏi sau 2-3 tuần, có thể để sẹo nhẹ",
+                "   - ⚠️ Cần chăm sóc cẩn thận, tránh nhiễm trùng",
+                "",
+                "**Bỏng độ 3 (Bỏng sâu):**",
+                "   - Da trắng, nâu hoặc đen (hoại tử)",
+                "   - MẤT CẢM GIÁC (không đau - dây thần kinh bị tổn thương!)",
+                "   - Da khô, cứng (như da bò)",
+                "   - KHÔNG TỰ KHỎI, cần ghép da",
+                "   - 🚨 NGUY HIỂM - Cần bác sĩ NGAY!"
+            ],
+            "note": "💡 **LƯU Ý:** Bỏng độ 3 KHÔNG đau vì dây thần kinh bị tổn thương - Đừng nhầm là nhẹ!"
+        },
+        "classification": {
+            "title": "📏 Đánh giá diện tích bỏng (Quy tắc lòng bàn tay):",
+            "rule": "1 lòng bàn tay = 1% diện tích cơ thể",
+            "examples": [
+                "Bỏng cả cánh tay = 9% (người lớn)",
+                "Bỏng cả chân = 18% (người lớn)",
+                "Bỏng ngực + bụng = 18% (người lớn)",
+                "Trẻ em: Diện tích tính khác (đầu = 20%, chân = 15%)"
+            ],
+            "severe_if": [
+                "Bỏng >10% diện tích cơ thể",
+                "Bỏng độ 3 >5%",
+                "Bỏng ở mặt, cổ, tay, chân, bộ phận sinh dục",
+                "Bỏng đường hô hấp (hít khói nóng)"
             ]
         },
         "actions": {
@@ -40,19 +73,87 @@ FIRST_AID_TRAUMA = {
                 "❌ KHÔNG cởi quần áo nếu dính chặt vào da"
             ]
         },
+        "home_care": {
+            "title": "🏠 Chăm sóc tại nhà (Bỏng độ 1-2, nhỏ):",
+            "steps": [
+                "1️⃣ **Rửa sạch hàng ngày:**",
+                "   - Rửa bằng nước muối sinh lý hoặc nước sạch",
+                "   - Nhẹ nhàng, không cọ xát",
+                "",
+                "2️⃣ **Bôi thuốc (nếu bỏng độ 1-2, nhỏ):**",
+                "   - Silvadene cream, Flamazine (theo chỉ định bác sĩ)",
+                "   - Hoặc mỡ kháng sinh: Bactroban, Fucidin",
+                "   - Bôi mỏng, 2-3 lần/ngày",
+                "",
+                "3️⃣ **Băng vết bỏng:**",
+                "   - Dùng gạc không dính (Mepilex, Telfa)",
+                "   - Băng nhẹ nhàng, không chặt",
+                "   - Thay băng 1-2 lần/ngày",
+                "",
+                "4️⃣ **Giảm đau:**",
+                "   - Paracetamol 500-1000mg × 3-4 lần/ngày",
+                "   - Ibuprofen 400mg × 3 lần/ngày (nếu không có chống chỉ định)",
+                "",
+                "5️⃣ **Phồng rộp:**",
+                "   - KHÔNG chọc phồng rộp (bảo vệ da non)",
+                "   - Nếu vỡ tự nhiên: Rửa sạch, bôi thuốc, băng",
+                "",
+                "6️⃣ **Theo dõi dấu hiệu nhiễm trùng:**",
+                "   - Sưng, đỏ lan rộng",
+                "   - Đau tăng, có mủ",
+                "   - Sốt, nổi hạch",
+                "   - → Đi khám ngay!"
+            ]
+        },
+        "complications": {
+            "title": "⚠️ Biến chứng bỏng:",
+            "items": [
+                "**Nhiễm trùng:** Phổ biến nhất, có thể nặng → Nhiễm trùng máu",
+                "**Sẹo:** Bỏng sâu → Sẹo co rút, mất chức năng",
+                "**Mất nước:** Bỏng rộng → Mất dịch qua da → Sốc",
+                "**Hít khói nóng:** Bỏng đường hô hấp → Suy hô hấp, nguy hiểm tính mạng",
+                "**Hạ thân nhiệt:** Da mất → Mất nhiệt nhanh → Nguy hiểm ở trẻ em, người già"
+            ]
+        },
+        "prevention": {
+            "title": "💡 Phòng ngừa bỏng:",
+            "items": [
+                "✅ **Bếp:**",
+                "   - Tay cầm nồi xoay vào trong",
+                "   - Không để trẻ em gần bếp",
+                "   - Dùng găng tay khi nấu",
+                "",
+                "✅ **Nước nóng:**",
+                "   - Kiểm tra nhiệt độ nước trước khi tắm (đặc biệt trẻ em)",
+                "   - Để ấm nước ngoài tầm với trẻ",
+                "   - Nhiệt độ nước tắm: 37-38°C (không >40°C)",
+                "",
+                "✅ **Đồ dùng:**",
+                "   - Không để cốc nước nóng trên mép bàn",
+                "   - Cẩn thận khi rót nước nóng",
+                "   - Kiểm tra ấm nước điện trước khi rót",
+                "",
+                "✅ **Cháy:**",
+                "   - Không hút thuốc trong nhà",
+                "   - Lắp báo khói",
+                "   - Cẩn thận với nến, đèn dầu"
+            ]
+        },
         "when_call_115": {
             "title": "🚨 GỌI 115 NGAY NẾU:",
             "items": [
-                "⛔ Bỏng rộng (lớn hơn lòng bàn tay)",
+                "⛔ Bỏng độ 3 (da trắng/đen, mất cảm giác) - Dù nhỏ",
+                "⛔ Bỏng rộng >10% diện tích cơ thể (lớn hơn 10 lòng bàn tay)",
                 "⛔ Bỏng ở mặt, cổ, tay, chân, bộ phận sinh dục",
-                "⛔ Bỏng độ 3 (da trắng/đen, mất cảm giác)",
+                "⛔ Bỏng đường hô hấp (hít khói nóng) → Khó thở, khàn tiếng",
                 "⛔ Bỏng do điện, hóa chất",
-                "⛔ Trẻ em bỏng (dù nhỏ)",
-                "⛔ Người già >60 tuổi bỏng",
-                "⛔ Bỏng kèm khó thở, ngất xỉu"
+                "⛔ Trẻ em bỏng (dù nhỏ - trẻ dễ biến chứng)",
+                "⛔ Người già >60 tuổi bỏng (miễn dịch yếu)",
+                "⛔ Bỏng kèm khó thở, ngất xỉu, sốc",
+                "⛔ Nhiễm trùng (sưng, đỏ lan, mủ, sốt)"
             ]
         },
-        "note": "💡 **MẸO:** Bỏng nhẹ (độ 1-2, nhỏ) có thể tự chăm sóc. Bỏng nặng hoặc rộng → BÁC SĨ NGAY!"
+        "note": "💡 **QUAN TRỌNG:** Bỏng độ 1-2 nhỏ (nhỏ hơn lòng bàn tay) có thể tự chăm sóc. Bỏng độ 3, rộng, hoặc ở vùng quan trọng → BÁC SĨ NGAY!"
     },
     
     "bleeding": {
