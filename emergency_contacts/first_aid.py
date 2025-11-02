@@ -7,6 +7,7 @@ File này tổng hợp từ các modules:
 - first_aid_pediatric: Nhi khoa (hóc dị vật)
 - first_aid_environmental: Môi trường (đuối nước, điện giật)
 - first_aid_medical: Y khoa (hạ đường huyết, ngộ độc)
+- first_aid_additional4: Tình huống cấp cứu cho người già (ngã, lú lẫn, khó thở, ngất xỉu, huyết áp khủng hoảng)
 """
 
 from .first_aid_cardiovascular import FIRST_AID_CARDIOVASCULAR
@@ -17,6 +18,7 @@ from .first_aid_medical import FIRST_AID_MEDICAL
 from .first_aid_additional import FIRST_AID_ADDITIONAL
 from .first_aid_additional2 import FIRST_AID_ADDITIONAL2
 from .first_aid_additional3 import FIRST_AID_ADDITIONAL3
+from .first_aid_additional4 import FIRST_AID_ADDITIONAL4
 
 # Tổng hợp tất cả
 FIRST_AID_GUIDES = {}
@@ -28,6 +30,7 @@ FIRST_AID_GUIDES.update(FIRST_AID_MEDICAL)
 FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL)
 FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL2)
 FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL3)
+FIRST_AID_GUIDES.update(FIRST_AID_ADDITIONAL4)
 
 
 def get_first_aid_guide(condition):

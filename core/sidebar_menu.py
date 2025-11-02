@@ -255,6 +255,7 @@ def render_sidebar_menu():
             ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
             ("👁️ Mắt", "10_👁️_Mắt"),
             ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
+            ("🦷 Răng Hàm Mặt", "13_🦷_Răng_Hàm_Mặt"),
         ]
         
         for label, page_name in priority_2_items:
