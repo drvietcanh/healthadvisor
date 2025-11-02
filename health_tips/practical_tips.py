@@ -178,5 +178,54 @@ def render_common_ailments_tab():
         - Đau đầu dữ dội đột ngột (sét đánh)
         - Kèm sốt cao, cứng cổ
         - Méo mặt, yếu liệt tay chân
+        
+        ---
+        
+        ### 😮 NGHẸN KHI ĂN (Choking While Eating)
+        
+        **Triệu chứng:**
+        - Ho dữ dội
+        - Khó thở, thở khò khè
+        - Mặt đỏ/tím, nước mắt chảy
+        - Tay đưa lên cổ (động tác phổ biến)
+        
+        **🚨 XỬ LÝ NGAY - Heimlich Maneuver:**
+        
+        **CHO NGƯỜI LỚN:**
+        1. **HỎI:** "Bạn có bị nghẹn không?" (nếu không trả lời = nghẹn nặng)
+        2. **VỖ LƯNG 5 LẦN:** Vỗ mạnh giữa 2 xương bả vai
+        3. **ÉP BỤNG 5 LẦN (Heimlich):**
+           - Đứng sau, vòng tay quanh eo
+           - Một tay nắm đấm, đặt trên rốn
+           - Tay kia nắm cổ tay
+           - Ấn MẠNH vào trong và LÊN TRÊN
+        4. **LẶP LẠI** vỗ lưng - ép bụng cho đến khi dị vật ra
+        
+        **CHO TRẺ 1-8 TUỔI:**
+        1. **VỖ LƯNG 5 LẦN:** Trẻ cúi đầu, vỗ giữa xương bả vai
+        2. **ÉP BỤNG NHẸ 5 LẦN:** Dùng 1 bàn tay (nhẹ hơn người lớn)
+        3. **LẶP LẠI** cho đến khi dị vật ra
+        
+        **CHO TRẺ < 1 TUỔI:**
+        1. **VỖ LƯNG 5 LẦN:** Đặt trẻ nằm sấp trên đùi, đầu thấp
+        2. **ÉP NGỰC 5 LẦN:** Lật ngửa, dùng 2 ngón tay ép giữa xương ức
+        3. **LẶP LẠI** cho đến khi dị vật ra
+        
+        **CHO BẢN THÂN (tự sơ cứu):**
+        1. Tìm mép ghế hoặc tay vịn
+        2. Đẩy bụng lên trên vào mép ghế 5 lần
+        3. Hoặc: Nắm đấm tự ép bụng 5 lần
+        
+        **🚨 GỌI 115 NGAY:**
+        - Nghẹn nặng không thở được
+        - Mất ý thức, ngất xỉu
+        - Da tím tái, không nói được
+        
+        **🛡️ PHÒNG NGHẸN:**
+        1. **Cắt nhỏ thức ăn:** Đặc biệt cho trẻ em, người già
+        2. **Nhai kỹ:** Không nuốt vội
+        3. **Không vừa ăn vừa nói:** Dễ bị sặc
+        4. **Tránh:** Kẹo tròn, nho cả quả cho trẻ < 5 tuổi
+        5. **Ghẹ xương cá:** Gỡ xương kỹ trước khi ăn
         """)
 
