@@ -5,7 +5,12 @@ REFACTORED: Tách tabs thành components
 """
 import streamlit as st
 import sys
-sys.path.append('..')
+import os
+
+# Thêm thư mục gốc vào path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
 
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
