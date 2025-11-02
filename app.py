@@ -3,11 +3,8 @@ HealthAdvisor - Ứng dụng tư vấn sức khỏe đa bệnh
 Trang chính
 """
 import streamlit as st
-from core.utils import get_greeting
-from core.ui_config import get_custom_css
 
-
-# Cấu hình trang
+# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
 st.set_page_config(
     page_title="HealthAdvisor - Tư vấn Sức khỏe",
     page_icon="🏥",
@@ -15,7 +12,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Sidebar Menu - Sử dụng module chung
+from core.utils import get_greeting
+from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
