@@ -8,6 +8,12 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(
+    page_title="Khớp - Cột sống",
+    page_icon="🦴",
+    layout="wide"
+)
+
 from bone_joint_page_components import (
     render_osteoarthritis_tab,
     render_rheumatoid_arthritis_tab,
@@ -20,12 +26,6 @@ from bone_joint_page_components import (
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-st.set_page_config(
-    page_title="Khớp - Cột sống",
-    page_icon="🦴",
-    layout="wide"
-)
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

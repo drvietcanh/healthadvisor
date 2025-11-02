@@ -11,6 +11,9 @@ import os
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
+st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
+
 from core.ui_config import get_custom_css
 from diary_components import (
     render_instructions, render_bp_guide, render_file_guide,
@@ -18,9 +21,6 @@ from diary_components import (
     render_input_form, render_charts, render_data_table, render_statistics
 )
 from diary_components.data_manager import initialize_health_data
-
-# Cấu hình trang
-st.set_page_config(page_title="Nhật ký Sức khỏe", page_icon="📊", layout="wide")
 
 try:
     # Kiểm tra session_state có tồn tại và là dict

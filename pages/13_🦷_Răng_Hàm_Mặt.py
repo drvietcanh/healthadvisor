@@ -14,6 +14,13 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 sys.path.insert(0, parent_dir)
 
+# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
+st.set_page_config(
+    page_title="Răng Hàm Mặt - HealthAdvisor",
+    page_icon="🦷",
+    layout="wide"
+)
+
 from dental_page_components import (
     render_gingivitis_tab,
     render_periodontitis_tab,
@@ -24,13 +31,6 @@ from dental_page_components import (
 )
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-# Cấu hình trang
-st.set_page_config(
-    page_title="Răng Hàm Mặt - HealthAdvisor",
-    page_icon="🦷",
-    layout="wide"
-)
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

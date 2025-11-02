@@ -9,6 +9,12 @@ import os
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(
+    page_title="Nhắc Uống Thuốc",
+    page_icon="💊",
+    layout="wide"
+)
+
 from medication_reminder import (
     render_medication_form,
     render_schedule_view,
@@ -16,12 +22,6 @@ from medication_reminder import (
 )
 from medication_reminder.medication_manager import render_medication_list
 from core.ui_config import get_custom_css
-
-st.set_page_config(
-    page_title="Nhắc Uống Thuốc",
-    page_icon="💊",
-    layout="wide"
-)
 
 try:
     # Kiểm tra session_state có tồn tại và là dict

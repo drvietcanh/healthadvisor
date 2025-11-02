@@ -10,6 +10,12 @@ from datetime import datetime, timedelta
 # Thêm thư mục gốc vào path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(
+    page_title="Xu Hướng Sức Khỏe",
+    page_icon="📈",
+    layout="wide"
+)
+
 from health_trends import (
     analyze_blood_pressure_trend,
     analyze_blood_sugar_trend,
@@ -29,12 +35,6 @@ from health_trends_page_components import (
     render_weight_tab,
     render_correlation_tab,
     render_recommendations_section
-)
-
-st.set_page_config(
-    page_title="Xu Hướng Sức Khỏe",
-    page_icon="📈",
-    layout="wide"
 )
 
 try:

@@ -8,11 +8,11 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Tìm Kiếm", page_icon="🔍", layout="wide")
+
 from core.search_component import render_search_results, SEARCH_INDEX, PAGE_LINKS
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-st.set_page_config(page_title="Tìm Kiếm", page_icon="🔍", layout="wide")
 
 # Ẩn menu mặc định
 hide_default_nav()

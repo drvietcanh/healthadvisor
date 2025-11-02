@@ -10,6 +10,8 @@ import os
 # Thêm thư mục gốc vào path để imports hoạt động trên Streamlit Cloud
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+st.set_page_config(page_title="Hướng dẫn", page_icon="📖", layout="wide")
+
 from core.ui_config import get_custom_css
 from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 from guide_components import (
@@ -18,8 +20,6 @@ from guide_components import (
     render_faq_tab,
     render_tips_tab
 )
-
-st.set_page_config(page_title="Hướng dẫn", page_icon="📖", layout="wide")
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()

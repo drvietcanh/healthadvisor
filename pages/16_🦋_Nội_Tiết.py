@@ -13,16 +13,16 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 sys.path.insert(0, parent_dir)
 
-from endocrine_page_components import render_thyroid_tab
-from core.ui_config import get_custom_css
-from core.sidebar_menu import render_sidebar_menu, hide_default_nav
-
-# Cấu hình trang
+# Cấu hình trang - PHẢI ĐẶT TRƯỚC IMPORT
 st.set_page_config(
     page_title="Nội Tiết - HealthAdvisor",
     page_icon="🦋",
     layout="wide"
 )
+
+from endocrine_page_components import render_thyroid_tab
+from core.ui_config import get_custom_css
+from core.sidebar_menu import render_sidebar_menu, hide_default_nav
 
 # Ẩn menu mặc định của Streamlit - PHẢI GỌI TRƯỚC
 hide_default_nav()
