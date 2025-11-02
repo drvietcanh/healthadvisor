@@ -178,6 +178,22 @@ def render_first_aid_tab():
             for item in guide['when_call_115']['items']:
                 st.markdown(f"- {item}")
         
+        # Lựa chọn vận chuyển (transport_option)
+        if 'transport_option' in guide:
+            transport = guide['transport_option']
+            st.info(f"### {transport.get('title', '🚗 Đưa đến bệnh viện:')}")
+            if 'call_115_recommended' in transport:
+                st.markdown("**📞 Nên GỌI 115 nếu:**")
+                for item in transport['call_115_recommended']:
+                    st.markdown(f"- {item}")
+                st.divider()
+            if 'self_transport_allowed' in transport:
+                st.success("**🚗 CÓ THỂ tự đưa đến bệnh viện gần nếu:**")
+                for item in transport['self_transport_allowed']:
+                    st.markdown(f"- {item}")
+                if transport.get('self_transport_note'):
+                    st.warning(transport['self_transport_note'])
+        
         # Chăm sóc tại nhà (cho bỏng)
         if 'home_care' in guide:
             st.info(f"### {guide['home_care']['title']}")

@@ -153,6 +153,26 @@ FIRST_AID_TRAUMA = {
                 "⛔ Nhiễm trùng (sưng, đỏ lan, mủ, sốt)"
             ]
         },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Bỏng độ 3 (dù nhỏ)",
+                "Bỏng rộng >10% diện tích cơ thể",
+                "Bỏng ở mặt, cổ, tay, chân, bộ phận sinh dục",
+                "Bỏng do điện, hóa chất",
+                "Bỏng đường hô hấp (khó thở)",
+                "Trẻ em hoặc người già bỏng",
+                "Bỏng kèm khó thở, ngất, sốc"
+            ],
+            "self_transport_allowed": [
+                "Bỏng độ 1-2 nhỏ (nhỏ hơn lòng bàn tay)",
+                "Đã sơ cứu tốt (dội nước lạnh 15-20 phút)",
+                "Người bệnh tỉnh táo, không khó thở",
+                "Bệnh viện gần (dưới 20-30 phút)",
+                "Để kiểm tra và băng bó đúng cách"
+            ],
+            "self_transport_note": "💡 **Lưu ý:** Nếu bỏng độ 1-2 nhỏ và đã sơ cứu tốt, có thể tự đưa đến bệnh viện gần để bác sĩ kiểm tra và băng bó. Nhưng nếu nghi ngờ hoặc bỏng lớn → GỌI 115."
+        },
         "note": "💡 **QUAN TRỌNG:** Bỏng độ 1-2 nhỏ (nhỏ hơn lòng bàn tay) có thể tự chăm sóc. Bỏng độ 3, rộng, hoặc ở vùng quan trọng → BÁC SĨ NGAY!"
     },
     
@@ -207,6 +227,23 @@ FIRST_AID_TRAUMA = {
                 "⛔ Có vật lạ cắm trong vết thương"
             ]
         },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Chảy máu không cầm sau khi ép chặt",
+                "Chảy máu thành tia, mất máu nhiều",
+                "Chảy máu ở vùng nguy hiểm (cổ, ngực, bụng)",
+                "Có vật lạ cắm trong vết thương",
+                "Người bệnh choáng váng, da xanh"
+            ],
+            "self_transport_allowed": [
+                "Chảy máu đã cầm được sau khi ép chặt",
+                "Vết thương nhỏ, nông",
+                "Người bệnh tỉnh táo, ổn định",
+                "Bệnh viện gần (dưới 15-20 phút)"
+            ],
+            "self_transport_note": "⚠️ **Lưu ý:** Tiếp tục ép chặt vết thương khi di chuyển. Nếu máu chảy lại → Dừng lại ép tiếp hoặc gọi 115."
+        },
         "note": "💡 **QUAN TRỌNG:** Ép chặt là cách tốt nhất để cầm máu. Đừng bỏ cuộc!"
     },
     
@@ -247,6 +284,26 @@ FIRST_AID_TRAUMA = {
                 "❗ Bất tỉnh (dù chỉ vài giây)",
                 "❗ Đau ngực, khó thở sau khi ngã"
             ]
+        },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Không thể đứng dậy, không cử động được",
+                "Xương lệch, biến dạng rõ ràng",
+                "Bất tỉnh (dù chỉ vài giây)",
+                "Đau đầu dữ dội, chóng mặt nhiều",
+                "Nghi ngờ chấn thương đầu, cổ, lưng",
+                "Đau ngực, khó thở sau ngã"
+            ],
+            "self_transport_allowed": [
+                "Có thể đứng dậy, đi lại được",
+                "Chỉ đau nhẹ, không có biến dạng",
+                "Tỉnh táo, không đau đầu nhiều",
+                "Không chảy máu hoặc chỉ chảy ít",
+                "Bệnh viện gần (dưới 15-20 phút)",
+                "Cần kiểm tra để chắc chắn"
+            ],
+            "self_transport_note": "⚠️ **Lưu ý:** Ngã ở người già dễ gãy xương hông (đùi) hoặc chấn thương đầu. Nếu nghi ngờ → GỌI 115. Nếu chỉ đau nhẹ và có thể đi lại → Có thể tự đưa đi kiểm tra."
         },
         "prevention": {
             "title": "💡 Phòng ngừa ngã:",

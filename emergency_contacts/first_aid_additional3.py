@@ -282,6 +282,23 @@ FIRST_AID_ADDITIONAL3 = {
                 "⛔ Chảy máu sau chấn thương đầu",
                 "⛔ Chảy máu kèm huyết áp cao"
             ]
+        },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Chảy máu >20 phút không cầm",
+                "Chảy máu rất nhiều, choáng váng",
+                "Chảy máu sau chấn thương đầu",
+                "Mất máu nhiều (da xanh, mạch nhanh)"
+            ],
+            "self_transport_allowed": [
+                "Chảy máu đã cầm được sau khi bịt mũi",
+                "Chảy máu nhẹ, không choáng",
+                "Người bệnh tỉnh táo",
+                "Bệnh viện gần (dưới 15-20 phút)",
+                "Cần kiểm tra để đảm bảo an toàn"
+            ],
+            "self_transport_note": "💡 **Lưu ý:** Chảy máu cam nhẹ sau khi đã cầm được có thể tự đưa đến bệnh viện gần để kiểm tra. Nhưng nếu chảy nhiều hoặc không cầm → GỌI 115."
         }
     },
     
@@ -332,6 +349,24 @@ FIRST_AID_ADDITIONAL3 = {
                 "⛔ Đau bụng + Choáng, mạch nhanh",
                 "⛔ Đau bụng + Không đi tiểu được >12 giờ"
             ]
+        },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Đau bụng dữ dội, đột ngột",
+                "Đau bụng + Sốt cao, cứng bụng",
+                "Đau bụng + Nôn ra máu, đi ngoài phân đen",
+                "Đau bụng + Choáng, mạch nhanh",
+                "Nghi ngờ viêm ruột thừa, thủng dạ dày"
+            ],
+            "self_transport_allowed": [
+                "Đau bụng vừa, có thể chịu được",
+                "Không sốt cao, không cứng bụng",
+                "Người bệnh tỉnh táo, không choáng",
+                "Bệnh viện gần (dưới 20-30 phút)",
+                "Cần khám để chẩn đoán chính xác"
+            ],
+            "self_transport_note": "⚠️ **Lưu ý:** Đau bụng có thể do nhiều nguyên nhân nguy hiểm (viêm ruột thừa, thủng dạ dày...). Nếu đau nhiều hoặc có dấu hiệu nguy hiểm → GỌI 115. Nếu chỉ đau vừa và không có dấu hiệu nguy hiểm → Có thể tự đưa đến bệnh viện gần để khám."
         },
         "note": "⚠️ Đau bụng cấp có thể do nhiều nguyên nhân nguy hiểm → Cần khám ngay!"
     },
@@ -448,6 +483,23 @@ FIRST_AID_ADDITIONAL3 = {
                 "⛔ Khó thở"
             ]
         },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Rắn độc cắn (có dấu hiệu độc)",
+                "Vết cắn sưng nhiều, đau dữ dội",
+                "Nôn, chóng mặt, khó thở",
+                "Xa bệnh viện có huyết thanh kháng nọc"
+            ],
+            "self_transport_allowed": [
+                "Rắn cắn (dù chưa rõ có độc)",
+                "Đã sơ cứu tốt (bất động chi, băng bó)",
+                "Người bệnh tỉnh táo, ổn định",
+                "Bệnh viện có huyết thanh kháng nọc gần (dưới 30 phút)",
+                "Cần tiêm huyết thanh kháng nọc càng sớm càng tốt"
+            ],
+            "self_transport_note": "⚠️ **QUAN TRỌNG:** Rắn cắn cần đến bệnh viện có huyết thanh kháng nọc. Nếu bệnh viện gần và có người nhà đưa đi nhanh → Có thể tự đưa đi (tiết kiệm thời gian). Nếu xa hoặc không chắc → GỌI 115. Huyết thanh cần tiêm trong 4 giờ đầu!"
+        },
         "note": "⏱️ **QUAN TRỌNG:** Huyết thanh kháng nọc cần tiêm càng sớm càng tốt (trong 4 giờ đầu tốt nhất)!"
     },
     
@@ -497,6 +549,23 @@ FIRST_AID_ADDITIONAL3 = {
                 "✅ Tránh thức ăn để lâu, có mùi lạ",
                 "✅ Tránh thịt, cá sống"
             ]
+        },
+        "transport_option": {
+            "title": "🚗 Đưa đến bệnh viện:",
+            "call_115_recommended": [
+                "Nôn, tiêu chảy nhiều → Mất nước nặng, choáng",
+                "Sốt cao >38.5°C, tiêu chảy có máu",
+                "Đau bụng dữ dội, không đi tiểu >12 giờ",
+                "Người già, trẻ em (dễ mất nước nặng)"
+            ],
+            "self_transport_allowed": [
+                "Nôn, tiêu chảy vừa, chưa mất nước nặng",
+                "Người bệnh tỉnh táo, có thể uống nước",
+                "Không sốt cao, không có máu trong phân",
+                "Bệnh viện gần (dưới 20-30 phút)",
+                "Cần truyền dịch để bù nước"
+            ],
+            "self_transport_note": "💡 **Lưu ý:** Ngộ độc thực phẩm nhẹ có thể tự đưa đến bệnh viện gần để truyền dịch bù nước. Nếu nặng (mất nước nhiều, choáng) → GỌI 115."
         }
     }
 }

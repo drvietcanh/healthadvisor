@@ -200,12 +200,12 @@ def render_sidebar_menu():
             ("🧠 Thần Kinh", "4_🧠_Thần_Kinh"),
             ("⚖️ Hội Chứng Chuyển Hóa", "5_⚖️_Hội_Chứng_Chuyển_Hóa"),
             ("🦴 Khớp - Cột Sống", "6_🦴_Khớp_Cột_Sống"),
-            ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
-            ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
             ("🧪 Thận-Tiết Niệu", "9_🧪_Thận_Tiết_Niệu"),
             ("👁️ Mắt", "10_👁️_Mắt"),
             ("🌡️ Tiêu Hóa", "11_🌡️_Tiêu_Hóa"),
             ("🆘 SOS", "12_🆘_SOS"),
+            ("🎓 Học Dễ", "7_🎓_Học_Dễ"),
+            ("💡 Mẹo Vặt", "8_💡_Mẹo_Vặt"),
         ]
         
         # Hiển thị menu items - dùng page_link để tránh lỗi với st.switch_page trong loop
