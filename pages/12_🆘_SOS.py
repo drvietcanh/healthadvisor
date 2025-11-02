@@ -15,8 +15,8 @@ from emergency_page_components import (
     get_emergency_css,
     render_emergency_numbers_tab,
     render_first_aid_tab,
-    render_contacts_tab,
-    render_medical_info_tab
+    # render_contacts_tab,  # Ẩn tạm thời - sẽ phát triển sau
+    # render_medical_info_tab  # Ẩn tạm thời - sẽ phát triển sau
 )
 from core.ui_config import get_custom_css
 
@@ -47,11 +47,11 @@ st.info("""
 """)
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs([
+tab1, tab2 = st.tabs([
     "📞 SỐ CẤP CỨU",
     "🏥 Hướng dẫn Sơ cứu",
-    "👥 Danh bạ Cá nhân",
-    "📋 Thông tin Y tế"
+    # "👥 Danh bạ Cá nhân",  # Ẩn tạm thời - sẽ phát triển sau
+    # "📋 Thông tin Y tế"  # Ẩn tạm thời - sẽ phát triển sau
 ])
 
 # ===== TAB 1: SỐ CẤP CỨU =====
@@ -62,13 +62,13 @@ with tab1:
 with tab2:
     render_first_aid_tab()
 
-# ===== TAB 3: DANH BẠ CÁ NHÂN =====
-with tab3:
-    render_contacts_tab()
+# ===== TAB 3: DANH BẠ CÁ NHÂN ===== (Ẩn tạm thời - sẽ phát triển sau)
+# with tab3:
+#     render_contacts_tab()
 
-# ===== TAB 4: THÔNG TIN Y TẾ =====
-with tab4:
-    render_medical_info_tab()
+# ===== TAB 4: THÔNG TIN Y TẾ ===== (Ẩn tạm thời - sẽ phát triển sau)
+# with tab4:
+#     render_medical_info_tab()
 
 # Footer
 st.divider()
